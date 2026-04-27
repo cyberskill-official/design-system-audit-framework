@@ -1,0 +1,22 @@
+{
+  "name": "design-system-audit-landing",
+  "version": "1.0.0",
+  "description": "Landing page for Design System Audits & Implementation",
+  "type": "module",
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'Static site - no build needed'",
+    "lint": "echo 'No linter configured'"
+  },
+  "keywords": [
+    "design-system",
+    "audit",
+    "cyberskill"
+  ],
+  "author": "CyberSkill",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
+}
