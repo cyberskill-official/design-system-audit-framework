@@ -15,7 +15,7 @@
  * Zero dependencies — uses only Node 20+ built-ins.
  */
 
-import { mkdirSync, copyFileSync, writeFileSync, existsSync, readFileSync } from "node:fs";
+import { mkdirSync, copyFileSync, writeFileSync, existsSync, readFileSync, openSync, closeSync } from "node:fs";
 import { join, dirname, resolve, basename } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -45,37 +45,58 @@ mkdirSync(auditDir, { recursive: true });
 // ─── Copy audit-report-template.md → audit-report-{today}.md (if absent) ───
 
 const reportPath = join(auditDir, `audit-report-${today}.md`);
-if (!existsSync(reportPath)) {
+{
+  // Use 'wx' flag to atomically refuse to overwrite — survives stat-cache races.
   const tplPath = join(TEMPLATES, "audit-report-template.md");
   let body = readFileSync(tplPath, "utf8");
   body = body
     .replace(/audit_id: YYYY-MM-DD/, `audit_id: ${today}`)
     .replace(/^# Audit YYYY-MM-DD/m, `# Audit ${today}`)
     .replace(/\*End of audit-report-YYYY-MM-DD\.\*/, `*End of audit-report-${today}.*`);
-  writeFileSync(reportPath, body, "utf8");
-  console.log(`✓ Created ${reportPath}`);
-} else {
-  console.log(`- Skipped (already exists): ${reportPath}`);
+  try {
+    writeFileSync(reportPath, body, { encoding: "utf8", flag: "wx" });
+    console.log(`✓ Created ${reportPath}`);
+  } catch (err) {
+    if (err.code === "EEXIST") {
+      console.log(`- Skipped (already exists): ${reportPath}`);
+    } else {
+      throw err;
+    }
+  }
 }
 
 // ─── Copy improvement-plan-template.md → improvement-plan.md (if absent) ───
 
 const planPath = join(auditDir, "improvement-plan.md");
-if (!existsSync(planPath)) {
-  copyFileSync(join(TEMPLATES, "improvement-plan-template.md"), planPath);
-  console.log(`✓ Created ${planPath}`);
-} else {
-  console.log(`- Skipped (already exists): ${planPath}`);
+{
+  const planSrc = readFileSync(join(TEMPLATES, "improvement-plan-template.md"), "utf8");
+  try {
+    writeFileSync(planPath, planSrc, { encoding: "utf8", flag: "wx" });
+    console.log(`✓ Created ${planPath}`);
+  } catch (err) {
+    if (err.code === "EEXIST") {
+      console.log(`- Skipped (already exists): ${planPath}`);
+    } else {
+      throw err;
+    }
+  }
 }
 
 // ─── Create _history.md (if absent) ────────────────────────────────────
 
 const historyPath = join(auditDir, "_history.md");
-if (!existsSync(historyPath)) {
-  copyFileSync(join(TEMPLATES, "audit-history-register.md"), historyPath);
-  console.log(`✓ Created ${historyPath}`);
-} else {
-  console.log(`- Skipped (already exists): ${historyPath}`);
+{
+  const historySrc = readFileSync(join(TEMPLATES, "audit-history-register.md"), "utf8");
+  try {
+    writeFileSync(historyPath, historySrc, { encoding: "utf8", flag: "wx" });
+    console.log(`✓ Created ${historyPath}`);
+  } catch (err) {
+    if (err.code === "EEXIST") {
+      console.log(`- Skipped (already exists): ${historyPath}`);
+    } else {
+      throw err;
+    }
+  }
 }
 
 // ─── Print next steps ──────────────────────────────────────────────────

@@ -5,7 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 [![Maturity: L5](https://img.shields.io/badge/Self--audit-L5%20Optimised-green)](./examples/cyberskill-design-system/audit-report-2026-04-27.md)
 
-Built and maintained by [CyberSkill](https://cyberskill.vn) — extracted from the audit framework that took the CyberSkill design system from L4 Managed (74.7%) to L5 Optimised (84.6%) in one development cycle.
+Built and maintained by [CyberSkill](https://cyberskill.world) — extracted from the audit framework that took the CyberSkill design system from L4 Managed (74.7%) to L5 Optimised (84.6%) in one development cycle.
 
 ---
 
@@ -191,4 +191,4 @@ The framework is governed by a public RFC process. See [`CONTRIBUTING.md`](./CON
 
 ---
 
-*Built by [CyberSkill](https://cyberskill.vn). Hiện Thực Hoá Ý Chí — Turn Your Will Into Real.*
+*Built by [CyberSkill](https://cyberskill.world). Hiện Thực Hoá Ý Chí — Turn Your Will Into Real.*

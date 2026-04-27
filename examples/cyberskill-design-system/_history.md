@@ -4,10 +4,10 @@
 
 | Date | Mode | Agent | Operator | Signer | Part A % | Part B % | Combined % | Tier | Enterprise-grade | Report |
 |---|---|---|---|---|---|---|---|---|---|---|
-| 2026-04-26 | S | claude-opus-4-7 | Stephen Cheng (founder) | Stephen Cheng (founder) | 75.4% | 73.9% | 74.7% | L4 Managed | ✅ | [audit-report.md](./2026-04-26/audit-report.md) |
-| 2026-04-27 | S (rigorous) | claude-opus-4-7 | Stephen Cheng (founder) | Stephen Cheng (founder) | 87.2% | 82.0% | **84.6%** | **L5 Optimised** | ✅ | [audit-report.md](./2026-04-27/audit-report.md) |
+| 2026-04-26 | S | claude-opus-4-7 | Stephen Cheng (founder) | Stephen Cheng (founder) | 75.4% | 73.9% | 74.7% | L4 Managed | ✅ | _(baseline; superseded)_ |
+| 2026-04-27 | S (rigorous) | claude-opus-4-7 | Stephen Cheng (founder) | Stephen Cheng (founder) | 87.2% | 82.0% | **84.6%** | **L5 Optimised** | ✅ | [audit-report-2026-04-27.md](./audit-report-2026-04-27.md) |
 
-> **Note on the 2026-04-27 row:** an earlier synthesis-class draft (~87.5–93% range) was superseded the same day by a full criterion-by-criterion Mode S audit. The numbers above are the rigorous figures with per-criterion citations in [`2026-04-27/audit-worksheet.csv`](./2026-04-27/audit-worksheet.csv). Combined 84.6% sits firmly in the L5 Optimised band.
+> **Note on the 2026-04-27 row:** an earlier synthesis-class draft (~87.5–93% range) was superseded the same day by a full criterion-by-criterion Mode S audit. The numbers above are the rigorous figures with per-criterion citations inlined in §10 of the linked report. Combined 84.6% sits firmly in the L5 Optimised band.
 
 ## Phase milestones (between audits)
 

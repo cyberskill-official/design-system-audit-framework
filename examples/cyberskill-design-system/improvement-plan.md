@@ -31,7 +31,7 @@ Phases run mostly sequentially but **W1, W2, W3** within Phase 6 can overlap. Ph
 ### Wave 1 — Doctrine consolidation (mostly done)
 
 1. **Cleanup pass** ✅ DONE — `_legacy/`, passed audit folder, OS cruft removed.
-2. **Single-file audit template** ✅ DONE — [`Templates/audit/audit-report-template.md`](../Templates/audit/audit-report-template.md).
+2. **Single-file audit template** ✅ DONE — `Templates/audit/audit-report-template.md` _(in the design system repo)_; canonical version lives in this framework at [`templates/audit-report-template.md`](../../templates/audit-report-template.md).
 3. **Consolidate 2026-04-27 audit** ✅ DONE — [`audit-report-2026-04-27.md`](./audit-report-2026-04-27.md).
 4. **Standalone DESIGN.md generator** ✅ DONE — `scripts/build-design-md.mjs` reads only `docs/` + `tokens/`.
 5. **Reference cleanup** ✅ DONE — 1,094 bare-Part refs linkified, 36 audit-history attribution lines stripped.

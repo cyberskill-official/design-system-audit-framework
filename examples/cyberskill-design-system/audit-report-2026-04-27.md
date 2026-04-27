@@ -25,7 +25,7 @@ enterprise_grade: pass
 
 # Audit 2026-04-27
 
-> **Single-file audit output.** Consolidates the prior `audit-report.md` + `audit-worksheet.csv` + recommendation cards into one human-and-agent-readable document. Format follows [`Templates/audit/audit-report-template.md`](../../Templates/audit/audit-report-template.md). Logged in [`_history.md`](./_history.md).
+> **Single-file audit output.** Consolidates the prior `audit-report.md` + `audit-worksheet.csv` + recommendation cards into one human-and-agent-readable document. Format follows **`Templates/audit/audit-report-template.md`**. Logged in [`_history.md`](./_history.md).
 
 ---
 
@@ -62,9 +62,9 @@ enterprise_grade: pass
 Re-scored all 125 criteria from current repo state. Every score has at least one citation; mean 1–3 citations per criterion, max 4. Confidence: **84% Hi, 16% Med, 0% Lo**.
 
 Evidence sources:
-- Doctrine: [`docs/part-1`](../part-1-foundations.md) … [`docs/part-20`](../part-20-layout-responsive.md) (20 main DS files)
+- Doctrine: **`docs/part-1`** … **`docs/part-20`** (20 main DS files)
 - Implementation: `packages/` (11 packages), `src/` (Wiki SPA + Storybook), `tokens/` (5 DTCG-conformant)
-- CI evidence: [`coverage.json`](./coverage.json), [`bundle-size.json`](./bundle-size.json), [`doc-freshness.json`](./doc-freshness.json), [`apca-contrast.json`](./apca-contrast.json)
+- CI evidence: `coverage.json`, `bundle-size.json`, `doc-freshness.json`, `apca-contrast.json` _(generated artefacts; live in the system's repo, not in this case-study snapshot)_
 - Live tooling: 8 working zero-dep scripts in `scripts/`
 
 Full per-criterion scores: see [§10 Criteria scores](#10-criteria-scores-machine-readable).
@@ -224,31 +224,31 @@ notes: |
 | ID | Cat | Wt | Criterion | Tag | Pre | Post | Δ | Conf | Citations | Notes |
 |---|---|---|---|---|---|---|---|---|---|---|
 | A1.1 | A.1 | 14% | Colour tokens 3-tier | FIXED | 5 | 5 | — | Hi | `tokens/colour.tokens.json` (DTCG primitive→semantic→theme); APCA 8/8 pass | Sustained at industry-leading |
-| A1.2 | A.1 | 14% | Typography scale | FIXED | 4 | 5 | +1 | Hi | `tokens/type.tokens.json` variable-axes annotated; [part-2 §27.1](../part-2-design-language.md) | Variable-font axes + figure-style |
-| A1.3 | A.1 | 14% | Spacing scale | FIXED | 4 | 4 | — | Hi | `tokens/space.tokens.json` + [part-2 §27](../part-2-design-language.md) | Sustained |
+| A1.2 | A.1 | 14% | Typography scale | FIXED | 4 | 5 | +1 | Hi | `tokens/type.tokens.json` variable-axes annotated; **part-2 §27.1** | Variable-font axes + figure-style |
+| A1.3 | A.1 | 14% | Spacing scale | FIXED | 4 | 4 | — | Hi | `tokens/space.tokens.json` + **part-2 §27** | Sustained |
 | A1.4 | A.1 | 14% | Elevation tokens | FIXED | 3 | 4 | +1 | Hi | `tokens/elevation.tokens.json` mode-aware | Mode-aware DTCG file |
 | A1.5 | A.1 | 14% | Motion tokens | FIXED | 4 | 4 | — | Hi | `tokens/motion.tokens.json` + reduced-motion contract | Sustained |
-| A1.6 | A.1 | 14% | Iconography system | FIXED | 3 | 3 | — | Med | [part-2 §27.3](../part-2-design-language.md) export pipeline doc | Pipeline ships Phase 5 |
-| A1.7 | A.1 | 14% | Grid & layout | FIXED | 4 | 4 | — | Hi | [part-20](../part-20-layout-responsive.md) + container-query default | Sustained |
+| A1.6 | A.1 | 14% | Iconography system | FIXED | 3 | 3 | — | Med | **part-2 §27.3** export pipeline doc | Pipeline ships Phase 5 |
+| A1.7 | A.1 | 14% | Grid & layout | FIXED | 4 | 4 | — | Hi | **part-20** + container-query default | Sustained |
 | A1.8 | A.1 | 14% | DTCG conformance | DYNAMIC | 5 | 5 | — | Hi | 5 token files all DTCG 2025.10 | Sustained industry-leading |
-| A1.9 | A.1 | 14% | OKLCH / P3 | DYNAMIC | 5 | 5 | — | Hi | [part-2 §1](../part-2-design-language.md) + APCA pass | Sustained |
+| A1.9 | A.1 | 14% | OKLCH / P3 | DYNAMIC | 5 | 5 | — | Hi | **part-2 §1** + APCA pass | Sustained |
 | A2.1 | A.2 | 13% | Top-20 coverage | FIXED | 5 | 5 | — | Hi | 12 web-components shipped; 27 React components; 100% story coverage | Sustained |
 | A2.2 | A.2 | 13% | API consistency | FIXED | 4 | 5 | +1 | Hi | All 12 web components share size/variant/disabled/loading; pre-review lint enforces | Lint enforces taxonomy |
 | A2.3 | A.2 | 13% | Composition / slotting | FIXED | 4 | 5 | +1 | Hi | cs-button + cs-card + cs-modal slot-based composition shipped | Slot-based composition |
 | A2.4 | A.2 | 13% | Variant & state coverage | FIXED | 4 | 5 | +1 | Hi | 100% story coverage (27/27); 4 themes via storybook addon | Full coverage |
 | A2.5 | A.2 | 13% | Headless-primitive option | DYNAMIC | 3 | 4 | +1 | Hi | `@cyberskill/primitives` + useDisclosure 5/5 tests + useFocusTrap + useTabs | Headless layer live |
 | A2.6 | A.2 | 13% | Visual regression testing | DYNAMIC | 3 | 3 | — | Med | `ci.yml` Chromatic job; `CHROMATIC_PROJECT_TOKEN` pending | Founder action gates 4 |
-| A3.1 | A.3 | 10% | Usage per component | FIXED | 4 | 5 | +1 | Hi | [part-18 §19](../part-18-docs-site.md) Diátaxis quadrants; per-component a11y matrix in [part-5 §2](../part-5-accessibility-localization.md) | Diátaxis closure |
-| A3.2 | A.3 | 10% | Code examples | FIXED | 4 | 4 | — | Med | [part-18 §3.4](../part-18-docs-site.md) + Storybook stories | Sustained |
-| A3.3 | A.3 | 10% | Do/Don't | FIXED | 4 | 4 | — | Med | [part-18 §3](../part-18-docs-site.md) + [part-14 §2.6](../part-14-content-design.md) banned-phrase lints | Sustained |
-| A3.4 | A.3 | 10% | A11y notes per component | FIXED | 5 | 5 | — | Hi | [part-5 §2](../part-5-accessibility-localization.md) 87 SC matrix | Sustained industry-leading |
+| A3.1 | A.3 | 10% | Usage per component | FIXED | 4 | 5 | +1 | Hi | **part-18 §19** Diátaxis quadrants; per-component a11y matrix in **part-5 §2** | Diátaxis closure |
+| A3.2 | A.3 | 10% | Code examples | FIXED | 4 | 4 | — | Med | **part-18 §3.4** + Storybook stories | Sustained |
+| A3.3 | A.3 | 10% | Do/Don't | FIXED | 4 | 4 | — | Med | **part-18 §3** + **part-14 §2.6** banned-phrase lints | Sustained |
+| A3.4 | A.3 | 10% | A11y notes per component | FIXED | 5 | 5 | — | Hi | **part-5 §2** 87 SC matrix | Sustained industry-leading |
 | A3.5 | A.3 | 10% | Contribution guide | FIXED | 4 | 5 | +1 | Hi | `CONTRIBUTING.md` + `CODE_OF_CONDUCT.md` + `SECURITY.md` | OSS quartet complete |
-| A3.6 | A.3 | 10% | Search & navigation | FIXED | 4 | 4 | — | Med | [part-18 §4–§5](../part-18-docs-site.md); AI search expansion | Sustained |
+| A3.6 | A.3 | 10% | Search & navigation | FIXED | 4 | 4 | — | Med | **part-18 §4–§5**; AI search expansion | Sustained |
 | A3.7 | A.3 | 10% | Doc freshness signals | DYNAMIC | 3 | 4 | +1 | Hi | `check-doc-freshness.mjs` live + CI gate | Live dashboard |
-| A4.1 | A.4 | 10% | Decision-making model | FIXED | 4 | 4 | — | Hi | [part-8](../part-8-governance-legal-commerce.md) + [00-index ownership matrix](../00-index.md) | Sustained |
+| A4.1 | A.4 | 10% | Decision-making model | FIXED | 4 | 4 | — | Hi | **part-8** + **00-index ownership matrix** | Sustained |
 | A4.2 | A.4 | 10% | RFC process | FIXED | 5 | 5 | — | Hi | 6 RFCs filed + approved; `docs/RFCs/_index.md` | Sustained industry-leading |
-| A4.3 | A.4 | 10% | Semver discipline | FIXED | 4 | 4 | — | Hi | [part-7 §8](../part-7-engineering-operations.md) + [part-17 lifecycle](../part-17-component-lifecycle.md) | Sustained |
-| A4.4 | A.4 | 10% | Deprecation policy | FIXED | 5 | 5 | — | Hi | [part-17 §3](../part-17-component-lifecycle.md) + sunset post-mortem template | Sunset template added |
+| A4.3 | A.4 | 10% | Semver discipline | FIXED | 4 | 4 | — | Hi | **part-7 §8** + **part-17 lifecycle** | Sustained |
+| A4.4 | A.4 | 10% | Deprecation policy | FIXED | 5 | 5 | — | Hi | **part-17 §3** + sunset post-mortem template | Sunset template added |
 | A4.5 | A.4 | 10% | Contribution model | FIXED | 4 | 5 | +1 | Hi | LICENSE + CONTRIBUTING + COC + SECURITY + 6 RFCs | Federated model documented |
 | A4.6 | A.4 | 10% | Roadmap transparency | DYNAMIC | 3 | 5 | +2 | Hi | RFC 2026-001 approved + audit history register public | Major lift |
 | A5.1 | A.5 | 10% | Figma library | FIXED | 4 | 4 | — | Med | Code Connect bindings shipped; `figma.config.json` ready | Sustained; live library pending |
@@ -258,24 +258,24 @@ notes: |
 | A5.5 | A.5 | 10% | CI/CD | FIXED | 3 | 4 | +1 | Hi | `.github/workflows/ci.yml` (8 gates) + `release.yml` stub | CI live |
 | A5.6 | A.5 | 10% | CDN distribution | DYNAMIC | 2 | 4 | +2 | Hi | `build-cdn.mjs` ships loader.js (51.5 KB) + tokens.css (4.7 KB) + SRI; `vercel.json` | Bundle + SRI |
 | A6.1 | A.6 | 8% | Light/dark/HC parity | FIXED | 5 | 5 | — | Hi | 4-mode token theme | Sustained |
-| A6.2 | A.6 | 8% | Brand theming / multi-tenant | FIXED | 5 | 5 | — | Hi | [part-13](../part-13-theming-whitelabel-embed.md) + theme-generator + token overlay | Sustained |
+| A6.2 | A.6 | 8% | Brand theming / multi-tenant | FIXED | 5 | 5 | — | Hi | **part-13** + theme-generator + token overlay | Sustained |
 | A6.3 | A.6 | 8% | Web/iOS/Android/RN parity | FIXED | 3 | 4 | +1 | Hi | `@cyberskill/react-native` + Style Dict Swift/Android | RN package live |
-| A6.4 | A.6 | 8% | Density variants | FIXED | 5 | 5 | — | Hi | [part-13](../part-13-theming-whitelabel-embed.md) + token density layer | Sustained |
-| A6.5 | A.6 | 8% | RTL & i18n | FIXED | 5 | 5 | — | Hi | [part-5 §7](../part-5-accessibility-localization.md) (20+ locales); cohort-1 + microcopy.schema.json | Sustained |
+| A6.4 | A.6 | 8% | Density variants | FIXED | 5 | 5 | — | Hi | **part-13** + token density layer | Sustained |
+| A6.5 | A.6 | 8% | RTL & i18n | FIXED | 5 | 5 | — | Hi | **part-5 §7** (20+ locales); cohort-1 + microcopy.schema.json | Sustained |
 | A6.6 | A.6 | 8% | Spatial / immersive | DYNAMIC | 2 | 4 | +2 | Hi | `@cyberskill/spatial`: 6 React primitives + depth tokens; 2D fallback | Spatial implementations |
 | A7.1 | A.7 | 9% | Coverage % tracked | FIXED | 3 | 4 | +1 | Hi | `check-coverage.mjs` live + 4 dated snapshots | Live tooling |
-| A7.2 | A.7 | 9% | Detachment rate | FIXED | 3 | 3 | — | Med | [part-15 §2.5](../part-15-tooling.md) + [part-17 §6](../part-17-component-lifecycle.md) | Sustained |
+| A7.2 | A.7 | 9% | Detachment rate | FIXED | 3 | 3 | — | Med | **part-15 §2.5** + **part-17 §6** | Sustained |
 | A7.3 | A.7 | 9% | NPS / satisfaction | FIXED | 3 | 3 | — | Med | `Templates/research-ops/practitioner-survey.md` ready | Sustained; needs first run |
 | A7.4 | A.7 | 9% | Contribution rate | FIXED | 3 | 3 | — | Med | Federated model documented; first outside-contributor PR pending | Sustained |
 | A7.5 | A.7 | 9% | Time-to-ship | FIXED | 3 | 3 | — | Med | First-product migration plan baselined; second product needed for delta | Sustained |
-| A7.6 | A.7 | 9% | Business KPI correlation | DYNAMIC | 2 | 3 | +1 | Hi | [part-10 §16.2](../part-10-measurement-research-appendix.md) four-anchor framework | Framework + model in place |
+| A7.6 | A.7 | 9% | Business KPI correlation | DYNAMIC | 2 | 3 | +1 | Hi | **part-10 §16.2** four-anchor framework | Framework + model in place |
 | A8.1 | A.8 | 12% | Contrast guarantees | FIXED | 4 | 5 | +1 | Hi | APCA 8/8 canonical pass at WCAG 3.0 floor; OKLCH | APCA + DTCG |
-| A8.2 | A.8 | 12% | Keyboard navigation | FIXED | 5 | 5 | — | Hi | [part-5 §2](../part-5-accessibility-localization.md) (87 SC) + [part-3a](../part-3a-actions.md) | Sustained industry-leading |
-| A8.3 | A.8 | 12% | Screen-reader testing | FIXED | 4 | 4 | — | Hi | [part-5 §4](../part-5-accessibility-localization.md) protocol | Sustained |
-| A8.4 | A.8 | 12% | Reduced-motion | FIXED | 5 | 5 | — | Hi | [part-2 §7](../part-2-design-language.md) hard contract | Sustained |
+| A8.2 | A.8 | 12% | Keyboard navigation | FIXED | 5 | 5 | — | Hi | **part-5 §2** (87 SC) + **part-3a** | Sustained industry-leading |
+| A8.3 | A.8 | 12% | Screen-reader testing | FIXED | 4 | 4 | — | Hi | **part-5 §4** protocol | Sustained |
+| A8.4 | A.8 | 12% | Reduced-motion | FIXED | 5 | 5 | — | Hi | **part-2 §7** hard contract | Sustained |
 | A8.5 | A.8 | 12% | A11y tokens | FIXED | 4 | 4 | — | Hi | SC 2.5.8 24×24 enforced; spatial depth tokens | Sustained |
 | A8.6 | A.8 | 12% | WCAG 2.2 / EAA | DYNAMIC | 4 | 4 | — | Med | A11y audit RFP drafted; vendor delivery Q4 2026 | Sustained pending external |
-| A8.7 | A.8 | 12% | Cognitive accessibility | DYNAMIC | 4 | 5 | +1 | Hi | [part-5 §21.1](../part-5-accessibility-localization.md) 5-pattern + trauma-informed §21.2 + voice/switch §21.3 | Cognitive expansion |
+| A8.7 | A.8 | 12% | Cognitive accessibility | DYNAMIC | 4 | 5 | +1 | Hi | **part-5 §21.1** 5-pattern + trauma-informed §21.2 + voice/switch §21.3 | Cognitive expansion |
 | A9.1 | A.9 | 8% | Bundle budgets | FIXED | 4 | 5 | +1 | Hi | `check-bundle-size.mjs` + per-package budgets + CI gate | Live + enforced |
 | A9.2 | A.9 | 8% | Tree-shaking / sub-paths | FIXED | 3 | 4 | +1 | Hi | ESM + per-component subpath exports | Per-component exports live |
 | A9.3 | A.9 | 8% | TypeScript support | FIXED | 4 | 4 | — | Hi | TS6 + Vite8; strict types | Sustained |
@@ -293,79 +293,79 @@ notes: |
 
 | ID | Cat | Wt | Criterion | Tag | Pre | Post | Δ | Conf | Citations | Notes |
 |---|---|---|---|---|---|---|---|---|---|---|
-| B1.1 | B.1 | 12% | Method diversity | FIXED | 4 | 4 | — | Med | [part-10 §3](../part-10-measurement-research-appendix.md) + §16 | Sustained |
-| B1.2 | B.1 | 12% | Research cadence | FIXED | 3 | 4 | +1 | Hi | [part-10 §16.3](../part-10-measurement-research-appendix.md) continuous discovery + interview-template | Continuous discovery |
-| B1.3 | B.1 | 12% | ResearchOps practice | DYNAMIC | 3 | 4 | +1 | Hi | [part-10 §16.4](../part-10-measurement-research-appendix.md) 8-pillar + 6 templates | ResearchOps live |
-| B1.4 | B.1 | 12% | Participant ethics | FIXED | 4 | 5 | +1 | Hi | `Templates/research-ops/consent-form.md` (PDPL-compliant) + [part-8 §5](../part-8-governance-legal-commerce.md) | Bilingual consent |
-| B1.5 | B.1 | 12% | Evidence-based decisions | FIXED | 3 | 4 | +1 | Hi | [part-10 §16.8](../part-10-measurement-research-appendix.md) decision-logging gate | Gate enforced |
-| B1.6 | B.1 | 12% | Insight repository | DYNAMIC | 3 | 3 | — | Med | [part-10 §16.6](../part-10-measurement-research-appendix.md) spec; tooling procurement pending | Sustained |
-| B1.7 | B.1 | 12% | AI-assisted synthesis | DYNAMIC | 3 | 3 | — | Med | [part-9 §14](../part-9-ai-prompt-library.md) multi-agent + [part-10 §16](../part-10-measurement-research-appendix.md) | Sustained |
-| B2.1 | B.2 | 9% | Mental-model match | FIXED | 3 | 3 | — | Med | [part-14 §2](../part-14-content-design.md) + [part-4](../part-4-surfaces.md) vocabulary | Sustained |
+| B1.1 | B.1 | 12% | Method diversity | FIXED | 4 | 4 | — | Med | **part-10 §3** + §16 | Sustained |
+| B1.2 | B.1 | 12% | Research cadence | FIXED | 3 | 4 | +1 | Hi | **part-10 §16.3** continuous discovery + interview-template | Continuous discovery |
+| B1.3 | B.1 | 12% | ResearchOps practice | DYNAMIC | 3 | 4 | +1 | Hi | **part-10 §16.4** 8-pillar + 6 templates | ResearchOps live |
+| B1.4 | B.1 | 12% | Participant ethics | FIXED | 4 | 5 | +1 | Hi | `Templates/research-ops/consent-form.md` (PDPL-compliant) + **part-8 §5** | Bilingual consent |
+| B1.5 | B.1 | 12% | Evidence-based decisions | FIXED | 3 | 4 | +1 | Hi | **part-10 §16.8** decision-logging gate | Gate enforced |
+| B1.6 | B.1 | 12% | Insight repository | DYNAMIC | 3 | 3 | — | Med | **part-10 §16.6** spec; tooling procurement pending | Sustained |
+| B1.7 | B.1 | 12% | AI-assisted synthesis | DYNAMIC | 3 | 3 | — | Med | **part-9 §14** multi-agent + **part-10 §16** | Sustained |
+| B2.1 | B.2 | 9% | Mental-model match | FIXED | 3 | 3 | — | Med | **part-14 §2** + **part-4** vocabulary | Sustained |
 | B2.2 | B.2 | 9% | Nav consistency | FIXED | 4 | 4 | — | Hi | AppHeader + AppSidebar organisms + cross-surface nav | Sustained |
-| B2.3 | B.2 | 9% | Findability | FIXED | 3 | 3 | — | Med | [part-11](../part-11-enterprise-patterns.md) + [part-18 §5](../part-18-docs-site.md); AI search §12.18 | Sustained |
-| B2.4 | B.2 | 9% | Wayfinding | FIXED | 3 | 4 | +1 | Hi | [part-3d](../part-3d-navigation.md); `aria-current=page` in cs-nav-item | aria-current shipped |
-| B2.5 | B.2 | 9% | Card sort / tree test | FIXED | 3 | 4 | +1 | Hi | RFC template tree-test impact row in [00-audit-and-roadmap.md §12.3](../00-audit-and-roadmap.md) | Cadence enforced |
-| B3.1 | B.3 | 11% | Visibility of status | FIXED | 4 | 4 | — | Hi | [part-3e](../part-3e-feedback.md) + 100ms/1s/10s thresholds | Sustained |
-| B3.2 | B.3 | 11% | Affordances | FIXED | 4 | 4 | — | Med | [part-3](../part-3a-actions.md) + cs-button focus-ring + reduced-motion | Sustained |
-| B3.3 | B.3 | 11% | Error prevention/recovery | FIXED | 4 | 4 | — | Hi | [part-14 §3](../part-14-content-design.md) + cs-input error states | Sustained |
-| B3.4 | B.3 | 11% | Empty states | FIXED | 4 | 4 | — | Hi | EmptyState organism + [part-3e](../part-3e-feedback.md) + [part-11](../part-11-enterprise-patterns.md) | Sustained |
-| B3.5 | B.3 | 11% | Loading/skeleton | FIXED | 4 | 4 | — | Hi | [part-3e §3](../part-3e-feedback.md) + cs-button loading state | Sustained |
-| B3.6 | B.3 | 11% | User control | FIXED | 4 | 4 | — | Med | [part-11 §4](../part-11-enterprise-patterns.md) + cs-modal escape/cancel/backdrop | Sustained |
+| B2.3 | B.2 | 9% | Findability | FIXED | 3 | 3 | — | Med | **part-11** + **part-18 §5**; AI search §12.18 | Sustained |
+| B2.4 | B.2 | 9% | Wayfinding | FIXED | 3 | 4 | +1 | Hi | **part-3d**; `aria-current=page` in cs-nav-item | aria-current shipped |
+| B2.5 | B.2 | 9% | Card sort / tree test | FIXED | 3 | 4 | +1 | Hi | RFC template tree-test impact row in **00-audit-and-roadmap.md §12.3** | Cadence enforced |
+| B3.1 | B.3 | 11% | Visibility of status | FIXED | 4 | 4 | — | Hi | **part-3e** + 100ms/1s/10s thresholds | Sustained |
+| B3.2 | B.3 | 11% | Affordances | FIXED | 4 | 4 | — | Med | **part-3** + cs-button focus-ring + reduced-motion | Sustained |
+| B3.3 | B.3 | 11% | Error prevention/recovery | FIXED | 4 | 4 | — | Hi | **part-14 §3** + cs-input error states | Sustained |
+| B3.4 | B.3 | 11% | Empty states | FIXED | 4 | 4 | — | Hi | EmptyState organism + **part-3e** + **part-11** | Sustained |
+| B3.5 | B.3 | 11% | Loading/skeleton | FIXED | 4 | 4 | — | Hi | **part-3e §3** + cs-button loading state | Sustained |
+| B3.6 | B.3 | 11% | User control | FIXED | 4 | 4 | — | Med | **part-11 §4** + cs-modal escape/cancel/backdrop | Sustained |
 | B3.7 | B.3 | 11% | Spatial / 3D interaction | DYNAMIC | 2 | 4 | +2 | Hi | `@cyberskill/spatial`: 6 components with 2D fallback | Spatial implementations |
-| B3.8 | B.3 | 11% | Agentic-UX patterns | DYNAMIC | 4 | 5 | +1 | Hi | [part-3h](../part-3h-ai-chat.md) + [part-6 §2](../part-6-ai-ethics-sustainability.md) + mcp-server v2 enforces hard constraints | Agentic discipline |
-| B4.1 | B.4 | 8% | Visual hierarchy | FIXED | 4 | 4 | — | Hi | [part-2 §3–§6](../part-2-design-language.md) | Sustained |
-| B4.2 | B.4 | 8% | Aesthetic minimalist | FIXED | 4 | 4 | — | Med | [part-1 §3](../part-1-foundations.md) calm tech | Sustained |
-| B4.3 | B.4 | 8% | Brand expression | FIXED | 5 | 5 | — | Hi | [part-1 anchors](../part-1-foundations.md) immutable + APCA validates | Sustained industry-leading |
-| B4.4 | B.4 | 8% | Emotional resonance | DYNAMIC | 3 | 3 | — | Med | [part-1 §3](../part-1-foundations.md) voice; eye-tracking validation pending | Sustained |
-| B4.5 | B.4 | 8% | Density | FIXED | 5 | 5 | — | Hi | [part-13 §2](../part-13-theming-whitelabel-embed.md) | Sustained |
-| B5.1 | B.5 | 12% | WCAG 2.2 Level A | FIXED | 4 | 4 | — | Hi | [part-5 §2](../part-5-accessibility-localization.md) 87 SC; vendor audit Q4 2026 | Sustained pending external |
+| B3.8 | B.3 | 11% | Agentic-UX patterns | DYNAMIC | 4 | 5 | +1 | Hi | **part-3h** + **part-6 §2** + mcp-server v2 enforces hard constraints | Agentic discipline |
+| B4.1 | B.4 | 8% | Visual hierarchy | FIXED | 4 | 4 | — | Hi | **part-2 §3–§6** | Sustained |
+| B4.2 | B.4 | 8% | Aesthetic minimalist | FIXED | 4 | 4 | — | Med | **part-1 §3** calm tech | Sustained |
+| B4.3 | B.4 | 8% | Brand expression | FIXED | 5 | 5 | — | Hi | **part-1 anchors** immutable + APCA validates | Sustained industry-leading |
+| B4.4 | B.4 | 8% | Emotional resonance | DYNAMIC | 3 | 3 | — | Med | **part-1 §3** voice; eye-tracking validation pending | Sustained |
+| B4.5 | B.4 | 8% | Density | FIXED | 5 | 5 | — | Hi | **part-13 §2** | Sustained |
+| B5.1 | B.5 | 12% | WCAG 2.2 Level A | FIXED | 4 | 4 | — | Hi | **part-5 §2** 87 SC; vendor audit Q4 2026 | Sustained pending external |
 | B5.2 | B.5 | 12% | WCAG 2.2 Level AA | FIXED | 4 | 4 | — | Hi | Same as B5.1; full AA + 9 new SCs | Sustained pending external |
-| B5.3 | B.5 | 12% | Selected AAA | FIXED | 4 | 5 | +1 | Hi | [part-3a SC 2.4.13](../part-3a-actions.md) Focus Appearance + [part-5 §21](../part-5-accessibility-localization.md) | AAA flows enumerated |
+| B5.3 | B.5 | 12% | Selected AAA | FIXED | 4 | 5 | +1 | Hi | **part-3a SC 2.4.13** Focus Appearance + **part-5 §21** | AAA flows enumerated |
 | B5.4 | B.5 | 12% | Keyboard-only | FIXED | 4 | 5 | +1 | Hi | AppHeader + AppSidebar + 12 web-components keyboard-parity verified | Full coverage |
-| B5.5 | B.5 | 12% | Screen-reader testing | FIXED | 4 | 4 | — | Hi | [part-5 §4](../part-5-accessibility-localization.md) + cs-* aria semantics | Sustained |
-| B5.6 | B.5 | 12% | Cognitive accessibility | DYNAMIC | 4 | 5 | +1 | Hi | [part-5 §21.1](../part-5-accessibility-localization.md) 5-pattern + DiVi + Flesch-Kincaid | Cognitive patterns |
-| B5.7 | B.5 | 12% | Inclusive design | FIXED | 4 | 5 | +1 | Hi | [part-5 §21.2](../part-5-accessibility-localization.md) trauma-informed + HR Tech §19 | Inclusive expansion |
-| B5.8 | B.5 | 12% | EAA / regulatory | DYNAMIC | 4 | 5 | +1 | Hi | [part-8 §5](../part-8-governance-legal-commerce.md) EAA + WCAG 3.0 readiness | WCAG 3.0 readiness |
-| B6.1 | B.6 | 8% | Voice & tone | FIXED | 5 | 5 | — | Hi | [part-1 §3](../part-1-foundations.md) voice + [part-14 §2](../part-14-content-design.md) | Sustained |
-| B6.2 | B.6 | 8% | Microcopy patterns | FIXED | 4 | 4 | — | Hi | [part-14 §2.6](../part-14-content-design.md) + banned-phrase lints | Sustained |
-| B6.3 | B.6 | 8% | Action language | FIXED | 4 | 4 | — | Med | [part-14 §2.5](../part-14-content-design.md) | Sustained |
+| B5.5 | B.5 | 12% | Screen-reader testing | FIXED | 4 | 4 | — | Hi | **part-5 §4** + cs-* aria semantics | Sustained |
+| B5.6 | B.5 | 12% | Cognitive accessibility | DYNAMIC | 4 | 5 | +1 | Hi | **part-5 §21.1** 5-pattern + DiVi + Flesch-Kincaid | Cognitive patterns |
+| B5.7 | B.5 | 12% | Inclusive design | FIXED | 4 | 5 | +1 | Hi | **part-5 §21.2** trauma-informed + HR Tech §19 | Inclusive expansion |
+| B5.8 | B.5 | 12% | EAA / regulatory | DYNAMIC | 4 | 5 | +1 | Hi | **part-8 §5** EAA + WCAG 3.0 readiness | WCAG 3.0 readiness |
+| B6.1 | B.6 | 8% | Voice & tone | FIXED | 5 | 5 | — | Hi | **part-1 §3** voice + **part-14 §2** | Sustained |
+| B6.2 | B.6 | 8% | Microcopy patterns | FIXED | 4 | 4 | — | Hi | **part-14 §2.6** + banned-phrase lints | Sustained |
+| B6.3 | B.6 | 8% | Action language | FIXED | 4 | 4 | — | Med | **part-14 §2.5** | Sustained |
 | B6.4 | B.6 | 8% | Localization | FIXED | 5 | 5 | — | Hi | locale-expansion-plan + cohort-1/{tl,bn,ur,pa} + microcopy.schema.json | Sustained industry-leading |
-| B6.5 | B.6 | 8% | Plain language | FIXED | 4 | 4 | — | Hi | [part-5 §20](../part-5-accessibility-localization.md) tier system + DiVi + F-K | Sustained |
+| B6.5 | B.6 | 8% | Plain language | FIXED | 4 | 4 | — | Hi | **part-5 §20** tier system + DiVi + F-K | Sustained |
 | B6.6 | B.6 | 8% | TM / glossary | DYNAMIC | 3 | 4 | +1 | Med | `locales/_schema/microcopy.schema.json` + cohort-1 stubs | TM structure shipped |
-| B7.1 | B.7 | 10% | Heuristic eval cadence | FIXED | 3 | 4 | +1 | Hi | [00-audit-and-roadmap §14](../00-audit-and-roadmap.md) quarterly cadence | Cadence enforced |
-| B7.2 | B.7 | 10% | Visibility (H1) | FIXED | 4 | 4 | — | Hi | [part-3e](../part-3e-feedback.md) + cs-toast | Sustained |
-| B7.3 | B.7 | 10% | Match real-world (H2) | FIXED | 4 | 4 | — | Med | [part-14](../part-14-content-design.md) + voice principles | Sustained |
-| B7.4 | B.7 | 10% | User control (H3) | FIXED | 4 | 4 | — | Med | [part-11 §4](../part-11-enterprise-patterns.md) + cs-modal | Sustained |
+| B7.1 | B.7 | 10% | Heuristic eval cadence | FIXED | 3 | 4 | +1 | Hi | **00-audit-and-roadmap §14** quarterly cadence | Cadence enforced |
+| B7.2 | B.7 | 10% | Visibility (H1) | FIXED | 4 | 4 | — | Hi | **part-3e** + cs-toast | Sustained |
+| B7.3 | B.7 | 10% | Match real-world (H2) | FIXED | 4 | 4 | — | Med | **part-14** + voice principles | Sustained |
+| B7.4 | B.7 | 10% | User control (H3) | FIXED | 4 | 4 | — | Med | **part-11 §4** + cs-modal | Sustained |
 | B7.5 | B.7 | 10% | Consistency (H4) | FIXED | 4 | 5 | +1 | Hi | All 12 web-components share API; pre-review lint enforces | Lint-enforced consistency |
-| B7.6 | B.7 | 10% | Error prevention (H5) | FIXED | 4 | 4 | — | Hi | cs-input error state + [part-14 §3](../part-14-content-design.md) | Sustained |
-| B7.7 | B.7 | 10% | Recognition over recall (H6) | FIXED | 4 | 4 | — | Med | [part-11](../part-11-enterprise-patterns.md) | Sustained |
+| B7.6 | B.7 | 10% | Error prevention (H5) | FIXED | 4 | 4 | — | Hi | cs-input error state + **part-14 §3** | Sustained |
+| B7.7 | B.7 | 10% | Recognition over recall (H6) | FIXED | 4 | 4 | — | Med | **part-11** | Sustained |
 | B7.8 | B.7 | 10% | Flexibility (H7) | FIXED | 3 | 4 | +1 | Hi | CommandPalette organism + cs-tabs keyboard nav | Command palette + keyboard nav |
-| B7.9 | B.7 | 10% | Aesthetic (H8) | FIXED | 4 | 4 | — | Med | [part-1 §3](../part-1-foundations.md) calm tech | Sustained |
-| B7.10 | B.7 | 10% | Recover from errors (H9) | FIXED | 4 | 4 | — | Hi | [part-14 §3](../part-14-content-design.md) error message structure | Sustained |
-| B7.11 | B.7 | 10% | Help / docs (H10) | FIXED | 3 | 4 | +1 | Hi | [part-18 §19](../part-18-docs-site.md) Diátaxis + OnboardingChecklist | Diátaxis closure |
-| B7.12 | B.7 | 10% | Shneiderman additions | FIXED | 2 | 5 | +3 | Hi | [part-11 §15](../part-11-enterprise-patterns.md) Nielsen 10 + Shneiderman 8 mapping | Major lift |
-| B8.1 | B.8 | 10% | LCP at p75 | DYNAMIC | 3 | 3 | — | Med | [part-7 §10](../part-7-engineering-operations.md); RUM pending public deploy | Sustained pending deploy |
+| B7.9 | B.7 | 10% | Aesthetic (H8) | FIXED | 4 | 4 | — | Med | **part-1 §3** calm tech | Sustained |
+| B7.10 | B.7 | 10% | Recover from errors (H9) | FIXED | 4 | 4 | — | Hi | **part-14 §3** error message structure | Sustained |
+| B7.11 | B.7 | 10% | Help / docs (H10) | FIXED | 3 | 4 | +1 | Hi | **part-18 §19** Diátaxis + OnboardingChecklist | Diátaxis closure |
+| B7.12 | B.7 | 10% | Shneiderman additions | FIXED | 2 | 5 | +3 | Hi | **part-11 §15** Nielsen 10 + Shneiderman 8 mapping | Major lift |
+| B8.1 | B.8 | 10% | LCP at p75 | DYNAMIC | 3 | 3 | — | Med | **part-7 §10**; RUM pending public deploy | Sustained pending deploy |
 | B8.2 | B.8 | 10% | INP at p75 | DYNAMIC | 3 | 3 | — | Med | Same as B8.1 | Sustained pending deploy |
 | B8.3 | B.8 | 10% | CLS at p75 | DYNAMIC | 3 | 3 | — | Med | Same as B8.1 | Sustained pending deploy |
 | B8.4 | B.8 | 10% | TTFB | FIXED | 3 | 3 | — | Med | Same as B8.1 | Sustained pending deploy |
 | B8.5 | B.8 | 10% | Perf budgets in CI | FIXED | 4 | 5 | +1 | Hi | `check-bundle-size.mjs` + ci.yml gate; 11 packages under budget | Live + enforced |
 | B8.6 | B.8 | 10% | Perceived performance | FIXED | 4 | 4 | — | Hi | cs-button skeleton + cs-toast optimistic UI | Sustained |
 | B8.7 | B.8 | 10% | Mobile parity | FIXED | 4 | 5 | +1 | Hi | `@cyberskill/react-native` + Style Dict iOS/Android | Mobile-first |
-| B9.1 | B.9 | 10% | No dark-patterns | FIXED | 5 | 5 | — | Hi | [part-6](../part-6-ai-ethics-sustainability.md) + [part-14 §2.3](../part-14-content-design.md) banned phrases + lints | Sustained industry-leading |
-| B9.2 | B.9 | 10% | Symmetric subscribe/cancel | FIXED | 4 | 4 | — | Hi | [part-6](../part-6-ai-ethics-sustainability.md) + cs-modal close-with-action-reason | Sustained |
-| B9.3 | B.9 | 10% | Consent UX | FIXED | 5 | 5 | — | Hi | [part-8 §5](../part-8-governance-legal-commerce.md) PDPL + bilingual consent | Sustained industry-leading |
-| B9.4 | B.9 | 10% | Transparency | FIXED | 5 | 5 | — | Hi | [part-6 §2](../part-6-ai-ethics-sustainability.md) EU AI Act Art. 13 + AIDisclosureBadge in [part-3h](../part-3h-ai-chat.md) | Sustained |
-| B9.5 | B.9 | 10% | Privacy-by-default | FIXED | 4 | 4 | — | Hi | [part-6](../part-6-ai-ethics-sustainability.md) + [part-8 §5](../part-8-governance-legal-commerce.md) | Sustained |
-| B9.6 | B.9 | 10% | Algorithmic accountability | DYNAMIC | 4 | 5 | +1 | Hi | [part-6](../part-6-ai-ethics-sustainability.md) + pre-registration template + bias-disclosure | Pre-registration template |
-| B9.7 | B.9 | 10% | Inclusive risk review | FIXED | 4 | 5 | +1 | Hi | [part-5 §21.2](../part-5-accessibility-localization.md) trauma-informed + HR Tech [part-19 §19](../part-19-vertical-packs.md) | Inclusive review live |
-| B10.1 | B.10 | 10% | HEART framework | FIXED | 3 | 4 | +1 | Hi | [part-10 §16.1](../part-10-measurement-research-appendix.md) Goals→Signals→Metrics formal map | HEART formal |
+| B9.1 | B.9 | 10% | No dark-patterns | FIXED | 5 | 5 | — | Hi | **part-6** + **part-14 §2.3** banned phrases + lints | Sustained industry-leading |
+| B9.2 | B.9 | 10% | Symmetric subscribe/cancel | FIXED | 4 | 4 | — | Hi | **part-6** + cs-modal close-with-action-reason | Sustained |
+| B9.3 | B.9 | 10% | Consent UX | FIXED | 5 | 5 | — | Hi | **part-8 §5** PDPL + bilingual consent | Sustained industry-leading |
+| B9.4 | B.9 | 10% | Transparency | FIXED | 5 | 5 | — | Hi | **part-6 §2** EU AI Act Art. 13 + AIDisclosureBadge in **part-3h** | Sustained |
+| B9.5 | B.9 | 10% | Privacy-by-default | FIXED | 4 | 4 | — | Hi | **part-6** + **part-8 §5** | Sustained |
+| B9.6 | B.9 | 10% | Algorithmic accountability | DYNAMIC | 4 | 5 | +1 | Hi | **part-6** + pre-registration template + bias-disclosure | Pre-registration template |
+| B9.7 | B.9 | 10% | Inclusive risk review | FIXED | 4 | 5 | +1 | Hi | **part-5 §21.2** trauma-informed + HR Tech **part-19 §19** | Inclusive review live |
+| B10.1 | B.10 | 10% | HEART framework | FIXED | 3 | 4 | +1 | Hi | **part-10 §16.1** Goals→Signals→Metrics formal map | HEART formal |
 | B10.2 | B.10 | 10% | SUS administered | FIXED | 3 | 4 | +1 | Hi | `Templates/research-ops/sus-survey.md` + scoring formula | SUS template ready |
-| B10.3 | B.10 | 10% | Task success | FIXED | 3 | 3 | — | Med | [part-10 §7](../part-10-measurement-research-appendix.md); needs first instrumentation | Sustained pending deploy |
-| B10.4 | B.10 | 10% | Behavioural analytics | FIXED | 3 | 3 | — | Med | [part-10 §7](../part-10-measurement-research-appendix.md); `vercel.json` wires Speed Insights | Sustained pending deploy |
+| B10.3 | B.10 | 10% | Task success | FIXED | 3 | 3 | — | Med | **part-10 §7**; needs first instrumentation | Sustained pending deploy |
+| B10.4 | B.10 | 10% | Behavioural analytics | FIXED | 3 | 3 | — | Med | **part-10 §7**; `vercel.json` wires Speed Insights | Sustained pending deploy |
 | B10.5 | B.10 | 10% | NPS / CSAT / CES | FIXED | 3 | 4 | +1 | Hi | `Templates/research-ops/practitioner-survey.md` ready | Survey ready |
-| B10.6 | B.10 | 10% | Triangulation | FIXED | 3 | 3 | — | Med | [part-10 §16.7](../part-10-measurement-research-appendix.md) quarterly review ritual | Sustained |
-| B10.7 | B.10 | 10% | AI-era metrics | DYNAMIC | 3 | 4 | +1 | Hi | [part-6 §3](../part-6-ai-ethics-sustainability.md) + dual-evaluation framework + mcp-server emits run_id | AI metrics live |
-| B10.8 | B.10 | 10% | A/B rigor | FIXED | 3 | 4 | +1 | Hi | `Templates/research-ops/pre-registration-template.md` + [part-10 §16.5](../part-10-measurement-research-appendix.md) | Pre-registration enforced |
+| B10.6 | B.10 | 10% | Triangulation | FIXED | 3 | 3 | — | Med | **part-10 §16.7** quarterly review ritual | Sustained |
+| B10.7 | B.10 | 10% | AI-era metrics | DYNAMIC | 3 | 4 | +1 | Hi | **part-6 §3** + dual-evaluation framework + mcp-server emits run_id | AI metrics live |
+| B10.8 | B.10 | 10% | A/B rigor | FIXED | 3 | 4 | +1 | Hi | `Templates/research-ops/pre-registration-template.md` + **part-10 §16.5** | Pre-registration enforced |
 
 ---
 
@@ -403,7 +403,7 @@ notes: |
 |---|---|
 | FIXED criterion | scored against an objective rubric; cannot drift |
 | DYNAMIC criterion | rescored quarterly as standards evolve |
-| Anchor immutable | invariant the agent must refuse to change (per [part-1](../part-1-foundations.md)) |
+| Anchor immutable | invariant the agent must refuse to change (per **part-1**) |
 | No-downgrade rule | post-audit combined score must be ≥ pre-audit score |
 | Mode S | Doctrine self-audit (rigorous; this cycle) |
 

@@ -29,7 +29,7 @@ delta_pp: 0.0
 
 ## How to use this file
 
-This document follows the audit flow defined in [`docs/00-audit-and-roadmap.md`](../../docs/00-audit-and-roadmap.md). The flow has two **modes** and two **actors**:
+This document follows the audit flow defined in **`docs/00-audit-and-roadmap.md`**. The flow has two **modes** and two **actors**:
 
 | Mode | Actor | Sections owned |
 |---|---|---|
@@ -107,7 +107,7 @@ Inline tags drive routing:
 
 **Procedure**:
 
-1. Web-search for updates to the standards listed in [`docs/00-audit-and-roadmap.md`](../../docs/00-audit-and-roadmap.md) §2 References, including:
+1. Web-search for updates to the standards listed in **`docs/00-audit-and-roadmap.md`** §2 References, including:
    - WCAG 2.x and 3.0 working drafts
    - DTCG token spec
    - APCA contrast algorithm
@@ -245,7 +245,7 @@ final_combined_score: x%
 register_row_added: true  # appended to docs/_audit/_history.md
 ```
 
-Then append the row to [`docs/_audit/_history.md`](../../docs/_audit/_history.md) per `00-audit-and-roadmap.md` §10.7.
+Then append the row to your audit history register (typically `_audit/_history.md` or `docs/_audit/_history.md`, depending on where you scaffolded the audit folder) per the framework's sign-off rule.
 
 ---
 
@@ -265,7 +265,7 @@ Then append the row to [`docs/_audit/_history.md`](../../docs/_audit/_history.md
 
 | ID | Category | Criterion | Weight | Pre | Post | Conf | Citations | Notes |
 |---|---|---|---|---|---|---|---|---|
-| B.1.1 | User Research | ResearchOps 8 pillars documented | 2 | 4 | 4 | Hi | [part-10 §3](../../docs/part-10-measurement-research-appendix.md) | — |
+| B.1.1 | User Research | ResearchOps 8 pillars documented | 2 | 4 | 4 | Hi | **part-10 §3** | — |
 | ... | ... | ... | ... | ... | ... | ... | ... | ... |
 
 ### Category roll-ups

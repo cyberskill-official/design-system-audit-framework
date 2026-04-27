@@ -65,4 +65,4 @@ These aren't framework flaws — they're the framework being honest about the di
 
 ---
 
-*The CyberSkill Design System and this audit framework are both maintained by [CyberSkill](https://cyberskill.vn). Hiện Thực Hoá Ý Chí — Turn Your Will Into Real.*
+*The CyberSkill Design System and this audit framework are both maintained by [CyberSkill](https://cyberskill.world). Hiện Thực Hoá Ý Chí — Turn Your Will Into Real.*

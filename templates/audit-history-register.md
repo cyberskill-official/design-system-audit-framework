@@ -4,7 +4,7 @@
 
 | Date | Mode | Agent | Operator | Signer | Part A % | Part B % | Combined % | Tier | Enterprise-grade | Report |
 |---|---|---|---|---|---|---|---|---|---|---|
-| YYYY-MM-DD | S \| P | <model-id> | <name> | <name> | xx.x% | xx.x% | **xx.x%** | Lx | ✅ \| ❌ | [audit-report-YYYY-MM-DD.md](./audit-report-YYYY-MM-DD.md) |
+| YYYY-MM-DD | S \| P | <model-id> | <name> | <name> | xx.x% | xx.x% | **xx.x%** | Lx | ✅ \| ❌ | `audit-report-YYYY-MM-DD.md` |
 
 ---
 

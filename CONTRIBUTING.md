@@ -57,7 +57,7 @@ Translations into other languages are very welcome. Open an issue first to coord
 
 ## Maintainers
 
-The framework is maintained by [CyberSkill](https://cyberskill.vn). The current maintainer is the founder. As community forks land and the project matures, additional maintainers will be added through a public RFC.
+The framework is maintained by [CyberSkill](https://cyberskill.world). The current maintainer is the founder. As community forks land and the project matures, additional maintainers will be added through a public RFC.
 
 For commercial audits, custom criterion sets, or vertical-pack adaptations, contact CyberSkill directly.
 
