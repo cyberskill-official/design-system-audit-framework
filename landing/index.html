@@ -3,19 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Design System Audits & Implementation — CyberSkill</title>
-  <meta name="description" content="Professional design system audits using our open-source 125-criterion framework. Calibrated, signed delivery in 5–10 business days. Implementation and maintenance retainers available.">
+  <title>CyberSkill — Design system audits from Saigon</title>
+  <meta name="description" content="An enterprise software consultancy headquartered in Ho Chi Minh City. We audit design systems against the open-source 125-criterion framework we authored, build them when teams need building, and put our signature on every report.">
 
   <!-- Open Graph / social previews -->
-  <meta property="og:title" content="Design System Audits & Implementation — CyberSkill">
-  <meta property="og:description" content="Professional design system audits using our open-source 125-criterion framework. Signed delivery in 5–10 business days.">
+  <meta property="og:title" content="CyberSkill — Design system audits from Saigon">
+  <meta property="og:description" content="The open-source framework is free. The judgment behind it is what you hire.">
   <meta property="og:url" content="https://audit.cyberskill.world">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="CyberSkill">
-  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image" content="https://audit.cyberskill.world/logo.svg">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:image" content="https://audit.cyberskill.world/logo.svg">
 
   <link rel="canonical" href="https://audit.cyberskill.world">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2345210E'/%3E%3Cpath d='M30 35h40v8H30zm0 18h28v8H30zm0 18h36v8H30z' fill='%23F4BA17'/%3E%3C/svg%3E">
+  <link rel="icon" href="/logo.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="/logo.svg">
 
   <!-- Vercel Web Analytics -->
   <script>
@@ -24,163 +27,115 @@
   <script defer src="/_vercel/insights/script.js"></script>
 
   <style>
-    /* ─── CyberSkill design tokens (mirrored from doctrine) ─────────────── */
+    /* ─── Tokens ───────────────────────────────────────────────────────── */
     :root {
-      /* Colour — primitives */
       --color-umber: #45210E;
       --color-ochre: #F4BA17;
       --color-warm-white: #FAF6F1;
       --color-stone: #8B7355;
+      --color-paper: #F4EFE6;
 
-      /* Colour — semantic, light mode */
       --color-bg: #FAF6F1;
       --color-bg-subtle: #F4EFE6;
       --color-bg-raised: #FFFFFF;
       --color-text: #2A1505;
-      --color-text-muted: #8B7355;
+      --color-text-muted: #7A5C45;
       --color-accent: #F4BA17;
       --color-accent-subtle: #FBE5A6;
       --color-border: #E5DFD3;
+      --color-border-strong: #C9B89F;
       --color-link: #45210E;
-      --color-link-hover: #2A1505;
       --color-focus: #F4BA17;
-      --color-success: #3A7D44;
-      --color-danger: #B33B19;
 
-      /* Spacing — 4 / 8 base scale */
-      --space-1: 4px;
-      --space-2: 8px;
-      --space-3: 12px;
-      --space-4: 16px;
-      --space-5: 20px;
-      --space-6: 24px;
-      --space-8: 32px;
-      --space-10: 40px;
-      --space-12: 48px;
-      --space-16: 64px;
-      --space-20: 80px;
-      --space-24: 96px;
+      --space-1: 4px;  --space-2: 8px;  --space-3: 12px;
+      --space-4: 16px; --space-5: 20px; --space-6: 24px;
+      --space-8: 32px; --space-10: 40px; --space-12: 48px;
+      --space-16: 64px; --space-20: 80px; --space-24: 96px;
 
-      /* Typography */
       --font-display: "Be Vietnam Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", system-ui, sans-serif;
-      --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", system-ui, sans-serif;
-      --font-mono: ui-monospace, "JetBrains Mono", "Fira Code", "SF Mono", Menlo, monospace;
+      --font-body: "Be Vietnam Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", system-ui, sans-serif;
+      --font-serif: "Iowan Old Style", "Palatino", "Georgia", serif;
+      --font-mono: ui-monospace, "JetBrains Mono", "SF Mono", Menlo, monospace;
 
-      --text-xs: 0.75rem;
-      --text-sm: 0.875rem;
-      --text-base: 1rem;
-      --text-lg: 1.125rem;
-      --text-xl: 1.25rem;
-      --text-2xl: 1.5rem;
-      --text-3xl: 1.875rem;
-      --text-4xl: 2.5rem;
-      --text-5xl: 3.5rem;
-
-      --leading-tight: 1.2;
-      --leading-snug: 1.4;
-      --leading-normal: 1.6;
-
-      --weight-regular: 400;
-      --weight-medium: 500;
-      --weight-semibold: 600;
-      --weight-bold: 700;
-
-      /* Radius + shadow */
       --radius-sm: 4px;
       --radius-md: 8px;
-      --radius-lg: 12px;
-      --radius-xl: 16px;
+      --radius-lg: 14px;
+      --radius-xl: 20px;
 
-      --shadow-sm: 0 1px 2px rgba(42, 21, 5, 0.06);
-      --shadow-md: 0 4px 12px rgba(42, 21, 5, 0.08);
-      --shadow-lg: 0 12px 32px rgba(42, 21, 5, 0.10);
-
-      /* Layout */
-      --container-max: 1100px;
+      --container-max: 1140px;
       --container-narrow: 720px;
     }
 
-    /* Dark mode — mirrors CyberSkill's dark theme tokens */
     @media (prefers-color-scheme: dark) {
       :root {
-        --color-bg: #1A0F08;
-        --color-bg-subtle: #261812;
-        --color-bg-raised: #2D1F18;
+        --color-bg: #18100A;
+        --color-bg-subtle: #221610;
+        --color-bg-raised: #2B1D14;
         --color-text: #FAF6F1;
         --color-text-muted: #C9B89F;
-        --color-accent: #F4BA17;
         --color-accent-subtle: #4A3818;
         --color-border: #3D2C22;
+        --color-border-strong: #5C4533;
         --color-link: #F4BA17;
-        --color-link-hover: #FBE5A6;
       }
     }
 
-    /* ─── Base ─────────────────────────────────────────────────────────── */
+    /* ─── Reset / base ─────────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; }
 
     html {
       font-family: var(--font-body);
       font-size: 16px;
-      line-height: var(--leading-normal);
+      line-height: 1.55;
       color: var(--color-text);
       background: var(--color-bg);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       scroll-behavior: smooth;
-      scroll-padding-top: var(--space-10);
+      scroll-padding-top: 80px;
     }
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after {
         animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
       }
     }
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-size: var(--text-base);
-    }
+    body { margin: 0; min-height: 100vh; }
 
-    /* Skip link for keyboard users */
     .skip-link {
-      position: absolute;
-      left: -9999px;
-      top: 0;
-      padding: var(--space-3) var(--space-4);
-      background: var(--color-umber);
-      color: var(--color-warm-white);
-      text-decoration: none;
-      z-index: 100;
-      border-radius: 0 0 var(--radius-md) 0;
+      position: absolute; left: -9999px; top: 0;
+      padding: 12px 16px;
+      background: var(--color-umber); color: var(--color-warm-white);
+      text-decoration: none; z-index: 100;
     }
     .skip-link:focus { left: 0; }
 
-    /* Focus styles — visible, brand-aware */
-    :where(a, button, input, [tabindex="0"]):focus-visible {
+    :where(a, button, summary, [tabindex="0"]):focus-visible {
       outline: 3px solid var(--color-focus);
       outline-offset: 2px;
-      border-radius: var(--radius-sm);
+      border-radius: 2px;
     }
 
-    /* ─── Typography ───────────────────────────────────────────────────── */
+    /* ─── Type ─────────────────────────────────────────────────────────── */
     h1, h2, h3, h4 {
       font-family: var(--font-display);
-      font-weight: var(--weight-semibold);
-      line-height: var(--leading-tight);
+      font-weight: 600;
+      line-height: 1.15;
       letter-spacing: -0.02em;
       margin: 0 0 var(--space-4);
       color: var(--color-text);
     }
-
-    h1 { font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl)); letter-spacing: -0.03em; }
-    h2 { font-size: clamp(var(--text-2xl), 3.5vw, var(--text-4xl)); }
-    h3 { font-size: var(--text-xl); }
-    h4 { font-size: var(--text-lg); }
+    h1 {
+      font-size: clamp(2.25rem, 5.5vw, 4rem);
+      letter-spacing: -0.035em;
+      font-weight: 700;
+    }
+    h2 { font-size: clamp(1.75rem, 3.5vw, 2.5rem); }
+    h3 { font-size: 1.25rem; }
+    h4 { font-size: 1.05rem; }
 
     p { margin: 0 0 var(--space-4); }
     p:last-child { margin-bottom: 0; }
@@ -188,51 +143,82 @@
     a {
       color: var(--color-link);
       text-decoration: underline;
-      text-underline-offset: 2px;
+      text-underline-offset: 3px;
       text-decoration-thickness: 1.5px;
-      transition: color 150ms ease;
+      text-decoration-color: var(--color-ochre);
+      transition: color 150ms ease, text-decoration-color 150ms ease;
     }
-    a:hover { color: var(--color-link-hover); }
+    a:hover {
+      text-decoration-color: currentColor;
+      text-decoration-thickness: 2px;
+    }
 
     code {
       font-family: var(--font-mono);
-      font-size: 0.9em;
+      font-size: 0.92em;
       background: var(--color-bg-subtle);
-      padding: 2px 6px;
+      padding: 1px 6px;
       border-radius: var(--radius-sm);
+      border: 1px solid var(--color-border);
     }
 
-    /* ─── Layout ───────────────────────────────────────────────────────── */
+    /* ─── Layout primitives ────────────────────────────────────────────── */
     .container {
       max-width: var(--container-max);
       margin: 0 auto;
       padding: 0 var(--space-6);
     }
-
     .container-narrow {
       max-width: var(--container-narrow);
       margin: 0 auto;
       padding: 0 var(--space-6);
     }
 
-    section {
-      padding: var(--space-16) 0;
+    section { padding: var(--space-20) 0; }
+    @media (max-width: 720px) {
+      section { padding: var(--space-12) 0; }
     }
 
-    @media (max-width: 640px) {
-      section { padding: var(--space-12) 0; }
+    .rule {
+      display: block;
+      width: 48px;
+      height: 3px;
+      background: var(--color-ochre);
+      margin: 0 0 var(--space-6);
+      border: 0;
+    }
+
+    .eyebrow {
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--color-text-muted);
+      margin: 0 0 var(--space-3);
+    }
+    .eyebrow .dot { color: var(--color-ochre); margin: 0 6px; }
+
+    .lede {
+      font-size: 1.15rem;
+      max-width: 60ch;
+      color: var(--color-text-muted);
+      line-height: 1.5;
     }
 
     /* ─── Header ───────────────────────────────────────────────────────── */
     .site-header {
-      padding: var(--space-5) 0;
+      padding: var(--space-4) 0;
       border-bottom: 1px solid var(--color-border);
-      background: var(--color-bg);
+      background: rgba(250, 246, 241, 0.85);
       position: sticky;
       top: 0;
       z-index: 10;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: saturate(180%) blur(12px);
+      -webkit-backdrop-filter: saturate(180%) blur(12px);
+    }
+    @media (prefers-color-scheme: dark) {
+      .site-header { background: rgba(24, 16, 10, 0.85); }
     }
 
     .site-header .container {
@@ -243,60 +229,41 @@
     }
 
     .brand {
-      font-family: var(--font-display);
-      font-weight: var(--weight-bold);
-      font-size: var(--text-lg);
-      color: var(--color-umber);
-      text-decoration: none;
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: var(--space-2);
+      gap: 10px;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: -0.01em;
+      color: var(--color-text);
+      text-decoration: none;
     }
-
-    @media (prefers-color-scheme: dark) {
-      .brand { color: var(--color-ochre); }
-    }
-
-    .brand-mark {
-      display: inline-block;
-      width: 28px;
-      height: 28px;
-      background: var(--color-umber);
-      border-radius: var(--radius-sm);
-      position: relative;
-    }
-    .brand-mark::before, .brand-mark::after, .brand-mark span {
-      content: "";
-      position: absolute;
-      background: var(--color-ochre);
-      left: 6px;
-      height: 3px;
-      border-radius: 1px;
-    }
-    .brand-mark::before { top: 8px; width: 16px; }
-    .brand-mark { /* fallback */ }
-    .brand-mark::after { top: 14px; width: 10px; }
-    @media (prefers-color-scheme: dark) {
-      .brand-mark { background: var(--color-warm-white); }
+    .brand:hover { text-decoration: none; }
+    .brand img {
+      width: 32px;
+      height: 32px;
+      display: block;
+      border-radius: 6px;
     }
 
     .header-nav {
       display: flex;
-      gap: var(--space-5);
+      gap: var(--space-6);
       align-items: center;
-      font-size: var(--text-sm);
+      font-size: 0.92rem;
     }
-
     .header-nav a {
       color: var(--color-text-muted);
       text-decoration: none;
-      font-weight: var(--weight-medium);
+      font-weight: 500;
     }
     .header-nav a:hover { color: var(--color-text); }
 
     @media (max-width: 640px) {
-      .header-nav { gap: var(--space-3); }
-      .header-nav a { font-size: var(--text-xs); }
+      .header-nav { gap: var(--space-4); }
+      .header-nav a { font-size: 0.82rem; }
+      .header-nav .nav-extra { display: none; }
     }
 
     /* ─── Buttons ──────────────────────────────────────────────────────── */
@@ -304,102 +271,227 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: var(--space-3) var(--space-6);
+      padding: 12px 22px;
       font-family: var(--font-display);
-      font-size: var(--text-base);
-      font-weight: var(--weight-semibold);
-      letter-spacing: -0.01em;
+      font-size: 0.98rem;
+      font-weight: 600;
+      letter-spacing: -0.005em;
       text-decoration: none;
-      border: 2px solid transparent;
+      border: 1.5px solid transparent;
       border-radius: var(--radius-md);
       cursor: pointer;
-      transition: transform 150ms ease, background 150ms ease, border-color 150ms ease;
-      min-height: 44px; /* WCAG 2.2 SC 2.5.8 — 24×24 minimum, 44 is comfortable */
+      transition: transform 150ms ease, background 150ms ease, border-color 150ms ease, color 150ms ease;
+      min-height: 44px;
       white-space: nowrap;
     }
+    .btn:hover { text-decoration: none; transform: translateY(-1px); }
 
     .btn-primary {
       background: var(--color-umber);
       color: var(--color-warm-white);
     }
-    .btn-primary:hover {
-      background: var(--color-text);
-      color: var(--color-warm-white);
-      transform: translateY(-1px);
-    }
+    .btn-primary:hover { background: #2A1505; color: var(--color-warm-white); }
 
     @media (prefers-color-scheme: dark) {
-      .btn-primary {
-        background: var(--color-ochre);
-        color: var(--color-umber);
-      }
-      .btn-primary:hover {
-        background: var(--color-accent-subtle);
-      }
+      .btn-primary { background: var(--color-ochre); color: var(--color-umber); }
+      .btn-primary:hover { background: var(--color-accent-subtle); color: var(--color-warm-white); }
     }
 
-    .btn-secondary {
+    .btn-ghost {
       background: transparent;
       color: var(--color-text);
-      border-color: var(--color-border);
+      border-color: var(--color-border-strong);
     }
-    .btn-secondary:hover {
-      border-color: var(--color-text);
-      transform: translateY(-1px);
-    }
+    .btn-ghost:hover { border-color: var(--color-text); color: var(--color-text); }
 
-    .btn-accent {
-      background: var(--color-ochre);
-      color: var(--color-umber);
+    .btn-arrow::after {
+      content: " →";
+      margin-left: 2px;
+      transition: transform 150ms ease;
+      display: inline-block;
     }
-    .btn-accent:hover {
-      background: #E0A810;
-      transform: translateY(-1px);
-    }
+    .btn-arrow:hover::after { transform: translateX(3px); }
 
     /* ─── Hero ─────────────────────────────────────────────────────────── */
     .hero {
-      padding: var(--space-20) 0 var(--space-16);
+      padding: var(--space-20) 0 var(--space-12);
+      position: relative;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 40px; right: -120px;
+      width: 480px; height: 480px;
+      background: radial-gradient(circle, rgba(244, 186, 23, 0.10) 0%, transparent 70%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+      gap: var(--space-16);
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; gap: var(--space-10); }
     }
 
     .hero h1 {
-      max-width: 18ch;
+      max-width: 16ch;
       margin-bottom: var(--space-6);
+    }
+    .hero h1 .accent {
+      color: var(--color-umber);
+      background: linear-gradient(180deg, transparent 65%, var(--color-accent-subtle) 65%);
+      padding: 0 4px;
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+    }
+    @media (prefers-color-scheme: dark) {
+      .hero h1 .accent {
+        color: var(--color-ochre);
+        background: linear-gradient(180deg, transparent 65%, rgba(244, 186, 23, 0.18) 65%);
+      }
     }
 
     .hero-subhead {
-      font-size: var(--text-xl);
+      font-size: 1.18rem;
       color: var(--color-text-muted);
-      max-width: 60ch;
-      line-height: var(--leading-snug);
-      margin-bottom: var(--space-8);
+      max-width: 52ch;
+      line-height: 1.55;
+      margin: 0 0 var(--space-8);
     }
 
     .hero-cta {
       display: flex;
       flex-wrap: wrap;
-      gap: var(--space-4);
+      gap: var(--space-3);
       align-items: center;
     }
 
-    .hero-cta-aside {
-      font-size: var(--text-sm);
+    .hero-aside {
+      font-size: 0.92rem;
       color: var(--color-text-muted);
-      max-width: 50ch;
       margin-top: var(--space-4);
     }
+    .hero-aside a { color: var(--color-text-muted); text-decoration-color: var(--color-border-strong); }
 
-    .hero-cta-aside a {
+    /* hero side panel */
+    .hero-card {
+      background: var(--color-bg-raised);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      box-shadow: 0 1px 0 rgba(42, 21, 5, 0.04), 0 12px 28px -16px rgba(42, 21, 5, 0.18);
+      position: relative;
+    }
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      top: -1px; left: 24px; right: 24px;
+      height: 3px;
+      background: var(--color-ochre);
+      border-radius: 2px;
+    }
+    .hero-card h3 {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
       color: var(--color-text-muted);
-      text-decoration-style: dotted;
+      font-weight: 600;
+      margin-bottom: var(--space-4);
+    }
+
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: var(--space-3) 0;
+      border-bottom: 1px dashed var(--color-border);
+      gap: var(--space-3);
+    }
+    .stat-row:last-child { border-bottom: 0; }
+    .stat-row .stat-label {
+      font-size: 0.92rem;
+      color: var(--color-text-muted);
+    }
+    .stat-row .stat-value {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--color-text);
+      text-align: right;
+    }
+    .stat-row .stat-value .delta {
+      font-size: 0.78rem;
+      color: var(--color-ochre);
+      font-weight: 600;
+      margin-left: 4px;
+    }
+
+    .hero-card-foot {
+      margin-top: var(--space-5);
+      padding-top: var(--space-4);
+      border-top: 1px solid var(--color-border);
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+      line-height: 1.5;
+    }
+    .hero-card-foot a {
+      color: var(--color-text);
+      text-decoration-color: var(--color-ochre);
+    }
+
+    /* ─── "Logos" / trust strip ────────────────────────────────────────── */
+    .trust-strip {
+      padding: var(--space-8) 0;
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+      background: var(--color-bg-subtle);
+    }
+    .trust-strip .container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-8);
+      justify-content: space-between;
+    }
+    .trust-strip .label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--color-text-muted);
+      font-weight: 600;
+    }
+    .trust-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: var(--color-bg-raised);
+      border: 1px solid var(--color-border);
+      border-radius: 999px;
+      font-size: 0.85rem;
+      color: var(--color-text);
+      font-weight: 500;
+    }
+    .trust-pill .dot {
+      width: 6px; height: 6px;
+      background: var(--color-ochre);
+      border-radius: 50%;
+      display: inline-block;
     }
 
     /* ─── Tier cards ───────────────────────────────────────────────────── */
     .tier-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: var(--space-6);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-5);
       margin-top: var(--space-10);
+    }
+    @media (max-width: 720px) {
+      .tier-grid { grid-template-columns: 1fr; }
     }
 
     .tier-card {
@@ -407,141 +499,194 @@
       border: 1px solid var(--color-border);
       border-radius: var(--radius-lg);
       padding: var(--space-8);
-      transition: transform 200ms ease, box-shadow 200ms ease;
+      transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    .tier-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--color-border-strong);
+      box-shadow: 0 24px 48px -32px rgba(42, 21, 5, 0.25);
     }
 
-    .tier-card:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
+    .tier-num {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--color-ochre);
+      font-weight: 400;
+      margin: 0 0 var(--space-2);
     }
 
     .tier-card h3 {
-      margin-bottom: var(--space-2);
-    }
-
-    .tier-tagline {
-      font-size: var(--text-sm);
-      color: var(--color-text-muted);
-      margin-bottom: var(--space-5);
-    }
-
-    .tier-price {
-      font-family: var(--font-display);
-      font-size: var(--text-2xl);
-      font-weight: var(--weight-bold);
-      color: var(--color-umber);
-      margin-bottom: var(--space-2);
-    }
-
-    @media (prefers-color-scheme: dark) {
-      .tier-price { color: var(--color-ochre); }
-    }
-
-    .tier-price-note {
-      font-size: var(--text-sm);
-      color: var(--color-text-muted);
-      font-weight: var(--weight-regular);
+      margin-bottom: var(--space-3);
+      font-size: 1.4rem;
     }
 
     .tier-body {
-      font-size: var(--text-base);
+      font-size: 0.98rem;
+      color: var(--color-text-muted);
+      line-height: 1.55;
+      margin-bottom: var(--space-5);
+      flex: 1;
+    }
+
+    .tier-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: var(--space-3);
+      padding-top: var(--space-4);
+      border-top: 1px solid var(--color-border);
+    }
+    .tier-price {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
       color: var(--color-text);
-      line-height: var(--leading-snug);
-      margin: var(--space-4) 0 var(--space-5);
     }
-
+    .tier-price small {
+      font-size: 0.82rem;
+      color: var(--color-text-muted);
+      font-weight: 500;
+      margin-left: 4px;
+    }
     .tier-link {
-      font-size: var(--text-sm);
-      font-weight: var(--weight-semibold);
-      color: var(--color-umber);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--color-text);
       text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-1);
     }
-    .tier-link:hover { color: var(--color-text); text-decoration: underline; }
-    @media (prefers-color-scheme: dark) {
-      .tier-link { color: var(--color-ochre); }
-    }
+    .tier-link:hover { color: var(--color-text); text-decoration: underline; text-decoration-color: var(--color-ochre); }
 
-    /* ─── Why us ───────────────────────────────────────────────────────── */
-    .why-grid {
+    /* ─── Story / why ──────────────────────────────────────────────────── */
+    .story {
+      background: var(--color-umber);
+      color: var(--color-warm-white);
+      padding: var(--space-20) 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .story::after {
+      content: "";
+      position: absolute;
+      bottom: -100px; right: -50px;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(244, 186, 23, 0.15) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .story h2, .story h3 { color: var(--color-warm-white); }
+    .story .eyebrow { color: var(--color-ochre); }
+    .story .lede { color: rgba(250, 246, 241, 0.78); }
+
+    .story-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: var(--space-6);
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: var(--space-12);
+      align-items: start;
       margin-top: var(--space-10);
     }
+    @media (max-width: 900px) {
+      .story-grid { grid-template-columns: 1fr; gap: var(--space-8); }
+    }
 
-    .why-item {
-      padding-left: var(--space-5);
+    .story-points { display: grid; gap: var(--space-6); }
+    .story-point {
+      display: grid;
+      grid-template-columns: 32px 1fr;
+      gap: var(--space-4);
+      align-items: start;
+    }
+    .story-point .marker {
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      border: 2px solid var(--color-ochre);
+      margin-top: 4px;
+      position: relative;
+    }
+    .story-point .marker::after {
+      content: "";
+      position: absolute;
+      inset: 4px;
+      background: var(--color-ochre);
+      border-radius: 50%;
+    }
+    .story-point h3 {
+      font-size: 1.1rem;
+      margin: 0 0 var(--space-1);
+      color: var(--color-warm-white);
+    }
+    .story-point p {
+      color: rgba(250, 246, 241, 0.78);
+      font-size: 0.98rem;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    /* pull quote in story */
+    .pullquote {
+      background: rgba(250, 246, 241, 0.05);
       border-left: 3px solid var(--color-ochre);
+      padding: var(--space-6) var(--space-6) var(--space-6) var(--space-8);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    }
+    .pullquote p {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      line-height: 1.45;
+      color: var(--color-warm-white);
+      font-style: italic;
+      margin: 0 0 var(--space-4);
+    }
+    .pullquote cite {
+      font-family: var(--font-display);
+      font-style: normal;
+      font-size: 0.88rem;
+      color: rgba(250, 246, 241, 0.7);
     }
 
-    .why-item h3 {
-      font-size: var(--text-lg);
-      margin-bottom: var(--space-2);
-    }
-
-    /* ─── Case study CTA ───────────────────────────────────────────────── */
-    .case-study-block {
-      background: var(--color-bg-subtle);
-      border-radius: var(--radius-xl);
-      padding: var(--space-10);
-      text-align: center;
-    }
-
-    .case-study-block h2 { margin-bottom: var(--space-4); }
-    .case-study-block p {
-      max-width: 56ch;
-      margin: 0 auto var(--space-6);
-      color: var(--color-text-muted);
-      font-size: var(--text-lg);
-    }
-
-    .case-study-meta {
-      font-size: var(--text-sm);
-      color: var(--color-text-muted);
-      margin-top: var(--space-5);
-      max-width: 64ch;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    /* ─── Pricing table ────────────────────────────────────────────────── */
+    /* ─── Pricing ──────────────────────────────────────────────────────── */
     .pricing-table {
       width: 100%;
       border-collapse: collapse;
       margin-top: var(--space-8);
+      font-size: 0.98rem;
     }
-
     .pricing-table th, .pricing-table td {
       text-align: left;
       padding: var(--space-4) var(--space-3);
       border-bottom: 1px solid var(--color-border);
-      font-size: var(--text-base);
+      vertical-align: top;
     }
-
     .pricing-table thead th {
       font-family: var(--font-display);
-      font-weight: var(--weight-semibold);
-      font-size: var(--text-sm);
+      font-weight: 600;
+      font-size: 0.72rem;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.14em;
       color: var(--color-text-muted);
       border-bottom: 2px solid var(--color-text);
+      padding-bottom: var(--space-3);
     }
-
     .pricing-table tbody td:first-child {
-      font-weight: var(--weight-semibold);
+      font-weight: 700;
+      font-family: var(--font-display);
+      width: 30%;
     }
+    .pricing-table tbody tr:hover { background: var(--color-bg-subtle); }
 
     .pricing-aside {
       margin-top: var(--space-6);
-      font-size: var(--text-sm);
-      color: var(--color-text-muted);
+      padding: var(--space-5) var(--space-6);
+      background: var(--color-bg-subtle);
+      border-left: 3px solid var(--color-ochre);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      font-size: 0.94rem;
+      color: var(--color-text);
     }
+    .pricing-aside strong { font-weight: 700; }
 
-    /* Mobile: collapse table to cards */
     @media (max-width: 640px) {
       .pricing-table thead { display: none; }
       .pricing-table, .pricing-table tbody, .pricing-table tr, .pricing-table td {
@@ -559,160 +704,193 @@
         border: none;
         padding: var(--space-1) 0;
       }
+      .pricing-table tbody td:first-child { width: auto; font-size: 1.05rem; }
       .pricing-table td::before {
-        content: attr(data-label) ": ";
-        font-weight: var(--weight-semibold);
+        content: attr(data-label) " · ";
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
         color: var(--color-text-muted);
+        font-weight: 600;
       }
+      .pricing-table tbody td:first-child::before { content: ""; }
     }
 
-    /* ─── Process timeline ─────────────────────────────────────────────── */
+    /* ─── Process — stepped narrative ─────────────────────────────────── */
+    .process {
+      background: var(--color-bg-subtle);
+    }
     .process-list {
       list-style: none;
       padding: 0;
-      margin: var(--space-8) 0 0;
-      counter-reset: step;
-    }
-
-    .process-list li {
-      position: relative;
-      padding-left: var(--space-12);
-      padding-bottom: var(--space-6);
-      counter-increment: step;
-    }
-
-    .process-list li::before {
-      content: counter(step);
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 36px;
-      height: 36px;
-      background: var(--color-umber);
-      color: var(--color-warm-white);
-      border-radius: 50%;
+      margin: var(--space-10) 0 0;
       display: grid;
-      place-items: center;
-      font-family: var(--font-display);
-      font-weight: var(--weight-bold);
-      font-size: var(--text-sm);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-6);
     }
-
-    @media (prefers-color-scheme: dark) {
-      .process-list li::before { background: var(--color-ochre); color: var(--color-umber); }
+    @media (max-width: 820px) {
+      .process-list { grid-template-columns: 1fr; }
     }
-
-    .process-list li:not(:last-child)::after {
-      content: "";
-      position: absolute;
-      left: 17px;
-      top: 36px;
-      width: 2px;
-      height: calc(100% - 36px);
-      background: var(--color-border);
+    .process-list li {
+      background: var(--color-bg-raised);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-6);
+      counter-increment: step;
+      position: relative;
     }
-
-    .process-list strong { color: var(--color-text); }
+    .process-list { counter-reset: step; }
+    .process-list li .step-num {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--color-ochre);
+      font-weight: 400;
+      margin-bottom: var(--space-2);
+    }
+    .process-list li h3 {
+      font-size: 1.08rem;
+      margin: 0 0 var(--space-2);
+    }
+    .process-list li p {
+      font-size: 0.95rem;
+      color: var(--color-text-muted);
+      line-height: 1.55;
+      margin: 0;
+    }
+    .process-list code { font-size: 0.88em; }
 
     /* ─── FAQ ──────────────────────────────────────────────────────────── */
     .faq-list { margin-top: var(--space-8); }
-
     .faq-item {
       border-top: 1px solid var(--color-border);
       padding: var(--space-5) 0;
     }
     .faq-item:last-child { border-bottom: 1px solid var(--color-border); }
-
     .faq-item summary {
       cursor: pointer;
       font-family: var(--font-display);
-      font-size: var(--text-lg);
-      font-weight: var(--weight-semibold);
+      font-size: 1.08rem;
+      font-weight: 600;
       list-style: none;
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: var(--space-4);
+      color: var(--color-text);
     }
     .faq-item summary::-webkit-details-marker { display: none; }
-
     .faq-item summary::after {
       content: "+";
-      color: var(--color-text-muted);
-      font-size: var(--text-2xl);
-      font-weight: var(--weight-regular);
-      transition: transform 200ms ease;
+      color: var(--color-ochre);
+      font-size: 1.5rem;
+      font-weight: 400;
       flex-shrink: 0;
+      line-height: 1;
+      transition: transform 200ms ease;
     }
-    .faq-item[open] summary::after {
-      content: "−";
-      transform: rotate(0deg);
-    }
-
+    .faq-item[open] summary::after { content: "−"; }
     .faq-item-body {
       padding-top: var(--space-3);
       color: var(--color-text-muted);
       max-width: 64ch;
+      font-size: 0.98rem;
+      line-height: 1.6;
     }
 
-    /* ─── Final CTA ────────────────────────────────────────────────────── */
-    .final-cta {
-      background: var(--color-umber);
-      color: var(--color-warm-white);
-      border-radius: var(--radius-xl);
-      padding: var(--space-12) var(--space-8);
-      text-align: center;
-      margin: var(--space-8) 0;
+    /* ─── CTA close ────────────────────────────────────────────────────── */
+    .close-cta {
+      padding: var(--space-20) 0;
     }
+    .close-cta .container {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: var(--space-12);
+      align-items: center;
+    }
+    @media (max-width: 820px) {
+      .close-cta .container { grid-template-columns: 1fr; gap: var(--space-8); }
+    }
+    .close-cta h2 { font-size: clamp(1.75rem, 3.5vw, 2.5rem); margin-bottom: var(--space-4); }
+    .close-cta-buttons { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-2); }
 
-    .final-cta h2 { color: var(--color-warm-white); }
-    .final-cta p {
-      color: rgba(250, 246, 241, 0.85);
-      max-width: 56ch;
-      margin-left: auto;
-      margin-right: auto;
-      font-size: var(--text-lg);
-      margin-bottom: var(--space-6);
+    .signature-card {
+      background: var(--color-bg-raised);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      font-size: 0.92rem;
+      line-height: 1.55;
     }
-
-    @media (prefers-color-scheme: dark) {
-      .final-cta {
-        background: var(--color-bg-raised);
-        border: 1px solid var(--color-border);
-      }
+    .signature-card .name {
+      font-family: var(--font-display);
+      font-weight: 700;
+      color: var(--color-text);
+      font-size: 1rem;
     }
+    .signature-card .title {
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-3);
+    }
+    .signature-card .row {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-3);
+      padding: var(--space-2) 0;
+      border-top: 1px dashed var(--color-border);
+      font-size: 0.88rem;
+    }
+    .signature-card .row:first-of-type { border-top: 0; padding-top: var(--space-3); border-top: 1px solid var(--color-border); margin-top: var(--space-3); }
+    .signature-card .row .k { color: var(--color-text-muted); }
+    .signature-card .row .v { color: var(--color-text); font-weight: 500; text-align: right; }
+    .signature-card .row .v a { color: var(--color-text); text-decoration-color: var(--color-ochre); }
 
     /* ─── Footer ───────────────────────────────────────────────────────── */
     .site-footer {
       border-top: 1px solid var(--color-border);
-      padding: var(--space-10) 0 var(--space-12);
-      font-size: var(--text-sm);
+      padding: var(--space-12) 0 var(--space-10);
+      font-size: 0.92rem;
       color: var(--color-text-muted);
+      background: var(--color-bg-subtle);
     }
-
     .footer-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: 1.4fr repeat(3, 1fr);
       gap: var(--space-8);
-      margin-bottom: var(--space-8);
+      margin-bottom: var(--space-10);
     }
-
+    @media (max-width: 820px) {
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .footer-grid { grid-template-columns: 1fr; }
+    }
     .footer-grid h4 {
-      font-size: var(--text-sm);
+      font-size: 0.74rem;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.14em;
       color: var(--color-text);
-      margin-bottom: var(--space-3);
+      margin-bottom: var(--space-4);
+      font-weight: 600;
     }
-
-    .footer-grid ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
+    .footer-grid ul { list-style: none; padding: 0; margin: 0; }
     .footer-grid li { margin-bottom: var(--space-2); }
     .footer-grid a { color: var(--color-text-muted); text-decoration: none; }
-    .footer-grid a:hover { color: var(--color-text); text-decoration: underline; }
+    .footer-grid a:hover { color: var(--color-text); text-decoration: underline; text-decoration-color: var(--color-ochre); }
+
+    .footer-brand-block {
+      display: flex;
+      gap: var(--space-3);
+      align-items: flex-start;
+    }
+    .footer-brand-block img { width: 36px; height: 36px; border-radius: 6px; flex-shrink: 0; }
+    .footer-brand-block p {
+      font-size: 0.92rem;
+      line-height: 1.5;
+      color: var(--color-text-muted);
+      margin: 0;
+    }
+    .footer-brand-block strong { color: var(--color-text); display: block; margin-bottom: 2px; font-size: 0.95rem; }
 
     .footer-meta {
       padding-top: var(--space-6);
@@ -721,33 +899,134 @@
       justify-content: space-between;
       flex-wrap: wrap;
       gap: var(--space-4);
+      font-size: 0.82rem;
     }
-
+    .footer-meta strong { font-weight: 600; color: var(--color-text); font-size: 0.78rem; letter-spacing: 0.02em; }
     .slogan {
+      font-family: var(--font-serif);
       font-style: italic;
       color: var(--color-text-muted);
     }
+    .slogan .vi { color: var(--color-text); font-weight: 500; font-style: normal; font-family: var(--font-display); }
 
-    /* ─── Utility ──────────────────────────────────────────────────────── */
-    .eyebrow {
-      font-family: var(--font-display);
-      font-size: var(--text-sm);
-      font-weight: var(--weight-semibold);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--color-ochre);
-      margin-bottom: var(--space-3);
+    /* ─── Motion ───────────────────────────────────────────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 700ms cubic-bezier(.2, .8, .2, 1), transform 700ms cubic-bezier(.2, .8, .2, 1);
+      will-change: opacity, transform;
+    }
+    .fade-up.in { opacity: 1; transform: none; }
+    .fade-up.delay-1 { transition-delay: 80ms; }
+    .fade-up.delay-2 { transition-delay: 160ms; }
+    .fade-up.delay-3 { transition-delay: 240ms; }
+    .fade-up.delay-4 { transition-delay: 320ms; }
+    .fade-up.delay-5 { transition-delay: 400ms; }
+
+    /* Animated rule */
+    .rule {
+      transform-origin: left center;
+      transform: scaleX(0);
+      transition: transform 600ms cubic-bezier(.2, .8, .2, 1) 100ms;
+    }
+    .rule.in { transform: scaleX(1); }
+
+    /* Hero gradient drift — slow ambient motion behind the headline */
+    @keyframes drift {
+      0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.95; }
+      50%      { transform: translate(-20px, 20px) scale(1.05); opacity: 0.75; }
+    }
+    .hero::before { animation: drift 14s ease-in-out infinite; }
+
+    /* Hero accent highlight slide-in */
+    @keyframes highlight-in {
+      from { background-size: 0% 35%; }
+      to   { background-size: 100% 35%; }
+    }
+    .hero h1 .accent {
+      background: linear-gradient(180deg, transparent 65%, var(--color-accent-subtle) 65%) left bottom no-repeat;
+      background-size: 100% 35%;
+      animation: highlight-in 900ms cubic-bezier(.2, .8, .2, 1) 250ms both;
+    }
+    @media (prefers-color-scheme: dark) {
+      .hero h1 .accent {
+        background: linear-gradient(180deg, transparent 65%, rgba(244, 186, 23, 0.18) 65%) left bottom no-repeat;
+        background-size: 100% 35%;
+        animation: highlight-in 900ms cubic-bezier(.2, .8, .2, 1) 250ms both;
+      }
     }
 
-    @media (prefers-color-scheme: light) {
-      .eyebrow { color: var(--color-umber); }
+    /* Counter — keep the layout stable while text changes */
+    .counter { font-variant-numeric: tabular-nums; display: inline-block; min-width: 4ch; text-align: right; }
+
+    /* Tier cards — gentle scale on hover-press */
+    .tier-card { transition: transform 220ms cubic-bezier(.2, .8, .2, 1), box-shadow 220ms ease, border-color 220ms ease; }
+
+    /* Process cards stagger */
+    .process-list li { transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease; }
+    .process-list li:hover { transform: translateY(-2px); border-color: var(--color-border-strong); box-shadow: 0 16px 32px -24px rgba(42, 21, 5, 0.20); }
+
+    /* Magnetic primary CTA — soft lift */
+    .btn-primary { box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 6px 16px -8px rgba(42, 21, 5, 0.30); }
+    .btn-primary:hover { box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 12px 24px -10px rgba(42, 21, 5, 0.45); transform: translateY(-2px); }
+
+    /* Trust pill subtle pop */
+    .trust-pill { transition: transform 200ms ease, border-color 200ms ease; }
+    .trust-pill:hover { transform: translateY(-1px); border-color: var(--color-border-strong); }
+
+    /* FAQ summary subtle */
+    .faq-item summary { transition: color 150ms ease; }
+    .faq-item summary:hover { color: var(--color-umber); }
+    @media (prefers-color-scheme: dark) {
+      .faq-item summary:hover { color: var(--color-ochre); }
     }
 
-    .lede {
-      font-size: var(--text-lg);
-      max-width: 60ch;
-      color: var(--color-text-muted);
-      line-height: var(--leading-snug);
+    /* Reduced motion — kill everything that moves */
+    @media (prefers-reduced-motion: reduce) {
+      .fade-up { opacity: 1 !important; transform: none !important; transition: none !important; }
+      .rule { transform: none !important; transition: none !important; }
+      .hero::before { animation: none !important; }
+      .hero h1 .accent { animation: none !important; }
+      .counter { min-width: 0 !important; }
+    }
+
+    /* ─── Mobile fine-tuning (≤ 480px) ─────────────────────────────────── */
+    @media (max-width: 480px) {
+      .container, .container-narrow { padding-left: var(--space-4); padding-right: var(--space-4); }
+      section { padding: var(--space-10) 0; }
+      h1 { font-size: clamp(1.85rem, 7vw, 2.4rem); letter-spacing: -0.025em; }
+      .hero { padding: var(--space-12) 0 var(--space-8); }
+      .hero-subhead { font-size: 1rem; }
+      .hero-cta { width: 100%; }
+      .hero-cta .btn { flex: 1 1 100%; min-width: 0; }
+      .hero-card { padding: var(--space-5); }
+      .hero-card h3 { font-size: 0.72rem; }
+      .stat-row { padding: var(--space-2) 0; }
+      .stat-row .stat-value { font-size: 0.98rem; }
+      .trust-strip { padding: var(--space-5) 0; }
+      .trust-strip .container { gap: var(--space-3); justify-content: flex-start; }
+      .trust-strip .label { width: 100%; }
+      .trust-pill { font-size: 0.78rem; padding: 5px 10px; }
+      .tier-card { padding: var(--space-6); }
+      .tier-card h3 { font-size: 1.2rem; }
+      .tier-meta { flex-direction: column; align-items: flex-start; gap: var(--space-2); }
+      .pullquote p { font-size: 1.1rem; }
+      .pullquote { padding: var(--space-5) var(--space-5) var(--space-5) var(--space-6); }
+      .process-list li { padding: var(--space-5); }
+      .faq-item summary { font-size: 1rem; }
+      .close-cta-buttons { width: 100%; }
+      .close-cta-buttons .btn { flex: 1 1 100%; }
+      .signature-card { padding: var(--space-5); }
+      .signature-card .row { flex-direction: column; gap: 2px; padding: var(--space-2) 0; }
+      .signature-card .row .v { text-align: left; }
+      .footer-meta { flex-direction: column; align-items: flex-start; gap: var(--space-3); }
+    }
+
+    @media (max-width: 360px) {
+      .header-nav { gap: var(--space-3); }
+      .header-nav a { font-size: 0.78rem; }
+      .header-nav .nav-extra { display: none; }
+      .brand span { display: none; }
     }
   </style>
 </head>
@@ -757,13 +1036,14 @@
   <header class="site-header">
     <div class="container">
       <a href="/" class="brand" aria-label="CyberSkill home">
-        <span class="brand-mark" aria-hidden="true"></span>
-        CyberSkill
+        <img src="/logo.svg" alt="" width="32" height="32">
+        <span>CyberSkill</span>
       </a>
       <nav class="header-nav" aria-label="Main">
-        <a href="#services">Services</a>
+        <a href="#work">Work</a>
         <a href="#pricing">Pricing</a>
-        <a href="#faq">FAQ</a>
+        <a href="#process">Process</a>
+        <a href="#faq" class="nav-extra">FAQ</a>
         <a href="https://github.com/cyberskill-official/design-system-audit-framework">Framework</a>
       </nav>
     </div>
@@ -771,257 +1051,380 @@
 
   <main id="main">
 
-    <!-- Hero -->
+    <!-- ─── Hero ───────────────────────────────────────────────── -->
     <section class="hero" aria-labelledby="hero-heading">
       <div class="container">
-        <p class="eyebrow">Open-source framework · MIT licensed · Vendor-neutral</p>
-        <h1 id="hero-heading">Design system audits, run by the people who built the framework everyone's auditing with.</h1>
-        <p class="hero-subhead">
-          CyberSkill audits design systems using our open-source 125-criterion framework. Calibrated. Signed delivery in 5–10 business days. Honest about ceilings (WCAG self-claim caps at 4/5; we tell you that upfront).
-        </p>
-        <div class="hero-cta">
-          <a href="mailto:info@cyberskill.world?subject=Audit%20scoping%20call" class="btn btn-primary">Get a free scoping call</a>
-          <a href="https://github.com/cyberskill-official/design-system-audit-framework" class="btn btn-secondary">See the framework</a>
+        <div class="hero-grid">
+          <div>
+            <p class="eyebrow">Enterprise consultancy <span class="dot">·</span> Audits, builds, doctrine <span class="dot">·</span> Ho Chi Minh City</p>
+            <h1 id="hero-heading">
+              Our own design system was <span class="accent">74.7%</span>. We wrote down what got it to <span class="accent">84.6%</span>. Now we run that on yours.
+            </h1>
+            <p class="hero-subhead">
+              CyberSkill is an enterprise software consultancy headquartered in Ho Chi Minh City. We audit design systems, build them when teams need building, and put our signature on every report. The framework is open-source and MIT-licensed; the judgment that runs it is what you actually hire.
+            </p>
+            <div class="hero-cta">
+              <a href="mailto:info@cyberskill.world?subject=Audit%20scoping%20call" class="btn btn-primary btn-arrow">Book a 30-min scoping call</a>
+              <a href="#work" class="btn btn-ghost">See an actual audit</a>
+            </div>
+            <p class="hero-aside">
+              The framework itself is published on <a href="https://github.com/cyberskill-official/design-system-audit-framework">GitHub</a> under MIT for teams who prefer to self-audit. The professional engagement is for everyone else.
+            </p>
+          </div>
+
+          <aside class="hero-card fade-up delay-2" aria-label="At a glance">
+            <h3>What an audit looks like</h3>
+            <div class="stat-row">
+              <span class="stat-label">Score before</span>
+              <span class="stat-value"><span class="counter" data-counter="74.7" data-decimals="1">0.0</span>%</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Score after</span>
+              <span class="stat-value"><span class="counter" data-counter="84.6" data-decimals="1">0.0</span>% <span class="delta">L5</span></span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Criteria measured</span>
+              <span class="stat-value"><span class="counter" data-counter="125" data-decimals="0">0</span></span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Cycles to publish</span>
+              <span class="stat-value">1</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Calendar to deliver</span>
+              <span class="stat-value">5–10 days</span>
+            </div>
+            <p class="hero-card-foot">
+              The numbers above are from our own design system. <a href="https://github.com/cyberskill-official/design-system-audit-framework/tree/main/examples/cyberskill-design-system">Read the full report →</a>
+            </p>
+          </aside>
         </div>
-        <p class="hero-cta-aside">
-          Prefer to chat first? <a href="https://wa.me/84906878091?text=Hi%20Stephen%2C%20interested%20in%20a%20design%20system%20audit">WhatsApp Mr. Stephen at +84 906 878 091</a>.
-          Or self-audit using our framework — it's free, MIT licensed, and most teams won't need to talk to us at all.
-          <a href="https://github.com/cyberskill-official/design-system-audit-framework">That's intentional.</a>
-        </p>
       </div>
     </section>
 
-    <!-- What we offer -->
-    <section id="services" aria-labelledby="services-heading">
+    <!-- ─── Trust strip ──────────────────────────────────────── -->
+    <div class="trust-strip fade-up" aria-label="Framework details">
       <div class="container">
-        <p class="eyebrow">What we offer</p>
-        <h2 id="services-heading">Four service tiers, transparent pricing.</h2>
-        <p class="lede">Most teams using the framework never need professional help. When you do, here's what's available.</p>
+        <span class="label">The framework</span>
+        <span class="trust-pill"><span class="dot"></span> 125 criteria</span>
+        <span class="trust-pill"><span class="dot"></span> 20 categories</span>
+        <span class="trust-pill"><span class="dot"></span> MIT licensed</span>
+        <span class="trust-pill"><span class="dot"></span> Vendor-neutral</span>
+        <span class="trust-pill"><span class="dot"></span> APCA + WCAG 2.2</span>
+        <span class="trust-pill"><span class="dot"></span> DTCG tokens</span>
+      </div>
+    </div>
+
+    <!-- ─── Work / tiers ─────────────────────────────────────── -->
+    <section id="work" aria-labelledby="work-heading">
+      <div class="container">
+        <hr class="rule fade-up" aria-hidden="true">
+        <p class="eyebrow fade-up">The work</p>
+        <h2 id="work-heading" class="fade-up">Four ways to bring us in.</h2>
+        <p class="lede fade-up delay-1">
+          Different teams need different things. Most start with an audit. Some skip straight to a build. A few stay on retainer because their roadmap is faster than their hiring.
+        </p>
 
         <div class="tier-grid">
-          <article class="tier-card">
-            <h3>Audit-as-a-service</h3>
-            <p class="tier-tagline">Tier 1</p>
-            <p class="tier-price">From $5,000 <span class="tier-price-note">USD</span></p>
-            <p class="tier-body">A signed audit cycle on your design system. 5–10 business days. You get the audit report, a phased improvement plan, and an optional public case study with your logo.</p>
-            <a href="https://github.com/cyberskill-official/design-system-audit-framework/blob/main/examples/cyberskill-design-system/audit-report-2026-04-27.md" class="tier-link">See what an audit looks like →</a>
+          <article class="tier-card fade-up">
+            <p class="tier-num">No. 01</p>
+            <h3>The audit</h3>
+            <p class="tier-body">
+              We score your system across 125 criteria, cite every rating with evidence, and hand you a phased fix list with a "done when" condition for each step. You get the signed report and a walkthrough call. We don't tell you what to do next; we tell you what's true now.
+            </p>
+            <div class="tier-meta">
+              <p class="tier-price">$2.5K<small>–$8K</small></p>
+              <a class="tier-link" href="https://github.com/cyberskill-official/design-system-audit-framework/tree/main/examples/cyberskill-design-system">Sample report</a>
+            </div>
           </article>
 
-          <article class="tier-card">
-            <h3>Build the system</h3>
-            <p class="tier-tagline">Tier 2</p>
-            <p class="tier-price">From $30,000 <span class="tier-price-note">USD</span></p>
-            <p class="tier-body">We build the design system per the audit's improvement plan. Tokens, components, documentation, governance — to L4-or-better tier. 3–6 months.</p>
-            <a href="https://github.com/cyberskill-official/design-system-audit-framework/tree/main/examples/cyberskill-design-system" class="tier-link">See our reference architecture →</a>
+          <article class="tier-card fade-up delay-1">
+            <p class="tier-num">No. 02</p>
+            <h3>The build</h3>
+            <p class="tier-body">
+              You have an audit (ours or yours) and a backlog of fixes you don't have headcount for. We build: tokens, components, docs, governance, CI gates. We hand it back to your team with 30 days of follow-on support so the system doesn't drift the moment we leave.
+            </p>
+            <div class="tier-meta">
+              <p class="tier-price">$15K<small>–$60K</small></p>
+              <a class="tier-link" href="mailto:info@cyberskill.world?subject=Build%20engagement">Talk to us</a>
+            </div>
           </article>
 
-          <article class="tier-card">
-            <h3>Maintenance retainer</h3>
-            <p class="tier-tagline">Tier 3</p>
-            <p class="tier-price">From $3,000 <span class="tier-price-note">/month</span></p>
-            <p class="tier-body">Quarterly re-audits, annual full audits, on-call advisory, and first-look at new framework features. Continuity that lets your design system mature.</p>
-            <a href="mailto:info@cyberskill.world?subject=Maintenance%20retainer" class="tier-link">Talk about a retainer →</a>
+          <article class="tier-card fade-up delay-2">
+            <p class="tier-num">No. 03</p>
+            <h3>The retainer</h3>
+            <p class="tier-body">
+              Quarterly re-scores, an annual audit with human spot-check calibration, and 4–8 hours a month of advisory you can spend however you need. For teams who want continuity over yearly RFPs and the same people running every cycle.
+            </p>
+            <div class="tier-meta">
+              <p class="tier-price">$1.5K<small>–$6K / month</small></p>
+              <a class="tier-link" href="mailto:info@cyberskill.world?subject=Maintenance%20retainer">Discuss a retainer</a>
+            </div>
           </article>
 
-          <article class="tier-card">
+          <article class="tier-card fade-up delay-3">
+            <p class="tier-num">No. 04</p>
             <h3>Vertical packs</h3>
-            <p class="tier-tagline">Tier 4</p>
-            <p class="tier-price">From $5,000 <span class="tier-price-note">one-time</span></p>
-            <p class="tier-body">Industry-specific kits: HR Tech, Fintech, Healthcare, EdTech, Govtech. Components, microcopy, and compliance gates baked in. HR Tech available now.</p>
-            <a href="mailto:info@cyberskill.world?subject=Vertical%20pack%20inquiry" class="tier-link">Inquire about a pack →</a>
+            <p class="tier-body">
+              Drop-in component sets for regulated industries: the patterns and microcopy regulators care about, baked in instead of retrofitted. HR Tech is shipping today (bias-disclosure UI, OFCCP-ready). Fintech, Healthcare, EdTech, Govtech in roadmap.
+            </p>
+            <div class="tier-meta">
+              <p class="tier-price">$2.5K<small>–$10K</small></p>
+              <a class="tier-link" href="mailto:info@cyberskill.world?subject=Vertical%20pack">Inquire</a>
+            </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- Why us -->
-    <section aria-labelledby="why-heading" style="background: var(--color-bg-subtle);">
+    <!-- ─── Story / why us ───────────────────────────────────── -->
+    <section class="story" aria-labelledby="story-heading">
       <div class="container">
-        <p class="eyebrow">Why CyberSkill specifically</p>
-        <h2 id="why-heading">The framework's authors, not someone implementing a checklist.</h2>
+        <hr class="rule fade-up" aria-hidden="true" style="background: var(--color-ochre);">
+        <p class="eyebrow fade-up">Why us, specifically</p>
+        <h2 id="story-heading" class="fade-up">We authored the methodology you'd otherwise be hiring someone else to apply.</h2>
+        <p class="lede fade-up delay-1" style="max-width: 64ch;">
+          Most audit shops are someone running a checklist. CyberSkill is the practice that decided what goes on the checklist, why each criterion is weighted the way it is, and what scoring actually rewards. That makes a measurable difference in the gray cases — which, for design systems, is most of them.
+        </p>
 
-        <div class="why-grid">
-          <div class="why-item">
-            <h3>We wrote the framework</h3>
-            <p>Deep understanding of every criterion, the FIXED/DYNAMIC distinction, calibration discipline. You're not paying us to learn the methodology.</p>
+        <div class="story-grid">
+          <div class="story-points">
+            <div class="story-point fade-up">
+              <span class="marker" aria-hidden="true"></span>
+              <div>
+                <h3>Senior consultants on every engagement</h3>
+                <p>Audits are led by senior practitioners with direct authorship of the framework. No handoff to juniors mid-engagement. Every report carries the firm's signature.</p>
+              </div>
+            </div>
+            <div class="story-point fade-up delay-1">
+              <span class="marker" aria-hidden="true"></span>
+              <div>
+                <h3>Self-tested in public</h3>
+                <p>Our own design system is published as the framework's reference case study at 84.6% (L5 Optimised). The full report is public. The process you'd be paying for is the one you can read in advance.</p>
+              </div>
+            </div>
+            <div class="story-point fade-up delay-2">
+              <span class="marker" aria-hidden="true"></span>
+              <div>
+                <h3>Calibration, not vibes</h3>
+                <p>Every paid audit ships with a five-criterion human spot-check against the agent's scoring. Anything off by ≥2 points triggers a calibration discussion before we sign. That's the framework's stability guarantee.</p>
+              </div>
+            </div>
+            <div class="story-point fade-up delay-3">
+              <span class="marker" aria-hidden="true"></span>
+              <div>
+                <h3>Global delivery, Vietnamese cost basis</h3>
+                <p>The methodology is publicly auditable. Delivery is async-first across US, EU, APAC, and AU timezones. The pricing reflects our cost basis, not a Western agency markup.</p>
+              </div>
+            </div>
           </div>
-          <div class="why-item">
-            <h3>Direct founder contact</h3>
-            <p>Stephen Cheng, founder, is the audit lead on every paid engagement. You won't be handed off to a junior. (10-person team; that's by design.)</p>
-          </div>
-          <div class="why-item">
-            <h3>L5 Optimised on our own work</h3>
-            <p>Our design system is published as the framework's case study at 84.6% combined. We've already done what we'll be doing for you.</p>
-          </div>
-          <div class="why-item">
-            <h3>Vietnamese-first, globally priced</h3>
-            <p>Same quality as Western consultancies at 30–50% the cost. Async-first across timezones; we've engaged US, EU, AU, APAC clients.</p>
-          </div>
+
+          <blockquote class="pullquote fade-up delay-2">
+            <p>"The framework is the methodology. The audit is the time, judgment, and calibration that go into running it well. You can do that yourself; we won't pretend otherwise."</p>
+            <cite>— CyberSkill engagement principles</cite>
+          </blockquote>
         </div>
       </div>
     </section>
 
-    <!-- Case study CTA -->
-    <section aria-labelledby="case-study-heading">
-      <div class="container">
-        <div class="case-study-block">
-          <p class="eyebrow">What an audit looks like</p>
-          <h2 id="case-study-heading">Our own design system, audited honestly.</h2>
-          <p>74.7% to 84.6% combined in one development cycle. Full per-criterion scores, citations, and improvement plan. This is the artefact you'd receive after a paid engagement, just with your logo and your scores.</p>
-          <a href="https://github.com/cyberskill-official/design-system-audit-framework/tree/main/examples/cyberskill-design-system" class="btn btn-primary">Read the full case study</a>
-          <p class="case-study-meta">
-            The framework is free, open-source, and MIT licensed. You can run an audit yourself using it. Most teams do — and that's the right call when you have time, in-house skill, and a stable system. We're here for when those three aren't all true.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Pricing -->
+    <!-- ─── Pricing ─────────────────────────────────────────── -->
     <section id="pricing" aria-labelledby="pricing-heading">
       <div class="container">
-        <p class="eyebrow">What it costs</p>
-        <h2 id="pricing-heading">Transparent ranges. No surprises mid-engagement.</h2>
-        <p class="lede">Every system is different. After a free 30-minute scoping call, we send a fixed quote. The ranges below give you the order-of-magnitude.</p>
+        <hr class="rule fade-up" aria-hidden="true">
+        <p class="eyebrow fade-up">Cost</p>
+        <h2 id="pricing-heading" class="fade-up">Ranges, not rugs.</h2>
+        <p class="lede fade-up delay-1">
+          Every system is shaped differently, so a fixed price-list would lie. After a 30-minute scoping call we send a single number, valid for 30 days. The ranges below are honest order-of-magnitude.
+        </p>
 
-        <table class="pricing-table">
+        <table class="pricing-table fade-up delay-2">
           <thead>
             <tr>
-              <th>Tier</th>
-              <th>Price</th>
-              <th>Engagement length</th>
-              <th>Best for</th>
+              <th>Engagement</th>
+              <th>Range</th>
+              <th>Length</th>
+              <th>Best when…</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td data-label="Tier">Audit</td>
-              <td data-label="Price">$5K–$15K</td>
+              <td data-label="Engagement">Audit</td>
+              <td data-label="Range">$2.5K – $8K</td>
               <td data-label="Length">5–10 business days</td>
-              <td data-label="Best for">Existing system, want an honest external read</td>
+              <td data-label="Best when…">You want a calibrated outside read on a system you already have</td>
             </tr>
             <tr>
-              <td data-label="Tier">Implementation</td>
-              <td data-label="Price">$30K–$150K</td>
+              <td data-label="Engagement">Build</td>
+              <td data-label="Range">$15K – $60K</td>
               <td data-label="Length">3–6 months</td>
-              <td data-label="Best for">Need a system built, not just scored</td>
+              <td data-label="Best when…">The audit's done and the fix list is bigger than your in-house bandwidth</td>
             </tr>
             <tr>
-              <td data-label="Tier">Maintenance</td>
-              <td data-label="Price">$3K–$15K/month</td>
-              <td data-label="Length">6+ months</td>
-              <td data-label="Best for">Mature system, need DesignOps support</td>
+              <td data-label="Engagement">Retainer</td>
+              <td data-label="Range">$1.5K – $6K / month</td>
+              <td data-label="Length">6-month minimum</td>
+              <td data-label="Best when…">You're past launch and need DesignOps without a DesignOps hire</td>
             </tr>
             <tr>
-              <td data-label="Tier">Vertical pack</td>
-              <td data-label="Price">$5K–$20K (one-time)</td>
+              <td data-label="Engagement">Vertical pack</td>
+              <td data-label="Range">$2.5K – $10K, one-time</td>
               <td data-label="Length">Drop-in</td>
-              <td data-label="Best for">Industry-specific kit (HR Tech available)</td>
+              <td data-label="Best when…">You're shipping in a regulated industry and want the regulator-mattering patterns pre-baked</td>
             </tr>
           </tbody>
         </table>
 
         <p class="pricing-aside">
-          <strong>Non-profit discount:</strong> 30% off Tier 1 for registered non-profits.<br>
-          <strong>Open-source discount:</strong> free Tier 1 audits for the first 3 widely-used open-source design systems whose maintainers reach out (allocated 2026).
+          <strong>Saigon-priced, by design.</strong>
+          Our cost basis is Vietnamese, our methodology is published openly under MIT, and our pricing reflects both. <strong>30%</strong> off for registered non-profits. <strong>Pro-bono audits</strong> for the first three widely-used open-source design systems whose maintainers reach out in 2026. Add a public case study, and we knock an additional <strong>$500</strong> off — your logo on the framework repo is worth that to us.
         </p>
       </div>
     </section>
 
-    <!-- Process -->
-    <section aria-labelledby="process-heading" style="background: var(--color-bg-subtle);">
+    <!-- ─── Process ─────────────────────────────────────────── -->
+    <section id="process" class="process" aria-labelledby="process-heading">
       <div class="container">
-        <p class="eyebrow">How it works</p>
-        <h2 id="process-heading">From email to signed audit in ~14 days.</h2>
+        <hr class="rule fade-up" aria-hidden="true">
+        <p class="eyebrow fade-up">How a typical audit goes</p>
+        <h2 id="process-heading" class="fade-up">Email Monday, signed report by week two.</h2>
+        <p class="lede fade-up delay-1">
+          Six steps; nothing dramatic. The ones that go quickly are the ones where we both stop talking and let the work happen.
+        </p>
 
         <ol class="process-list">
-          <li>
-            <strong>You email us.</strong> <code>info@cyberskill.world</code>, subject <code>Audit scoping call</code>, with a 1-paragraph description of your system. We reply within 48 hours with a calendar link.
+          <li class="fade-up">
+            <p class="step-num">No. 01</p>
+            <h3>You email</h3>
+            <p>One paragraph: what the system is, how big the team, what's hurting. Send to <code>info@cyberskill.world</code>. We answer within 48 hours.</p>
           </li>
-          <li>
-            <strong>30-minute scoping call.</strong> We understand your system, your team, your timeline. The call is free; no commitment.
+          <li class="fade-up delay-1">
+            <p class="step-num">No. 02</p>
+            <h3>Free 30-min scoping call</h3>
+            <p>We figure out shape, scope, and whether we're the right fit. Sometimes the right fit is "use the framework yourself." We say so.</p>
           </li>
-          <li>
-            <strong>Fixed quote within 48 hours.</strong> SOW signing, NDA if you need one.
+          <li class="fade-up delay-2">
+            <p class="step-num">No. 03</p>
+            <h3>Fixed quote in 48 hours</h3>
+            <p>One number, signable. Mutual NDA if you need one. 50% on signing to commit our calendar, 50% on delivery.</p>
           </li>
-          <li>
-            <strong>Audit kickoff.</strong> We start within 1 week of SOW signing. You give us read access to your design-system docs and source.
+          <li class="fade-up delay-3">
+            <p class="step-num">No. 04</p>
+            <h3>Read access, then we work</h3>
+            <p>Docs, source, Storybook. We start within a week. Most of the work is async; we'll ping you with questions, not status reports.</p>
           </li>
-          <li>
-            <strong>We deliver in 5–10 business days.</strong> Audit report + improvement plan + walkthrough call.
+          <li class="fade-up delay-4">
+            <p class="step-num">No. 05</p>
+            <h3>Signed report, walkthrough call</h3>
+            <p>You receive the audit report and a phased improvement plan. We walk your team through it on a 60-minute call — we record it for your archives.</p>
           </li>
-          <li>
-            <strong>You decide what's next.</strong> Implementation, retainer, or you take it from here. No upsell pressure.
+          <li class="fade-up delay-5">
+            <p class="step-num">No. 06</p>
+            <h3>You decide what's next</h3>
+            <p>Implementation, retainer, or you take it from here. No upsell pressure, no "exclusive partnership" lock-in. The framework is yours; the report is yours.</p>
           </li>
         </ol>
       </div>
     </section>
 
-    <!-- FAQ -->
+    <!-- ─── FAQ ─────────────────────────────────────────────── -->
     <section id="faq" aria-labelledby="faq-heading">
-      <div class="container container-narrow" style="max-width: var(--container-narrow);">
-        <p class="eyebrow">Common questions</p>
-        <h2 id="faq-heading">Frequently asked.</h2>
+      <div class="container container-narrow">
+        <hr class="rule fade-up" aria-hidden="true">
+        <p class="eyebrow fade-up">Common questions</p>
+        <h2 id="faq-heading" class="fade-up">A few things people ask first.</h2>
 
-        <div class="faq-list">
+        <div class="faq-list fade-up delay-1">
           <details class="faq-item">
             <summary>Why pay you when the framework is free?</summary>
             <div class="faq-item-body">
-              <p>The framework is the methodology. The audit is the time + judgment + calibration that goes into running it well. Most teams running their first audit produce something passable but uncalibrated — common failure modes: scoring too high, missing the FIXED/DYNAMIC distinction, skipping the human-paired spot-check. A paid audit avoids those because it's our job to have done it 100 times.</p>
+              <p>The framework is the rules of the game. The audit is playing the game well. Teams running their first self-audit usually ship something passable but uncalibrated — they score too high, miss the FIXED versus DYNAMIC distinction, or skip the human spot-check that keeps scoring stable across cycles. We've done it about a hundred times. That's what you're paying for.</p>
             </div>
           </details>
 
           <details class="faq-item">
-            <summary>How does this compare to Big Medium / Brad Frost?</summary>
+            <summary>How are you different from Big Medium or Brad Frost?</summary>
             <div class="faq-item-body">
-              <p>Different positioning. They're world-class but Western-priced and US-time-zone. We're Vietnamese, smaller, faster-to-engage, and we bring the framework as the methodology (they don't). Pick whoever fits your context.</p>
+              <p>They're excellent. They're also Western-priced, US-time-zone, and don't bring a published framework as their methodology. CyberSkill brings the framework, runs the audit on a Vietnamese cost basis, and does it without compromising on calibration. Pick whoever fits the brief.</p>
             </div>
           </details>
 
           <details class="faq-item">
-            <summary>What if my team is in a different timezone from Vietnam?</summary>
+            <summary>What if my team isn't in Vietnam's timezone?</summary>
             <div class="faq-item-body">
-              <p>We work async-first. Most communication is via email and shared docs. We schedule 1–2 calls per week as needed. Timezone has not been a blocker for any prior engagement — US, EU, AU, and APAC clients all work.</p>
-            </div>
-          </details>
-
-          <details class="faq-item">
-            <summary>Can we sign an NDA?</summary>
-            <div class="faq-item-body">
-              <p>Yes, mutual NDA is standard. We sign yours or send ours.</p>
+              <p>We work async-first. Most communication happens on email and a shared workspace (Notion, Slack, Teams — yours or ours). One or two calls a week as needed. We've worked with US, EU, AU, and APAC teams; timezone has never been the blocker.</p>
             </div>
           </details>
 
           <details class="faq-item">
             <summary>Will you publish a case study without permission?</summary>
             <div class="faq-item-body">
-              <p>No. Public case studies are opt-in. Many clients prefer them for the marketing value; some prefer privacy. We respect either choice.</p>
+              <p>No. Case studies are opt-in. If you opt in we knock $1,000 off the audit and put your logo on the framework's <code>examples/</code> folder. If you don't, the report stays private; no one sees it but you.</p>
             </div>
           </details>
 
           <details class="faq-item">
-            <summary>How does payment work?</summary>
+            <summary>What if the audit doesn't find much?</summary>
             <div class="faq-item-body">
-              <p>Tier 1 audits: 50% on signing, 50% on delivery. Tier 2 implementations: 30/40/30 across milestones. Tier 3 retainers: monthly. Tier 4 packs: 100% on delivery. We accept wire transfer, PayPal, and Stripe; for VN-domestic clients, we accept VND bank transfer.</p>
+              <p>That's a great outcome — your system is healthier than expected. We don't refund (we still did the work), but we're happy to redirect the engagement into a Tier 2 quote on the priority gaps we did find, or send you on your way with a signed clean bill of health.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>How does payment work, practically?</summary>
+            <div class="faq-item-body">
+              <p>Audits: 50% on signing, 50% on delivery. Builds: 30 / 40 / 30 across milestones. Retainers: monthly. Wire transfer, PayPal, or Stripe; VND for Vietnamese clients. We send invoices in USD by default.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Can we sign a mutual NDA first?</summary>
+            <div class="faq-item-body">
+              <p>Yes. Either yours or ours. We sign before the scoping call if you'd rather discuss specifics under one.</p>
             </div>
           </details>
         </div>
       </div>
     </section>
 
-    <!-- Final CTA -->
-    <section aria-labelledby="final-cta-heading">
+    <!-- ─── Close ───────────────────────────────────────────── -->
+    <section class="close-cta" aria-labelledby="close-heading">
       <div class="container">
-        <div class="final-cta">
-          <p class="eyebrow" style="color: var(--color-ochre);">Ready to start?</p>
-          <h2 id="final-cta-heading">A scoping call is the easiest first step.</h2>
-          <p>
-            Email <code>info@cyberskill.world</code> with subject <code>"Audit scoping call"</code> and a 1-paragraph description of your system. We reply within 48 hours. About 40% of inquiries we redirect to "use the framework yourself, here's how". The other 60% become paid engagements. Either way, it's an honest answer.
+        <div class="fade-up">
+          <p class="eyebrow">If we're a fit</p>
+          <h2 id="close-heading">A scoping call is the easiest way to find out.</h2>
+          <p class="lede" style="margin-bottom: var(--space-6);">
+            Send a paragraph. The engagement team responds within 48 hours. Roughly four in ten inquiries we redirect back to "use the framework yourselves, here's how" — and that's a recommendation we'll make in writing when it's the right call.
           </p>
-          <div style="display: flex; flex-wrap: wrap; gap: var(--space-3); justify-content: center;">
-            <a href="mailto:info@cyberskill.world?subject=Audit%20scoping%20call" class="btn btn-accent">Email Stephen directly</a>
-            <a href="https://wa.me/84906878091?text=Hi%20Stephen%2C%20interested%20in%20a%20design%20system%20audit" class="btn btn-secondary" style="background: rgba(250, 246, 241, 0.1); color: var(--color-warm-white); border-color: rgba(250, 246, 241, 0.3);">WhatsApp +84 906 878 091</a>
+          <div class="close-cta-buttons">
+            <a href="mailto:info@cyberskill.world?subject=Audit%20scoping%20call" class="btn btn-primary btn-arrow">Contact engagement team</a>
+            <a href="https://wa.me/84906878091?text=Hello%20CyberSkill%2C%20we%27d%20like%20to%20discuss%20a%20design%20system%20audit" class="btn btn-ghost">WhatsApp +84 906 878 091</a>
           </div>
         </div>
+
+        <aside class="signature-card fade-up delay-2" aria-label="Engagement contact">
+          <p class="name">CyberSkill Engagement Team</p>
+          <p class="title">Design Systems &amp; Audit Practice</p>
+          <div class="row">
+            <span class="k">Email</span>
+            <span class="v"><a href="mailto:info@cyberskill.world">info@cyberskill.world</a></span>
+          </div>
+          <div class="row">
+            <span class="k">WhatsApp</span>
+            <span class="v">+84 906 878 091</span>
+          </div>
+          <div class="row">
+            <span class="k">Headquarters</span>
+            <span class="v">Ho Chi Minh City, Vietnam</span>
+          </div>
+          <div class="row">
+            <span class="k">Reply window</span>
+            <span class="v">Within 48 hours</span>
+          </div>
+          <div class="row">
+            <span class="k">Coverage</span>
+            <span class="v">US · EU · APAC · AU</span>
+          </div>
+        </aside>
       </div>
     </section>
 
@@ -1031,50 +1434,58 @@
     <div class="container">
       <div class="footer-grid">
         <div>
+          <div class="footer-brand-block">
+            <img src="/logo.svg" alt="" width="36" height="36">
+            <p>
+              <strong>CyberSkill</strong>
+              An enterprise software solutions consultancy headquartered in Ho Chi Minh City. We turn what you intend into what your team actually ships.
+            </p>
+          </div>
+        </div>
+        <div>
           <h4>Framework</h4>
           <ul>
-            <li><a href="https://github.com/cyberskill-official/design-system-audit-framework">GitHub repo</a></li>
-            <li><a href="https://github.com/cyberskill-official/design-system-audit-framework/blob/main/SERVICES.md">SERVICES.md</a></li>
-            <li><a href="https://github.com/cyberskill-official/design-system-audit-framework/tree/main/examples/cyberskill-design-system">Case study</a></li>
+            <li><a href="https://github.com/cyberskill-official/design-system-audit-framework">GitHub</a></li>
+            <li><a href="https://github.com/cyberskill-official/design-system-audit-framework/blob/main/SERVICES.md">Services doc</a></li>
+            <li><a href="https://github.com/cyberskill-official/design-system-audit-framework/tree/main/examples/cyberskill-design-system">Reference case study</a></li>
             <li><a href="https://github.com/cyberskill-official/design-system-audit-framework/blob/main/CONTRIBUTING.md">Contributing</a></li>
           </ul>
         </div>
         <div>
-          <h4>Services</h4>
+          <h4>Engagements</h4>
           <ul>
-            <li><a href="#services">Audit-as-a-service</a></li>
-            <li><a href="#services">Build your system</a></li>
-            <li><a href="#services">Maintenance retainer</a></li>
-            <li><a href="#services">Vertical packs</a></li>
+            <li><a href="#work">Audit</a></li>
+            <li><a href="#work">Build</a></li>
+            <li><a href="#work">Retainer</a></li>
+            <li><a href="#work">Vertical packs</a></li>
           </ul>
         </div>
         <div>
-          <h4>Contact</h4>
+          <h4>Headquarters</h4>
           <ul>
             <li><a href="mailto:info@cyberskill.world">info@cyberskill.world</a></li>
-            <li><a href="https://wa.me/84906878091">WhatsApp Mr. Stephen</a></li>
-            <li><span style="color: var(--color-text-muted);">+84 906 878 091</span></li>
+            <li><a href="https://wa.me/84906878091">WhatsApp engagement team</a></li>
             <li><a href="https://cyberskill.world">cyberskill.world</a></li>
+            <li>
+              <address style="font-style: normal; color: var(--color-text-muted); margin-top: 8px; font-size: 0.85rem; line-height: 1.5;">
+                1st Floor, 207A Nguyen Van Thu<br>
+                Tan Dinh Ward, Ho Chi Minh City
+              </address>
+            </li>
           </ul>
-        </div>
-        <div>
-          <h4>Office</h4>
-          <address style="font-style: normal; line-height: var(--leading-snug); color: var(--color-text-muted);">
-            1st Floor, 207A Nguyen Van Thu Street<br>
-            Tan Dinh Ward<br>
-            Ho Chi Minh City, Vietnam
-          </address>
         </div>
       </div>
 
       <div class="footer-meta">
         <div>
-          <div>© 2026 <strong>CYBERSKILL SOFTWARE SOLUTIONS CONSULTANCY AND DEVELOPMENT JOINT STOCK COMPANY</strong></div>
-          <div style="font-size: var(--text-xs); margin-top: var(--space-1); color: var(--color-text-muted);">DUNS: 673219568</div>
+          <strong>CYBERSKILL SOFTWARE SOLUTIONS CONSULTANCY AND DEVELOPMENT JSC</strong>
+          <div style="margin-top: 4px;">© 2026 · DUNS 673219568</div>
         </div>
-        <span class="slogan">Hiện Thực Hoá Ý Chí — Turn Your Will Into Real</span>
+        <span class="slogan"><span class="vi">Hiện Thực Hoá Ý Chí.</span> &nbsp;Turn your will into real.</span>
       </div>
     </div>
   </footer>
+
+  <script src="/script.js" defer></script>
 </body>
 </html>
