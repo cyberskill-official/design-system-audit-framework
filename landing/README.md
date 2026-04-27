@@ -16,6 +16,7 @@ That's it. The page is intentionally a single static file:
 - **No build step** — drag and drop deploys
 - **Inlined CSS** — single round-trip, instant render
 - **Mirrors the CyberSkill design system** — Umber + Ochre brand colours, system-stack typography (with Be Vietnam Pro fallback), 4 / 8 spacing scale, all sourced from the doctrine
+- **Performance monitoring** — Vercel Web Analytics and Speed Insights enabled for real-user performance tracking
 
 ## Visual design
 

@@ -1,0 +1,70 @@
+# Vercel Speed Insights Installation
+
+Successfully installed and configured Vercel Speed Insights for the landing page project.
+
+## Changes Made
+
+### Modified Files
+
+1. **landing/index.html**
+   - Added Vercel Speed Insights script tags in the `<head>` section
+   - Inserted the initialization script: `window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };`
+   - Added deferred script tag: `<script defer src="/_vercel/speed-insights/script.js"></script>`
+   - Placed immediately after the existing Vercel Web Analytics scripts for consistency
+
+2. **landing/vercel.json**
+   - Updated Content Security Policy (CSP) to allow Speed Insights connections
+   - Added `https://*.vercel-analytics.com` to the `connect-src` directive
+   - This ensures Speed Insights can send performance data without CSP violations
+
+3. **landing/README.md**
+   - Added documentation about the performance monitoring setup
+   - Noted that both Vercel Web Analytics and Speed Insights are enabled
+
+## Implementation Details
+
+### Framework: Vanilla HTML/JavaScript
+This project uses a static HTML site with no build step, so I followed the vanilla HTML/JavaScript installation approach from the official Vercel Speed Insights quickstart guide (https://vercel.com/docs/speed-insights/quickstart).
+
+### Installation Method
+For static HTML sites, Vercel Speed Insights doesn't require npm package installation. Instead, it uses script tags that load the Speed Insights SDK from Vercel's CDN at deploy time. The `/_vercel/speed-insights/script.js` path is automatically handled by Vercel's infrastructure.
+
+### Why No Package Installation
+Unlike framework-based projects (React, Next.js, Vue, etc.), this static site doesn't have:
+- A package.json file
+- Node.js dependencies
+- A build process
+
+Therefore, the script tag approach is the correct and recommended method for this project type.
+
+## How It Works
+
+1. **Initialization**: The `window.si` function is created as a queue collector, similar to how the Web Analytics `window.va` works
+2. **Script Loading**: The Speed Insights script is loaded asynchronously with the `defer` attribute
+3. **Data Collection**: Once loaded, Speed Insights automatically tracks Web Vitals metrics (LCP, FID, CLS, TTFB, etc.)
+4. **Data Transmission**: Performance data is sent to Vercel's analytics backend via the domains allowed in the CSP
+5. **Dashboard**: Data becomes visible in the Vercel dashboard after users visit the deployed site
+
+## Verification
+
+To verify the installation is working after deployment:
+
+1. Deploy to Vercel (the Speed Insights script only works on Vercel-hosted sites)
+2. Visit the deployed site (https://audit.cyberskill.world)
+3. Open browser DevTools Network tab and look for requests to `/_vercel/speed-insights/`
+4. After a few visits, check the Vercel dashboard → Speed Insights for real-user performance data
+
+## Next Steps
+
+1. Deploy the changes to Vercel
+2. Enable Speed Insights in the Vercel project dashboard (Settings → Speed Insights)
+3. Monitor real-user performance metrics as visitors use the site
+4. Use the insights to identify and address performance bottlenecks
+
+## Technical Notes
+
+- Speed Insights is designed to have minimal performance impact (<1KB initial payload)
+- The script loads asynchronously and doesn't block page rendering
+- Data collection respects user privacy and doesn't track personal information
+- CSP has been properly configured to avoid blocking Speed Insights functionality
+- The implementation follows Vercel's official documentation exactly as of April 2026
