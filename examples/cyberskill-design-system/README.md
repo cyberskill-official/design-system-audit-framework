@@ -65,4 +65,14 @@ These aren't framework flaws — they're the framework being honest about the di
 
 ---
 
+## Want this kind of audit on your design system?
+
+CyberSkill offers paid audits using this framework — same methodology, same calibration discipline, run by the framework's authors. We deliver in 5–10 business days; the deliverable is a signed audit report + phased improvement plan + optional public case study with your logo.
+
+See [`SERVICES.md`](../../SERVICES.md) for the four service tiers (audit / implementation / maintenance / vertical packs), or email **zintaen@gmail.com** with subject **"Audit scoping call"** for a free 30-minute conversation.
+
+The framework alone is free. Most teams won't need us — and that's exactly the point. When self-serve isn't enough, we're here.
+
+---
+
 *The CyberSkill Design System and this audit framework are both maintained by [CyberSkill](https://cyberskill.world). Hiện Thực Hoá Ý Chí — Turn Your Will Into Real.*

@@ -7,6 +7,8 @@
 
 Built and maintained by [CyberSkill](https://cyberskill.world) — extracted from the audit framework that took the CyberSkill design system from L4 Managed (74.7%) to L5 Optimised (84.6%) in one development cycle.
 
+> **Need professional help running this on your system?** CyberSkill offers paid audits, design-system implementation, and maintenance retainers using this framework. See [`SERVICES.md`](./SERVICES.md). The framework is free; the audit-as-a-service is one of three commercial tiers we offer.
+
 ---
 
 ## What this is
@@ -188,6 +190,14 @@ The framework is governed by a public RFC process. See [`CONTRIBUTING.md`](./CON
 ## Licence
 
 [MIT](./LICENSE). Use it commercially. Use it on competitors' systems. Use it as the basis for a paid audit service. The only ask is attribution.
+
+---
+
+## Professional services
+
+CyberSkill — the framework's authors — offers four service tiers for teams that want professional help: audits, implementation, maintenance retainers, and vertical packs. Pricing anchors and engagement paths in [`SERVICES.md`](./SERVICES.md).
+
+The framework alone is free and self-serve. These services exist for when self-serve isn't enough.
 
 ---
 

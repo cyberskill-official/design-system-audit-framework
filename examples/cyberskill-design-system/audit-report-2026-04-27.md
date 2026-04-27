@@ -409,4 +409,14 @@ notes: |
 
 ---
 
+## Want this kind of audit on your design system?
+
+This document is what a CyberSkill audit looks like. Same shape, same calibration discipline, same per-criterion citation standard — for any design system, scored honestly.
+
+CyberSkill offers paid audits using this framework. Pricing starts at $5K (small system, doctrine-only) up to $15K (large system + implementation). Delivery in 5–10 business days.
+
+See [`SERVICES.md`](../../SERVICES.md) for the four service tiers, or email **zintaen@gmail.com** with subject **"Audit scoping call"** for a free 30-minute conversation.
+
+---
+
 *End of audit-report-2026-04-27.*

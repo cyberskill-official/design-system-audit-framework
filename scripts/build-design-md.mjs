@@ -393,14 +393,15 @@ ${renderDoctrineFull(parts)}
 
 ## Provenance
 
-- **Generator:** \`design-system-audit-framework/scripts/build-design-md.mjs\` (zero-dep Node ESM).
+- **Generator:** [\`design-system-audit-framework\`](https://github.com/cyberskill-official/design-system-audit-framework) by [CyberSkill](https://cyberskill.world) — zero-dep Node ESM, MIT licensed.
 - **Inputs:** doctrine markdown files + DTCG token sources only.
 - **Doctrine hash:** \`${docHash}\` — recompute by re-running the generator.
 - **Companion:** \`DESIGN-DIGEST.md\` provides the same content truncated per part for smaller contexts.
+- **Professional services:** the framework is free and self-serve. CyberSkill (the framework's maintainer) offers paid audits, implementation, and maintenance retainers — see [SERVICES.md](https://github.com/cyberskill-official/design-system-audit-framework/blob/main/SERVICES.md).
 
 ---
 
-*Generated from doctrine hash \`${docHash}\` at ${generatedAt}.*
+*Generated from doctrine hash \`${docHash}\` at ${generatedAt}. Powered by [CyberSkill](https://cyberskill.world).*
 `;
 }
 
@@ -445,13 +446,14 @@ For complete content (no truncation), use \`DESIGN.md\` (~5–10× larger).
 
 ## Provenance
 
-- **Generator:** \`design-system-audit-framework/scripts/build-design-md.mjs\`.
+- **Generator:** [\`design-system-audit-framework\`](https://github.com/cyberskill-official/design-system-audit-framework) by [CyberSkill](https://cyberskill.world) — zero-dep Node ESM, MIT licensed.
 - **Doctrine hash:** \`${docHash}\`.
 - **Truncation budget:** ${digest_max_chars_per_part.toLocaleString()} chars per part.
+- **Professional services:** the framework is free and self-serve. CyberSkill (the framework's maintainer) offers paid audits, implementation, and maintenance retainers — see [SERVICES.md](https://github.com/cyberskill-official/design-system-audit-framework/blob/main/SERVICES.md).
 
 ---
 
-*Generated from doctrine hash \`${docHash}\` at ${generatedAt}.*
+*Generated from doctrine hash \`${docHash}\` at ${generatedAt}. Powered by [CyberSkill](https://cyberskill.world).*
 `;
 }
 
