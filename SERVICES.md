@@ -121,7 +121,7 @@ Three paths, depending on where you are:
 
 ### Path A — Quick Q&A (no commitment)
 
-Email **zintaen@gmail.com** with subject line **"Audit framework question"**. Stephen replies personally within 48h. Use this for:
+Email **info@cyberskill.world** with subject line **"Audit framework question"**. Stephen replies personally within 48h. Use this for:
 
 - "Would the framework apply to our system?"
 - "Is our team the right fit for a paid audit?"
@@ -129,7 +129,7 @@ Email **zintaen@gmail.com** with subject line **"Audit framework question"**. St
 
 ### Path B — Scoping call (free, 30 minutes)
 
-Email **zintaen@gmail.com** with subject line **"Audit scoping call"** and a 1-paragraph description of your system (size, age, what tools, what's working, what's broken). Stephen replies within 48h with a calendar link.
+Email **info@cyberskill.world** with subject line **"Audit scoping call"** and a 1-paragraph description of your system (size, age, what tools, what's working, what's broken). Stephen replies within 48h with a calendar link.
 
 The call is free; no commitment. We'll either:
 
@@ -139,7 +139,7 @@ The call is free; no commitment. We'll either:
 
 ### Path C — Direct hire
 
-If you've already decided you want to hire us, email **zintaen@gmail.com** with **"[your-company-name] paid audit"** in the subject line. Include:
+If you've already decided you want to hire us, email **info@cyberskill.world** with **"[your-company-name] paid audit"** in the subject line. Include:
 
 - Brief system description
 - Team size
@@ -183,9 +183,20 @@ Yes — 30% discount on Tier 1 audits for registered non-profits. Free Tier 1 au
 
 **Stephen Cheng** — Founder, CyberSkill
 
-- Email: **zintaen@gmail.com**
+- Email: **info@cyberskill.world**
+- WhatsApp / Phone: **(+84) 906 878 091** (Mr. Stephen)
 - Website: **https://cyberskill.world**
+- Audit landing page: **https://audit.cyberskill.world**
 - LinkedIn: search "Stephen Cheng CyberSkill"
+
+### Office
+
+CYBERSKILL SOFTWARE SOLUTIONS CONSULTANCY AND DEVELOPMENT JOINT STOCK COMPANY
+1st Floor, 207A Nguyen Van Thu Street
+Tan Dinh Ward
+Ho Chi Minh City, Vietnam
+
+DUNS: 673219568
 
 The framework is yours to use freely. When the open-source layer doesn't go far enough, CyberSkill is here.
 

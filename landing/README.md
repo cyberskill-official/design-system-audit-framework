@@ -124,7 +124,7 @@ The page is meant to be **stable**. Update it when:
 
 - Pricing changes (Tier 1, Tier 2, Tier 3, Tier 4 anchors in `index.html`)
 - New service tier added
-- Email address changes (search for `zintaen@gmail.com` and update)
+- Email address changes (search for `info@cyberskill.world` and update)
 - Major framework version released (update version mentions if any)
 
 Otherwise, leave it alone. The less you touch a stable landing page, the more reliable it is.
