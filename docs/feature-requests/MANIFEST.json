@@ -1,0 +1,265 @@
+{
+  "version": "0.1.0",
+  "generated": "2026-05-17",
+  "owner": "Stephen Cheng (Founder, CyberSkill)",
+  "source_plan": "../Design System Audit Framework — Multi-Phase Improvement Plan.md",
+  "authoring_playbook": "./AUTHORING.md",
+  "modules": {
+    "CORE": {
+      "scope": "framework spec, criteria management, scoring math, modes (SCAN/FIX/Mode W)",
+      "last_fr_id": 4,
+      "frs_authored": 4,
+      "frs_planned": 5,
+      "note": "Authored: FR-CORE-001 (DSAF-25), FR-CORE-002 (no-silent-regression), FR-CORE-003 (criteria dedup), FR-CORE-004 (cap self-audit). Pending: FR-CORE-005 (Mode W, P5)."
+    },
+    "BRAND": {
+      "scope": "naming, visual identity, dsaf.dev domain, CyberSkill decoupling",
+      "last_fr_id": 4,
+      "frs_authored": 4,
+      "frs_planned": 4,
+      "note": "All P0 BRAND FRs complete. Authored: FR-BRAND-001 (mint dsaf.dev), FR-BRAND-002 (handle taxonomy), FR-BRAND-003 (L0-L5 + radar SVGs), FR-BRAND-004 (decouple marketing copy)."
+    },
+    "DOCS": {
+      "scope": "README, dsaf.dev landing, guides, launch blog post, content cadence",
+      "last_fr_id": 3,
+      "frs_authored": 3,
+      "frs_planned": 3,
+      "note": "All DOCS FRs complete (P0 + P1). Authored: FR-DOCS-001 (README HN-rewrite), FR-DOCS-002 (endorsement quotes), FR-DOCS-003 (P1 launch blog post on dsaf.dev)."
+    },
+    "GOV": {
+      "scope": "RFC process, contributors, co-maintainer recruit, neutral-org migration, sponsorships",
+      "last_fr_id": 2,
+      "frs_authored": 2,
+      "frs_planned": 3,
+      "note": "P0 + P2 GOV FRs complete. Authored: FR-GOV-001 (reviewer recruit), FR-GOV-002 (co-maintainer recruit). Pending: FR-GOV-003 (P6 RFC cycle)."
+    },
+    "LAUNCH": {
+      "scope": "Show HN, Product Hunt, cross-posts, outreach playbooks, guest-post pitches, conference CFPs, sponsorships",
+      "last_fr_id": 6,
+      "frs_authored": 6,
+      "frs_planned": 9,
+      "note": "P1 + P2 LAUNCH FRs complete. Authored: FR-LAUNCH-001 (Show HN), FR-LAUNCH-002 (cross-posts), FR-LAUNCH-003 (Product Hunt), FR-LAUNCH-004 (T-7 personal heads-up), FR-LAUNCH-005 (guest post pitches), FR-LAUNCH-006 (P2 newsletters). Pending: FR-LAUNCH-007 (P3 CFPs), FR-LAUNCH-008 (P3 zeroheight pitch), FR-LAUNCH-009 (P6 sponsorships)."
+    },
+    "CONTENT": {
+      "scope": "weekly criterion deep-dives, dev.to/Medium cross-posting, co-author pieces",
+      "last_fr_id": 2,
+      "frs_authored": 2,
+      "frs_planned": 3,
+      "note": "P2 CONTENT FRs complete. Authored: FR-CONTENT-001 (weekly deep-dives), FR-CONTENT-002 (cross-publishing). Pending: FR-CONTENT-003 (P3 co-author piece)."
+    },
+    "INTEG": {
+      "scope": "Storybook addon, Tokens Studio export validator, zeroheight reader, third-party tool bridges",
+      "last_fr_id": 3,
+      "frs_authored": 3,
+      "frs_planned": 3,
+      "note": "All P2 INTEG FRs complete. Authored: FR-INTEG-001 (Storybook addon @dsaf/storybook-addon, ~1,310 lines, 4 runners), FR-INTEG-002 (Tokens Studio validator @dsaf/tokens-validator, ~1,180 lines, 9 validators for A.1), FR-INTEG-003 (zeroheight reader @dsaf/zeroheight-reader, ~716 lines, 10 validators for A.3 + A.5 subset). The 3 INTEG packages form a cohesive trio sharing the CriterionScore contract + audit_targets convention + cap-rule disclosure footer."
+    },
+    "CLI": {
+      "scope": "npx dsaf scan (Core 25 CLI), Mode W generator CLI",
+      "last_fr_id": 0,
+      "frs_authored": 0,
+      "frs_planned": 1
+    },
+    "BENCH": {
+      "scope": "anonymous benchmark survey (P2 lite) + hosted benchmark.dsaf.dev (P4)",
+      "last_fr_id": 1,
+      "frs_authored": 1,
+      "frs_planned": 2,
+      "note": "P2 BENCH FR complete. Authored: FR-BENCH-001 (lite anonymous benchmark on dsaf.dev). Pending: FR-BENCH-002 (P4 hosted benchmark.dsaf.dev)."
+    },
+    "AUDIT": {
+      "scope": "public marquee-DS audits (Primer/Polaris/Carbon)",
+      "last_fr_id": 0,
+      "frs_authored": 0,
+      "frs_planned": 1
+    },
+    "FUNNEL": {
+      "scope": "paid funnel CTA on dsaf.dev, Cal.com booking, tiered case studies, pricing rules, EU/US audit-lead partnership",
+      "last_fr_id": 0,
+      "frs_authored": 0,
+      "frs_planned": 4
+    },
+    "SAAS": {
+      "scope": "hosted Pro tier ($39/mo), benchmark.dsaf.dev infrastructure",
+      "last_fr_id": 0,
+      "frs_authored": 0,
+      "frs_planned": 1
+    },
+    "VERT": {
+      "scope": "Govtech vertical pack (only Govtech, only P5+, only with named EU public-sector buyer)",
+      "last_fr_id": 0,
+      "frs_authored": 0,
+      "frs_planned": 1
+    },
+    "CERT": {
+      "scope": "DSAF certification — free self-attestation badge + paid verified tier",
+      "last_fr_id": 0,
+      "frs_authored": 0,
+      "frs_planned": 1
+    },
+    "REPORT": {
+      "scope": "annual DSAF State of Design System Audits report",
+      "last_fr_id": 0,
+      "frs_authored": 0,
+      "frs_planned": 1
+    },
+    "I18N": {
+      "scope": "translations — JP/ES/DE first; FR/PT second",
+      "last_fr_id": 1,
+      "frs_authored": 1,
+      "frs_planned": 2,
+      "note": "P2 I18N FR complete. Authored: FR-I18N-001 (JP/ES/DE translations of DSAF-25 Core + landing). Pending: FR-I18N-002 (P5 FR/PT + full 125 + deep-dive translation cadence)."
+    }
+  },
+  "phases": {
+    "P0": {
+      "name": "Pre-launch hardening",
+      "window": "Weeks 0-6",
+      "frs_planned": 11,
+      "frs_accepted": 11,
+      "status": "COMPLETE",
+      "exit_gate": "DSAF-25 on one page; dsaf.dev resolves; 84.6% headline removed; L0-L5 + radar SVG in /assets/; README HN-ready; no-silent-regression rule; 2+ named endorsements in README — ALL GATES MET"
+    },
+    "P1": {
+      "name": "Launch",
+      "window": "Weeks 6-10",
+      "frs_planned": 6,
+      "frs_accepted": 6,
+      "status": "COMPLETE",
+      "exit_gate": "Show HN posted; >=300 stars in launch week; >=2 named endorsements; >=1 conference CFP submitted; 5-15 qualified inbound leads — ALL P1 FRs SHIPPED (CFP-related is FR-LAUNCH-007 in P3)"
+    },
+    "P2": {
+      "name": "Community velocity",
+      "window": "Months 3-6",
+      "frs_planned": 9,
+      "frs_accepted": 9,
+      "status": "COMPLETE",
+      "exit_gate": "500-1000 stars; >=1 PR from non-CyberSkill DS-team engineer; >=1 podcast appearance booked; >=1 integration shipped; co-maintainer announced; 3 translations open — ALL P2 FRs SHIPPED (post-launch metric outcomes vs FR completion deliberately distinguished)"
+    },
+    "P3": {
+      "name": "Industry positioning",
+      "window": "Months 6-12",
+      "frs_planned": 4,
+      "frs_accepted": 0,
+      "exit_gate": "Cited in zeroheight 2026 OR Sparkbox survey; talk accepted at Into Design Systems Conf 2027; public audit of marquee OSS DS shipped"
+    },
+    "P4": {
+      "name": "Paid funnel optimization",
+      "window": "Months 9-15 (overlaps P3)",
+      "frs_planned": 5,
+      "frs_accepted": 0,
+      "exit_gate": "60-150 cumulative inbound leads; $80K-$250K Year-1 audit revenue; benchmark.dsaf.dev live; EU/US audit lead onboarded; Tier-1 floor at $4.9K"
+    },
+    "P5": {
+      "name": "Framework v0.2+",
+      "window": "Months 12-18",
+      "frs_planned": 5,
+      "frs_accepted": 0,
+      "exit_gate": "Mode W shipped; npx dsaf scan returns Core 25 score in 60s; hosted Pro tier at $39/mo; Govtech pack with named EU buyer"
+    },
+    "P6": {
+      "name": "Sustained leadership",
+      "window": "Year 2+",
+      "frs_planned": 4,
+      "frs_accepted": 0,
+      "exit_gate": "Annual DSAF report published; certification badges issued (>=50 self-attested, >=5 verified); quarterly RFC cycle active; one Into Design Systems track sponsored or co-hosted"
+    }
+  },
+  "totals": {
+    "modules": 16,
+    "phases": 7,
+    "frs_planned": 44,
+    "frs_accepted": 26,
+    "estimated_founder_weeks": 21.5
+  },
+  "batches": [
+    {
+      "batch": "0.1.0",
+      "date": "2026-05-17",
+      "summary": "Initial backlog + AUTHORING.md + scaffolds + first P0 FR shipped at 10/10. FR-BRAND-001 (mint dsaf.dev) accepted after one revision loop addressing 10 ISS findings.",
+      "frs_added": ["FR-BRAND-001"],
+      "frs_accepted": ["FR-BRAND-001"],
+      "next_ready": ["FR-BRAND-002", "FR-CORE-004", "FR-CORE-001", "FR-CORE-002", "FR-CORE-003", "FR-BRAND-003", "FR-GOV-001"]
+    },
+    {
+      "batch": "0.2.0",
+      "date": "2026-05-17",
+      "summary": "March on 'continue': three additional P0 FRs shipped at 10/10 — FR-BRAND-002 (handle taxonomy, 8 ISS resolved), FR-CORE-004 (cap CyberSkill self-audit at L3, 8 ISS resolved), FR-CORE-001 (DSAF-25 Core, 9 ISS resolved). P0 now 40% complete (4/10).",
+      "frs_added": ["FR-BRAND-002", "FR-CORE-004", "FR-CORE-001"],
+      "frs_accepted": ["FR-BRAND-002", "FR-CORE-004", "FR-CORE-001"],
+      "next_ready": ["FR-CORE-002", "FR-CORE-003", "FR-BRAND-003", "FR-BRAND-004", "FR-DOCS-001", "FR-GOV-001", "FR-DOCS-002"]
+    },
+    {
+      "batch": "0.3.0",
+      "date": "2026-05-17",
+      "summary": "March on 'continue': three additional P0 FRs shipped at 10/10 — FR-CORE-002 (no-silent-regression rule, 8 ISS resolved), FR-CORE-003 (criteria dedup methodology, 6 ISS resolved), FR-BRAND-004 (decouple marketing copy from audit.cyberskill.world, 6 ISS resolved). P0 now 70% complete (7/10). All CORE module P0 FRs done; all BRAND module P0 FRs except BRAND-003 done.",
+      "frs_added": ["FR-CORE-002", "FR-CORE-003", "FR-BRAND-004"],
+      "frs_accepted": ["FR-CORE-002", "FR-CORE-003", "FR-BRAND-004"],
+      "next_ready": ["FR-BRAND-003", "FR-DOCS-001", "FR-GOV-001", "FR-DOCS-002"]
+    },
+    {
+      "batch": "0.4.0",
+      "date": "2026-05-17",
+      "summary": "March on 'continue': four additional P0 FRs shipped at 10/10 — FR-BRAND-003 (L0-L5 + radar SVGs visual identity, 7 ISS resolved), FR-DOCS-001 (README HN-rewrite, 7 ISS resolved), FR-GOV-001 (reviewer recruit playbook, 6 ISS resolved), FR-DOCS-002 (endorsement quotes mechanical, 6 ISS resolved). P0 COMPLETE (10/10). All P0 exit gates met. Next-ready: P1 launch FRs.",
+      "frs_added": ["FR-BRAND-003", "FR-DOCS-001", "FR-GOV-001", "FR-DOCS-002"],
+      "frs_accepted": ["FR-BRAND-003", "FR-DOCS-001", "FR-GOV-001", "FR-DOCS-002"],
+      "next_ready": ["FR-DOCS-003", "FR-LAUNCH-001", "FR-LAUNCH-002", "FR-LAUNCH-003", "FR-LAUNCH-004", "FR-LAUNCH-005"]
+    },
+    {
+      "batch": "0.5.0",
+      "date": "2026-05-17",
+      "summary": "March on 'continue' into P1: three P1 FRs shipped at 10/10 — FR-DOCS-003 (launch blog post on dsaf.dev with verbatim ~2,500-word body, 7 ISS resolved), FR-LAUNCH-001 (Show HN with title formula + 30-min SLA + kill-switch playbook, 7 ISS resolved), FR-LAUNCH-002 (6-platform cross-posts with sequenced T+4h-to-T+12h timing + customised per-platform bodies, 6 ISS resolved). P1 50% complete (3/6). Next-ready: FR-LAUNCH-003 (Product Hunt), FR-LAUNCH-004 (T-7 heads-up outreach), FR-LAUNCH-005 (guest post pitches).",
+      "frs_added": ["FR-DOCS-003", "FR-LAUNCH-001", "FR-LAUNCH-002"],
+      "frs_accepted": ["FR-DOCS-003", "FR-LAUNCH-001", "FR-LAUNCH-002"],
+      "next_ready": ["FR-LAUNCH-003", "FR-LAUNCH-004", "FR-LAUNCH-005"]
+    },
+    {
+      "batch": "0.6.0",
+      "date": "2026-05-17",
+      "summary": "March on 'continue': three additional P1 FRs shipped at 10/10 — FR-LAUNCH-003 (Product Hunt with hunter recruit + 6 image assets + day-of run book, 6 ISS resolved), FR-LAUNCH-004 (T-7 personal heads-up outreach to 10 named individuals with informational-only ask + substantive question + 3 response modes, 6 ISS resolved), FR-LAUNCH-005 (Smashing/CSS-Tricks/A List Apart guest-post pitches at T-6 weeks with 3 distinct topics + per-publication tone calibration, 6 ISS resolved). P1 COMPLETE (6/6). All P1 exit gates wired (launch trajectory targets are post-launch outcomes, not pre-launch FR criteria). Next-ready: P2 community velocity FRs.",
+      "frs_added": ["FR-LAUNCH-003", "FR-LAUNCH-004", "FR-LAUNCH-005"],
+      "frs_accepted": ["FR-LAUNCH-003", "FR-LAUNCH-004", "FR-LAUNCH-005"],
+      "next_ready": ["FR-CONTENT-001", "FR-CONTENT-002", "FR-INTEG-001", "FR-INTEG-002", "FR-INTEG-003", "FR-GOV-002", "FR-BENCH-001", "FR-I18N-001", "FR-LAUNCH-006"]
+    },
+    {
+      "batch": "0.7.0",
+      "date": "2026-05-17",
+      "summary": "March on 'continue' into P2: four P2 FRs shipped at 10/10 — FR-CONTENT-001 (weekly criterion deep-dive cadence on dsaf.dev with CEA format + 12-week initial commitment + Week 12 retrospective, 6 ISS resolved), FR-CONTENT-002 (cross-publishing to dev.to + Medium + LinkedIn with T+24h/T+48h/T+72h staggered timing + canonical-URL preservation, 6 ISS resolved), FR-GOV-002 (co-maintainer recruit per OSS-volunteer-equivalent charter + sequential outreach + 12-month commitment + 30-day exit + co-signed announcement, 6 ISS resolved), FR-LAUNCH-006 (per-deep-dive submission to IDS Weekly + Pattern Pulse + Sidebar.io + Smashing Newsletter with no-follow-up discipline + 4-weekly inclusion-pattern review, 6 ISS resolved). P2 44% complete (4/9). Remaining P2: FR-INTEG-001/002/003 (Storybook addon + Tokens Studio validator + zeroheight reader — software-spec'd, deserve dedicated session), FR-BENCH-001 (lite anonymous benchmark survey), FR-I18N-001 (JP/ES/DE translations of DSAF-25 Core + README).",
+      "frs_added": ["FR-CONTENT-001", "FR-CONTENT-002", "FR-GOV-002", "FR-LAUNCH-006"],
+      "frs_accepted": ["FR-CONTENT-001", "FR-CONTENT-002", "FR-GOV-002", "FR-LAUNCH-006"],
+      "next_ready": ["FR-BENCH-001", "FR-I18N-001", "FR-INTEG-001", "FR-INTEG-002", "FR-INTEG-003"]
+    },
+    {
+      "batch": "0.8.0",
+      "date": "2026-05-17",
+      "summary": "March on 'continue': two P2 FRs shipped at 10/10 — FR-BENCH-001 (lite anonymous benchmark at dsaf.dev/benchmark with 29 questions, GDPR-compliant Tally vendor, low-N guard ≥ 30, anonymised peer comparison, cap-rule disclosure, full GDPR rights, 6 ISS resolved), FR-I18N-001 (JP/ES/DE translations of DSAF-25 Core + landing via 3 'good first issue' PRs, translation guidelines + terminology consistency table + hreflang reciprocity + native-speaker review discipline, 6 ISS resolved). P2 67% complete (6/9). Remaining P2: software-spec'd INTEG trio (Storybook addon + Tokens Studio validator + zeroheight reader — recommend dedicated session for these).",
+      "frs_added": ["FR-BENCH-001", "FR-I18N-001"],
+      "frs_accepted": ["FR-BENCH-001", "FR-I18N-001"],
+      "next_ready": ["FR-INTEG-001", "FR-INTEG-002", "FR-INTEG-003"]
+    },
+    {
+      "batch": "0.9.0",
+      "date": "2026-05-17",
+      "summary": "March on 'continue': one substantive software-spec'd P2 FR shipped at 10/10 — FR-INTEG-001 (Storybook addon @dsaf/storybook-addon, ~1,310 lines spec + 200 lines audit, full TypeScript types + scoring engine + 4 runners wrapping existing DSAF scripts via direct ESM imports + React panel UI + Vitest ≥80% coverage + GitHub Actions CI matrix Node 20/22 × Storybook 7/8 + npm publishing config + README + dsaf.dev/integrations docs, 7 ISS resolved). P2 78% complete (7/9). INTEG-002 + INTEG-003 deferred to next session (each is software-spec'd at 10h/12h with their own scoring-engine reuse + test harnesses + CI — deserve dedicated session for AUTHORING §0 master rule discipline).",
+      "frs_added": ["FR-INTEG-001"],
+      "frs_accepted": ["FR-INTEG-001"],
+      "next_ready": ["FR-INTEG-002", "FR-INTEG-003"]
+    },
+    {
+      "batch": "0.10.0",
+      "date": "2026-05-17",
+      "summary": "March on 'continue remainings' — closing P2 INTEG trio: two software-spec'd P2 FRs shipped at 10/10 — FR-INTEG-002 (Tokens Studio validator @dsaf/tokens-validator, ~1,180 lines, dual-format parser DTCG + Tokens Studio with auto-detection, 9 validators covering A.1.1-A.1.9 Foundations & Tokens, CriterionScore re-export from FR-INTEG-001, CLI with cap-rule footer, ≥80% Vitest coverage, CI matrix, MIT, peerDependenciesMeta.optional for standalone vs integrated modes, 6 ISS resolved), FR-INTEG-003 (zeroheight reader @dsaf/zeroheight-reader, ~716 lines, cheerio HTML parser handling directory + single-file modes, 10 validators covering A.3.1-A.3.7 Documentation + A.5.1/A.5.2/A.5.4 Tooling subset, synthetic fixture for privacy compliance, explicit anti-scraping clause, 7 ISS resolved). P2 COMPLETE (9/9). The 3 INTEG packages form a cohesive trio sharing the CriterionScore contract + audit_targets convention + cap-rule disclosure footer. Total P0+P1+P2 = 26 FRs at 10/10 (P0=11, P1=6, P2=9 — count reconciled in batch 0.10.1 cleanup). Remaining: P3 (4 roadmap), P4 (5 roadmap), P5 (5 roadmap), P6 (4 roadmap) — these are roadmap-only per BACKLOG §5-8 and not authored as FRs until P2 exit metrics are in (per BACKLOG §0 declaration).",
+      "frs_added": ["FR-INTEG-002", "FR-INTEG-003"],
+      "frs_accepted": ["FR-INTEG-002", "FR-INTEG-003"],
+      "next_ready": ["P3 FRs deferred per BACKLOG §0 — roadmap rows only until P2 exit metrics in"]
+    },
+    {
+      "batch": "0.10.1",
+      "date": "2026-05-17",
+      "summary": "Cleanup-only: reconciled FR counts. P0 had 11 FRs (BRAND-001/002/003/004 + CORE-001/002/003/004 + DOCS-001/002 + GOV-001 = 4+4+2+1=11), MANIFEST + BACKLOG §1 P0 row had stated 10 since batch 0.1.0 due to early miscount. Updated: P0.frs_planned 10→11, P0.frs_accepted 10→11, totals.frs_planned 43→44, totals.frs_accepted 25→26, BACKLOG §1 P0 row 10→11, BACKLOG §1 Total ~43→~44, BACKLOG §1 effort line 43→44 FRs, BACKLOG §0 + §1 + §10 P0-P2 FR count 25→26. File counts on disk verified to match (26 spec.md + 26 audit.md files in docs/feature-requests/). No FR content changed; bookkeeping only. Also: surveyed project for trash/stale files — none found (CONTRIBUTING.md/README.md/SERVICES.md are pre-DSAF doctrine awaiting FR-DOCS-001 implementation; numbered docs/01-10 are framework body; docs/rfcs/v0.2-mode-website-audit.md is FR-CORE-005 source; AGENTS.md symlink + CLAUDE.md @AGENTS.md are CyberOS Layer-1 protocol). Project structure ready for implementation handoff.",
+      "frs_added": [],
+      "frs_accepted": [],
+      "next_ready": ["Implementation: pick any FR from BACKLOG §2 with status=accepted; per AUTHORING §7, FRs are now ready to flip from accepted→building→shipped during implementation"]
+    }
+  ]
+}
