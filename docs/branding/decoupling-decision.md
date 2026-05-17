@@ -1,48 +1,46 @@
-# DSAF decoupling decision
+# DSAF / CyberSkill decoupling decision
 
-**Status:** normative launch posture.
+**Status:** ratified 2026-05-18 (revises the 2026-05-17 version).
 **FRs:** FR-BRAND-001, FR-BRAND-002, FR-BRAND-004, FR-GOV-002.
 
 ## Decision
 
-DSAF is the public methodology brand.
-CyberSkill is the original authoring practice and worked-example maintainer.
-The repo, public site, launch copy, governance docs, and integrations should lead with DSAF, not CyberSkill.
+DSAF is the public methodology brand. CyberSkill is the original authoring practice and worked-example maintainer. The framework runs at `https://audit.cyberskill.world/` — a CyberSkill-controlled subdomain. Brand decoupling is achieved **at the content layer**, not the URL layer.
+
+## Why we're keeping the URL on CyberSkill infra
+
+FR-BRAND-001 and FR-BRAND-004 originally argued for a neutral domain (`dsaf.dev`) so the framework's brand wouldn't be tangled with CyberSkill's audit-services pitch. After deploying the live site, the operator decided the URL itself is a lower-priority signal than the **page content**. The trade-off accepted:
+
+- **Risk:** Western enterprise buyers and named DS-community reviewers might read "audit.cyberskill.world" as "the CyberSkill audit-services site," not as "the DSAF framework's home."
+- **Mitigation:** the page content carries no CyberSkill-as-author framing. H1 is "DSAF — Design System Audit Framework." Footer reads "Maintained by CyberSkill as the original authoring practice," not "CyberSkill's framework."
+- **Re-evaluation trigger:** if at least two named reviewers explicitly cite the URL as a credibility concern, the neutral-domain plan (FR-BRAND-001) gets re-batched.
 
 ## Surfaces
 
 | Surface | Primary brand | CyberSkill role |
 |---|---|---|
 | README | DSAF | Maintainer / worked example |
-| `dsaf.dev` | DSAF | Footer provenance only |
+| `audit.cyberskill.world` | DSAF | Host (subdomain), footer-only attribution |
 | `docs/` | DSAF | Case-study reference only |
 | `examples/cyberskill-design-system/` | CyberSkill worked example | Example subject |
 | `SERVICES.md` | CyberSkill | Commercial surface, clearly separated |
 
 ## Redirect posture
 
-**Operator override (2026-05-18):** the 12-month `audit.cyberskill.world → dsaf.dev` redirect originally specified by FR-BRAND-004 §1 #4 has been **dropped** by founder decision in the canonical-landing rebuild.
-The old subdomain stops being relevant; if it still resolves it does not forward to DSAF.
-Inbound citations that hit the old URL will 404 instead of redirecting.
+There is no redirect to install. The canonical URL is the live URL.
 
-This is a deliberate deviation from the FR-BRAND-004 spec. The trade-off accepted:
-
-- **Lost:** SEO and citation-graph continuity from the old URL — search engines drop the inbound links over the next 6–12 months instead of inheriting them on dsaf.dev.
-- **Gained:** a clean separation, no risk of the old subdomain leaking CyberSkill-as-author framing back into DSAF surfaces.
-
-The full record of redirect rows that were going to be installed is preserved in [`url-redirect-map.md`](url-redirect-map.md) as historical reference. The FR spec itself remains unchanged.
+Previous-batch override (2026-05-17) dropped the planned `audit.cyberskill.world → dsaf.dev` 301 redirect. The current-batch decision (2026-05-18) supersedes that one further: no neutral domain is being pursued, so no future-state redirect is planned either. The redirect-map historical record is preserved in [`url-redirect-map.md`](url-redirect-map.md).
 
 ## Maintainer posture
 
-DSAF should move toward at least two named maintainers.
-The maintainer list is a governance signal, not an employment claim.
-Co-maintainers are DSAF maintainers, not CyberSkill employees by default.
+DSAF should still move toward at least two named maintainers (FR-GOV-002). The maintainer list is a governance signal, not a URL signal. The same playbook applies — sequential outreach starting with Nathan Curtis per [`co-maintainer-shortlist.md`](../governance/co-maintainer-shortlist.md).
 
-## Copy guardrails
+## Copy guardrails (unchanged from prior batch)
 
 - Do not describe DSAF as a CyberSkill product.
 - Do not put paid-service CTAs on DSAF's primary docs or landing page.
 - Do not cite CyberSkill's example as a top-tier proof claim.
-- Do not use `audit.cyberskill.world` as canonical once `dsaf.dev` is active.
+- Do use CyberSkill in footer attribution and in the worked-example folder name.
+- Do route paid-audit conversations to `SERVICES.md`, not the framework surfaces.
 
 *End of decoupling decision.*

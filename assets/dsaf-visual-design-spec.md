@@ -71,7 +71,7 @@ Each canonical SVG MUST carry a `<metadata>` block recording the DSAF rubric ver
 
 ```xml
 <metadata>
-  <dsaf:version xmlns:dsaf="https://dsaf.dev/ns/v1">
+  <dsaf:version xmlns:dsaf="https://audit.cyberskill.world/ns/v1">
     <dsaf:dsaf_125_version>2026-05-17</dsaf:dsaf_125_version>
     <dsaf:dsaf_25_version>2026-05-17</dsaf:dsaf_25_version>
   </dsaf:version>
@@ -94,6 +94,6 @@ The DSAF radar SHOULD overlay a "minimum enterprise" boundary as a dashed line p
 
 ## Embedding patterns
 
-Both inline-SVG (`<svg>...</svg>` in the page source) and referenced-SVG (`<img src="./assets/dsaf-25-card.svg" alt="...">`) embeds are supported. The canonical `landing/` site (deployed at `dsaf.dev`) uses inline-embed so the text content stays in page source (per FR-BRAND-001 + FR-CORE-001 accessibility patterns). README and blog posts use referenced-embed (simpler authoring).
+Both inline-SVG (`<svg>...</svg>` in the page source) and referenced-SVG (`<img src="./assets/dsaf-25-card.svg" alt="...">`) embeds are supported. The canonical `landing/` site (deployed at `audit.cyberskill.world`) uses inline-embed so the text content stays in page source (per FR-BRAND-001 + FR-CORE-001 accessibility patterns). README and blog posts use referenced-embed (simpler authoring).
 
 *End of visual design spec.*

@@ -31,7 +31,7 @@ Subject: DSAF is launching next week; would value your roast
 Hi <name>,
 
 I am launching DSAF next week: an open-source criteria set for design-system audits.
-The useful short surface is DSAF-25 Core: https://dsaf.dev/card.
+The useful short surface is DSAF-25 Core: https://audit.cyberskill.world/card.
 The repo is here: https://github.com/CyberSkill/design-system-audit-framework.
 
 No ask to promote it.

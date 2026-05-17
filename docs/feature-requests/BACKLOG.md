@@ -30,11 +30,11 @@ This document is the **single source of truth** for what the Design System Audit
 
 | Phase | Modules in scope | FRs planned | Estimated effort (founder-weeks) | Compliance / exit gate |
 |---|---|---:|---:|---|
-| **P0 — Pre-launch hardening** (Weeks 0–6) | CORE · BRAND · DOCS · GOV | **11** | ~2.5 | Repo defensible: DSAF-25 on one page · dsaf.dev site artifact ready · old headline removed from public docs · L0–L5 + radar SVG in `/assets/` · README HN-ready · no-silent-regression rule · endorsement slots gated on consent |
+| **P0 — Pre-launch hardening** (Weeks 0–6) | CORE · BRAND · DOCS · GOV | **11** | ~2.5 | Repo defensible: DSAF-25 on one page · canonical site (audit.cyberskill.world) artifact ready · old headline removed from public docs · L0–L5 + radar SVG in `/assets/` · README HN-ready · no-silent-regression rule · endorsement slots gated on consent |
 | **P1 — Launch** (Weeks 6–10) | LAUNCH · DOCS | **6** | ~2.0 | Show HN posted Tue–Wed 8–10am PT · ≥ 300 stars in launch week · ≥ 2 named-person endorsements landed (any platform) · ≥ 1 conference CFP submitted · 5–15 qualified inbound leads |
 | **P2 — Community velocity** (Months 3–6) | CONTENT · INTEG · GOV · BENCH · I18N · LAUNCH | **9** | ~4.0 | 500–1,000 stars · ≥ 1 PR from a non-CyberSkill DS-team engineer · ≥ 1 podcast appearance booked · ≥ 1 of {Storybook addon, Tokens Studio validator, zeroheight reader} shipped · non-Western co-maintainer announced · 3 translations open |
 | **P3 — Industry positioning** (Months 6–12) | AUDIT · CONTENT · LAUNCH | ~4 | ~3.0 | Cited by name in zeroheight's 2026 *Design Systems Report* OR Sparkbox's survey · talk accepted at Into Design Systems Conf 2027 · public audit of one marquee OSS DS shipped · 1,000–1,800 stars |
-| **P4 — Paid funnel optimization** (Months 9–15, overlaps P3) | FUNNEL · BENCH | ~5 | ~3.0 | 60–150 cumulative inbound leads · $80K–$250K Year-1 audit revenue · benchmark.dsaf.dev live · EU/US audit lead onboarded · Tier 1 price floor raised to $4.9K |
+| **P4 — Paid funnel optimization** (Months 9–15, overlaps P3) | FUNNEL · BENCH | ~5 | ~3.0 | 60–150 cumulative inbound leads · $80K–$250K Year-1 audit revenue · benchmark.audit.cyberskill.world live · EU/US audit lead onboarded · Tier 1 price floor raised to $4.9K |
 | **P5 — Framework v0.2+** (Months 12–18) | CORE · CLI · SAAS · VERT · I18N | ~5 | ~4.0 | Mode W shipped (website-without-DS reverse-engineering audit) · `npx dsaf scan` returns a Core 25 score in 60s · hosted Pro tier at $39/mo for teams · Govtech vertical pack in partnership with a named EU public-sector buyer |
 | **P6 — Sustained leadership** (Year 2+) | REPORT · CERT · GOV · LAUNCH | ~4 | ~3.0 | Annual DSAF State of Design System Audits report published · DSAF certification badges issued (≥ 50 self-attested, ≥ 5 verified) · quarterly RFC cycle active · one Into Design Systems track sponsored or co-hosted |
 | **Total** | 13 modules · 7 phases | **~44** | **~21.5 founder-weeks** | 7 gated milestones |
@@ -51,9 +51,9 @@ This document is the **single source of truth** for what the Design System Audit
 
 **Audit lift:** Stars 0–50 (organic). Inbound leads 0–2. Positioning: setting baseline.
 
-**Compliance gate:** Phase 0 has no external compliance gate. The internal gate is *defensibility*: a colleague unfamiliar with the project can read the README and summarise it back in two sentences; the dsaf.dev domain resolves to a landing page that mirrors the repo's first paragraph; the framework's identity is no longer tangled with CyberSkill's audit services pitch.
+**Compliance gate:** Phase 0 has no external compliance gate. The internal gate is *defensibility*: a colleague unfamiliar with the project can read the README and summarise it back in two sentences; the audit.cyberskill.world site resolves to a landing page that mirrors the repo's first paragraph; the framework's identity is no longer tangled with CyberSkill's audit services pitch.
 
-**Build order (locked):** BRAND-001 (mint dsaf.dev) → BRAND-002 (handle taxonomy) → CORE-004 (remove 84.6% headline) → CORE-001 (DSAF-25 Core) → CORE-002 (no-silent-regression) → CORE-003 (criteria dedup) → BRAND-003 (visual identity SVGs) → BRAND-004 (decouple marketing copy) → DOCS-001 (README rewrite) → GOV-001 (recruit 2–3 named reviewers) → DOCS-002 (land their endorsement quotes).
+**Build order (locked):** BRAND-001 (mint canonical domain) → BRAND-002 (handle taxonomy) → CORE-004 (remove 84.6% headline) → CORE-001 (DSAF-25 Core) → CORE-002 (no-silent-regression) → CORE-003 (criteria dedup) → BRAND-003 (visual identity SVGs) → BRAND-004 (decouple marketing copy) → DOCS-001 (README rewrite) → GOV-001 (recruit 2–3 named reviewers) → DOCS-002 (land their endorsement quotes).
 
 ### P0.1 — BRAND · identity decoupling + visual identity
 
@@ -61,10 +61,10 @@ This document is the **single source of truth** for what the Design System Audit
 
 | FR-ID | Title | Pri | Status | Depends on | Effort |
 |---|---|:-:|:-:|---|---:|
-| **FR-BRAND-001** | Mint `dsaf.dev` (or `designsystemaudit.org`) — WHOIS, DNS, basic landing page | MUST | repo-shipped · external pending | — | 4h |
+| **FR-BRAND-001** | Mint `audit.cyberskill.world` (or `designsystemaudit.org`) — WHOIS, DNS, basic landing page | MUST | repo-shipped · external pending | — | 4h |
 | **FR-BRAND-002** | DSAF handle taxonomy — "DSAF" / "DSAF Criteria" / "DSAF Levels"; ban "Framework" creep | MUST | shipped | FR-BRAND-001 | 3h |
 | **FR-BRAND-003** | Commission canonical L0–L5 ladder + radar chart SVGs into `/assets/` | MUST | shipped | FR-BRAND-002 | 8h |
-| **FR-BRAND-004** | Move marketing copy off `audit.cyberskill.world` to `dsaf.dev`; keep 12-month redirect | MUST | repo-shipped · external pending | FR-BRAND-001, FR-BRAND-002 | 5h |
+| **FR-BRAND-004** | Move marketing copy off `audit.cyberskill.world` to `audit.cyberskill.world`; keep 12-month redirect | MUST | repo-shipped · external pending | FR-BRAND-001, FR-BRAND-002 | 5h |
 
 ### P0.2 — CORE · framework spec changes
 
@@ -104,15 +104,15 @@ This document is the **single source of truth** for what the Design System Audit
 
 **Compliance gate:** ≥ 300 stars within 7 days of Show HN post · ≥ 2 named-person endorsements (any platform: HN comment, LinkedIn post, tweet) · ≥ 1 conference CFP submitted · ≥ 5 qualified inbound leads · zero significant deplatforming / TOS / legal incidents.
 
-**Build order (locked):** DOCS-003 (launch blog post on dsaf.dev) → LAUNCH-001 (Show HN) → LAUNCH-002 (cross-posts) → LAUNCH-003 (Product Hunt) → LAUNCH-004 (personal outreach) → LAUNCH-005 (guest-post pitches).
+**Build order (locked):** DOCS-003 (launch blog post on audit.cyberskill.world) → LAUNCH-001 (Show HN) → LAUNCH-002 (cross-posts) → LAUNCH-003 (Product Hunt) → LAUNCH-004 (personal outreach) → LAUNCH-005 (guest-post pitches).
 
 ### P1.1 — DOCS · launch blog post
 
-**Owner:** Founder · **Slice plan:** 1 slice, 1 FR · **Plan refs:** plan §"Phase 1 — Launch" prerequisite (candid origin-story blog post on dsaf.dev)
+**Owner:** Founder · **Slice plan:** 1 slice, 1 FR · **Plan refs:** plan §"Phase 1 — Launch" prerequisite (candid origin-story blog post on audit.cyberskill.world)
 
 | FR-ID | Title | Pri | Status | Depends on | Effort |
 |---|---|:-:|:-:|---|---:|
-| **FR-DOCS-003** | Publish launch blog post on dsaf.dev — "We built a 125-criterion audit framework after auditing 0 design systems for clients — here's what we got wrong" (or candid equivalent) | MUST | repo-shipped · external pending | FR-BRAND-001, FR-DOCS-001 | 8h |
+| **FR-DOCS-003** | Publish launch blog post on audit.cyberskill.world — "We built a 125-criterion audit framework after auditing 0 design systems for clients — here's what we got wrong" (or candid equivalent) | MUST | repo-shipped · external pending | FR-BRAND-001, FR-DOCS-001 | 8h |
 
 ### P1.2 — LAUNCH · Show HN + cross-posts + Product Hunt
 
@@ -142,7 +142,7 @@ This document is the **single source of truth** for what the Design System Audit
 
 | FR-ID | Title | Pri | Status | Depends on | Effort |
 |---|---|:-:|:-:|---|---:|
-| **FR-CONTENT-001** | Weekly criterion deep-dive cadence — one criterion, one example, one anti-pattern, on dsaf.dev | MUST | shipped | FR-BRAND-001, FR-CORE-003 | 6h |
+| **FR-CONTENT-001** | Weekly criterion deep-dive cadence — one criterion, one example, one anti-pattern, on audit.cyberskill.world | MUST | shipped | FR-BRAND-001, FR-CORE-003 | 6h |
 | **FR-CONTENT-002** | Cross-post each weekly deep-dive to dev.to + Medium + (LinkedIn long-form) | SHOULD | shipped | FR-CONTENT-001 | 3h |
 
 ### P2.2 — INTEG · Storybook addon, Tokens Studio validator, zeroheight reader
@@ -208,7 +208,7 @@ This document is the **single source of truth** for what the Design System Audit
 
 ## §6 — P4 · Paid funnel optimization (Months 9–15, overlaps P3)
 
-**Phase goal:** convert the OSS audience into paid Tier-1 ($2.5K–$8K → $4.9K–$9K floor) audits at a 0.5–1.5% star-to-lead rate. Generate $80K–$250K in audit fees in Year 1. Preserve OSS credibility by keeping every paid CTA off the GitHub repo — the repo is sacred; the funnel lives on dsaf.dev.
+**Phase goal:** convert the OSS audience into paid Tier-1 ($2.5K–$8K → $4.9K–$9K floor) audits at a 0.5–1.5% star-to-lead rate. Generate $80K–$250K in audit fees in Year 1. Preserve OSS credibility by keeping every paid CTA off the GitHub repo — the repo is sacred; the funnel lives on audit.cyberskill.world.
 
 **Audit lift:** Stars marginal. Inbound leads 60–150 cumulative. **Revenue target:** $80K–$250K in audit fees in Year 1.
 
@@ -216,11 +216,11 @@ This document is the **single source of truth** for what the Design System Audit
 
 | FR-ID (planned) | Title | Pri | Phase ref |
 |---|---|:-:|---|
-| FR-FUNNEL-001 | "Talk to a certified auditor" CTA on dsaf.dev (not on GitHub README); Cal.com booking, not sales form | MUST | P4 |
+| FR-FUNNEL-001 | "Talk to a certified auditor" CTA on audit.cyberskill.world (not on GitHub README); Cal.com booking, not sales form | MUST | P4 |
 | FR-FUNNEL-002 | Tiered case studies — short CyberSkill self-audit summary + one anonymized client audit per quarter | MUST | P4 |
 | FR-FUNNEL-003 | Refine pricing — Tier 1 floor $4.9K (raised from $2.5K), retainer $1.5K/mo, free DSAF-25 self-scoring spreadsheet as lead magnet | MUST | P4 |
 | FR-FUNNEL-004 | Hire / partner with one EU/US-based "audit lead" who fronts client calls; Vietnamese consultancy delivers | MUST | P4 |
-| FR-BENCH-002 | Hosted free benchmark at `benchmark.dsaf.dev` — anonymous opt-in, generates report material for P6 annual report | MUST | P4 |
+| FR-BENCH-002 | Hosted free benchmark at `benchmark.audit.cyberskill.world` — anonymous opt-in, generates report material for P6 annual report | MUST | P4 |
 
 ---
 
@@ -268,7 +268,7 @@ These are not FRs but live audit attention points lifted from plan §"Honest cri
 | Geography discount — Western enterprise buyers discount Vietnam-origin Tier-2 build engagements | §"Honest critique" item 4; §"What NOT to do" item 7 | FR-GOV-002 (non-Western co-maintainer), FR-FUNNEL-004 (EU/US audit lead) |
 | HN/Twitter takedown on consultancy self-grading L5 | §"Honest critique" item 3 | FR-CORE-004 (cap self-audit at L3 publicly); FR-LAUNCH-001 (engage critical comments within 30 min) |
 | Repo brand creeps back into CyberSkill marketing post-launch (half-measure "DSAF by CyberSkill") | §"What NOT to do" item 4 | FR-BRAND-002 (taxonomy ban), FR-BRAND-004 (decouple marketing copy) |
-| Email capture gated on GitHub repo | §"What NOT to do" item 1 | FR-BRAND-004 (lead capture on dsaf.dev only); FR-FUNNEL-001 (CTA off-repo) |
+| Email capture gated on GitHub repo | §"What NOT to do" item 1 | FR-BRAND-004 (lead capture on audit.cyberskill.world only); FR-FUNNEL-001 (CTA off-repo) |
 | 125-criterion surface stays un-shareable | §"Honest critique" item 1 | FR-CORE-001 (DSAF-25 Core), FR-CLI-001 (npx dsaf scan returns Core 25 score) |
 | Hard no-downgrade rule gets switched off by real teams | §"Honest critique" item 5 | FR-CORE-002 (no-silent-regression replaces hard block) |
 | Vertical packs shipped prematurely | §"Honest critique" item 7; §"What NOT to do" item 8 | FR-VERT-001 (only Govtech, only P5+, only with named EU buyer) |

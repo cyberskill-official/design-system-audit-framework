@@ -1,6 +1,6 @@
 # DSAF canonical landing site
 
-`landing/` is the source-of-truth folder for the public site served at **`https://dsaf.dev`**.
+`landing/` is the source-of-truth folder for the public site served at **`https://audit.cyberskill.world`**.
 It is the operator-facing landing — hero, the DSAF-25 Core card, the L0–L5 ladder, the self-audit cap explainer, and the launch blog posts.
 
 This folder is intentionally framework-only:
@@ -33,25 +33,25 @@ open landing/index.html
 open landing/card/index.html
 
 # Headers (when deployed)
-curl -sI https://dsaf.dev/ | grep -iE 'strict-transport-security|content-security-policy'
+curl -sI https://audit.cyberskill.world/ | grep -iE 'strict-transport-security|content-security-policy'
 
 # Card route
-curl -sI https://dsaf.dev/card | grep -i '^HTTP'
+curl -sI https://audit.cyberskill.world/card | grep -i '^HTTP'
 
 # security.txt
-curl -s https://dsaf.dev/.well-known/security.txt
+curl -s https://audit.cyberskill.world/.well-known/security.txt
 ```
 
 ## Deploy contract
 
-- **Deploy target:** the `landing/` folder is the build root for the static deployment hosting `dsaf.dev`.
+- **Deploy target:** the `landing/` folder is the build root for the static deployment hosting `audit.cyberskill.world`.
 - **Format:** plain HTML/CSS only. No build step. No JavaScript on the landing page (the SVGs are inline).
 - **Performance budget:** the landing page MUST score ≥ 95 on Lighthouse across all four pillars (Performance, Accessibility, Best Practices, SEO).
 - **HSTS preload:** `Strict-Transport-Security: max-age=63072000; includeSubDomains; preload` (eligible for `hstspreload.org` submission).
 - **No analytics in P0:** revisit alongside FR-BENCH-001 with a privacy-respecting choice.
 
-## Why no redirect lives here anymore
+## Why no redirect lives here
 
-Earlier drafts of this folder shipped a catch-all `301 → dsaf.dev` so the old `audit.cyberskill.world` deployment forwarded everything to the new domain. With `landing/` itself becoming the canonical deploy target for `dsaf.dev`, that redirect would loop. The redirect contract for the old subdomain (whether to keep, drop, or repurpose it) is documented in [`../docs/branding/url-redirect-map.md`](../docs/branding/url-redirect-map.md).
+`audit.cyberskill.world` is the canonical host. The `landing/` folder is its build root. No redirect rules ship from here — the site IS the destination. The history of the earlier "move to a neutral domain" plan is preserved in [`../docs/branding/url-redirect-map.md`](../docs/branding/url-redirect-map.md) as historical record.
 
 *End of canonical landing README.*

@@ -276,6 +276,14 @@
       "frs_added": [],
       "frs_accepted": [],
       "next_ready": ["Deploy landing/ to dsaf.dev when the domain is purchased per FR-BRAND-001 activation checklist", "Decide what (if anything) audit.cyberskill.world becomes post-override — defunct, CyberSkill-services-only, or parked"]
+    },
+    {
+      "batch": "0.10.4",
+      "date": "2026-05-18",
+      "summary": "Operator deployed via Vercel to https://audit.cyberskill.world/ and decided to abandon the neutral-domain plan entirely. Second operator override on FR-BRAND-001 / FR-BRAND-004: dsaf.dev is no longer being pursued; audit.cyberskill.world IS the canonical URL. Actions: (1) bulk-swapped every dsaf.dev URL reference across 23 operational files to audit.cyberskill.world (FR specs and the source plan deliberately left frozen as historical record); (2) swapped hello@dsaf.dev → info@cyberskill.world across all contact surfaces; (3) added landing/robots.txt + landing/sitemap.xml; (4) updated landing canonical URLs + og:url to point at audit.cyberskill.world; (5) rewrote docs/branding/domain-decision.md, docs/branding/decoupling-decision.md, docs/branding/url-redirect-map.md to reflect the new posture (no neutral domain pursued; brand decoupling is now content-layer-only); (6) rewrote docs/ops/deploy-runbook.md to drop §2 future-flip and add §4 agent-pickup queue (OPS-001..007); (7) rewrote docs/EXECUTION_PLAN.md to v2.0 — dropped O1 (domain purchase), O4 (HSTS preload submission for dsaf.dev), O5 (email forwarding), A10 (future-flip) — and added A10..A12 (HSTS preload submission for audit.cyberskill.world, Twitter card screenshot, Lighthouse audit). Wrote the complete social-content bundle: docs/social/show-hn.md, cross-posts.md, product-hunt.md, personal-outreach.md (10 personalized emails for Brad Frost, Nathan Curtis, Sil Bormüller, Chris Strahl, Ben Callahan, Diana Mounter, Sarah Federman, Luke Murphy, Dan Mall, Jina Anne), reviewer-outreach.md (3 quote-consent-gated emails), guest-post-pitches.md (Smashing, CSS-Tricks, A List Apart), co-maintainer-outreach.md (3 sequential drafts), cross-publishing-template.md, newsletter-submissions.md. Wrote the deep-dive bundle: docs/content/deep-dives/README.md (12-week roadmap), _template.md (CEA template), week-01-a1-1-color-tokens.md (first deep-dive in full, ~1,800 words). Total content artifacts shipped this batch: 11 social drafts + 3 deep-dive files + 1 execution plan + 3 branding docs + 1 deploy runbook = 19 files. The execution plan now lists every remaining task by ID with owner (agent vs operator), deliverable path, and acceptance criterion — ready for other AI agents to pick up.",
+      "frs_added": [],
+      "frs_accepted": [],
+      "next_ready": ["§A of EXECUTION_PLAN.md — any agent-automatable task with no blocked dependency", "§B of EXECUTION_PLAN.md — operator tasks O1, O2, O7 (no blockers), then sequential through O4 launch day"]
     }
   ]
 }

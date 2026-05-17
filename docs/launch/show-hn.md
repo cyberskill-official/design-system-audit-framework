@@ -27,9 +27,9 @@ I expect some overlap, and the repo now documents the dedup methodology rather t
 
 Links:
 
-- DSAF-25 Core: `https://dsaf.dev/card`
+- DSAF-25 Core: `https://audit.cyberskill.world/card`
 - Repo: `https://github.com/CyberSkill/design-system-audit-framework`
-- Launch note: `https://dsaf.dev/blog/launch-2026`
+- Launch note: `https://audit.cyberskill.world/blog/launch-2026`
 
 ## Response SLA
 

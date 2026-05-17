@@ -8,22 +8,22 @@
 ### Into Design Systems Weekly
 
 Submit within 24 hours of publishing a deep-dive.
-Text: `New DSAF deep-dive: <criterion> with example, anti-pattern, and checklist. Canonical: <dsaf.dev URL>.`
+Text: `New DSAF deep-dive: <criterion> with example, anti-pattern, and checklist. Canonical: <canonical URL>.`
 
 ### Pattern Pulse
 
 Submit concise practitioner framing.
-Text: `Criterion deep-dive for design-system teams: <title>. Canonical: <dsaf.dev URL>.`
+Text: `Criterion deep-dive for design-system teams: <title>. Canonical: <canonical URL>.`
 
 ### Sidebar.io
 
 Submit only broad-interest posts.
-Text: `A practical design-system audit criterion: <title>. Canonical: <dsaf.dev URL>.`
+Text: `A practical design-system audit criterion: <title>. Canonical: <canonical URL>.`
 
 ### Smashing Newsletter
 
 Submit strongest posts only.
-Text: `DSAF criterion deep-dive: <title>. Practical checklist and anti-pattern included. Canonical: <dsaf.dev URL>.`
+Text: `DSAF criterion deep-dive: <title>. Practical checklist and anti-pattern included. Canonical: <canonical URL>.`
 
 ## Tracking
 

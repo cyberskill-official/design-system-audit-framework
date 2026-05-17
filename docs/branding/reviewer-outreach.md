@@ -30,7 +30,7 @@ No second follow-up.
 Reviewer:
 Affiliation string:
 Approved quote:
-Approved surfaces: README, dsaf.dev launch page, Show HN launch comment
+Approved surfaces: README, audit.cyberskill.world launch page, Show HN launch comment
 Duration: 12 months minimum
 Retraction: remove within 7 days of written request
 Approved by:

@@ -12,7 +12,7 @@ It does not include salary, equity, a board seat, fiduciary duty, or employer/em
 
 1. GitHub Maintain access after written acceptance.
 2. Governance vote in future RFC cycles.
-3. dsaf.dev blog authorship.
+3. audit.cyberskill.world blog authorship.
 4. Speaking-slot revenue share where a DSAF talk receives honoraria.
 5. Public recognition as DSAF maintainer.
 6. Co-author credit on collaborative content.

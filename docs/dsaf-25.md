@@ -82,7 +82,7 @@ The card is meant to tell a DS lead where to look before the full audit begins.
 ### Meeting reference
 
 Use [`assets/dsaf-25-card.svg`](../assets/dsaf-25-card.svg) or [`docs/dsaf-25-card.md`](dsaf-25-card.md) when you need a printable version.
-The public copy lives at `https://dsaf.dev/card`.
+The public copy lives at `https://audit.cyberskill.world/card`.
 
 ## Relationship to DSAF-125
 

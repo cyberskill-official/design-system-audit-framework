@@ -5,7 +5,7 @@
 
 ## Rule
 
-`dsaf.dev` is canonical.
+`audit.cyberskill.world` is canonical.
 Every syndication copy links back to the canonical post and carries an explicit canonical URL line.
 
 ## Channels
@@ -19,7 +19,7 @@ Every syndication copy links back to the canonical post and carries an explicit 
 ## Template footer
 
 ```text
-Canonical version: https://dsaf.dev/blog/<slug>
+Canonical version: https://audit.cyberskill.world/blog/<slug>
 DSAF Criteria: https://github.com/CyberSkill/design-system-audit-framework
 ```
 

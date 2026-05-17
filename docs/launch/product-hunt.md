@@ -20,7 +20,7 @@ Use it for a wider maker audience after the HN surface is stable.
 
 - Product name: `DSAF`
 - Tagline: `Open-source criteria for design-system audits`
-- URL: `https://dsaf.dev`
+- URL: `https://audit.cyberskill.world`
 - Repo URL: `https://github.com/CyberSkill/design-system-audit-framework`
 - Visual: `assets/dsaf-25-card.svg`
 - First comment: candid origin story plus request for criteria critique

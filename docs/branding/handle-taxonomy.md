@@ -8,7 +8,7 @@
 
 | Handle | Form | Used as | Used where |
 |---|---|---|---|
-| `DSAF` | short, all-caps, no period | the brand | headlines, hashtags, bios, badges, talk titles, dsaf.dev, code identifiers |
+| `DSAF` | short, all-caps, no period | the brand | headlines, hashtags, bios, badges, talk titles, audit.cyberskill.world, code identifiers |
 | `Design System Audit Framework` | Title Case, full name | first-mention disambiguation | once per external surface, at first mention; in `<title>` tags; in SEO-critical body copy |
 | `DSAF Criteria` / `DSAF Levels` / `DSAF Modes` / `DSAF-25 Core` | Title Case proper nouns | the framework's component handles | every reference to the 125 criteria, the L0–L5 scale, the SCAN / FIX / W modes, the one-page Core 25 |
 
@@ -39,7 +39,7 @@ The `Framework` ban exists because "the Framework" as a sentence subject is a ja
 
 ## Application
 
-This taxonomy is enforced at PR review on external-facing surfaces (README, `docs/`, `dsaf.dev/`, blog posts in `dsaf.dev/blog/`). PRs that introduce text on these surfaces are reviewed against this file. PRs that touch only internal artefacts (templates, scripts, audit reports) are NOT subject to the taxonomy.
+This taxonomy is enforced at PR review on external-facing surfaces (README, `docs/`, `audit.cyberskill.world/`, blog posts in `audit.cyberskill.world/blog/`). PRs that introduce text on these surfaces are reviewed against this file. PRs that touch only internal artefacts (templates, scripts, audit reports) are NOT subject to the taxonomy.
 
 ## Forward-only
 

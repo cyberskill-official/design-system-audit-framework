@@ -1,88 +1,75 @@
-# DSAF domain decision
+# DSAF canonical-domain decision
 
-**Status:** repo-ready, external activation pending.
-**FR:** FR-BRAND-001.
-**Decision date:** 2026-05-17.
-**Canonical URL:** `https://dsaf.dev`.
+**Status:** ratified 2026-05-18.
+**Canonical URL:** `https://audit.cyberskill.world/`.
+**Deploy host:** Vercel.
+**Source folder:** [`landing/`](../../landing/).
 
 ## Decision
 
-DSAF uses `dsaf.dev` as the canonical public URL.
-The fallback order is:
+DSAF is published at **`https://audit.cyberskill.world/`** as its canonical public URL. The earlier plan to mint a neutral `dsaf.dev` domain (FR-BRAND-001) is **not being pursued**. The framework runs on the existing CyberSkill-controlled subdomain instead.
 
-1. `dsaf.dev`
-2. `designsystemaudit.org`
-3. `dsaf.org`
-4. `dsaf.community`
+## Operator override on FR-BRAND-001
 
-The repo ships the static site under [`landing/`](../../landing/) so the deploy target can be connected as soon as the domain is purchased.
-Until the registrar purchase is complete, this document is the source of truth for the intended canonical domain and deployment checklist.
+FR-BRAND-001 §1 #1 originally required minting `dsaf.dev` (or a fallback `.org`/`.community`) as the canonical neutral URL. That FR's rationale rested on a "decouple framework brand from CyberSkill's audit-services pitch" line of reasoning.
 
-> **Deploy target rename (2026-05-18):** the canonical landing folder was renamed from `dsaf.dev/` to `landing/` during the rich-landing rebuild. Same content goal (canonical site for the `dsaf.dev` domain), different folder name for clarity — `landing/` reads as "the landing site" rather than as a folder mirroring a domain. Build root for the `dsaf.dev` deployment is now `landing/`.
+The operator decision (Stephen Cheng, 2026-05-18) is to keep the framework on `audit.cyberskill.world` and accept the brand-coupling trade-off:
 
-## DNS checklist
+- **Lost:** the FR-BRAND-001 / FR-BRAND-004 neutrality story — the URL clearly identifies CyberSkill as the host.
+- **Gained:** no domain purchase friction; no DNS/registrar/2FA setup work; no trademark pre-clearance gate; faster path from repo to live site (which is exactly what happened — deployed in one Vercel session).
 
-| Record | Name | Value | Purpose |
-|---|---|---|---|
-| `CNAME` or flattened apex | `@` | deploy target | Static site |
-| `CAA` | `@` | `0 issue "letsencrypt.org"` | Certificate authorization |
-| `CAA` | `@` | `0 issue "pki.goog"` | Certificate authorization |
-| `MX` | `@` | forwarding provider | `hello@dsaf.dev` |
-| `TXT` | `_dmarc` | `v=DMARC1; p=none; rua=mailto:hello@dsaf.dev` | Mail monitoring |
+The brand-coupling is mitigated by **page content discipline**, not URL choice:
 
-HTTPS-only, HSTS, and security headers are configured in [`landing/vercel.json`](../../landing/vercel.json).
+- The site's H1 reads "DSAF — Design System Audit Framework," not "CyberSkill's framework."
+- The site's footer credits CyberSkill as the maintainer, not the owner.
+- The handle taxonomy in [`handle-taxonomy.md`](handle-taxonomy.md) continues to forbid "CyberSkill framework" as a noun-handle.
+- The self-audit publication cap in [`self-audit-policy.md`](self-audit-policy.md) caps public claims at L3 regardless of host domain.
 
-## Registrar controls
+If future signal shows the URL itself is the friction (named reviewers, partners, or enterprise buyers explicitly cite it as a credibility problem), the neutral-domain plan can be revisited — at that point FR-BRAND-001 becomes live again as a re-batched FR.
 
-| Control | Requirement |
+## Deploy contract
+
+| Item | Value |
 |---|---|
-| Registrar | Cloudflare Registrar preferred |
-| WHOIS privacy | Required |
-| 2FA | Hardware security key plus backup key |
-| Auto-renew | Required |
-| Renewal owner | Stephen Cheng |
-| Escalation path | CyberSkill password vault, one named co-admin with renewal-only access |
+| Host | Vercel |
+| Build root | `landing/` |
+| Build step | none (static HTML + CSS) |
+| HTTPS | enforced (Vercel-managed) |
+| HSTS | `max-age=63072000; includeSubDomains; preload` (per `landing/vercel.json`) |
+| HSTS preload submission | submit `audit.cyberskill.world` at `hstspreload.org` |
+| CSP / X-CTO / X-FO / Referrer-Policy | per `landing/vercel.json` |
+| `Strict-Transport-Security` preload eligibility | confirm via curl + browser dev-tools |
+| Sitemap | `https://audit.cyberskill.world/sitemap.xml` |
+| robots | `https://audit.cyberskill.world/robots.txt` |
+| security.txt | `https://audit.cyberskill.world/.well-known/security.txt` |
 
-## Trademark pre-clearance
+## Verification
 
-The operator must run USPTO and EUIPO searches for:
+```bash
+# Apex returns 200 with HSTS
+curl -sI https://audit.cyberskill.world/ | grep -iE 'HTTP|strict-transport-security'
 
-- `DSAF`
-- `Design System Audit Framework`
+# Card route lives
+curl -sI https://audit.cyberskill.world/card | head -1
 
-Search classes:
+# security.txt + sitemap + robots
+curl -s https://audit.cyberskill.world/.well-known/security.txt
+curl -s https://audit.cyberskill.world/sitemap.xml | head -10
+curl -s https://audit.cyberskill.world/robots.txt
 
-- 9: software
-- 35: consultancy / advertising
-- 42: technology consulting
+# Lighthouse ≥ 95 all four pillars
+npx unlighthouse https://audit.cyberskill.world/
+```
 
-No conflicting mark is recorded in this repo.
-The live purchase PR should paste the search date, query URLs, and clearance note here before the domain is connected.
+## Out of scope
 
-## Handle reservations
+- WHOIS privacy — not relevant; the domain is owned at the corporate level.
+- Hardware-key 2FA for the registrar — handled by CyberSkill's existing infra, not a DSAF-specific gate.
+- Trademark pre-clearance — deferred until a neutral domain is reconsidered.
+- DNS records (CAA, MX, SPF, DMARC) — managed at the CyberSkill DNS layer; this document does not duplicate them.
 
-| Channel | Target handle | Status |
-|---|---|---|
-| GitHub | `dsaf` or `dsaf-framework` | pending reservation |
-| X/Twitter | `@dsaf_dev` | pending reservation |
-| LinkedIn | `DSAF` | pending reservation |
-| Mastodon | `@dsaf@hachyderm.io` | pending reservation |
+## Amendment
 
-Reservation evidence belongs in the PR description, not this repo, to avoid leaking account screenshots or personal channel metadata.
+Decisions to mint a neutral domain, retire `audit.cyberskill.world`, or split the framework from CyberSkill's audit services require an explicit operator action recorded here. Until then, this file is the source of truth.
 
-## Activation checklist
-
-1. Purchase domain with WHOIS privacy enabled.
-2. Enroll hardware-key 2FA and backup key.
-3. Connect the `landing/` folder as the static deploy target for `dsaf.dev`.
-4. Configure DNS records above.
-5. Verify `https://dsaf.dev`, `https://www.dsaf.dev`, and `https://dsaf.dev/.well-known/security.txt`.
-6. Confirm `curl -I https://dsaf.dev` returns HSTS and security headers.
-7. Update this file with registrar purchase date, expiry date, and renewal owner.
-
-## What is intentionally absent
-
-No lead-capture form, paid CTA, pricing, demo booking form, or CyberSkill services pitch appears on the DSAF landing page.
-The framework surface stays neutral; commercial conversion belongs on a later, clearly separated funnel path.
-
-*End of domain decision.*
+*End of canonical-domain decision.*

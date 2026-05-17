@@ -2,7 +2,7 @@
 
 **Status:** launch-ready draft.
 **FR:** FR-DOCS-003.
-**Canonical URL:** `https://dsaf.dev/blog/launch-2026`.
+**Canonical URL:** `https://audit.cyberskill.world/blog/launch-2026`.
 
 Most design-system audits start with reasonable intent and end in taste.
 Someone senior reads the docs, notices gaps, compares the system to whatever mature system they last admired, and writes a plan.

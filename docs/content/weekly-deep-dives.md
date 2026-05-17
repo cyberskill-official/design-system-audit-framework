@@ -5,7 +5,7 @@
 
 ## Cadence
 
-Publish one criterion deep-dive per week on `dsaf.dev`.
+Publish one criterion deep-dive per week on `audit.cyberskill.world`.
 Each post covers:
 
 1. one DSAF criterion

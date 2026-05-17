@@ -57,7 +57,7 @@ Translations into other languages are very welcome. Open an issue first to coord
 
 ## Naming and taxonomy
 
-PRs that introduce text on external-facing surfaces (`README.md`, anything under `docs/`, anything under `dsaf.dev/`, anything destined for a blog or social post) are reviewed against the DSAF handle taxonomy at [`docs/branding/handle-taxonomy.md`](docs/branding/handle-taxonomy.md). The short version: use `DSAF` as the brand, use the long name `Design System Audit Framework` once per surface at first mention, use `DSAF Criteria` / `DSAF Levels` / `DSAF Modes` / `DSAF-25 Core` as the component handles, and never use `Framework` as a capitalised noun-handle.
+PRs that introduce text on external-facing surfaces (`README.md`, anything under `docs/`, anything under `audit.cyberskill.world/`, anything destined for a blog or social post) are reviewed against the DSAF handle taxonomy at [`docs/branding/handle-taxonomy.md`](docs/branding/handle-taxonomy.md). The short version: use `DSAF` as the brand, use the long name `Design System Audit Framework` once per surface at first mention, use `DSAF Criteria` / `DSAF Levels` / `DSAF Modes` / `DSAF-25 Core` as the component handles, and never use `Framework` as a capitalised noun-handle.
 
 The glossary at [`docs/branding/glossary.md`](docs/branding/glossary.md) is the source of truth for every DSAF-specific term. New coined terms are added there in the same PR that coins them.
 

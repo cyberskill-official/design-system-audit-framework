@@ -246,7 +246,7 @@ These are rules the master rule (§0) tends to surface naturally if followed. Th
 ### §3.4 — Governance-FR discipline (MUST)
 
 12. **Co-maintainer / contributor FRs MUST name a target list of candidates** and the asking script. Avoid "we'll find someone" — concrete shortlist or the FR is incomplete.
-13. **Naming / branding FRs MUST cite the URL availability check date.** A `dsaf.dev` claim needs a registrar check (whois/Namecheap/etc.) within the FR-creation week.
+13. **Naming / branding FRs MUST cite the URL availability check date.** A `audit.cyberskill.world` claim needs a registrar check (whois/Namecheap/etc.) within the FR-creation week.
 14. **Neutral-org / repo-migration FRs MUST list every redirect surface** — old README link, old blog posts, old slides, vendor profiles. Migration without redirects loses inbound links.
 
 ### §3.5 — Integration-FR discipline (MUST)
@@ -368,7 +368,7 @@ When auditing an FR, run this checklist before declaring 10/10. Each pattern bel
 ### §8.6 — Cross-cutting
 
 - **§8.6a §10 < 10 rows.** Under-engineered failure-mode inventory; the spec hasn't been pressure-tested.
-- **§8.6b Single-source-of-truth violations.** When two surfaces can answer the same question (README first-paragraph + dsaf.dev landing first-paragraph), pick the canonical one in the FR and explicitly mirror.
+- **§8.6b Single-source-of-truth violations.** When two surfaces can answer the same question (README first-paragraph + audit.cyberskill.world landing first-paragraph), pick the canonical one in the FR and explicitly mirror.
 - **§8.6c §1 SHOULD vs §4 MUST mismatch.** Either upgrade §1 to MUST or scope §4 to MUST-when-applicable.
 
 ### How to use §8

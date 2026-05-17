@@ -4,7 +4,7 @@
 > Vendor-neutral, markdown-native, and designed for human reviewers working with LLM agents.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
-[![Canonical: dsaf.dev](https://img.shields.io/badge/Canonical-dsaf.dev-1f2a44)](https://dsaf.dev)
+[![Canonical: audit.cyberskill.world](https://img.shields.io/badge/Canonical-audit.cyberskill.world-1f2a44)](https://audit.cyberskill.world)
 
 Most design-system audits collapse into taste: a senior person reads the docs, spots a few gaps, and writes a deck.
 DSAF gives that conversation a shared rubric.

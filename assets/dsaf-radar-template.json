@@ -1,9 +1,9 @@
 {
-  "$schema": "https://dsaf.dev/schemas/radar-template-v1.json",
+  "$schema": "https://audit.cyberskill.world/schemas/radar-template-v1.json",
   "version": "1.0.0",
   "fr": "FR-BRAND-003",
   "dsaf_125_version": "2026-05-17",
-  "description": "Data shape consumed by DSAF radar renderers (Storybook addon, npx dsaf scan, benchmark.dsaf.dev). Per-category percentages 0-100. 10 Part A categories + 10 Part B categories = 20 axes total.",
+  "description": "Data shape consumed by DSAF radar renderers (Storybook addon, npx dsaf scan, benchmark.audit.cyberskill.world). Per-category percentages 0-100. 10 Part A categories + 10 Part B categories = 20 axes total.",
   "audit": {
     "audit_id": "string — e.g. 'cyberskill-2026-04-27'",
     "audit_date": "YYYY-MM-DD",
