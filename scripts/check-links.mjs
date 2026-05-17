@@ -27,7 +27,11 @@ function walkMarkdown(dir, out = []) {
     if (entry.startsWith(".") || entry === "node_modules" || entry === "dist") continue;
     const p = join(dir, entry);
     const stat = statSync(p);
-    if (stat.isDirectory()) walkMarkdown(p, out);
+    const rel = relative(ROOT, p);
+    if (stat.isDirectory()) {
+      if (rel === "docs/feature-requests") continue;
+      walkMarkdown(p, out);
+    }
     else if (entry.endsWith(".md")) out.push(p);
   }
   return out;

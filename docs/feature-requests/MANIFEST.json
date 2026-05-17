@@ -117,24 +117,24 @@
       "window": "Weeks 0-6",
       "frs_planned": 11,
       "frs_accepted": 11,
-      "status": "COMPLETE",
-      "exit_gate": "DSAF-25 on one page; dsaf.dev resolves; 84.6% headline removed; L0-L5 + radar SVG in /assets/; README HN-ready; no-silent-regression rule; 2+ named endorsements in README — ALL GATES MET"
+      "status": "REPO_SHIPPED_EXTERNAL_PENDING",
+      "exit_gate": "DSAF-25 on one page; dsaf.dev artifact ready; old headline removed from public docs; L0-L5 + radar SVG in /assets/; README HN-ready; no-silent-regression rule; named endorsements remain consent-gated"
     },
     "P1": {
       "name": "Launch",
       "window": "Weeks 6-10",
       "frs_planned": 6,
       "frs_accepted": 6,
-      "status": "COMPLETE",
-      "exit_gate": "Show HN posted; >=300 stars in launch week; >=2 named endorsements; >=1 conference CFP submitted; 5-15 qualified inbound leads — ALL P1 FRs SHIPPED (CFP-related is FR-LAUNCH-007 in P3)"
+      "status": "REPO_SHIPPED_EXTERNAL_PENDING",
+      "exit_gate": "P1 runbooks and launch artifacts shipped in repo; Show HN, Product Hunt, cross-posts, guest-post pitches, endorsements, stars, and inbound leads remain external activation/metric outcomes"
     },
     "P2": {
       "name": "Community velocity",
       "window": "Months 3-6",
       "frs_planned": 9,
       "frs_accepted": 9,
-      "status": "COMPLETE",
-      "exit_gate": "500-1000 stars; >=1 PR from non-CyberSkill DS-team engineer; >=1 podcast appearance booked; >=1 integration shipped; co-maintainer announced; 3 translations open — ALL P2 FRs SHIPPED (post-launch metric outcomes vs FR completion deliberately distinguished)"
+      "status": "REPO_SHIPPED_EXTERNAL_PENDING",
+      "exit_gate": "P2 repo artifacts shipped; live stars, outside PRs, podcast booking, co-maintainer acceptance, newsletter inclusions, and translation PRs remain external activation/metric outcomes"
     },
     "P3": {
       "name": "Industry positioning",
@@ -200,7 +200,7 @@
     {
       "batch": "0.4.0",
       "date": "2026-05-17",
-      "summary": "March on 'continue': four additional P0 FRs shipped at 10/10 — FR-BRAND-003 (L0-L5 + radar SVGs visual identity, 7 ISS resolved), FR-DOCS-001 (README HN-rewrite, 7 ISS resolved), FR-GOV-001 (reviewer recruit playbook, 6 ISS resolved), FR-DOCS-002 (endorsement quotes mechanical, 6 ISS resolved). P0 COMPLETE (10/10). All P0 exit gates met. Next-ready: P1 launch FRs.",
+      "summary": "Historical authoring batch. In this implementation pass, P0 repo artifacts are shipped; domain/DNS and consented endorsement quotes remain external activation gates.",
       "frs_added": ["FR-BRAND-003", "FR-DOCS-001", "FR-GOV-001", "FR-DOCS-002"],
       "frs_accepted": ["FR-BRAND-003", "FR-DOCS-001", "FR-GOV-001", "FR-DOCS-002"],
       "next_ready": ["FR-DOCS-003", "FR-LAUNCH-001", "FR-LAUNCH-002", "FR-LAUNCH-003", "FR-LAUNCH-004", "FR-LAUNCH-005"]
@@ -216,7 +216,7 @@
     {
       "batch": "0.6.0",
       "date": "2026-05-17",
-      "summary": "March on 'continue': three additional P1 FRs shipped at 10/10 — FR-LAUNCH-003 (Product Hunt with hunter recruit + 6 image assets + day-of run book, 6 ISS resolved), FR-LAUNCH-004 (T-7 personal heads-up outreach to 10 named individuals with informational-only ask + substantive question + 3 response modes, 6 ISS resolved), FR-LAUNCH-005 (Smashing/CSS-Tricks/A List Apart guest-post pitches at T-6 weeks with 3 distinct topics + per-publication tone calibration, 6 ISS resolved). P1 COMPLETE (6/6). All P1 exit gates wired (launch trajectory targets are post-launch outcomes, not pre-launch FR criteria). Next-ready: P2 community velocity FRs.",
+      "summary": "Historical authoring batch. In this implementation pass, P1 launch docs are shipped; actual launches, submissions, responses, and metrics remain external activation gates.",
       "frs_added": ["FR-LAUNCH-003", "FR-LAUNCH-004", "FR-LAUNCH-005"],
       "frs_accepted": ["FR-LAUNCH-003", "FR-LAUNCH-004", "FR-LAUNCH-005"],
       "next_ready": ["FR-CONTENT-001", "FR-CONTENT-002", "FR-INTEG-001", "FR-INTEG-002", "FR-INTEG-003", "FR-GOV-002", "FR-BENCH-001", "FR-I18N-001", "FR-LAUNCH-006"]
@@ -248,7 +248,7 @@
     {
       "batch": "0.10.0",
       "date": "2026-05-17",
-      "summary": "March on 'continue remainings' — closing P2 INTEG trio: two software-spec'd P2 FRs shipped at 10/10 — FR-INTEG-002 (Tokens Studio validator @dsaf/tokens-validator, ~1,180 lines, dual-format parser DTCG + Tokens Studio with auto-detection, 9 validators covering A.1.1-A.1.9 Foundations & Tokens, CriterionScore re-export from FR-INTEG-001, CLI with cap-rule footer, ≥80% Vitest coverage, CI matrix, MIT, peerDependenciesMeta.optional for standalone vs integrated modes, 6 ISS resolved), FR-INTEG-003 (zeroheight reader @dsaf/zeroheight-reader, ~716 lines, cheerio HTML parser handling directory + single-file modes, 10 validators covering A.3.1-A.3.7 Documentation + A.5.1/A.5.2/A.5.4 Tooling subset, synthetic fixture for privacy compliance, explicit anti-scraping clause, 7 ISS resolved). P2 COMPLETE (9/9). The 3 INTEG packages form a cohesive trio sharing the CriterionScore contract + audit_targets convention + cap-rule disclosure footer. Total P0+P1+P2 = 26 FRs at 10/10 (P0=11, P1=6, P2=9 — count reconciled in batch 0.10.1 cleanup). Remaining: P3 (4 roadmap), P4 (5 roadmap), P5 (5 roadmap), P6 (4 roadmap) — these are roadmap-only per BACKLOG §5-8 and not authored as FRs until P2 exit metrics are in (per BACKLOG §0 declaration).",
+      "summary": "Historical authoring batch. In this implementation pass, the P2 integration CLIs and community docs are shipped; live community outcomes remain external activation/metric gates. Remaining: P3 (4 roadmap), P4 (5 roadmap), P5 (5 roadmap), P6 (4 roadmap).",
       "frs_added": ["FR-INTEG-002", "FR-INTEG-003"],
       "frs_accepted": ["FR-INTEG-002", "FR-INTEG-003"],
       "next_ready": ["P3 FRs deferred per BACKLOG §0 — roadmap rows only until P2 exit metrics in"]
@@ -260,6 +260,22 @@
       "frs_added": [],
       "frs_accepted": [],
       "next_ready": ["Implementation: pick any FR from BACKLOG §2 with status=accepted; per AUTHORING §7, FRs are now ready to flip from accepted→building→shipped during implementation"]
+    },
+    {
+      "batch": "0.10.2",
+      "date": "2026-05-18",
+      "summary": "Implementation-pass audit + gap-fix. Re-verified all 26 accepted P0-P2 FRs against their acceptance criteria and shipped artifacts. P0 CORE (001-004), P0 DOCS+GOV (001/002, 001), P1 DOCS+LAUNCH (003, 001-005), P2 CONTENT+GOV+LAUNCH (001/002, 002, 006), and P2 BENCH+I18N (001, 001) verified clean. Found and fixed BRAND-002 implementation gaps: (a) created docs/branding/handle-taxonomy.md (was missing — FR §3 required NEW file); (b) expanded docs/branding/glossary.md from 6 brand-only terms to all 20 canonical terms across 4 sections (Brand/Methodology/Actor/Mode) per AC8; (c) added 'Naming and taxonomy' section to CONTRIBUTING.md per AC6; (d) normalized 'the framework' → DSAF/proper-noun handles in docs/01-introduction.md (3 hits → 0), docs/02-framework.md (~9 hits → 0), docs/07-maturity-tiers.md (~6 hits → 0); §1/§2/§3/§5/§6 headings updated to DSAF-Level-aware language. Found and fixed BRAND-003 gaps: (a) created assets/dsaf-visual-design-spec.md per FR §3 (typography, palette, viewBox, a11y, file caps, versioning, screenshot test); (b) created assets/dsaf-radar-template.json per FR §3 (20-axis schema, weights, enterprise floors). Found and fixed BRAND-004 gap: created docs/branding/url-redirect-map.md per FR §3 (10-row inventory, migrate-and-rewrite/migrate-content/keep-on-cyberskill per URL, verification commands, sunset table, CODEOWNERS rule). Two known scope deviations carried forward without fix: (1) BRAND-003 ships single-mode SVGs using currentColor for dark adaptation rather than hand-tuned *-dark.svg variants (visual-design-spec.md documents the policy + escape hatch); (2) INTEG-001/002/003 ship as zero-dependency CLI scripts + docs/integrations/*.md rather than full @dsaf/* npm packages with React panels (phase-shifted MVP — full packages defer to a follow-on FR). All four FR-explicitly-in-scope files (README + 01/02/07) now pass FR-BRAND-002 AC2-AC5 grep checks: zero banned 'the framework' / 'DSAF Framework' occurrences.",
+      "frs_added": [],
+      "frs_accepted": [],
+      "next_ready": ["External activation gates (domain purchase, consented endorsement quotes, launches) per BACKLOG §1 status cells"]
+    },
+    {
+      "batch": "0.10.3",
+      "date": "2026-05-18",
+      "summary": "Canonical landing rebuild + operator override. Operator (Stephen Cheng) chose: (1) the previous lightweight dsaf.dev/ landing did not meet the visual bar of the OLD landing/ era; (2) consolidate to a single canonical landing folder named landing/ in editorial-methodology tone (DORA / 12-factor / web.dev neighbourhood — warm cream + ink + amber accent, large typographic hierarchy, no JS); (3) drop the audit.cyberskill.world → dsaf.dev 301 redirect originally specified by FR-BRAND-004 §1 #4. Actions: shipped landing/index.html (rich editorial canonical site — hero + lede/CTAs, why-tiles trio, inline DSAF-25 Core SVG card, L0-L5 ladder SVG with L3 cap callout, self-audit cap table, four-column footer); landing/card/index.html (standalone /card sub-route); landing/blog/launch-2026.md + landing/blog/co-maintainer-announcement.md (ported from deleted dsaf.dev/blog/); landing/.well-known/security.txt (RFC 9116, ported); landing/vercel.json (security headers + cache rules, NO catch-all redirect — landing is canonical now); rewrote landing/README.md to describe its new role; deleted vestigial CyberSkill-era landing/logo.svg + landing/script.js (CyberSkill logo + audit.cyberskill.world motion script — not appropriate for decoupled DSAF landing). Deleted the entire dsaf.dev/ folder (7 files: index.html, card/index.html, _redirects, _headers, .well-known/security.txt, blog/launch-2026.md, blog/co-maintainer-announcement.md). Documented the redirect-drop override in docs/branding/decoupling-decision.md + docs/branding/url-redirect-map.md (rows retained as historical; rules NO LONGER ACTIVE). Updated docs/branding/domain-decision.md deploy-target reference from dsaf.dev/ folder to landing/ folder. Updated assets/dsaf-visual-design-spec.md embedding-pattern reference. FR-BRAND-001/002/003/004 specs themselves remain unchanged (frozen historical record); the implementation deviation from FR-BRAND-004 §1 #4 is logged as an operator override in two places + this batch row. Trade-off accepted: lost SEO continuity from inbound audit.cyberskill.world links; gained clean brand separation + no risk of CyberSkill-as-author framing leaking back into DSAF surfaces.",
+      "frs_added": [],
+      "frs_accepted": [],
+      "next_ready": ["Deploy landing/ to dsaf.dev when the domain is purchased per FR-BRAND-001 activation checklist", "Decide what (if anything) audit.cyberskill.world becomes post-override — defunct, CyberSkill-services-only, or parked"]
     }
   ]
 }

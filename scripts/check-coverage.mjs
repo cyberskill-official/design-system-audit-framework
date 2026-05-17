@@ -18,7 +18,7 @@
  * Zero-dependency Node ESM.
  */
 
-import { readFileSync, readdirSync, writeFileSync, statSync, mkdirSync } from 'node:fs';
+import { readFileSync, readdirSync, writeFileSync, statSync, mkdirSync, existsSync } from 'node:fs';
 import { dirname, resolve, relative, basename, extname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -27,7 +27,24 @@ const ROOT = resolve(__dirname, '..');
 const SRC = resolve(ROOT, 'src');
 const OUT = resolve(ROOT, 'docs/_audit/coverage.json');
 
-if (!resolve(dirname(OUT))) mkdirSync(dirname(OUT), { recursive: true });
+mkdirSync(dirname(OUT), { recursive: true });
+
+if (!existsSync(SRC)) {
+  const result = {
+    generated: new Date().toISOString(),
+    status: 'not-applicable',
+    reason: 'No src/ directory in this repository; run this check inside a target design-system repo.',
+    audit_targets: {
+      'A7.1 (coverage % tracked)': null,
+      'A2.4 (variant & state coverage)': null,
+      'A5.4 (Storybook)': null,
+    },
+  };
+  writeFileSync(OUT, JSON.stringify(result, null, 2) + '\n');
+  console.log('[check-coverage] No src/ directory; wrote not-applicable result.');
+  console.log(`  Output: docs/_audit/coverage.json`);
+  process.exit(0);
+}
 
 // ─── Walk src/ ─────────────────────────────────────────────────────────
 

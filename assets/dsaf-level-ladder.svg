@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="540" viewBox="0 0 1200 540" role="img" aria-labelledby="title desc">
+  <title id="title">DSAF Levels ladder</title>
+  <desc id="desc">L0 through L5 design-system maturity ladder.</desc>
+  <rect width="1200" height="540" fill="#fbfaf7"/>
+  <text x="70" y="70" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="700" fill="#1f2a44">DSAF Levels</text>
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="70" y="390" width="150" height="70" fill="#e8edf5"/><text x="95" y="432" font-size="24" font-weight="700" fill="#1f2a44">L0 Initial</text>
+    <rect x="240" y="340" width="150" height="120" fill="#dbe6ee"/><text x="265" y="392" font-size="24" font-weight="700" fill="#1f2a44">L1 Repeatable</text>
+    <rect x="410" y="290" width="150" height="170" fill="#cde0e0"/><text x="435" y="362" font-size="24" font-weight="700" fill="#1f2a44">L2 Defined</text>
+    <rect x="580" y="230" width="150" height="230" fill="#bbd9c5"/><text x="605" y="332" font-size="24" font-weight="700" fill="#1f2a44">L3 Managed</text>
+    <rect x="750" y="160" width="150" height="300" fill="#efd783"/><text x="775" y="292" font-size="24" font-weight="700" fill="#1f2a44">L4 Advanced</text>
+    <rect x="920" y="90" width="150" height="370" fill="#d28b00"/><text x="945" y="252" font-size="24" font-weight="700" fill="#ffffff">L5 Optimised</text>
+  </g>
+  <text x="70" y="505" font-family="Inter, Arial, sans-serif" font-size="22" fill="#40516f">Self-audits cap publicly at L3 until third-party verification.</text>
+</svg>

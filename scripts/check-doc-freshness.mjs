@@ -33,7 +33,7 @@ const opts = { json: args.includes('--json') };
 // ─── List parts ────────────────────────────────────────────────────────
 
 const partFiles = readdirSync(DOCS)
-  .filter((f) => (f.startsWith('00-') || f.startsWith('part-')) && f.endsWith('.md'))
+  .filter((f) => (/^\d\d-/.test(f) || f.startsWith('part-')) && f.endsWith('.md'))
   .sort();
 
 // ─── Search RFCs for each part filename ────────────────────────────────
@@ -131,7 +131,7 @@ const summary = {
   totals: {
     total_xrefs: results.reduce((a, r) => a + r.xrefs_total, 0),
     broken_xrefs: results.reduce((a, r) => a + r.xrefs_broken, 0),
-    avg_age_days: Math.round(results.reduce((a, r) => a + r.age_days, 0) / results.length),
+    avg_age_days: results.length === 0 ? 0 : Math.round(results.reduce((a, r) => a + r.age_days, 0) / results.length),
     parts_4quadrant: results.filter((r) => r.quadrants_covered === 4).length,
     parts_3quadrant: results.filter((r) => r.quadrants_covered === 3).length,
     parts_lt3quadrant: results.filter((r) => r.quadrants_covered < 3).length,

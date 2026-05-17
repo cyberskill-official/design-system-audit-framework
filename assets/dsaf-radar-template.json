@@ -1,0 +1,57 @@
+{
+  "$schema": "https://dsaf.dev/schemas/radar-template-v1.json",
+  "version": "1.0.0",
+  "fr": "FR-BRAND-003",
+  "dsaf_125_version": "2026-05-17",
+  "description": "Data shape consumed by DSAF radar renderers (Storybook addon, npx dsaf scan, benchmark.dsaf.dev). Per-category percentages 0-100. 10 Part A categories + 10 Part B categories = 20 axes total.",
+  "audit": {
+    "audit_id": "string — e.g. 'cyberskill-2026-04-27'",
+    "audit_date": "YYYY-MM-DD",
+    "system_name": "string",
+    "combined_score_pct": 0,
+    "dsaf_25_score_pct": 0,
+    "enterprise_grade": false,
+    "verification_status": "self|verified|verified-plus-l5-stack"
+  },
+  "part_a": [
+    { "id": "A.1",  "name": "Foundations & Tokens",              "score_pct": 0, "weight": 0.13, "min_enterprise_pct": 70 },
+    { "id": "A.2",  "name": "Component Library",                 "score_pct": 0, "weight": 0.14, "min_enterprise_pct": null },
+    { "id": "A.3",  "name": "Documentation",                     "score_pct": 0, "weight": 0.10, "min_enterprise_pct": 65 },
+    { "id": "A.4",  "name": "Governance & Versioning",           "score_pct": 0, "weight": 0.10, "min_enterprise_pct": 60 },
+    { "id": "A.5",  "name": "Tooling & Distribution",            "score_pct": 0, "weight": 0.10, "min_enterprise_pct": null },
+    { "id": "A.6",  "name": "Cross-platform & Theming",          "score_pct": 0, "weight": 0.08, "min_enterprise_pct": null },
+    { "id": "A.7",  "name": "Adoption & Metrics",                "score_pct": 0, "weight": 0.08, "min_enterprise_pct": null },
+    { "id": "A.8",  "name": "Accessibility",                     "score_pct": 0, "weight": 0.10, "min_enterprise_pct": 75 },
+    { "id": "A.9",  "name": "Performance & DX",                  "score_pct": 0, "weight": 0.09, "min_enterprise_pct": null },
+    { "id": "A.10", "name": "AI / Emerging Tech",                "score_pct": 0, "weight": 0.08, "min_enterprise_pct": null }
+  ],
+  "part_b": [
+    { "id": "B.1",  "name": "Research",                          "score_pct": 0, "weight": 0.10, "min_enterprise_pct": null },
+    { "id": "B.2",  "name": "IA & Navigation",                   "score_pct": 0, "weight": 0.10, "min_enterprise_pct": null },
+    { "id": "B.3",  "name": "Interaction",                       "score_pct": 0, "weight": 0.10, "min_enterprise_pct": null },
+    { "id": "B.4",  "name": "Visual Design",                     "score_pct": 0, "weight": 0.10, "min_enterprise_pct": null },
+    { "id": "B.5",  "name": "Accessibility & Inclusive",         "score_pct": 0, "weight": 0.12, "min_enterprise_pct": 75 },
+    { "id": "B.6",  "name": "Content Design",                    "score_pct": 0, "weight": 0.08, "min_enterprise_pct": null },
+    { "id": "B.7",  "name": "Heuristics",                        "score_pct": 0, "weight": 0.08, "min_enterprise_pct": null },
+    { "id": "B.8",  "name": "Core Web Vitals as UX",             "score_pct": 0, "weight": 0.10, "min_enterprise_pct": null },
+    { "id": "B.9",  "name": "Trust & Privacy",                   "score_pct": 0, "weight": 0.10, "min_enterprise_pct": null },
+    { "id": "B.10", "name": "Measurement & UX Metrics",          "score_pct": 0, "weight": 0.12, "min_enterprise_pct": null }
+  ],
+  "enterprise_floors": {
+    "combined_pct": 65,
+    "any_category_pct": 40
+  },
+  "rendering_hints": {
+    "polygon_fill_color_var": "--accent",
+    "polygon_stroke_color_var": "--ink",
+    "axis_line_color_var": "--line",
+    "boundary_overlay": "dashed-line-at-min-enterprise-floors",
+    "label_position": "outside-axis",
+    "rotation_offset_deg": 0
+  },
+  "example": {
+    "_comment": "Synthetic example values for testing. Real values come from an audit report's §10 Criteria scores table aggregated to category %.",
+    "part_a_scores_pct": [82, 79, 71, 68, 74, 65, 60, 78, 70, 64],
+    "part_b_scores_pct": [60, 65, 70, 72, 78, 64, 66, 80, 70, 62]
+  }
+}

@@ -1,10 +1,10 @@
-# 07 — Maturity tiers
+# 07 — DSAF Levels
 
-The framework reports a single **combined score** (Part A and Part B averaged) and maps it to a **tier** from L0 to L5. Tier names borrow from CMM and ITIL, with criteria specific to design systems.
+DSAF reports a single **combined score** (Part A and Part B averaged) and maps it to a **DSAF Level** from L0 to L5. The L0–L5 tier names borrow from CMM and ITIL, with criteria specific to design systems.
 
 ---
 
-## §1 The six tiers
+## §1 The DSAF Levels (six tiers)
 
 | Tier | Combined score | Name | Meaning |
 |---|---|---|---|
@@ -15,7 +15,7 @@ The framework reports a single **combined score** (Part A and Part B averaged) a
 | L4 | 75–85% | **Managed (advanced)** | Multi-platform tokens (CSS + Swift + Android). RFC process for changes. CI gates on bundle size, contrast, and a11y. Federated contribution model. Roadmap public. Adoption telemetry exists. |
 | L5 | 85%+ | **Optimised** | Industry-leading on multiple categories. Independently audited a11y. Open source. Multi-framework distribution. AI-native (MCP server, DESIGN.md, Code Connect). Telemetry-driven improvement loop. Trend data across ≥ 2 audits. |
 
-The tier is a coarse summary. Two systems at "L4" can look very different — one weak on a11y but strong on tooling, the other the reverse. Always read the per-category roll-up alongside the tier.
+The DSAF Level is a coarse summary. Two systems at "L4" can look very different — one weak on a11y but strong on tooling, the other the reverse. Always read the per-category roll-up alongside the DSAF Level.
 
 ---
 
@@ -33,7 +33,7 @@ A system is **enterprise-grade** if it passes **every** threshold below. These a
 | `A.3` Documentation | ≥ 65% |
 | Any single category | ≥ 40% |
 
-A system can score **90% combined** and still fail enterprise-grade if `A.8` Accessibility is at 73%. The framework reports both numbers — do not mistake the combined score for compliance.
+A system can score **90% combined** and still fail enterprise-grade if `A.8` Accessibility is at 73%. DSAF reports both numbers — do not mistake the combined score for compliance.
 
 ### Why these specific floors
 
@@ -49,6 +49,18 @@ A system can score **90% combined** and still fail enterprise-grade if `A.8` Acc
 - It does **not** replace a third-party audit. A WCAG-AA self-claim caps at 4/5; a vendor letter is still required for legal compliance.
 - It does **not** guarantee customer adoption. A system can pass enterprise-grade and have zero internal teams using it. Adoption is a separate journey.
 - It does **not** mean "L5". Many systems pass enterprise-grade at L4.
+
+## §2.5 Self-audit cap rule
+
+Every published self-audit cites a DSAF Level capped per the [self-audit publication policy](branding/self-audit-policy.md).
+The cap is:
+
+- L3 (Managed) maximum without third-party verification.
+- L4 (Managed advanced, verified) maximum with third-party verification.
+- L5 (Optimised, verified) maximum with third-party verification plus the L5 entry-gate stack.
+
+The cap applies to publication framing, not interior calibration scores.
+CyberSkill's worked example cites L3 under this rule while preserving its interior audit data for learning.
 
 ---
 
@@ -86,21 +98,21 @@ The biggest L4-to-L5 gates are **time** and **external action**, not engineering
 - **Trend data across ≥ 2 audits** — calendar-bound.
 - **Named customer adoption** — sales cycle 6–18 months minimum.
 
-A system can have *everything else* at L5 and still cap at ~88% because it lacks one of these gates. That's not a flaw — it's the framework being honest about what "industry-leading" actually means.
+A system can have *everything else* at L5 and still cap at ~88% because it lacks one of these gates. That's not a flaw — it's DSAF being honest about what "industry-leading" actually means.
 
 ---
 
-## §5 Tier transitions and the no-downgrade rule
+## §5 DSAF Level transitions and the no-silent-regression rule
 
-The framework's no-downgrade rule (per [`02-framework.md`](./02-framework.md) §4) means a signed audit's combined score cannot be lower than the prior audit's. **But the tier might still change** if you cross a threshold downward via a DYNAMIC rubric tightening.
+DSAF's no-silent-regression rule (per [`02-framework.md`](./02-framework.md) §4) means every regression in a signed audit is surfaced with a cause, tag, and approval path. **The DSAF Level might still change** if you cross a threshold downward via a DYNAMIC rubric tightening.
 
-Example: at audit N, your `A.8` was at 76% (above the enterprise floor of 75%). At audit N+1, the WCAG 3.0 floor moved up and `A.8.6` re-scored from 5 to 4 — your `A.8` category drops to 74%. **Combined score didn't regress** (other categories rose), so the audit signs. **But** you are no longer enterprise-grade because of the threshold breach.
+Example: at audit N, your `A.8` was at 76% (above the enterprise floor of 75%). At audit N+1, the WCAG 3.0 floor moved up and `A8.6` re-scored from 5 to 4; your `A.8` category drops to 74% and the row is tagged `D-RT`. **Combined score may still rise** because other categories improved. **But** you are no longer enterprise-grade because of the threshold breach.
 
-The framework reports this clearly: `enterprise_grade: false` in the frontmatter, with §3 calling out the specific threshold that broke. You don't get auto-downgraded on tier — you stay at whatever your combined score says — but you lose the enterprise-grade flag until you climb back above the floor.
+DSAF reports this clearly: `enterprise_grade: false` in the frontmatter, with §3 calling out the specific threshold that broke. You don't get auto-downgraded on DSAF Level — you stay at whatever your combined score says — but you lose the enterprise-grade flag until you climb back above the floor.
 
 ---
 
-## §6 Tier-aware language
+## §6 DSAF-Level-aware language
 
 When communicating internally or externally, prefer:
 
@@ -108,10 +120,10 @@ When communicating internally or externally, prefer:
 |---|---|
 | "We're at L4." | "We crossed L4 in audit `<date>` with `<combined %>` combined; A.8 at `<x>` is the gate to L5." |
 | "We're enterprise-grade." | "We pass all 7 enterprise-grade thresholds as of audit `<date>`." |
-| "We're industry-leading." | "We're at L5 Optimised on `<combined %>`. The remaining gap to a perfect score is `<external action>` — not framework theatre." |
-| "We're better than `<competitor>`." | The framework doesn't compare systems. Score yourself; let consumers compare. |
+| "We're industry-leading." | "We're at L5 Optimised on `<combined %>`. The remaining gap to a perfect score is `<external action>` — not DSAF theatre." |
+| "We're better than `<competitor>`." | DSAF doesn't compare systems. Score yourself; let consumers compare. |
 
-The framework refuses to produce a "we're better than X" claim. There is no leaderboard. Two systems at the same combined score can have entirely different shapes and trade-offs.
+DSAF refuses to produce a "we're better than X" claim. There is no leaderboard. Two systems at the same combined score can have entirely different shapes and trade-offs.
 
 ---
 

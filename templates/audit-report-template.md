@@ -6,8 +6,11 @@ agent: <model-id>
 operator: <name>
 signer: <name>
 parent_audit: YYYY-MM-DD | null
-framework: 00-audit-and-roadmap.md
-no_downgrade: true
+framework: docs/02-framework.md
+dsaf_25_score: 0.0
+no_silent_regression: true
+override_count: 0
+regression_count: 0
 pre_audit_score:
   part_a: 0.0
   part_b: 0.0
@@ -43,10 +46,10 @@ This document follows the audit flow defined in **`docs/00-audit-and-roadmap.md`
 ```
 BASELINE  →  RESEARCH  →  FINDINGS  →  AWAITING_REVIEW  ⏸  →  FIXING  →  VERIFYING  →  RE_AUDIT  →  SIGNED
                                               ↑                                            │
-                                              └─── ROLLBACK if any score regression ───────┘
+                                              └─── OVERRIDE or ROLLBACK if any regression ─┘
 ```
 
-The **no-downgrade rule** is hard: if §7 verification finds any FIXED-criterion regression, the agent rolls back the offending change automatically and re-runs §7 before advancing to §8. The audit cannot be `SIGNED` while any criterion sits below its pre-audit score.
+The **no-silent-regression rule** is hard: if §7 verification finds any regression, the agent surfaces it with a cause, tag, and override-or-rollback decision. The audit cannot be `SIGNED` while any regression is unresolved.
 
 ### Action tags
 
@@ -71,7 +74,7 @@ Inline tags drive routing:
 | Post-audit combined score | `y%` (filled by §8) |
 | Delta | `+z pp` |
 | Tier transition | `L? → L?` |
-| FIXED regressions | `0` (must remain 0 to sign) |
+| Regressions | `0 unresolved` (must remain 0 unresolved to sign) |
 | Findings | `N total` (`A` agent-fixable, `B` human-required) |
 | Industry updates flagged | `M` (filled by §2) |
 
@@ -169,13 +172,13 @@ approvals:
 
 ## §5 FIX — Plan `@Agent[fix]`
 
-**Goal**: sequence the approved fixes, declare rollback paths, prove no-downgrade safety pre-flight.
+**Goal**: sequence the approved fixes, declare rollback paths, prove no-silent-regression safety pre-flight.
 
 **Procedure**:
 
 1. Order fixes by `Rollback safe? = yes` first (low-risk batch), then by criterion impact.
 2. For each fix: declare exact files touched + revert command.
-3. Run a *dry-run* against the no-downgrade check: simulate the fix on a branch, re-score the affected criterion's neighbours, confirm none drop.
+3. Run a *dry-run* against the no-silent-regression check: simulate the fix on a branch, re-score the affected criterion's neighbours, and flag any possible score drop for override or rollback.
 
 **Plan block**:
 
@@ -201,14 +204,14 @@ A `BLOCKED` row pauses the cycle and routes to `@Human[decide]`.
 
 ## §7 FIX — Verification `@Agent[fix]`
 
-**Goal**: prove no FIXED-criterion regressed; prove the lift the plan promised actually landed.
+**Goal**: prove no regression is silent; prove the lift the plan promised actually landed.
 
 **Procedure**:
 
 1. Run all `scripts/check-*.mjs` — record pass/fail for each.
 2. Re-score each affected criterion using the §1 procedure.
 3. Compare against pre-audit score.
-4. **No-downgrade gate**: any criterion below its pre-audit score → automatic rollback of the offending fix → re-run §7 from step 1.
+4. **No-silent-regression gate**: any criterion below its pre-audit score → emit an override-log row, tag the §10 score row, and pause for approval or rollback if unresolved.
 
 **Verification block**:
 
@@ -220,7 +223,17 @@ A `BLOCKED` row pauses the cycle and routes to `@Human[decide]`.
 | `check-apca.mjs` | ✓ | 8/8 pass |
 | `pre-review.mjs` | ✓ | 0 banned phrases |
 | `build-design-md.mjs --check` | ✓ | DESIGN.md in sync |
-| FIXED-criterion regressions | `0` | required = 0 |
+| Unresolved regressions | `0` | required = 0 |
+
+### Override log
+
+| Criterion | Pre | Post | Delta | Cause | Approver | Date | Tag | Notes |
+|---|---:|---:|---:|---|---|---|---|---|
+| _none_ |  |  |  |  |  |  |  |  |
+
+Allowed cause values: `rubric-tightened`, `fix-side-effect`, `external-dependency-change`, `deliberate-policy-tradeoff`.
+Allowed tag values: `null`, `D-RT`, `OVRD-FSE`, `OVRD-EDC`, `OVRD-DPT`, `UNRESOLVED`.
+If any row's tag is `UNRESOLVED`, the audit must stay at `RE_AUDIT` and §9 remains empty.
 
 ---
 
@@ -230,7 +243,7 @@ A `BLOCKED` row pauses the cycle and routes to `@Human[decide]`.
 
 Update frontmatter `post_audit_score` block. Update §0 Snapshot.
 
-If `combined` decreased vs pre-audit → ROLLBACK the entire FIX batch (`git revert`), set status back to `AWAITING_REVIEW`, document the regression in §11.
+If `combined` decreased vs pre-audit, record a batch-level regression in §7. The human reviewer approves the trade-off or rolls back the batch.
 
 ---
 
@@ -251,22 +264,21 @@ Then append the row to your audit history register (typically `_audit/_history.m
 
 ## §10 Criteria scores (machine-readable)
 
-> 125 rows. Stable column order: `id | category | criterion | weight | pre_score | post_score | confidence | citations | notes`. Agents parse this directly. Fill from `00-audit-and-roadmap.md` §6 (Part A, 63 criteria) and §7 (Part B, 62 criteria).
+> 125 rows. Stable column order: `id | category | criterion | weight | pre_score | post_score | confidence | regression_tag | citations | notes`. Agents parse this directly. Fill from `docs/03-criteria-part-a.md` and `docs/04-criteria-part-b.md`.
 
 ### Part A — Design System (63 criteria)
 
-| ID | Category | Criterion | Weight | Pre | Post | Conf | Citations | Notes |
-|---|---|---|---|---|---|---|---|---|
-| A.1.1 | Foundations & Tokens | DTCG-conformant token sources | 2 | 4 | 4 | Hi | `tokens/*.tokens.json` | — |
-| A.1.2 | Foundations & Tokens | Multi-platform token output | 2 | 4 | 4 | Hi | `scripts/build-tokens.mjs` | 5 platforms |
-| ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| ID | Category | Criterion | Weight | Pre | Post | Conf | Regression tag | Citations | Notes |
+|---|---|---|---|---|---|---|---|---|---|
+| A1.1 | Foundations & Tokens | Color tokens | 2 | 4 | 4 | Hi | null | `tokens/*.tokens.json` | — |
+| ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
 
 ### Part B — UX (62 criteria)
 
-| ID | Category | Criterion | Weight | Pre | Post | Conf | Citations | Notes |
-|---|---|---|---|---|---|---|---|---|
-| B.1.1 | User Research | ResearchOps 8 pillars documented | 2 | 4 | 4 | Hi | **part-10 §3** | — |
-| ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| ID | Category | Criterion | Weight | Pre | Post | Conf | Regression tag | Citations | Notes |
+|---|---|---|---|---|---|---|---|---|---|
+| B1.1 | User Research | Method diversity | 2 | 4 | 4 | Hi | null | `docs/research.md` | — |
+| ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
 
 ### Category roll-ups
 
@@ -305,7 +317,7 @@ Questions deferred from this cycle. Each carries a target audit:
 | FIXED criterion | scored against an objective rubric; cannot drift |
 | DYNAMIC criterion | rescored quarterly as standards evolve |
 | Anchor immutable | invariant the agent must refuse to change |
-| No-downgrade rule | post-audit combined score must be ≥ pre-audit |
+| No-silent-regression rule | every score drop must be tagged, explained, and approved or rolled back |
 
 ---
 

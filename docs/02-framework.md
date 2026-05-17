@@ -1,6 +1,6 @@
-# 02 — Framework
+# 02 — DSAF framework spec
 
-The audit framework defines how a design system is scored, who does the work, and how the output is structured. This document is the contract the framework promises. Once you read it, you can run an audit.
+DSAF defines how a design system is scored, who does the work, and how the output is structured. This document is the contract DSAF promises. Once you read it, you can run an audit.
 
 ---
 
@@ -16,15 +16,15 @@ The audit measures the *current* state of the system. No fixes. The agent re-sco
 
 The audit *applies* the human-approved fixes from the SCAN cycle. The agent sequences the fixes, executes them with rollback paths declared up front, runs verification, re-scores affected criteria, and submits the final report for sign-off. Output: same file, sections §5 through §9 populated.
 
-**Never run FIX without SCAN.** The fix mode requires the findings table from SCAN to know what to do. The framework refuses if §4 is empty.
+**Never run FIX without SCAN.** The fix mode requires the findings table from SCAN to know what to do. DSAF refuses if §4 is empty.
 
-**Always pause between SCAN and FIX.** This is the human's gate to approve, reject, or defer each finding. Skipping it is a framework violation.
+**Always pause between SCAN and FIX.** This is the human's gate to approve, reject, or defer each finding. Skipping it is a DSAF Mode violation.
 
 ---
 
 ## §2 Actors
 
-The framework has exactly two actors. Every action is owned by one of them.
+DSAF has exactly two actors. Every action is owned by one of them.
 
 ### `@Agent` — autonomous work
 
@@ -69,12 +69,12 @@ Inline tags drive routing. Each finding row in §3 of the audit report is tagged
 ```
 BASELINE  →  RESEARCH  →  FINDINGS  →  AWAITING_REVIEW  ⏸  →  FIXING  →  VERIFYING  →  RE_AUDIT  →  SIGNED
                                               ↑                                            │
-                                              └─── ROLLBACK if any score regression ───────┘
+                                              └─── OVERRIDE or ROLLBACK if any regression ─┘
 ```
 
 ### `BASELINE` — `@Agent[research]`, mode `SCAN`
 
-The agent re-scores the 125 criteria from the current state of the design system. Every score has at least one citation; the framework rejects scores without cites. Output: §1 of the audit report fully populated, including the per-criterion table at §10.
+The agent re-scores the 125 criteria from the current state of the design system. Every score has at least one citation; DSAF rejects scores without cites. Output: §1 of the audit report fully populated, including the per-criterion table at §10.
 
 ### `RESEARCH` — `@Agent[research]`, mode `SCAN`
 
@@ -99,11 +99,11 @@ For each approved finding, the agent: writes the fix, declares the revert comman
 
 ### `VERIFYING` — `@Agent[fix]`, mode `FIX`
 
-The agent runs every check script and re-scores each affected criterion. The **no-downgrade gate** is hard: if any criterion sits below its pre-audit score, the agent automatically rolls back the offending fix and re-runs verification. The audit cannot transition to `RE_AUDIT` while any criterion is below baseline. Output: §7.
+The agent runs every check script and re-scores each affected criterion. The **no-silent-regression gate** is hard: if any criterion sits below its pre-audit score, the agent surfaces the regression in §7 with cause, tag, and a required override-or-rollback decision. The audit cannot transition to `SIGNED` while any regression is unresolved. Output: §7.
 
 ### `RE_AUDIT` — `@Agent[research]`, mode `FIX`
 
-The agent refreshes §10 with post-fix scores, recomputes the combined number, updates the frontmatter `post_audit_score` block. If the combined score *decreased* vs pre-audit, the entire FIX batch rolls back (full revert), the status returns to `AWAITING_REVIEW`, and the regression is logged in §3. Output: §8.
+The agent refreshes §10 with post-fix scores, recomputes the combined number, updates the frontmatter `post_audit_score` block. If the combined score *decreased* vs pre-audit, the drop is treated as a batch-level regression: §7 must contain an override or the reviewer must choose rollback. Output: §8.
 
 ### `SIGNED` — `@Human[approve]`, mode `FIX`
 
@@ -111,17 +111,19 @@ The human reviewer fills the §9 sign-off block (name, date, final score) and ap
 
 ---
 
-## §4 No-downgrade rule
+## §4 No-silent-regression rule
 
-The single hardest rule in the framework. It is the audit's stability guarantee.
+The audit's stability guarantee. Regressions are not forbidden; they are surfaced, attributed, and signed.
 
-**Statement.** A signed audit's combined score must be ≥ the pre-audit combined score. No FIXED criterion may sit below its pre-audit score at sign-off. Any regression triggers automatic rollback.
+**Statement.** When a criterion's post-audit score is below its pre-audit score, the audit surfaces the regression in §7 Verification with the criterion ID, pre- and post-audit scores, regression magnitude, cause category, and an explicit `@Human[approve]` override comment or a rollback decision. The audit refuses to transition from `RE_AUDIT` to `SIGNED` until the override lands or the regressing fix is rolled back.
 
-**Why it's hard.** Without this rule, a `FIX` cycle that "improves five things and regresses two" can still net positive on combined score — masking the regressions. The regressions then surface in a future audit with no clear authorship trail. The no-downgrade rule forces the cycle to be additive: you only land changes that don't break anything.
+**Cause categories.** Every override uses one of: `rubric-tightened` (DYNAMIC only), `fix-side-effect`, `external-dependency-change`, or `deliberate-policy-tradeoff`. See [`regression-policy.md`](./regression-policy.md) for the long-form policy and examples.
 
-**Implementation.** §7 verification runs every check script and re-scores each affected criterion. If any criterion drops, the agent identifies the offending fix from the §6 execution log and reverts it using the revert command declared in §5. The cycle then re-enters verification. Loop until verification passes or the agent runs out of fixes to revert (in which case the audit goes back to `AWAITING_REVIEW` for human re-planning).
+**Why it's hard.** Without this rule, a `FIX` cycle that "improves five things and regresses two" can still net positive on combined score, masking the regressions. The no-silent-regression rule preserves the audit trail: every drop has a cause, a tag, and a human decision.
 
-**Caveat.** The no-downgrade rule applies only to **FIXED** criteria. **DYNAMIC** criteria are allowed to regress *if the rubric tightened* (e.g., the WCAG floor moved). DYNAMIC regressions are noted but not alarmed.
+**Implementation.** §7 verification runs every check script and re-scores each affected criterion. If any criterion drops, the agent emits a draft `override_log` entry with the criterion ID, scores, suspected cause, and rationale; the audit pauses at `RE_AUDIT (awaiting override)`. The human reviewer either approves the override or chooses `@Human[rollback]`, after which the agent re-runs verification.
+
+**DYNAMIC rubric tightening.** DYNAMIC criteria may regress without a named approver only when the cause is `rubric-tightened` and the new external rubric is cited. The §10 table tags these rows as `D-RT`. FIXED criteria always require override or rollback.
 
 ---
 
@@ -144,7 +146,7 @@ Every criterion scores on the same scale:
 
 Every criterion is tagged one or the other:
 
-- **FIXED** — the rubric is anchored against an objective state of the world (does the token file exist? does the SC pass? does the API have semver discipline?). FIXED criteria can only move in one direction over time per the no-downgrade rule.
+- **FIXED** — the rubric is anchored against an objective state of the world (does the token file exist? does the SC pass? does the API have semver discipline?). FIXED regressions always require an override or rollback under the no-silent-regression rule.
 - **DYNAMIC** — the rubric is anchored against an evolving industry standard (WCAG version, DTCG schema version, MCP spec). DYNAMIC criteria are rescored quarterly even when nothing in the system changes, because the world moves.
 
 ### Confidence
@@ -181,7 +183,7 @@ A system is **enterprise-grade** if it passes every threshold below. These are f
 | A.3 Documentation | ≥ 65% |
 | Any single category | ≥ 40% |
 
-A system can score 90% combined and still fail enterprise-grade if A.8 is at 73%. The framework reports both numbers.
+A system can score 90% combined and still fail enterprise-grade if A.8 is at 73%. DSAF reports both numbers.
 
 ---
 
@@ -199,7 +201,7 @@ The audit produces one file: `audit-report-{YYYY-MM-DD}.md`. The full template i
 | §4 SCAN — Sign-off ⏸ | approve / reject / defer | `@Human[approve]` |
 | §5 FIX — Plan | sequence + revert paths | `@Agent[fix]` |
 | §6 FIX — Execution | per-step result | `@Agent[fix]` |
-| §7 FIX — Verification | check scripts + no-downgrade gate | `@Agent[fix]` |
+| §7 FIX — Verification | check scripts + no-silent-regression gate | `@Agent[fix]` |
 | §8 RE_AUDIT — Final score | post-fix scores + delta | `@Agent[research]` |
 | §9 SIGN-OFF | human approval, register row | `@Human[approve]` |
 | §10 Criteria scores | full 125-row table | `@Agent` |
@@ -211,9 +213,9 @@ Sections 10 and 11 are machine-readable: agents parse them directly to compute d
 
 ---
 
-## §7 Hard rules (the framework's invariants)
+## §7 Hard rules (the DSAF invariants)
 
-These cannot be relaxed by an agent. The framework refuses any audit that violates them.
+These cannot be relaxed by an agent. DSAF refuses any audit that violates them.
 
 1. **Never fabricate scores.** Every score is justified by a quote or line-ref, or it is `null + Lo confidence` and flagged for human review.
 2. **Never average away missing data.** A criterion with no evidence is scored `0` with explicit "no evidence found", not "median of category".
@@ -222,7 +224,7 @@ These cannot be relaxed by an agent. The framework refuses any audit that violat
 5. **Always cite the doctrine, not training data.** External benchmarks ("Carbon ships 50+ components") need a verifiable URL or year, or they're marked `external benchmark — needs verification`.
 6. **Always preserve calibration room.** A human Co-Auditor scores 5+ randomly-sampled criteria independently before signing. Differences ≥ 2 points trigger a discussion before the audit signs.
 7. **Always pause between SCAN and FIX.** No exceptions.
-8. **Always honour the no-downgrade rule.** Hard gate, automatic rollback.
+8. **Always honour the no-silent-regression rule.** Surface regressions in §7 with cause and approver; the audit refuses to sign until each regression is overridden or rolled back.
 9. **Never silently rewrite anchor immutables.** A system's brand anchors (slogan, primary colour, fonts, voice principles) are out-of-scope for any agent fix. They require an A2 RFC.
 
 ---
@@ -231,7 +233,7 @@ These cannot be relaxed by an agent. The framework refuses any audit that violat
 
 The agent **must refuse to run** if any of the following hold:
 
-1. The framework path cannot be confirmed.
+1. The DSAF doctrine path cannot be confirmed.
 2. The mapped doctrine parts are missing or empty.
 3. The output file cannot be written.
 4. The operator's instructions conflict with §7 (e.g., "score everything 4+").
@@ -259,7 +261,7 @@ Calibration may be *waived* for the very first audit baseline, when there is no 
 When the design system ships a new release:
 
 1. The audit is re-run in `SCAN` mode immediately after release.
-2. DYNAMIC criteria where the rubric language has changed (per the framework's annual review) are rescored against the new language.
+2. DYNAMIC criteria where the rubric language has changed (per the DSAF annual review) are rescored against the new language.
 3. Trend lines for FIXED criteria are produced (`_trends.md`, generated from `_history.md`).
 4. The portable `DESIGN.md` rules-file (if used) is regenerated.
 
@@ -267,14 +269,14 @@ When the design system ships a new release:
 
 ## §11 Customisation hooks
 
-The framework is opinionated; the criteria are not sacred. See [`09-customising.md`](./09-customising.md) for:
+DSAF is opinionated; the criteria are not sacred. See [`09-customising.md`](./09-customising.md) for:
 
 - Re-weighting categories for your industry.
 - Adding criteria for vertical-specific concerns (HR Tech, Fintech, Healthcare, etc.).
 - Encoding your brand's anchor immutables.
 - Adding new check scripts.
 
-The file is the framework. If your audit doesn't match the file, change the file and ship it as a fork.
+The DSAF Criteria file is the source of truth. If your audit doesn't match the file, change the file and ship it as a fork.
 
 ---
 

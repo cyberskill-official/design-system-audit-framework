@@ -1,10 +1,10 @@
-# Services — professional audits + implementation by CyberSkill
+# Services — professional DSAF audits + implementation by CyberSkill
 
 > The framework is **free, open-source, MIT licensed**. Most teams use it self-serve and never need to engage us.
 >
 > When professional engagement is the right call — for the audit itself, for the implementation that follows, or for ongoing maintenance — CyberSkill (the framework's authoring practice) offers four service tiers. This page explains them and how to engage.
 
-The framework's value proposition stands on its own: 125 criteria, vendor-neutral, agent-pairable, MIT licensed. You can audit your design system without engaging any vendor. Many teams do, and that is the right call when you have time, in-house skill, and a stable system.
+DSAF's value proposition stands on its own: 125 criteria, vendor-neutral, agent-pairable, MIT licensed. You can audit your design system without engaging any vendor. Many teams do, and that is the right call when you have time, in-house skill, and a stable system.
 
 When those three conditions aren't all true, the four services below exist.
 
@@ -16,7 +16,7 @@ A signed audit cycle on your design system using this framework, run by the fram
 
 **What you get:**
 
-- A signed `audit-report-{date}.md` with full per-criterion scores, citations, and tier rating (L0–L5).
+- A signed `audit-report-{date}.md` with full per-criterion scores, citations, and DSAF Level.
 - A phased improvement plan with "done when" conditions per step (no calendar dates — actionable at your team's pace).
 - A 1-hour walkthrough call to brief your team on findings.
 - Optional public case study with your logo on the framework repo's `examples/` folder (entirely opt-in).
@@ -40,7 +40,7 @@ We build the design system per the audit's improvement plan.
 
 **What you get:**
 
-- A working design system: tokens, components, documentation, governance, CI gates — all to the framework's L4-or-better standard.
+- A working design system: tokens, components, documentation, governance, CI gates, and an audit trail ready for the next DSAF run.
 - Multi-package npm distribution (`@your-org/{tokens, primitives, react/vue/svelte, …}`).
 - Storybook documentation site, deployed.
 - Hand-off to your in-house team, including 30 days of post-handover support.
@@ -64,7 +64,7 @@ Quarterly re-audits, ongoing system improvements, and on-call advisory for your 
 - Quarterly DYNAMIC re-score of your system using the framework — at the cadence the framework specifies, run by us.
 - Annual full audit with human Co-Auditor calibration (per framework §9).
 - 4–8 hours/month of on-call advisory (Slack / email / scheduled calls) for your team's design-system questions.
-- First-look at new framework features and vertical packs as they ship.
+- First-look at new DSAF features and vertical packs as they ship.
 
 **Best for:**
 
@@ -100,14 +100,16 @@ Pre-built design-system kits for specific industries: HR Tech, Fintech, Healthca
 
 ## Why CyberSkill specifically
 
-We built this framework because we needed it for our own design system. CyberSkill is an **enterprise software solutions consultancy headquartered in Ho Chi Minh City** that has spent the past year hardening our internal design system to the framework's L5 Optimised tier. The case study in [`examples/cyberskill-design-system/`](./examples/cyberskill-design-system/) is our own work — score, gaps, improvement plan, all public.
+We authored DSAF because we needed a repeatable way to audit design-system maturity without hiding behind taste.
+CyberSkill is an enterprise software solutions consultancy headquartered in Ho Chi Minh City.
+The case study in [`examples/cyberskill-design-system/`](./examples/cyberskill-design-system/) is our worked example: an L3-cited self-audit with interior scores preserved for learning under the [self-audit publication policy](./docs/branding/self-audit-policy.md).
 
 What this means for you:
 
 | If you engage us | You get |
 |---|---|
-| The framework's authoring practice, not a vendor implementing a checklist | Deep understanding of every criterion, the FIXED/DYNAMIC distinction, and calibration discipline |
-| A practice that already passes its own audit at 84.6% (L5 Optimised) | We've done the work; we know the trade-offs |
+| DSAF's authoring practice, not a vendor implementing a checklist | Deep understanding of every criterion, the FIXED/DYNAMIC distinction, and calibration discipline |
+| A practice that publishes its own worked example with the public cap applied | We know the trade-offs and do not ask you to trust an unverified top-tier self-claim |
 | Vietnamese-headquartered with global delivery experience | Async-first across US, EU, APAC, and AU timezones; Vietnamese cost basis without compromise on calibration |
 | Senior consultants on every paid engagement | Audits are led by practitioners with direct authorship of the framework, never handed off mid-engagement |
 

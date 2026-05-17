@@ -1,0 +1,17 @@
+{
+  "name": "design-system-audit-framework",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check:links": "node scripts/check-links.mjs",
+    "check:coverage": "node scripts/check-coverage.mjs",
+    "check:bundle-size": "node scripts/check-bundle-size.mjs",
+    "check:doc-freshness": "node scripts/check-doc-freshness.mjs",
+    "check:apca": "node scripts/check-apca.mjs",
+    "integ:storybook": "node scripts/storybook-addon-runner.mjs",
+    "integ:tokens": "node scripts/tokens-studio-validator.mjs",
+    "integ:zeroheight": "node scripts/zeroheight-reader.mjs",
+    "verify": "node scripts/dsaf-verify.mjs"
+  }
+}

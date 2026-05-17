@@ -7,7 +7,7 @@ Every criterion has three rubric anchors:
 - **3** — built and shipped
 - **5** — industry-leading; measured; externally validated
 
-A criterion may be tagged **FIXED** (objective rubric, cannot drift over time per the no-downgrade rule) or **DYNAMIC** (rescored quarterly as standards evolve).
+A criterion may be tagged **FIXED** (objective rubric, regressions require an explicit no-silent-regression override) or **DYNAMIC** (rescored quarterly as standards evolve).
 
 For genericisation: replace `@your-org/*` with your own npm scope, replace folder paths with whatever your repo uses, and replace doctrine "Part N" references with whatever your doctrine pages are called. The criteria themselves are framework-neutral.
 

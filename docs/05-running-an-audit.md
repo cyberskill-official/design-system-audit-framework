@@ -13,7 +13,7 @@ Before invoking the agent:
 3. **Confirm prerequisites:**
    - The framework folder is accessible (you can read this file).
    - The target design system folder is accessible (the agent can read its docs / tokens / source).
-   - The previous audit report (if any) is accessible (used for delta + no-downgrade gate).
+   - The previous audit report (if any) is accessible (used for delta + no-silent-regression gate).
    - The output folder exists and is writable.
 4. **Pick a Co-Auditor.** A human who will independently re-score 5+ random criteria. Calibration may be waived for the very first audit; from the second onward it's not waivable.
 
@@ -77,8 +77,8 @@ The agent will:
 
 1. **Plan** (§5) — sequence approved fixes, declare revert command per fix, run a dry-run if possible.
 2. **Execute** (§6) — apply each fix; log per-step result.
-3. **Verify** (§7) — run all `scripts/check-*.mjs`; re-score affected criteria; **enforce the no-downgrade gate** (any FIXED-criterion regression triggers automatic rollback of the offending fix).
-4. **Re-audit** (§8) — refresh §10 with post-fix scores; recompute combined score; if combined decreased vs pre-audit, the entire FIX batch rolls back and `status` returns to `AWAITING_REVIEW`.
+3. **Verify** (§7) — run all `scripts/check-*.mjs`; re-score affected criteria; enforce the no-silent-regression gate (any regression is surfaced with a tag, cause, and override-or-rollback decision).
+4. **Re-audit** (§8) — refresh §10 with post-fix scores; recompute combined score; if combined decreased vs pre-audit, the drop is handled as a batch-level regression in §7.
 
 The agent **stops** at §9 with `status: RE_AUDIT`. The post-fix report is on disk.
 
@@ -128,7 +128,7 @@ Each appended audit row in `_history.md` is the single source of truth for "wher
 | `Lo` confidence on > 25% of criteria | Agent should refuse and emit `status: REFUSED`. If it doesn't, the inputs are wrong — the agent is hallucinating evidence. Stop and check the doctrine paths. |
 | Verification keeps failing | Reverse the order of reverts (LIFO). If still failing, full rollback and re-enter `AWAITING_REVIEW` — the FIX plan was wrong. |
 | You disagree with a score | Add a row to §3 with `@Human[decide]`, propose the corrected score with a citation, log the disagreement in calibration notes. Don't silently overwrite the agent's score. |
-| Combined score went down | The framework rolled back the FIX batch. Read the regression note in §3, file a new finding, plan smaller fixes. |
+| Combined score went down | Treat it as a batch-level regression. Add an override with cause and approver, or roll back the batch and plan smaller fixes. |
 | Audit takes too long | First audit is always slowest (4–8 hours for doctrine; 1–2 days with implementation). Subsequent audits are mostly DYNAMIC re-scores; budget 1–2 hours. If a cycle drags on, scope down: skip the FIX cycle and just SCAN this round. |
 
 ---

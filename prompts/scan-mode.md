@@ -13,7 +13,7 @@ You are running a **SCAN-mode design system audit** using the Design System Audi
 - **Criteria Part B:** `<framework-path>/docs/04-criteria-part-b.md` (10 categories, 62 criteria)
 - **Audit report template:** `<framework-path>/templates/audit-report-template.md`
 - **The design system being audited:** `<design-system-path>` — read its docs, tokens, and (if present) implementation
-- **Previous audit (if any):** `<previous-audit-path>` — used for delta computation and the no-downgrade gate
+- **Previous audit (if any):** `<previous-audit-path>` — used for delta computation and the no-silent-regression gate
 
 If any of these inputs are missing, refuse to run and explain what's needed.
 

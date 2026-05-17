@@ -15,7 +15,7 @@
 //
 // Zero-dep Node ESM. Implements the published APCA-W3 0.1.9 algorithm.
 
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -23,6 +23,22 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
 const TOKENS = resolve(ROOT, 'tokens/colour.tokens.json');
 const OUT = resolve(ROOT, 'docs/_audit/apca-contrast.json');
+
+mkdirSync(dirname(OUT), { recursive: true });
+
+if (!existsSync(TOKENS)) {
+  const summary = {
+    generated: new Date().toISOString(),
+    status: 'not-applicable',
+    reason: 'No tokens/colour.tokens.json file in this repository; run this check inside a tokenized design-system repo.',
+    pairings: [],
+    totals: { total: 0, pass: 0, fail: 0, error: 0 },
+  };
+  writeFileSync(OUT, JSON.stringify(summary, null, 2) + '\n');
+  console.log('[check-apca] No tokens/colour.tokens.json; wrote not-applicable result.');
+  console.log('  Output: docs/_audit/apca-contrast.json');
+  process.exit(0);
+}
 
 // ─── APCA-W3 (sRGB) — published 0.1.9 reference implementation ─────────
 
@@ -147,7 +163,6 @@ const summary = {
   },
 };
 
-mkdirSync(dirname(OUT), { recursive: true });
 writeFileSync(OUT, JSON.stringify(summary, null, 2) + '\n');
 
 console.log(`[check-apca] WCAG 3.0 APCA contrast — ${results.length} canonical pairings.`);

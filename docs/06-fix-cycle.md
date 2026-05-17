@@ -1,6 +1,6 @@
 # 06 — The FIX cycle in detail
 
-The FIX cycle is the framework's stability guarantee. It is the only stage where the system is *modified*. Every safeguard the framework offers — no-downgrade rule, automatic rollback, atomic verification — lives in this cycle.
+The FIX cycle is the framework's stability guarantee. It is the only stage where the system is *modified*. Every safeguard the framework offers — no-silent-regression rule, override logging, optional rollback, atomic verification — lives in this cycle.
 
 If you skip understanding this file, the worst case is that an agent applies a fix that breaks something the verification scripts didn't catch, and your `_history.md` register shows a regression in a future audit with no clear authorship trail. This file exists to prevent that.
 
@@ -11,7 +11,7 @@ If you skip understanding this file, the worst case is that an agent applies a f
 ```
 AWAITING_REVIEW  →  FIXING  →  VERIFYING  →  RE_AUDIT  →  SIGNED
        ↑                                         │
-       └─── automatic ROLLBACK on score drop ────┘
+       └─── OVERRIDE or ROLLBACK on score drop ─┘
 ```
 
 Five named states, each with a clear precondition and postcondition.
@@ -53,15 +53,9 @@ The order matters: the agent applies `Rollback safe? = yes` rows first (low-risk
 1. Every `scripts/check-*.mjs` runs end-to-end.
 2. Every criterion that any fix touched is **re-scored** from current evidence. (Not just the ones the fix targeted — every criterion that maps to any modified file.)
 3. The re-scored values are compared against pre-audit scores in the frontmatter `pre_audit_score` block.
-4. **No-downgrade gate** — if any FIXED-criterion sits below its pre-audit score, the agent automatically:
-   - Identifies the offending fix from the §6 execution log (using the `Files modified` column).
-   - Runs the revert command declared in §5 for that fix.
-   - Marks the §6 row `ROLLED_BACK` with the regression evidence.
-   - Re-runs verification from step 1.
+4. **No-silent-regression gate** — if any criterion sits below its pre-audit score, the agent writes a §7 `override_log` draft with criterion, pre-score, post-score, delta, suspected cause, and tag. The audit pauses at `RE_AUDIT (awaiting override)` until `@Human[approve]` signs the override or chooses `@Human[rollback]`.
 
-The loop continues until verification passes or there are no more fixes to revert. In the latter case, `status` is set back to `AWAITING_REVIEW`, the regression is documented in §3 as a new finding, and the agent stops.
-
-**Postcondition for transition to `RE_AUDIT`:** all check scripts pass, no FIXED-criterion regression, §7 verification block fully populated.
+**Postcondition for transition to `RE_AUDIT`:** all check scripts pass and every regression is either tagged `D-RT`, overridden with approver notes, or rolled back.
 
 ### `RE_AUDIT`
 
@@ -71,12 +65,10 @@ The loop continues until verification passes or there are no more fixes to rever
 
 **What happens:** the agent re-scores every criterion (not just the affected ones) using the §1 procedure, refreshes §10 in full, recomputes category roll-ups + Part A% / Part B% / combined%, and updates the frontmatter `post_audit_score` block.
 
-If `post_audit_score.combined < pre_audit_score.combined`, the agent:
-- Reverts the entire FIX batch (`git revert <SHA>` for each fix in §6).
-- Sets `status: AWAITING_REVIEW`.
-- Documents the net regression in §3 as a "FIX-batch-level regression" finding.
+If `post_audit_score.combined < pre_audit_score.combined`, the agent records a batch-level regression in §7.
+The human reviewer chooses whether to approve the trade-off with notes or roll back the batch.
 
-This is the second backstop. Even if individual criterion scores didn't regress, a perverse interaction between fixes could lower the combined score (e.g., a fix that lifted one DYNAMIC criterion by +1 but lowered three FIXED criteria by -1 each due to an unintended consequence). The whole-batch check catches this.
+This is the second backstop. Even if individual criterion scores look reasonable, a perverse interaction between fixes can lower the combined score. The whole-batch check catches this and makes the decision explicit.
 
 **Postcondition for transition to `SIGNED`:** §8 final score block is populated; combined score did not decrease.
 
@@ -101,13 +93,13 @@ The reviewer also appends a row to `_history.md` with the same scores from §0 S
 
 ---
 
-## §2 No-downgrade rule — full specification
+## §2 No-silent-regression rule — full specification
 
 The single most important guarantee the framework makes.
 
 ### What it means
 
-After a FIX cycle signs (status: SIGNED), every FIXED-criterion has a score ≥ its pre-audit score. No exceptions.
+After a FIX cycle signs (status: SIGNED), every score drop is visible in §7 and §10. There are no silent regressions.
 
 ### Why it's hard to enforce
 
@@ -116,12 +108,12 @@ Without explicit support, an LLM agent applying multiple fixes can produce silen
 The framework prevents this with three layers:
 
 1. **Per-fix partial verification** — after each fix in §6, the affected criterion's check scripts run. If they fail, the row is `BLOCKED` immediately, before the cycle moves on.
-2. **Whole-cycle FIXED gate** — at `VERIFYING`, every FIXED criterion is rescored. Any regression below baseline triggers automatic rollback of the offending fix, identified from §6.
-3. **Whole-cycle combined gate** — at `RE_AUDIT`, even if individual scores held, the combined % is checked. A combined drop triggers full-batch revert.
+2. **Whole-cycle regression gate** — at `VERIFYING`, affected criteria are rescored. Any drop creates an override-log row or a rollback decision.
+3. **Whole-cycle combined gate** — at `RE_AUDIT`, even if individual scores held, the combined % is checked. A combined drop becomes a batch-level override or rollback.
 
 ### What's *not* gated
 
-**DYNAMIC** criteria can regress *if the rubric tightened* (e.g., the WCAG floor moved). The framework notes the regression in §11 research log but does not roll back. This is intentional: rubric tightening is a global event the agent didn't cause.
+**DYNAMIC** criteria can regress without an approver only if the rubric tightened. The framework tags those rows `D-RT`, cites the external change, and keeps the audit trail intact.
 
 **Calibration drift** — if a human Co-Auditor scores a criterion 1 point lower than the agent did in the prior audit, that's a calibration delta, not a regression. The framework expects you to log it in §9 and continue.
 
@@ -129,7 +121,7 @@ The framework prevents this with three layers:
 
 1. **Reverse the order of reverts (LIFO).** If three fixes were applied in sequence A → B → C and verification fails, revert C first; if verification still fails, revert B; etc.
 2. **Inspect the §6 log.** Look for fixes that touched files unrelated to their target criterion. Those are the most likely culprits.
-3. **Full rollback.** If individual reverts don't help, run `git reset --hard <pre-fix-SHA>` on the design system and re-enter `AWAITING_REVIEW` with a "FIX plan was wrong" finding in §3.
+3. **Full rollback.** If individual reverts don't help, roll back the batch using the declared revert commands and re-enter `AWAITING_REVIEW` with a "FIX plan was wrong" finding in §3.
 4. **Plan smaller next time.** If the failed batch had > 5 fixes, split future batches into 2–3 smaller cycles.
 
 ---
@@ -161,8 +153,8 @@ If any of the following occur, the agent **stops** and waits for human input:
 |---|---|
 | §4 `approvals:` block is empty | Refuse with status `AWAITING_REVIEW` |
 | A `BLOCKED` row in §6 | Pause; route to `@Human[decide]` |
-| No-downgrade gate keeps failing after exhausting reverts | Set `status: AWAITING_REVIEW`; log finding |
-| Combined score drops in §8 | Full FIX-batch revert; set `status: AWAITING_REVIEW` |
+| No-silent-regression gate finds an unresolved drop | Set `status: RE_AUDIT (awaiting override)`; surface the override-log draft |
+| Combined score drops in §8 | Record batch-level regression; human approves override or rolls back |
 | > 25% of re-scored criteria would be `Lo` confidence | Refuse to update §10; emit a calibration alert |
 
 The framework prefers a paused audit to a silently broken system. Stops are not failures — they are the framework working as designed.

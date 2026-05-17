@@ -1,11 +1,16 @@
-# CyberSkill Design System — Improvement Plan to push the audit score as high as possible
+# CyberSkill Design System — Worked Example Audit (L3 self-audit, uncertified)
 
 > Phase-based, **step-by-step actions** (no calendar timelines — execute at the team's natural pace).
 
-**Current state:** Combined **84.6%** (Part A 87.2% / Part B 82.0%) → **L5 Optimised** (per [`audit-report-2026-04-27.md`](./audit-report-2026-04-27.md)).
+**Cited public Level:** **L3 (Managed) — self-audit, uncertified**.
+Interior calculation per rubric remains in [`audit-report-2026-04-27.md`](./audit-report-2026-04-27.md) and the history register.
+The public cap is set by the [self-audit publication policy](../../docs/branding/self-audit-policy.md).
 
-**Realistic ceiling without external action:** ~88–90% (a few easy wins remain).
-**Realistic ceiling with full execution of Phases 6–8:** **~95%**.
+This document is a complete worked example of a DSAF self-audit.
+Use it to understand the SCAN + FIX flow, not as a claim that CyberSkill has independent top-tier verification.
+
+**Realistic ceiling without external action:** capped publicly at L3 until verification.
+**Realistic ceiling with full execution of Phases 6–8:** higher interior scores may be possible, but public claims still follow the cap policy.
 **Theoretical 100% gate:** bounded by external action (third-party audits, conference acceptance, multi-year trend data, Fortune-500 named adopters). Not pursuing 100% directly — pursuing the *outcomes* a high score signals.
 
 ---
@@ -26,7 +31,7 @@ Phases run mostly sequentially but **W1, W2, W3** within Phase 6 can overlap. Ph
 ## Phase 6 — Doctrine consolidation + public release
 
 **Goal:** doctrine is fully self-contained, audit flow is enforced single-file, the system ships publicly so adoption telemetry can flow.
-**Audit lift:** +5 to +7 pp combined (84.6% → ~89–92%).
+**Audit lift:** +5 to +7 pp interior score after verification evidence lands.
 
 ### Wave 1 — Doctrine consolidation (mostly done)
 
@@ -35,7 +40,7 @@ Phases run mostly sequentially but **W1, W2, W3** within Phase 6 can overlap. Ph
 3. **Consolidate 2026-04-27 audit** ✅ DONE — [`audit-report-2026-04-27.md`](./audit-report-2026-04-27.md).
 4. **Standalone DESIGN.md generator** ✅ DONE — `scripts/build-design-md.mjs` reads only `docs/` + `tokens/`.
 5. **Reference cleanup** ✅ DONE — 1,094 bare-Part refs linkified, 36 audit-history attribution lines stripped.
-6. **Update audit framework** ✅ DONE — §10 reflects SCAN/FIX modes + `@Agent`/`@Human` actors + no-downgrade rule.
+6. **Update DSAF audit flow** ✅ DONE — §10 reflects SCAN/FIX modes + `@Agent`/`@Human` actors + no-silent-regression rule.
 7. **Last-mile reference cleanup** — sweep the 42 remaining external-folder mentions in part files: keep illustrative file paths inside code blocks, move prose pointers to a "Cross-references" section at each part's tail.
    - Done when: `grep -rE '\b(packages/|scripts/|src/|Templates/|locales/|lints/|RFCs/|_audit/|public/)' docs/part-*.md` returns ≤ 30 hits, all inside fenced code blocks.
 
@@ -165,14 +170,14 @@ These criteria sit at scores 4 in the current audit. They lift to 5 *naturally* 
 
 ---
 
-## Combined trajectory
+## Interior-score trajectory (not public claim)
 
-| Phase | Combined score | Tier |
+| Phase | Interior trajectory | Public cited tier |
 |---|---|---|
-| Now (2026-04-27) | 84.6% | L5 Optimised |
-| End of Phase 6 (doctrine + public release + first adoption) | ~89–92% | L5 deep |
-| End of Phase 7 (independent audits + community + measured adoption) | ~92–95% | L5 industry-leading |
-| End of Phase 8 (doctrine-as-product + talent flywheel + trend data) | ~95%+ | L5 sustained |
+| Now (2026-04-27) | see audit report interior table | L3 capped |
+| End of Phase 6 (doctrine + public release + first adoption) | higher if evidence lands | L3 until verification |
+| End of Phase 7 (independent audits + community + measured adoption) | higher if evidence lands | L4/L5 only if cap-lift evidence exists |
+| End of Phase 8 (doctrine-as-product + talent flywheel + trend data) | higher if trend data lands | follows cap policy |
 
 **The remaining ~5%** to 100% sits in: the WCAG vendor's signature, the conference acceptance, the first 10 external contributors, the second annual audit's trend line, and the first Fortune-500 named customer. Money + time + execution + a small dose of luck.
 

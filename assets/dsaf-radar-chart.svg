@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="720" viewBox="0 0 900 720" role="img" aria-labelledby="title desc">
+  <title id="title">DSAF category radar chart template</title>
+  <desc id="desc">A radar chart template showing ten DSAF category axes.</desc>
+  <rect width="900" height="720" fill="#fbfaf7"/>
+  <text x="60" y="70" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="700" fill="#1f2a44">DSAF Radar</text>
+  <g transform="translate(450 380)" stroke="#c7d2e5" fill="none">
+    <circle r="70"/><circle r="140"/><circle r="210"/><circle r="280"/>
+    <g stroke="#8da0bf">
+      <line x1="0" y1="0" x2="0" y2="-280"/>
+      <line x1="0" y1="0" x2="164.6" y2="-226.5"/>
+      <line x1="0" y1="0" x2="266.3" y2="-86.5"/>
+      <line x1="0" y1="0" x2="266.3" y2="86.5"/>
+      <line x1="0" y1="0" x2="164.6" y2="226.5"/>
+      <line x1="0" y1="0" x2="0" y2="280"/>
+      <line x1="0" y1="0" x2="-164.6" y2="226.5"/>
+      <line x1="0" y1="0" x2="-266.3" y2="86.5"/>
+      <line x1="0" y1="0" x2="-266.3" y2="-86.5"/>
+      <line x1="0" y1="0" x2="-164.6" y2="-226.5"/>
+    </g>
+    <polygon points="0,-210 125,-172 200,-65 185,60 115,158 0,190 -115,158 -185,60 -200,-65 -125,-172" fill="#d28b00" opacity="0.28" stroke="#d28b00" stroke-width="4"/>
+  </g>
+  <g font-family="Inter, Arial, sans-serif" font-size="18" fill="#1f2a44">
+    <text x="430" y="84">Tokens</text><text x="590" y="160">Components</text><text x="722" y="316">Docs</text><text x="728" y="505">Governance</text><text x="560" y="650">Tooling</text><text x="405" y="690">A11y</text><text x="190" y="650">Research</text><text x="78" y="505">IA/UX</text><text x="70" y="316">Performance</text><text x="205" y="160">Trust</text>
+  </g>
+</svg>

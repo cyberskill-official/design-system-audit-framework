@@ -63,6 +63,24 @@ function walkSrc(dir) {
   return out;
 }
 
+if (!existsSync(PKGS)) {
+  mkdirSync(dirname(OUT), { recursive: true });
+  const summary = {
+    generated: new Date().toISOString(),
+    status: 'not-applicable',
+    reason: 'No packages/ directory in this repository; run this check inside a packaged design-system repo.',
+    total: {},
+    any_over_budget: false,
+  };
+  writeFileSync(OUT, JSON.stringify(summary, null, 2) + '\n');
+  if (opts.json) process.stdout.write(JSON.stringify(summary, null, 2) + '\n');
+  else {
+    console.log('[check-bundle-size] No packages/ directory; wrote not-applicable result.');
+    console.log('Output: docs/_audit/bundle-size.json');
+  }
+  process.exit(0);
+}
+
 const packages = readdirSync(PKGS).filter((p) => existsSync(resolve(PKGS, p, 'package.json')));
 
 const results = {};

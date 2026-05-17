@@ -26,7 +26,7 @@ If you're auditing a generic web design system, the defaults work. Skip this fil
 | Layer | Why locked |
 |---|---|
 | **Two modes (`SCAN`, `FIX`)** | The state machine is the framework's stability guarantee |
-| **No-downgrade rule** | Removing this means the FIX cycle can silently regress; defeats the purpose |
+| **No-silent-regression rule** | Removing this means the FIX cycle can silently regress; defeats the purpose |
 | **The §4 human pause** | Removing this means agents can apply unauthorised fixes |
 | **0–5 scoring scale** | Changing changes every prior audit's comparability |
 | **FIXED vs DYNAMIC distinction** | The annual review depends on this |

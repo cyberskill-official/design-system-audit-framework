@@ -55,9 +55,23 @@ The framework is opinionated, calm, and direct. It reads like a senior designer 
 
 Translations into other languages are very welcome. Open an issue first to coordinate. We accept translations as `docs/{lang}/...` mirror trees; the English version remains canonical.
 
+## Naming and taxonomy
+
+PRs that introduce text on external-facing surfaces (`README.md`, anything under `docs/`, anything under `dsaf.dev/`, anything destined for a blog or social post) are reviewed against the DSAF handle taxonomy at [`docs/branding/handle-taxonomy.md`](docs/branding/handle-taxonomy.md). The short version: use `DSAF` as the brand, use the long name `Design System Audit Framework` once per surface at first mention, use `DSAF Criteria` / `DSAF Levels` / `DSAF Modes` / `DSAF-25 Core` as the component handles, and never use `Framework` as a capitalised noun-handle.
+
+The glossary at [`docs/branding/glossary.md`](docs/branding/glossary.md) is the source of truth for every DSAF-specific term. New coined terms are added there in the same PR that coins them.
+
 ## Maintainers
 
-The framework is maintained by [CyberSkill](https://cyberskill.world). The current maintainer is the founder. As community forks land and the project matures, additional maintainers will be added through a public RFC.
+DSAF is maintained by Stephen Cheng and CyberSkill as the original authoring practice.
+The co-maintainer role charter lives at [`docs/governance/co-maintainer-charter.md`](./docs/governance/co-maintainer-charter.md).
+Candidates are not publicly attributed before written acceptance and co-signed announcement.
+
+## Governance
+
+Editorial fixes can merge after maintainer review.
+Substantive rubric changes require a proposal issue and 14-day discussion window.
+Architecture changes use the future RFC cycle and require maintainer consensus.
 
 For commercial audits, custom criterion sets, or vertical-pack adaptations, contact CyberSkill directly.
 

@@ -1,6 +1,6 @@
 # Prompt: FIX-mode audit cycle
 
-> Paste this prompt after a SCAN-mode audit has completed AND a human has approved findings in §4 of the report. The model will apply the approved fixes, verify no regressions, re-score, and submit for sign-off.
+> Paste this prompt after a SCAN-mode audit has completed AND a human has approved findings in §4 of the report. The model will apply the approved fixes, surface any regressions, re-score, and submit for sign-off.
 
 ---
 
@@ -11,7 +11,7 @@ You are running a **FIX-mode design system audit cycle** using the Design System
 - **The audit report from SCAN:** `<design-system-path>/_audit/audit-report-{date}.md` — already populated through §4 with `status: AWAITING_REVIEW` (or `FIXING` if you're resuming)
 - **Framework rules:** `<framework-path>/docs/02-framework.md`
 - **The design system being audited:** `<design-system-path>` — you may modify files here according to approved findings
-- **Check scripts:** `<framework-path>/scripts/check-*.mjs` — used for the no-downgrade verification gate
+- **Check scripts:** `<framework-path>/scripts/check-*.mjs` — used for the no-silent-regression verification gate
 
 ## What you produce
 
@@ -59,13 +59,14 @@ Run all check scripts. Record pass/fail for each:
 
 Then re-score every criterion that any fix touched. Compare against pre-audit score (in frontmatter `pre_audit_score` block).
 
-**No-downgrade gate:** if any criterion sits below its pre-audit score, automatically:
+**No-silent-regression gate:** if any criterion sits below its pre-audit score:
 
-1. Identify the offending fix from the §6 execution log.
-2. Run the revert command declared in §5 for that fix.
-3. Re-score; loop until the gate passes or you run out of fixes to revert.
+1. Identify the likely cause from the §6 execution log.
+2. Add a §7 `override_log` draft with criterion, pre-score, post-score, delta, cause, tag, and notes.
+3. If the criterion is DYNAMIC and the cause is `rubric-tightened`, tag it `D-RT` and cite the external rubric change.
+4. Otherwise set the tag to `UNRESOLVED`, set status to `RE_AUDIT (awaiting override)`, and pause for `@Human[approve]` or `@Human[rollback]`.
 
-If the gate cannot pass after reverting all fixes, set `status: AWAITING_REVIEW`, document the regression in §3, and stop.
+Do not auto-revert. Rollback is a human decision.
 
 Populate §7 with the verification table.
 
@@ -73,7 +74,7 @@ Populate §7 with the verification table.
 
 Refresh §10 with post-fix scores. Recompute category roll-ups, Part A %, Part B %, combined %, tier transition. Update frontmatter `post_audit_score` block.
 
-If `combined` decreased vs `pre_audit_score.combined`, the entire FIX batch rolls back (`git revert <SHA>` for each fix), `status` returns to `AWAITING_REVIEW`, and the regression is documented in §3.
+If `combined` decreased vs `pre_audit_score.combined`, record a batch-level regression in §7. The human reviewer approves the trade-off or rolls back the batch.
 
 If combined increased: populate §8 with the delta narrative ("biggest movers", "categories that changed", "tier transition if any").
 
@@ -87,7 +88,7 @@ signed_at: <pending>
 final_combined_score: <auto-filled from §8>
 register_row_added: false
 notes: |
-  FIX cycle complete. <N> findings applied; <M> reverted under no-downgrade gate.
+  FIX cycle complete. <N> findings applied; <M> regressions require override or rollback.
   Combined score: <pre>% → <post>% (Δ <delta> pp).
   Pending human review at §9.
 ```
@@ -101,7 +102,7 @@ The human's sign-off advances `status: SIGNED`.
 ## Hard rules — never violate
 
 1. Never act on findings that aren't `approve`d in §4.
-2. Never bypass the no-downgrade gate — it is the framework's stability guarantee.
+2. Never bypass the no-silent-regression gate — it is the framework's stability guarantee.
 3. Never modify a system's anchor immutables (slogan, primary brand colour, fonts).
 4. Never fabricate verification results. If a check script fails, log it.
 5. Never delete prior audit reports.

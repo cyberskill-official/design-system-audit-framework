@@ -2,9 +2,9 @@
 
 > Running log of every audit run against this design system. Append a row whenever an audit is signed (per the framework's `02-framework.md` §9). Do not delete rows; corrections are added as new dated rows.
 
-| Date | Mode | Agent | Operator | Signer | Part A % | Part B % | Combined % | Tier | Enterprise-grade | Report |
-|---|---|---|---|---|---|---|---|---|---|---|
-| YYYY-MM-DD | S \| P | <model-id> | <name> | <name> | xx.x% | xx.x% | **xx.x%** | Lx | ✅ \| ❌ | `audit-report-YYYY-MM-DD.md` |
+| Date | Mode | Agent | Operator | Signer | Part A % | Part B % | Combined % | Interior tier | Cited tier | Enterprise-grade | Report |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| YYYY-MM-DD | S \| P | <model-id> | <name> | <name> | xx.x% | xx.x% | **xx.x%** | Lx | Lx or capped L3 | yes/no | `audit-report-YYYY-MM-DD.md` |
 
 ---
 
@@ -32,7 +32,7 @@ Doctrine-evolution checkpoints between formal audit cycles. Logged here so trend
 
 When ≥ 2 audits exist, the columns below are computed from this register and surfaced in `_trends.md`:
 
-- **FIXED-criterion regression** — any FIXED criterion whose score dropped between audits is an alarm per the framework's no-downgrade rule.
+- **FIXED-criterion regression** — any FIXED criterion whose score dropped between audits is an alarm unless it has a valid no-silent-regression override.
 - **DYNAMIC-criterion drift** — DYNAMIC criteria whose score dropped because the rubric tightened (not the system regressed) are noted but not alarmed.
 - **Enterprise-grade transitions** — first audit to pass / fail any threshold is flagged.
 - **Open-question lifespan** — open questions still unresolved across two audits trigger founder escalation.
