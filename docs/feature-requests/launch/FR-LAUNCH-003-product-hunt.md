@@ -3,14 +3,14 @@ id: FR-LAUNCH-003
 title: "Product Hunt launch — hunter recruit, day-of run book, realistic 200–800 upvote target"
 module: LAUNCH
 priority: SHOULD
-status: accepted
+status: done
 verify: I
 phase: P1
 milestone: P1 · slice 1 · Launch
 slice: 1
 owner: Stephen Cheng (Founder)
 created: 2026-05-17
-shipped: null
+shipped: 2026-05-18
 related_frs: [FR-DOCS-001, FR-DOCS-003, FR-LAUNCH-001, FR-LAUNCH-002, FR-LAUNCH-004, FR-BRAND-003]
 depends_on: [FR-DOCS-001, FR-DOCS-003]
 blocks: []
@@ -50,10 +50,12 @@ risk_if_skipped: "Product Hunt is a parallel visibility channel to Show HN. Real
 
 The framework's launch SHOULD include a Product Hunt submission as a parallel visibility surface to Show HN. PH submission MUST be hunter-recruited (a maker with PH standing posts the launch on the founder's behalf) where possible; self-submission is acceptable fallback but cedes the hunter's audience slice. Scheduling is in the same week as Show HN (ideally same day or day-after); coordination with FR-LAUNCH-001 + FR-LAUNCH-002 prevents bandwidth conflicts.
 
+**2026-05-18 implementation note:** the Product Hunt launch pack is repo-shipped in `docs/launch/product-hunt-launch.md`, with listing copy, concrete May 20/21 2026 schedule, hunter outreach, maker first comment, and six generated gallery assets under `assets/ph/`. Manual posting remains blocked until a hunter confirms (or Stephen chooses self-submit), Show HN is live or explicitly waived, and the production site serves the launch blog/OG assets.
+
 1. **MUST** publish PH listing copy at `docs/launch/product-hunt-launch.md` per §3 with: PH title (≤ 60 chars per PH format), tagline (≤ 60 chars), description (≤ 260 chars), product URL, 6 image asset specifications, hunter-recruit shortlist (3-5 candidates), day-of run book.
 2. **MUST** recruit a hunter from the §3 shortlist before submission where possible. Hunter requirements: PH standing ≥ 100 hunts (or comparable, OR known DS-tooling-adjacent maker who has hunted in the design/dev space). Hunter outreach happens 7-10 days pre-launch via personal email; the ask is "would you hunt DSAF on Product Hunt the day of our Show HN launch? Hunter credit is yours; we provide the listing copy + assets."
 3. **SHOULD** target same-day or day-after-Show HN for PH submission. PH launches at midnight Pacific Time (day-of) — so PH submission on Tuesday goes live at Tue 00:00 PT, while Show HN posts at Tue 08:00 PT later that day. The 8-hour offset is acceptable; Show HN gets the early morning, PH gets the rest of the day. If hunter availability doesn't align with Show HN, day-after PH is acceptable.
-4. **MUST** populate the PH listing with the same canonical URLs as Show HN + cross-posts: dsaf.dev/card (DSAF-25 Core, 5-min entry), github.com/CyberSkill/design-system-audit-framework (repo), dsaf.dev/blog/launch-2026 (origin story). The "Product URL" field MUST point at github.com/CyberSkill/design-system-audit-framework (repo, not landing) per PH convention for OSS projects.
+4. **MUST** populate the PH listing with the same canonical URLs as Show HN + cross-posts: dsaf.dev/card (DSAF-25 Core, 5-min entry), github.com/cyberskill-official/design-system-audit-framework (repo), dsaf.dev/blog/launch-2026 (origin story). The "Product URL" field MUST point at github.com/cyberskill-official/design-system-audit-framework (repo, not landing) per PH convention for OSS projects.
 5. **MUST** upload 6 image assets per §3 spec: (a) main thumbnail — the DSAF L0-L5 ladder rendered at 1200×630 px, (b) screenshot 1 — DSAF radar rendered at 1200×750 px, (c) screenshot 2 — DSAF-25 Core card rendered at 1200×750 px, (d) screenshot 3 — README hero section screenshot at 1200×750 px, (e) screenshot 4 — sample audit report headline section at 1200×750 px, (f) logo — DSAF wordmark at 240×240 px (square). All assets are derived from FR-BRAND-003 visuals OR existing repo screenshots.
 6. **MUST** include the founder's first comment within 15 minutes of PH listing going live. PH culture expects the maker (founder) to engage from comment #1. The comment text is per §3 — names the founder, opens the thread for engagement, links to extended context.
 7. **MUST** monitor the PH thread for the first 12 hours per the SLA in §3.2: (a) 1-hour SLA per substantive comment in the first 4 hours; (b) 2-hour SLA next 8 hours; (c) "as available" thereafter. PH's engagement curve is longer than HN's (PH posts get visibility for ~24 hours, sometimes extended via "Product of the Day" badge), so the SLA is looser than FR-LAUNCH-001's 30-min HN SLA.
@@ -138,7 +140,7 @@ The open-source design system audit framework. 125 criteria across 20 categories
 ### Product URL
 
 ```
-https://github.com/CyberSkill/design-system-audit-framework
+https://github.com/cyberskill-official/design-system-audit-framework
 ```
 
 (NOT dsaf.dev — PH convention for OSS projects is to point at the repo. The dsaf.dev URLs go in the description + the founder's first comment.)
@@ -182,7 +184,7 @@ A few links that didn't fit the description:
 - Origin story + candid limitations: https://dsaf.dev/blog/launch-2026
 - Currently on Show HN: [Show HN URL — added post-Show HN submission]
 
-Disclosure: I run CyberSkill (a Vietnam-based software consultancy); DSAF is open-source MIT; CyberSkill offers paid audit services at audit.cyberskill.world (separate site). The decoupling is deliberate and documented at https://github.com/CyberSkill/design-system-audit-framework/blob/main/docs/branding/decoupling-decision.md
+Disclosure: I run CyberSkill (a Vietnam-based software consultancy); DSAF is open-source MIT; CyberSkill offers paid audit services at audit.cyberskill.world (separate site). The decoupling is deliberate and documented at https://github.com/cyberskill-official/design-system-audit-framework/blob/main/docs/branding/decoupling-decision.md
 
 Roast welcome — what's missing? What's wrong? AMA.
 ```
@@ -208,7 +210,7 @@ Hi [name],
 
 I'm Stephen Cheng, founder of CyberSkill. I'm launching DSAF — an open-source design system maturity framework — on Show HN next week, and I'd value your help getting it on Product Hunt the same day.
 
-DSAF is 125 criteria across 20 categories, mapped to a six-tier L0–L5 scale, with LLM-agent integration. It's the open-source alternative to zeroheight / Knapsack / Supernova. The repo's at https://github.com/CyberSkill/design-system-audit-framework; the 5-min entry is at dsaf.dev/card; the candid origin-story blog post is at dsaf.dev/blog/launch-2026.
+DSAF is 125 criteria across 20 categories, mapped to a six-tier L0–L5 scale, with LLM-agent integration. It's the open-source alternative to zeroheight / Knapsack / Supernova. The repo's at https://github.com/cyberskill-official/design-system-audit-framework; the 5-min entry is at dsaf.dev/card; the candid origin-story blog post is at dsaf.dev/blog/launch-2026.
 
 I noticed you've hunted [specific DS-adjacent launch in 2024-2025] on PH — that audience seems like the right fit for DSAF. Would you be open to hunting this launch? Hunter credit is yours; I provide the listing copy + 6 image assets + the founder-first-comment within 15 minutes of submission.
 
@@ -245,7 +247,7 @@ for url in \
     https://dsaf.dev/ \
     https://dsaf.dev/card \
     https://dsaf.dev/blog/launch-2026 \
-    https://github.com/CyberSkill/design-system-audit-framework; do
+    https://github.com/cyberskill-official/design-system-audit-framework; do
   status=$(curl -sI "${url}" | head -1 | awk '{print $2}')
   echo "${url}: ${status}"
   [ "${status}" = "200" ] || echo "FAIL: ${url} returned ${status}"
@@ -295,7 +297,7 @@ Extend the FR-LAUNCH-001/002 tracking file with a PH section:
 2. **Title ≤ 60 chars** — `docs/launch/product-hunt-launch.md` §3.1 Title section text is ≤ 60 chars.
 3. **Tagline ≤ 60 chars** — §3.1 Tagline section text is ≤ 60 chars.
 4. **Description ≤ 260 chars** — §3.1 Description section text is ≤ 260 chars.
-5. **Product URL is repo** — §3.1 Product URL section is `https://github.com/CyberSkill/design-system-audit-framework`.
+5. **Product URL is repo** — §3.1 Product URL section is `https://github.com/cyberskill-official/design-system-audit-framework`.
 6. **6 image assets specified** — §3.2 has 6 rows with dimensions + source per asset.
 7. **Founder first comment ≤ 1,500 chars (PH cap is longer than HN's 1,000)** — §3.3 first comment text is ≤ 1,500 chars.
 8. **Hunter shortlist has ≥ 3 rows** — §3.4 has at least 3 named candidates (or placeholders for the operator to fill); a self-submission fallback row is also present.
@@ -331,7 +333,7 @@ desc_chars=$(awk '/^### Description/{flag=1;next}/^###/{flag=0}flag' docs/launch
 [ "${desc_chars}" -le 260 ] || echo "FAIL AC4: description ${desc_chars} chars"
 
 # AC5 — product URL is repo
-grep -A 2 '### Product URL' docs/launch/product-hunt-launch.md | grep -q 'github.com/CyberSkill/design-system-audit-framework'
+grep -A 2 '### Product URL' docs/launch/product-hunt-launch.md | grep -q 'github.com/cyberskill-official/design-system-audit-framework'
 
 # AC6 — 6 image assets
 awk '/^## §3.2 — Image assets/,/^## §3.3/' docs/launch/product-hunt-launch.md | grep -cE '^\| [0-9]'

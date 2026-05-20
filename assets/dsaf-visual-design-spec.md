@@ -1,17 +1,17 @@
 # DSAF — Visual design spec
 
-**Status:** normative; ratified by FR-BRAND-003 (2026-05-17).
-**Purpose:** the design intent that every DSAF visual is authored against. New visuals (post-launch) MUST conform to this spec; the canonical visuals — the L0–L5 level ladder, the DSAF radar chart, and the DSAF-25 Core card — are the reference implementations.
+**Status:** normative; ratified by FR-BRAND-003 (2026-05-18).
+**Purpose:** the design intent that every DSAF visual is authored against. New visuals (post-launch) MUST conform to this spec; the canonical visuals — the L0-L5 level ladder, the DSAF radar chart, and the DSAF-25 Core card — are the reference implementations.
 
 ## Canonical visuals
 
 | Visual | Light SVG | Dark SVG | Print PDF | Role |
 |---|---|---|---|---|
-| L0–L5 level ladder | `dsaf-level-ladder.svg` | (light SVG renders well on `prefers-color-scheme: dark` via `currentColor`) | derive on demand | narrative — the climb story |
-| DSAF radar | `dsaf-radar-chart.svg` | (light SVG renders well on `prefers-color-scheme: dark` via `currentColor`) | derive on demand | diagnostic — per-category shape |
+| L0-L5 level ladder | `dsaf-l0-l5-ladder.svg` | `dsaf-l0-l5-ladder-dark.svg` | `dsaf-l0-l5-ladder-print.pdf` | narrative — the climb story |
+| DSAF radar | `dsaf-radar.svg` | `dsaf-radar-dark.svg` | `dsaf-radar-print.pdf` | diagnostic — per-category shape |
 | DSAF-25 Core card | `dsaf-25-card.svg` | (light SVG renders well on `prefers-color-scheme: dark` via `currentColor`) | `dsaf-25-card-print.pdf` | share-handle — the one-page card |
 
-The shipped SVGs use `fill="currentColor"` on text and structural shapes so a single asset adapts to light and dark themes when embedded inline. Where a hand-tuned dark variant is later required for higher contrast headroom, ship a separate `*-dark.svg` and reference it via `<picture media="(prefers-color-scheme: dark)">`.
+The ladder and radar ship hand-tuned dark variants. Reference them via `<picture media="(prefers-color-scheme: dark)">` when a host supports it.
 
 ## Typography
 
@@ -36,8 +36,8 @@ The accent MUST meet APCA Lc 60 against the background.
 
 ## Proportions and viewBox
 
-- L0–L5 ladder: `viewBox="0 0 1200 540"` (16:7 landscape — fits Twitter card 1200×675 with 67 px breathing room top + bottom).
-- DSAF radar: `viewBox="0 0 1200 1200"` square; data polygon centred; axis labels sit on a 540 px radius safe area.
+- L0-L5 ladder: `viewBox="0 0 210 297"` (A4 portrait; also fits US letter).
+- DSAF radar: `viewBox="0 0 297 210"` (A4 landscape; also fits US letter).
 - DSAF-25 Core card: `viewBox="0 0 840 1188"` (A4 portrait) with a guaranteed-fit US letter subset margin of 6 mm on the long axis.
 
 ViewBox sizing is fluid — visuals MUST scale cleanly from favicon (32 px) to projector (4096 px) without rasterising.
@@ -72,8 +72,8 @@ Each canonical SVG MUST carry a `<metadata>` block recording the DSAF rubric ver
 ```xml
 <metadata>
   <dsaf:version xmlns:dsaf="https://audit.cyberskill.world/ns/v1">
-    <dsaf:dsaf_125_version>2026-05-17</dsaf:dsaf_125_version>
-    <dsaf:dsaf_25_version>2026-05-17</dsaf:dsaf_25_version>
+    <dsaf:dsaf_125_version>2026-05-18</dsaf:dsaf_125_version>
+    <dsaf:dsaf_25_version>2026-05-18</dsaf:dsaf_25_version>
   </dsaf:version>
 </metadata>
 ```
@@ -86,11 +86,11 @@ Canonical assets are SVG only. Raster (PNG/JPG) is a *consumption* pattern: a `m
 
 ## Transition gates on the ladder
 
-The L0–L5 ladder visually communicates the *climb path* documented in `docs/07-maturity-tiers.md` §3 — not just the tier names. The shipped ladder uses ascending bar heights to convey rising maturity, and the footnote line explicitly references the L3 self-audit publication cap. A future revision MAY add per-tier "you need:" callouts as `<text>` elements.
+The L0-L5 ladder visually communicates the *climb path* documented in `docs/07-maturity-tiers.md` §3 — not just the tier names. The shipped ladder uses tier panels, score ranges, and per-tier gate callouts as `<text>` elements. The footer explicitly references the L3 self-audit publication cap.
 
 ## Enterprise-grade boundary on the radar
 
-The DSAF radar SHOULD overlay a "minimum enterprise" boundary as a dashed line per the floors in `docs/07-maturity-tiers.md` §2 (combined ≥ 65%, A.8 ≥ 75%, B.5 ≥ 75%, A.1 ≥ 70%, A.4 ≥ 60%, A.3 ≥ 65%, any category ≥ 40%). The current shipped radar shows the polygon shape; the boundary overlay is a follow-on visual upgrade.
+The DSAF radar overlays a "minimum enterprise" boundary as a dashed `enterprise_floor` polygon per the floors in `docs/07-maturity-tiers.md` §2 (combined ≥ 65%, A.8 ≥ 75%, B.5 ≥ 75%, A.1 ≥ 70%, A.4 ≥ 60%, A.3 ≥ 65%, any category ≥ 40%). The example polygon is visual guidance; audit-specific renderers replace it from `dsaf-radar-template.json`.
 
 ## Embedding patterns
 

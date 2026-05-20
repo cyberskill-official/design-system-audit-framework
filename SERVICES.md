@@ -49,7 +49,7 @@ We build the design system per the audit's improvement plan.
 
 - You've identified the design-system gap (via audit or otherwise) but don't have the in-house bandwidth.
 - You want the system built right the first time rather than refactored later.
-- You'd benefit from leveraging an existing, audited L5 reference architecture (the CyberSkill design system is the template).
+- You'd benefit from a worked L3-cited reference architecture with interior calibration data preserved for learning.
 
 **Pricing:** $15K (light migration of an existing system to the framework's standards) to $60K (greenfield enterprise system with multi-platform output, vertical pack, and full governance setup). Roughly 3–6 months of engagement.
 

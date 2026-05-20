@@ -23,7 +23,7 @@ Following our exchange about <reference the prior thread or comment topic>. I wa
 
 DSAF needs a second named maintainer. Single-founder rubrics drift; rubrics with two governance voices stay closer to what working DS teams actually argue about. I'd like to invite you to consider the co-maintainer role.
 
-The full charter is at https://github.com/CyberSkill/design-system-audit-framework/blob/main/docs/governance/co-maintainer-charter.md — please read that first. The summary:
+The full charter is at https://github.com/cyberskill-official/design-system-audit-framework/blob/main/docs/governance/co-maintainer-charter.md — please read that first. The summary:
 
 - The role is OSS-volunteer-equivalent. No salary, no equity, no board seat, no employer/employee relationship.
 - Rights include GitHub Maintain access, an RFC vote, audit.cyberskill.world blog authorship, and a revenue share on any conference honoraria from DSAF talks.
@@ -65,7 +65,7 @@ Hi Sil,
 
 Following our exchange about <prior thread>. DSAF is now at a point where I want a second named maintainer, and you're the candidate I'd most like to ask after Nathan Curtis (who has <declined / passed for now>).
 
-Full charter: https://github.com/CyberSkill/design-system-audit-framework/blob/main/docs/governance/co-maintainer-charter.md
+Full charter: https://github.com/cyberskill-official/design-system-audit-framework/blob/main/docs/governance/co-maintainer-charter.md
 
 The role in one paragraph: OSS-volunteer-equivalent. RFC vote, GitHub Maintain access, audit.cyberskill.world blog authorship, conference-honoraria revenue share. No salary, no equity, no employment relationship. 12-month expected commitment, 30-day exit clause, ~2 hours/month on average.
 
@@ -93,7 +93,7 @@ Hi Sarah,
 
 Following our exchange about <prior thread, likely accessibility-criteria read>. DSAF is at the point of needing a second named maintainer. You're a candidate I would specifically value because the framework's accessibility criteria (A.8 + B.5) and inclusive-design rows are the area I'm least confident the rubric is calibrated correctly.
 
-Full charter: https://github.com/CyberSkill/design-system-audit-framework/blob/main/docs/governance/co-maintainer-charter.md
+Full charter: https://github.com/cyberskill-official/design-system-audit-framework/blob/main/docs/governance/co-maintainer-charter.md
 
 The role: OSS-volunteer-equivalent. No salary, no equity, no employment. RFC vote, Maintain access, blog authorship, conference-honoraria revenue share. ~2 hours/month average, 12-month expected, 30-day exit clause.
 

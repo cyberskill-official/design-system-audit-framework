@@ -39,30 +39,30 @@ A team that has only scored DSAF-25 has completed a first-pass audit, not a sign
 
 | # | Source | Category | Criterion | Tag |
 |---:|---|---|---|---|
-| 1 | A1.1 | Foundations & Tokens | Color tokens with primitive to semantic to component layers | FIXED |
-| 2 | A1.8 | Foundations & Tokens | Token format and DTCG conformance | DYNAMIC |
+| 1 | A1.1 | Foundations & Tokens | Color tokens with primitive→semantic→component layers | FIXED |
+| 2 | A1.8 | Foundations & Tokens | Token format & DTCG conformance | DYNAMIC |
 | 3 | A1.9 | Foundations & Tokens | Modern color spaces (OKLCH, P3) | DYNAMIC |
-| 4 | A2.1 | Component Library | Coverage of Top 20 components | FIXED |
-| 5 | A2.4 | Component Library | Variant and state coverage | FIXED |
+| 4 | A2.1 | Component Library | Coverage of "Top 20" components (button, input, select, modal, table, nav, tabs, toast, tooltip, etc.) | FIXED |
+| 5 | A2.4 | Component Library | Variant & state coverage | FIXED |
 | 6 | A3.1 | Documentation | Usage guidelines per component | FIXED |
 | 7 | A4.2 | Governance & Versioning | RFC process | FIXED |
 | 8 | A4.3 | Governance & Versioning | Semver discipline | FIXED |
-| 9 | A5.4 | Tooling & Distribution | Storybook or equivalent | FIXED |
+| 9 | A5.4 | Tooling & Distribution | Storybook (or equivalent) | FIXED |
 | 10 | A5.5 | Tooling & Distribution | CI/CD for the system itself | FIXED |
-| 11 | A6.1 | Cross-platform & Theming | Light and dark mode parity | FIXED |
-| 12 | A7.1 | Adoption & Metrics | Coverage percentage | FIXED |
-| 13 | A8.1 | Accessibility Baked Into the System | Contrast guarantees | FIXED |
+| 11 | A6.1 | Cross-platform & Theming | Light / dark mode parity | FIXED |
+| 12 | A7.1 | Adoption & Metrics | Coverage % (production UI built from system components) | FIXED |
+| 13 | A8.1 | Accessibility Baked Into the System | Contrast guarantees (WCAG 2.2 AA: 4.5:1 text / 3:1 UI; APCA-W3 readiness) | FIXED |
 | 14 | A9.1 | Performance & Developer Experience | Bundle size budgets | FIXED |
-| 15 | A10.3 | AI / Emerging Tech Integration | AI-rules file for agents | DYNAMIC |
+| 15 | A10.3 | AI / Emerging Tech Integration | AI-rules file for agents and contribution review | DYNAMIC |
 | 16 | B1.1 | User Research & Discovery | Method diversity | FIXED |
-| 17 | B2.1 | Information Architecture & Navigation | Match between system and real-world / user mental model | FIXED |
-| 18 | B3.3 | Interaction Design | Error prevention and recovery | FIXED |
+| 17 | B2.1 | Information Architecture & Navigation | Match between system and real-world / user mental model (Nielsen H2) | FIXED |
+| 18 | B3.3 | Interaction Design | Error prevention & recovery (Nielsen H5 + H9) | FIXED |
 | 19 | B4.1 | Visual Design & Hierarchy | Visual hierarchy | FIXED |
 | 20 | B5.2 | Accessibility & Inclusive Design | WCAG 2.2 Level AA conformance | FIXED |
-| 21 | B6.1 | Content Design & UX Writing | Voice and tone documentation | FIXED |
-| 22 | B7.1 | Usability & Heuristic Compliance | Heuristic evaluation cadence | FIXED |
-| 23 | B8.1 | Performance & Core Web Vitals as UX | LCP at the 75th percentile | DYNAMIC |
-| 24 | B9.1 | Trust, Privacy & Ethics | No-dark-pattern guarantee | FIXED |
+| 21 | B6.1 | Content Design & UX Writing | Voice & tone documentation | FIXED |
+| 22 | B7.1 | Usability & Heuristic Compliance | Heuristic evaluation cadence and coverage | FIXED |
+| 23 | B8.1 | Performance & Core Web Vitals as UX | LCP at 75th percentile | DYNAMIC |
+| 24 | B9.1 | Trust, Privacy & Ethics | No-dark-pattern guarantee (FTC's 4 categories: false belief, concealed info, unauthorised charges, manipulated privacy choices) | FIXED |
 | 25 | B10.1 | Measurement & UX Metrics | HEART framework adoption | FIXED |
 
 ## How to use
@@ -83,6 +83,8 @@ The card is meant to tell a DS lead where to look before the full audit begins.
 
 Use [`assets/dsaf-25-card.svg`](../assets/dsaf-25-card.svg) or [`docs/dsaf-25-card.md`](dsaf-25-card.md) when you need a printable version.
 The public copy lives at `https://audit.cyberskill.world/card`.
+
+For per-category visualisation, feed category percentages into [`assets/dsaf-radar-template.json`](../assets/dsaf-radar-template.json) and render them over [`assets/dsaf-radar.svg`](../assets/dsaf-radar.svg). The radar keeps the 20 DSAF category axes visible and includes the enterprise-floor threshold overlay from the maturity model.
 
 ## Relationship to DSAF-125
 

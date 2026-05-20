@@ -1,0 +1,9 @@
+# DSAF governance boundary files.
+# Replace @future-co-maintainer after FR-GOV-002 acceptance.
+/docs/branding/decoupling-decision.md @StephenCheng @future-co-maintainer
+/docs/branding/url-redirect-map.md @StephenCheng @future-co-maintainer
+/docs/branding/handle-taxonomy.md @StephenCheng @future-co-maintainer
+/assets/dsaf-*.svg @StephenCheng @future-co-maintainer
+/assets/dsaf-radar-template.json @StephenCheng @future-co-maintainer
+/docs/content/deep-dives/ @StephenCheng @future-co-maintainer
+/landing/blog/deep-dives/ @StephenCheng @future-co-maintainer

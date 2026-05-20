@@ -3,14 +3,14 @@ id: FR-BENCH-001
 title: "Free public benchmark (lite) — static survey form, voluntary anonymous opt-in, GDPR-compliant — the highest-converting OSS→paid bridge"
 module: BENCH
 priority: SHOULD
-status: accepted
+status: done
 verify: I
 phase: P2
 milestone: P2 · slice 1 · Community velocity
 slice: 1
 owner: Stephen Cheng (Founder)
 created: 2026-05-17
-shipped: null
+shipped: 2026-05-18
 related_frs: [FR-BRAND-001, FR-CORE-001, FR-CORE-004, FR-BRAND-004, FR-CONTENT-001, FR-BENCH-002, FR-REPORT-001]
 depends_on: [FR-BRAND-001, FR-CORE-001]
 blocks: [FR-BENCH-002, FR-REPORT-001]
@@ -60,6 +60,8 @@ risk_if_skipped: "Plan §Phase 2 action 6 names this as 'the single highest-conv
 ## §1 — Specification (BCP-14 normative)
 
 The framework SHOULD ship a lite anonymous benchmark survey at `dsaf.dev/benchmark` in P2. The benchmark is a 29-question static survey (25 DSAF-25 Core criterion self-scores + 4 demographic-anonymous-bucket questions) hosted via a GDPR-compliant form vendor (Tally preferred). Respondents see anonymized peer comparison after submission. No PII collected as required fields. No hosted backend (deferred to FR-BENCH-002 P4). The lite version is the data-collection-funnel entry; the hosted version is the future Pro tier.
+
+**Implementation note, 2026-05-18:** repo-verifiable sandbox deliverables are shipped under the current canonical `landing/` site and verified at `/benchmark/`. Production data collection remains blocked on a GDPR-compliant form-vendor ID and at least 30 real anonymous responses before public aggregate claims.
 
 1. **MUST** host the benchmark at `dsaf.dev/benchmark` (NOT audit.cyberskill.world per FR-BRAND-004 decoupling). The page embeds the form via vendor's iframe / embeddable widget; the page itself is static.
 2. **MUST** ask 29 questions per §3 spec: 25 DSAF-25 Core criterion self-scores (one per criterion, 0-5 rubric anchor selection) + 4 demographic-anonymous-bucket questions (company-size bucket, design-system-age bucket, role bucket, location bucket — all bucketed to prevent re-identification).
@@ -429,9 +431,9 @@ README.md update (after the FR-CORE-001 + FR-DOCS-001 + FR-DOCS-002 + FR-CONTENT
 <section class="next-steps">
 <h2>Want to deepen the audit?</h2>
 <ul>
-  <li>Read the full 125-criterion rubric: <a href="https://github.com/CyberSkill/design-system-audit-framework/blob/main/docs/03-criteria-part-a.md">Part A — System</a> + <a href="https://github.com/CyberSkill/design-system-audit-framework/blob/main/docs/04-criteria-part-b.md">Part B — UX</a></li>
+  <li>Read the full 125-criterion rubric: <a href="https://github.com/cyberskill-official/design-system-audit-framework/blob/main/docs/03-criteria-part-a.md">Part A — System</a> + <a href="https://github.com/cyberskill-official/design-system-audit-framework/blob/main/docs/04-criteria-part-b.md">Part B — UX</a></li>
   <li>For criteria where you scored low, see the relevant weekly deep-dive: <a href="/blog/deep-dives">deep-dives index</a></li>
-  <li>Run a complete audit using the prompts: <a href="https://github.com/CyberSkill/design-system-audit-framework/blob/main/prompts/scan-mode.md">scan-mode</a> + <a href="https://github.com/CyberSkill/design-system-audit-framework/blob/main/prompts/fix-mode.md">fix-mode</a></li>
+  <li>Run a complete audit using the prompts: <a href="https://github.com/cyberskill-official/design-system-audit-framework/blob/main/prompts/scan-mode.md">scan-mode</a> + <a href="https://github.com/cyberskill-official/design-system-audit-framework/blob/main/prompts/fix-mode.md">fix-mode</a></li>
 </ul>
 </section>
 

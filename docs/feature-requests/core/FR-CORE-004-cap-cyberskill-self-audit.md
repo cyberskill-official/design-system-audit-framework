@@ -3,14 +3,14 @@ id: FR-CORE-004
 title: "Cap CyberSkill self-audit at L3 publicly; remove '84.6% combined' headline from all external surfaces"
 module: CORE
 priority: MUST
-status: accepted
+status: done
 verify: I
 phase: P0
 milestone: P0 · slice 1 · Pre-launch hardening
 slice: 1
 owner: Stephen Cheng (Founder)
 created: 2026-05-17
-shipped: null
+shipped: 2026-05-18
 related_frs: [FR-BRAND-002, FR-BRAND-004, FR-DOCS-001, FR-CORE-001, FR-CORE-003, FR-CERT-001]
 depends_on: []
 blocks: [FR-DOCS-001, FR-BRAND-004, FR-CERT-001]
@@ -26,12 +26,17 @@ language: markdown
 service: doctrine
 new_files:
   - docs/branding/self-audit-policy.md
+  - docs/branding/FR-CORE-004-self-audit-contract.json
+  - scripts/self-audit-contract-lib.mjs
+  - scripts/check-self-audit-contract.mjs
+  - scripts/check-self-audit-contract.test.mjs
 modified_files:
   - README.md
   - docs/01-introduction.md
   - docs/07-maturity-tiers.md
   - examples/cyberskill-design-system/improvement-plan.md
   - examples/cyberskill-design-system/_history.md
+  - package.json
 allowed_tools:
   - "file_read/write docs/**, README.md, examples/cyberskill-design-system/**"
   - "grep / ripgrep for '84.6', 'L5', 'industry-leading', 'top tier' across the repo"
@@ -49,6 +54,8 @@ sub_tasks:
   - "6. (15m) PR description includes the before/after grep counts and a one-paragraph rationale"
 risk_if_skipped: "A consultancy publishing a 125-criterion audit framework that scores its own design system at L5 (top tier) with an 84.6% headline is the single most predictable Show HN / Twitter / LinkedIn takedown. The plan explicitly names this as the highest-credibility-risk issue: 'Auditors audit themselves at L5, news at 11.' Skipping this FR is a P0 launch-blocker — the framework's first cited mention will be the takedown, not the methodology. The mitigation is mechanically cheap (rewrite a few headlines, publish a one-page self-audit policy) and structurally cheap (the worked example remains valuable as an artefact; only the framing changes). Skipping also blocks FR-DOCS-001 (README rewrite) because the README inherits this FR's framing rule, and blocks FR-CERT-001 (P6 certification scheme) because the cap-at-L4-without-third-party rule is the rule the certification scheme codifies."
 ---
+
+**2026-05-18 strict execution note:** stale status was reset and FR-CORE-004 was re-processed with an executable self-audit publication contract. `npm run contract:self-audit` checks public L3 framing, blocks old CyberSkill 84.6%/L5 marketing claims, preserves the interior audit report calibration data, and writes `docs/_audit/self-audit-cap-contract.json`. No external dependency mock was needed.
 
 ## §1 — Description (BCP-14 normative)
 

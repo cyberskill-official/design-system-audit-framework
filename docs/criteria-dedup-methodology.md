@@ -28,13 +28,13 @@ When an ID is merged away, it becomes an alias in [`criteria-aliases.md`](criter
 9. Update DSAF-25 if any Core source ID becomes an alias.
 10. Record all decisions in the PR description.
 
-## Initial 2026-05-17 pass
+## Initial 2026-05-18 pass
 
-The initial pass kept the total at 125 criteria.
-It found no true same-evidence duplicates that should be merged before launch.
-The pass did identify four recurring ambiguity zones and documented them in [`criteria-aliases.md`](criteria-aliases.md) as boundary decisions.
+The initial implementation pass reduced the live rubric from 138 rows to 125 criteria.
+It merged two Part A AI/MCP overlaps and eleven Part B heuristic-overlap rows into primary criteria.
+The pass also identified recurring ambiguity zones and documented them in [`criteria-aliases.md`](criteria-aliases.md) as boundary decisions.
 
-This is a valid dedup outcome: stability beats artificial reduction.
-The framework now has an alias table and deterministic method for future passes.
+This is the stable DSAF-125 baseline.
+The framework now has a populated alias table and deterministic method for future passes.
 
 *End of dedup methodology.*

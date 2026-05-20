@@ -1,4 +1,4 @@
-# 02 — DSAF framework spec
+# 02 — DSAF Operating Spec
 
 DSAF defines how a design system is scored, who does the work, and how the output is structured. This document is the contract DSAF promises. Once you read it, you can run an audit.
 
@@ -193,7 +193,7 @@ The audit produces one file: `audit-report-{YYYY-MM-DD}.md`. The full template i
 
 | Section | Purpose | Owner |
 |---|---|---|
-| YAML frontmatter | machine-readable metadata: `audit_id`, `mode`, `status`, `pre_audit_score`, `post_audit_score`, `delta_pp`, `parent_audit`, `no_downgrade` | `@Agent` |
+| YAML frontmatter | machine-readable metadata: `audit_id`, `mode`, `status`, `pre_audit_score`, `post_audit_score`, `delta_pp`, `parent_audit`, `no_silent_regression` | `@Agent` |
 | §0 Snapshot | one-glance summary | `@Agent` |
 | §1 SCAN — Baseline | re-score 125 criteria | `@Agent[research]` |
 | §2 SCAN — Industry research | new / updated standards | `@Agent[research]` |

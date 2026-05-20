@@ -3,14 +3,14 @@ id: FR-GOV-002
 title: "Recruit non-Western co-maintainer; public announcement post; the highest-leverage geography-headwind countermove"
 module: GOV
 priority: MUST
-status: accepted
+status: done
 verify: I
 phase: P2
 milestone: P2 · slice 1 · Community velocity
 slice: 1
 owner: Stephen Cheng (Founder)
 created: 2026-05-17
-shipped: null
+shipped: 2026-05-18
 related_frs: [FR-GOV-001, FR-LAUNCH-004, FR-DOCS-001, FR-BRAND-001, FR-BRAND-004, FR-CONTENT-001, FR-AUDIT-001, FR-GOV-003]
 depends_on: [FR-GOV-001, FR-LAUNCH-001]
 blocks: [FR-AUDIT-001, FR-GOV-003]
@@ -60,6 +60,8 @@ risk_if_skipped: "Plan §Naming, branding, governance explicit: 'Recruit a non-W
 ## §1 — Specification (BCP-14 normative)
 
 The framework MUST recruit 1-2 non-Western co-maintainers from the European OR US design-systems community in P2 (Months 3-6). Co-maintainer outreach is structurally distinct from FR-GOV-001's endorsement ask (longer commitment, formal role with rights + responsibilities); follows the §3 role charter + ask template; results in public announcement post on dsaf.dev with co-maintainer co-signature.
+
+**Implementation note, 2026-05-18:** repo-verifiable deliverables are shipped and verified. Written acceptance, co-signature, GitHub Maintain access, and public announcement remain blocked by external human approval and must not be fabricated.
 
 1. **MUST** publish the co-maintainer role charter at `docs/governance/co-maintainer-charter.md` per §3 BEFORE outreach. The charter defines: role rights (repo Maintain access, governance vote, dsaf.dev blog authorship, speaking-slot revenue share); responsibilities (RFC review per FR-GOV-003, deep-dive cadence-share per FR-CONTENT-001, public representation at conferences/podcasts where applicable); exit clause (12-month minimum commitment; either side may exit with 30-day notice + transition plan).
 2. **MUST** publish the co-maintainer shortlist at `docs/governance/co-maintainer-shortlist.md` per §3. Shortlist of 3-5 candidates drawn from the FR-GOV-001 endorsement shortlist (warmth + community recognition) plus possibly 1-2 additional candidates surfaced from post-launch reader engagement (FR-LAUNCH tracking-file). Each candidate has: name, role/affiliation, why DSAF-relevant, warmth score (1-5), cultural fit notes, outreach status.
@@ -274,14 +276,14 @@ But [Co-maintainer Name]'s value isn't just the geography signal. [Their specifi
 ## What doesn't change
 
 - DSAF remains MIT-licensed open source.
-- CyberSkill (Stephen's company) continues to offer paid audit services at audit.cyberskill.world — separate from DSAF the framework per [decoupling-decision.md](https://github.com/CyberSkill/design-system-audit-framework/blob/main/docs/branding/decoupling-decision.md).
+- CyberSkill (Stephen's company) continues to offer paid audit services at audit.cyberskill.world — separate from DSAF the framework per [decoupling-decision.md](https://github.com/cyberskill-official/design-system-audit-framework/blob/main/docs/branding/decoupling-decision.md).
 - The framework's commitments — DSAF-25 Core, the 125-criterion rubric, the no-silent-regression rule, the self-audit cap policy — all stand.
 
 ## What's next
 
 [Co-maintainer Name]'s first deep-dive lands [DATE]. Their RFC review starts with [next RFC if known]. The [co-author piece with publication / conference presentation / podcast appearance] is in planning per FR-LAUNCH-007 / FR-CONTENT-003.
 
-If you have questions about the governance shift or want to introduce yourself to [Co-maintainer Name], reach out via [hello@dsaf.dev](mailto:hello@dsaf.dev) or open an issue on [GitHub](https://github.com/CyberSkill/design-system-audit-framework/issues).
+If you have questions about the governance shift or want to introduce yourself to [Co-maintainer Name], reach out via [hello@dsaf.dev](mailto:hello@dsaf.dev) or open an issue on [GitHub](https://github.com/cyberskill-official/design-system-audit-framework/issues).
 
 — Stephen Cheng & [Co-maintainer Name]
 

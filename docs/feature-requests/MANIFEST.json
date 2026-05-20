@@ -3,7 +3,7 @@
   "generated": "2026-05-17",
   "owner": "Stephen Cheng (Founder, CyberSkill)",
   "source_plan": "../Design System Audit Framework — Multi-Phase Improvement Plan.md",
-  "authoring_playbook": "./AUTHORING.md",
+  "authoring_playbook": "./feature-request-audit skill",
   "modules": {
     "CORE": {
       "scope": "framework spec, criteria management, scoring math, modes (SCAN/FIX/Mode W)",
@@ -176,7 +176,7 @@
     {
       "batch": "0.1.0",
       "date": "2026-05-17",
-      "summary": "Initial backlog + AUTHORING.md + scaffolds + first P0 FR shipped at 10/10. FR-BRAND-001 (mint dsaf.dev) accepted after one revision loop addressing 10 ISS findings.",
+      "summary": "Initial backlog + feature-request-audit skill + scaffolds + first P0 FR shipped at 10/10. FR-BRAND-001 (mint dsaf.dev) accepted after one revision loop addressing 10 ISS findings.",
       "frs_added": ["FR-BRAND-001"],
       "frs_accepted": ["FR-BRAND-001"],
       "next_ready": ["FR-BRAND-002", "FR-CORE-004", "FR-CORE-001", "FR-CORE-002", "FR-CORE-003", "FR-BRAND-003", "FR-GOV-001"]

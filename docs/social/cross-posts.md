@@ -2,6 +2,7 @@
 
 **Use for:** EXECUTION_PLAN.md task O5.
 **Sequence:** post in this exact order, with the offsets shown, after the Show HN submission. Never post any of these BEFORE the HN submission goes live — the HN URL is the anchor.
+**Concrete preferred slot:** if Show HN posts Tuesday, 2026-05-19 at 08:30 PDT / 22:30 ICT, cross-post from Tuesday 12:30-20:30 PDT / Wednesday 02:30-10:30 ICT. The exact per-platform clock table is in [`../launch/cross-posts.md`](../launch/cross-posts.md).
 
 | # | Platform | Offset from Show HN | Post when HN is at |
 |---:|---|---:|---|
@@ -29,7 +30,7 @@ I built DSAF (Design System Audit Framework) as an open rubric for scoring desig
 
 DSAF-25 is the share-handle — 15 rows on system quality, 10 rows on the UX the system produces. Each row scores 0–5 with anchored definitions. Sum / 125 × 100 gives you a percentage that maps to L0–L5.
 
-The full 125 criteria sit behind it for when you need a signed audit: https://github.com/CyberSkill/design-system-audit-framework
+The full 125 criteria sit behind it for when you need a signed audit: https://github.com/cyberskill-official/design-system-audit-framework
 
 What I would actually value critique on, from this sub:
 
@@ -56,7 +57,7 @@ HN discussion: https://news.ycombinator.com/item?id=<HN_ID_HERE>
 Most design-system maturity reads only look at the system itself — tokens, components, governance. DSAF splits that into Part A and adds a Part B that scores the UX the system actually produces: research method diversity, IA / mental-model match, interaction patterns, content design, WCAG conformance, voice/tone, heuristics, Core Web Vitals as UX, dark-pattern avoidance, HEART metrics.
 
 One-page Core: https://audit.cyberskill.world/card
-Full 125 criteria: https://github.com/CyberSkill/design-system-audit-framework
+Full 125 criteria: https://github.com/cyberskill-official/design-system-audit-framework
 
 What I would value critique on from UX folks specifically:
 
@@ -84,7 +85,7 @@ DSAF is a zero-dependency, markdown-first method for auditing design systems. It
 - check-* scripts for coverage, APCA contrast, bundle size, doc freshness, link rot — all zero-dependency Node ESM
 - SCAN and FIX modes with `@Agent` and `@Human` action routing
 
-Repo: https://github.com/CyberSkill/design-system-audit-framework
+Repo: https://github.com/cyberskill-official/design-system-audit-framework
 HN: https://news.ycombinator.com/item?id=<HN_ID_HERE>
 
 The interesting bits for this sub:
@@ -104,7 +105,7 @@ MIT licensed. Critique on the agent/human split or the no-silent-regression mech
 
 **Tags:** `practices, web` (if available)
 
-**URL field:** `https://github.com/CyberSkill/design-system-audit-framework`
+**URL field:** `https://github.com/cyberskill-official/design-system-audit-framework`
 
 **Comment to post immediately after submission:**
 
@@ -113,7 +114,7 @@ Author here. Three notes for this audience:
 
 - Zero-dependency Node ESM scripts (`scripts/check-*.mjs`). No build step. The framework IS the markdown files.
 
-- The no-silent-regression rule is a softening of the original "no downgrade" invariant — turns out hard rules teams silently turn off don't work. Now: regressions are allowed if they're named, attributed, and approved. The audit refuses to sign while any regression is unresolved.
+- The no-silent-regression rule is a softening of the original hard rollback invariant — turns out hard rules teams silently turn off don't work. Now: regressions are allowed if they're named, attributed, and approved. The audit refuses to sign while any regression is unresolved.
 
 - Five-minute version at https://audit.cyberskill.world/card. Full 125 if you want the signed-audit form.
 
@@ -132,7 +133,7 @@ HN context: https://news.ycombinator.com/item?id=<HN_ID_HERE>
 DSAF is an MIT-licensed criteria-based audit framework for design systems. Score 125 rows across system quality and produced UX; report a percentage that maps to L0–L5.
 
 Core (one page, five-minute read): https://audit.cyberskill.world/card
-Repo: https://github.com/CyberSkill/design-system-audit-framework
+Repo: https://github.com/cyberskill-official/design-system-audit-framework
 HN discussion: https://news.ycombinator.com/item?id=<HN_ID_HERE>
 
 Things I'd love feedback on:
@@ -154,7 +155,7 @@ Things I'd love feedback on:
 A printable one-page scorecard for design-system maturity, with a 125-criterion rubric behind it for signed audits.
 
 Card: https://audit.cyberskill.world/card
-Repo: https://github.com/CyberSkill/design-system-audit-framework
+Repo: https://github.com/cyberskill-official/design-system-audit-framework
 HN: https://news.ycombinator.com/item?id=<HN_ID_HERE>
 
 Built to be arguable. The dedup methodology and the self-audit cap rule are deliberately in the open.
@@ -172,7 +173,7 @@ Built to be arguable. The dedup methodology and the self-audit cap rule are deli
 
 ## Tracking
 
-After each post, populate the row in `docs/launch/cross-posts.md` "Tracking" table with:
+After each post, populate the cross-post section in `docs/launch/post-hn-feedback.md` with:
 
 | Field | Value |
 |---|---|

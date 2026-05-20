@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="240" viewBox="0 0 240 240" role="img" aria-labelledby="title desc">
+  <title id="title">DSAF square logo</title>
+  <desc id="desc">Square Product Hunt logo image for DSAF, using the DSAF wordmark and a compact L0 to L5 ladder motif.</desc>
+  <metadata>{"asset":"product-hunt-logo","size":"240x240","source":"FR-LAUNCH-003","date":"2026-05-18"}</metadata>
+  <rect width="240" height="240" rx="28" fill="#111827"/>
+  <rect x="22" y="22" width="196" height="196" rx="22" fill="#f8fafc"/>
+  <text x="42" y="92" font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Arial" font-size="38" font-weight="800" fill="#111827">DSAF</text>
+  <text x="44" y="122" font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Arial" font-size="14" font-weight="600" fill="#475569">Audit criteria</text>
+  <g transform="translate(44 145)">
+    <rect x="0" y="48" width="112" height="12" rx="4" fill="#e5e7eb"/>
+    <rect x="10" y="38" width="112" height="12" rx="4" fill="#c7d2fe"/>
+    <rect x="20" y="28" width="112" height="12" rx="4" fill="#bae6fd"/>
+    <rect x="30" y="18" width="112" height="12" rx="4" fill="#bbf7d0"/>
+    <rect x="40" y="8" width="112" height="12" rx="4" fill="#fde68a"/>
+    <rect x="50" y="-2" width="112" height="12" rx="4" fill="#fecaca"/>
+  </g>
+</svg>

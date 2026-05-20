@@ -1,0 +1,20 @@
+name: Tokens Validator CI
+
+on:
+  pull_request:
+    paths:
+      - "packages/tokens-validator/**"
+      - "scripts/tokens-studio-validator.mjs"
+      - ".github/workflows/tokens-validator-ci.yml"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm --prefix packages/tokens-validator test
+      - run: npm --prefix packages/tokens-validator run smoke
+      - run: npm run integ:tokens -- packages/tokens-validator/tests/fixtures/dtcg-conformant.tokens.json

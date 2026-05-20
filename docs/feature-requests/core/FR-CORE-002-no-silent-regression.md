@@ -3,14 +3,14 @@ id: FR-CORE-002
 title: "Soften no-downgrade rule → 'no silent regression'; explicit override comment required, no hard block"
 module: CORE
 priority: MUST
-status: accepted
+status: done
 verify: I
 phase: P0
 milestone: P0 · slice 1 · Pre-launch hardening
 slice: 1
 owner: Stephen Cheng (Founder)
 created: 2026-05-17
-shipped: null
+shipped: 2026-05-18
 related_frs: [FR-BRAND-002, FR-CORE-001, FR-CORE-003, FR-CORE-004, FR-DOCS-001]
 depends_on: []
 blocks: [FR-DOCS-001, FR-BRAND-002]  # FR-BRAND-002 §3 patch table references the rule rename in 07-maturity-tiers.md
@@ -27,12 +27,19 @@ language: markdown
 service: doctrine
 new_files:
   - docs/regression-policy.md
+  - docs/core/FR-CORE-002-regression-contract.json
+  - scripts/regression-contract-lib.mjs
+  - scripts/check-regression-contract.mjs
+  - scripts/check-regression-contract.test.mjs
 modified_files:
   - docs/02-framework.md
   - docs/07-maturity-tiers.md
   - docs/06-fix-cycle.md
   - templates/audit-report-template.md
   - prompts/fix-mode.md
+  - README.md
+  - package.json
+  - scripts/dsaf-verify.mjs
 allowed_tools:
   - "file_read/write docs/**, templates/**, prompts/**"
   - "grep / ripgrep for 'no-downgrade', 'no downgrade', 'rollback', 'silent regression'"
@@ -52,6 +59,8 @@ sub_tasks:
   - "8. (15m) re-grep + verify the rename is complete; PR description includes before/after grep counts"
 risk_if_skipped: "The hard no-downgrade rule + automatic rollback state machine is intellectually satisfying and demoable, but the plan §Honest critique item 5 calls out the failure mode explicitly: real teams *do* regress in real ways (WCAG version bumps tighten DYNAMIC rubrics; a token bucket gets deprecated mid-quarter; a vendor library breaks a previously-passing integration). A hard rollback rule under those conditions gets switched off — not respected — and the framework loses the regression-detection signal entirely. The plan's recommended cure is 'no silent regression — explicit override required.' Skipping this FR ships a framework with the most-predictable-to-be-disabled rule still in place; the first audit team that hits a legitimate regression turns off the rule, and the framework's stability guarantee becomes hollow. The rule rename also matters: 'no-downgrade' reads as authoritarian; 'no-silent-regression' reads as a surfacing rule, which is what it actually is. FR-BRAND-002's §3 doctrine-patch table already coordinates the rename in docs/07-maturity-tiers.md text — this FR is the source-of-truth update that makes the rename complete."
 ---
+
+**2026-05-18 strict execution note:** stale status was reset and FR-CORE-002 was re-processed with an executable no-silent-regression contract. `npm run contract:regression` verifies the policy, framework, FIX-cycle, DSAF Levels, template, and FIX prompt surfaces; checks the four allowed causes and six allowed regression tags; blocks stale downgrade-rule wording outside explicit backward-compatibility text; and writes `docs/_audit/no-silent-regression-contract.json`.
 
 ## §1 — Description (BCP-14 normative)
 

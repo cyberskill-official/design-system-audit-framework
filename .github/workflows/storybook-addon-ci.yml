@@ -1,0 +1,21 @@
+name: Storybook Addon CI
+
+on:
+  pull_request:
+    paths:
+      - "packages/storybook-addon/**"
+      - "scripts/check-*.mjs"
+      - "scripts/storybook-addon-runner.mjs"
+      - ".github/workflows/storybook-addon-ci.yml"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm --prefix packages/storybook-addon test
+      - run: npm --prefix packages/storybook-addon run smoke
+      - run: npm run integ:storybook

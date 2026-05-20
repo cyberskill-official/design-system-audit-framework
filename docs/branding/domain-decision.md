@@ -20,9 +20,9 @@ The operator decision (Stephen Cheng, 2026-05-18) is to keep the framework on `a
 
 The brand-coupling is mitigated by **page content discipline**, not URL choice:
 
-- The site's H1 reads "DSAF — Design System Audit Framework," not "CyberSkill's framework."
+- The site's H1 reads "DSAF — Design System Audit Framework," not "a CyberSkill-owned methodology."
 - The site's footer credits CyberSkill as the maintainer, not the owner.
-- The handle taxonomy in [`handle-taxonomy.md`](handle-taxonomy.md) continues to forbid "CyberSkill framework" as a noun-handle.
+- The handle taxonomy in [`handle-taxonomy.md`](handle-taxonomy.md) continues to forbid CyberSkill-as-owner noun handles.
 - The self-audit publication cap in [`self-audit-policy.md`](self-audit-policy.md) caps public claims at L3 regardless of host domain.
 
 If future signal shows the URL itself is the friction (named reviewers, partners, or enterprise buyers explicitly cite it as a credibility problem), the neutral-domain plan can be revisited — at that point FR-BRAND-001 becomes live again as a re-batched FR.
@@ -60,6 +60,29 @@ curl -s https://audit.cyberskill.world/robots.txt
 # Lighthouse ≥ 95 all four pillars
 npx unlighthouse https://audit.cyberskill.world/
 ```
+
+## Edge-case matrix
+
+| Case | Failure vector | Expected handling | Evidence surface |
+|---|---|---|---|
+| HTTPS root returns non-200 | deploy or routing regression | Fail `npm run contract:domain`; do not mark FR strict-audited | `docs/_audit/domain-contract.json` |
+| HTTP does not redirect to HTTPS | transport security regression | Fail live contract check | `http.status` and `http.location` |
+| HSTS/CSP/XFO headers are missing | Vercel header drift | Fail live contract check | `https.headers` |
+| Landing adds `<form>` or `<input>` | accidental lead capture | Fail live contract check | forbidden-pattern checks |
+| `security.txt`, robots, or sitemap disappear | static asset regression | Fail live contract check | route status checks |
+| DNS CAA / AAAA / HSTS preload cannot be confirmed | private DNS or external service blocker | Mark as mocked private operation; preserve exact requested action | `docs/branding/FR-BRAND-001-domain-contract.json` |
+| Registrar 2FA/vault/auto-renew evidence is private | account-access blocker | Do not fabricate evidence; use the mock operation contract | `registrar-2fa-vault` operation |
+| Mail forwarding cannot be proven without inbox access | account-access blocker | Do not claim delivery; contract the expected evidence | `mail-forwarding` operation |
+
+## Contract and observability
+
+FR-BRAND-001 uses a split contract:
+
+- Public host checks run live with `npm run contract:domain`.
+- Private operations are isolated in [`FR-BRAND-001-domain-contract.json`](FR-BRAND-001-domain-contract.json) and validated through a mock `POST /mock/domain-operations` contract.
+- Structured evidence is written to `docs/_audit/domain-contract.json`.
+
+This follows the repository's existing zero-dependency Node ESM pattern: a CLI script gathers evidence, emits stable console lines, and writes JSON audit output.
 
 ## Out of scope
 

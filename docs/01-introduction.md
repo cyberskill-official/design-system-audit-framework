@@ -8,6 +8,8 @@ It is **vendor-neutral**. It works on a Material-derived system, a Carbon-derive
 
 It is **agent-friendly**. Every section of the audit output is structured so an LLM agent can read, parse, and update it. Sections are stable in order, headings are stable in wording, the YAML frontmatter is machine-readable, and the criteria table is a fixed-column markdown table. DSAF treats the agent as a co-auditor, not as an oracle.
 
+The canonical visuals live in [`assets/dsaf-l0-l5-ladder.svg`](../assets/dsaf-l0-l5-ladder.svg) and [`assets/dsaf-radar.svg`](../assets/dsaf-radar.svg). Use the ladder when explaining DSAF Levels; use the radar when explaining per-category audit shape and enterprise thresholds.
+
 It is **honest about its limits**. WCAG self-claims cap at 4/5 until you have a vendor letter. Adoption metrics cap at 3/5 until you have production telemetry. SUS scores cap at 3 until you have real participants. These are not DSAF flaws — they are the gates the industry already accepts.
 
 ## Who this is for
@@ -33,14 +35,14 @@ You'll also append a row to your audit history register (`_history.md`) — date
 
 - Marketing copy.
 - A "design maturity model" pitch deck.
-- A "we are L5 industry-leading" tweet.
+- A "we are L5" tweet.
 
 DSAF's job is to tell you what you actually have. What you do with that result is up to you.
 
 ## The self-audit publication cap
 
 DSAF's worked example self-audit, in [`examples/cyberskill-design-system/`](../examples/cyberskill-design-system/), is published as an L3 (Managed) self-audit.
-It is not a claim that CyberSkill's design system is industry-leading.
+It is not a claim that CyberSkill's design system is externally verified.
 The cap from interior score to published Level is set by the [self-audit publication policy](branding/self-audit-policy.md): without third-party verification, the publicly cited Level caps at L3.
 CyberSkill's interior calculation remains useful calibration data; the cited tier stays L3 until third-party verification is in place.
 
@@ -60,12 +62,13 @@ These assume you have an LLM agent helping. Without one: roughly 3× longer.
 
 ## Reading order if you're new
 
-1. This file (you're here).
-2. [`02-framework.md`](./02-framework.md) — modes, actors, scoring, no-silent-regression rule.
-3. [`dsaf-25.md`](./dsaf-25.md) — skim the 25-row Core before reading the full rubric.
-4. [`05-running-an-audit.md`](./05-running-an-audit.md) — step-by-step playbook.
-5. [`07-maturity-tiers.md`](./07-maturity-tiers.md) — what each tier means.
-6. [`prompts/scan-mode.md`](../prompts/scan-mode.md) — paste this into your LLM and run your first SCAN.
+1. [`README.md`](../README.md) — start here: what DSAF is, the visuals, Quick Start, local run, audit, fine-tuning, verification, and deploy strategy.
+2. This file (you're here).
+3. [`02-framework.md`](./02-framework.md) — modes, actors, scoring, no-silent-regression rule.
+4. [`dsaf-25.md`](./dsaf-25.md) — skim the 25-row Core before reading the full rubric.
+5. [`05-running-an-audit.md`](./05-running-an-audit.md) — step-by-step playbook.
+6. [`07-maturity-tiers.md`](./07-maturity-tiers.md) — what each tier means.
+7. [`prompts/scan-mode.md`](../prompts/scan-mode.md) — paste this into your LLM and run your first SCAN.
 
 For the criteria themselves: [`03-criteria-part-a.md`](./03-criteria-part-a.md) (system) and [`04-criteria-part-b.md`](./04-criteria-part-b.md) (UX).
 

@@ -1,6 +1,6 @@
 # <Criterion ID>: <one-line title>
 
-**Canonical URL:** `https://audit.cyberskill.world/blog/<slug>`
+**Canonical URL:** `https://audit.cyberskill.world/blog/deep-dives/<slug>`
 **DSAF criterion:** `<criterion ID>` — quoted verbatim from <`docs/03-criteria-part-a.md` or `docs/04-criteria-part-b.md`>
 **Tag:** `<FIXED | DYNAMIC>`
 **Reading time:** ~7 minutes
@@ -77,6 +77,6 @@ In the full rubric, this criterion connects to:
 
 *Score yourself on this criterion right now: open [DSAF-25 Core](https://audit.cyberskill.world/card). It takes 5 minutes.*
 
-*Full DSAF rubric + open-source repo: [github.com/CyberSkill/design-system-audit-framework](https://github.com/CyberSkill/design-system-audit-framework).*
+*Full DSAF rubric + open-source repo: [github.com/cyberskill-official/design-system-audit-framework](https://github.com/cyberskill-official/design-system-audit-framework).*
 
 *Was this useful? The full series: [audit.cyberskill.world/blog](https://audit.cyberskill.world/blog).*

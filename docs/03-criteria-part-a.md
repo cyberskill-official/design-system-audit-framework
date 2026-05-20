@@ -163,12 +163,10 @@ For genericisation: replace `@your-org/*` with your own npm scope, replace folde
 
 | # | Criterion | Tag | 0 | 3 | 5 |
 |---|---|---|---|---|---|
-| A10.1 | **MCP server for the design system** | DYNAMIC | None | Read-only token/component MCP server | Full read+write MCP server (Figma-style "write to canvas") with documented prompts and skills |
+| A10.1 | **MCP server for the design system** | DYNAMIC | None | Read-only token/component MCP server | Full read+write MCP server (Figma-style "write to canvas") with structured docs endpoints, documented prompts, and skills |
 | A10.2 | **Code Connect / design-to-code mapping** | DYNAMIC | None | Manual mapping | Code Connect or equivalent: Figma component ↔ code component bound; works in MCP context |
-| A10.3 | **AI-rules file for agents** | DYNAMIC | None | A `DESIGN.md` exists | Auto-generated rules file that scans the docs + tokens + manifest on every release; CI fails if stale |
-| A10.4 | **AI-assisted contribution review** | DYNAMIC | None | AI-suggested code review | AI checks for token usage, a11y, naming conventions before human review |
+| A10.3 | **AI-rules file for agents and contribution review** | DYNAMIC | None | A `DESIGN.md` exists | Auto-generated rules file that scans the docs + tokens + manifest on every release; AI checks token usage, accessibility, naming conventions, and CI freshness before human review |
 | A10.5 | **Generative theming / palette tools** | DYNAMIC | None | Manual brand theming | One-prompt brand themes that respect contrast, density, motion, and a11y constraints |
-| A10.6 | **Documentation conformance to MCP** | DYNAMIC | None | Docs site exposes API docs | Docs site exposes structured MCP-compatible endpoints |
 
 ---
 

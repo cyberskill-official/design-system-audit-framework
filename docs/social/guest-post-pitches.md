@@ -32,7 +32,7 @@ Concrete outline:
 1. The taste problem (3–4 paragraphs)
 2. What a criterion looks like (one detailed walkthrough of A1.1 Color tokens, including FIXED vs DYNAMIC anchoring)
 3. The Part A / Part B split and why scoring the UX separately matters
-4. The no-silent-regression rule — why hard "no downgrade" rules teams silently disable don't work, and what replaces them
+4. The no-silent-regression rule — why hard rollback rules teams silently disable don't work, and what replaces them
 5. The self-audit publication cap — why an honest framework caps publicly cited tiers until third-party verification
 6. A reader exercise: score your own DS on the 25-row Core in 5 minutes (https://audit.cyberskill.world/card)
 7. Limits — what the criteria can't measure
@@ -110,7 +110,7 @@ The piece would propose what an honest maturity model looks like for design syst
 
 1. Criterion-graded — every tier is defined by anchored 0–5 scores on specific criteria, not by interview impressions
 2. FIXED vs DYNAMIC — criteria anchored against the world (does the token file exist?) vs criteria anchored against an evolving standard (WCAG version, DTCG schema)
-3. Publication-capped — self-audits cap publicly at L3 until third-party verification, regardless of interior score. The honest model refuses to let any single team grade itself "industry-leading"
+3. Publication-capped — self-audits cap publicly at L3 until third-party verification, regardless of interior score. The honest model refuses to let any single team grade itself as elite without external evidence.
 4. No-silent-regression — regressions ARE allowed, but only when they're named, attributed, and signed. The audit refuses to sign while any regression is unresolved
 5. Calibration-required — every audit invites a human Co-Auditor to spot-check 5+ criteria independently, with ≥ 2-point differences triggering a discussion before sign-off
 
@@ -128,7 +128,7 @@ CyberSkill, Ho Chi Minh City
 ## Follow-up protocol
 
 - **One follow-up after 7 business days only if no reply.** Use the original thread, "Re:" prefix only. **No second follow-up.**
-- **If accepted at one publication:** withdraw the other two pitches immediately. Do not publish substantially-similar content across publications.
+- **If accepted at one publication:** do not automatically withdraw the other two pitches because the three topics are distinct. Withdraw only if an editor requests broader exclusivity or redirects toward an angle already under review elsewhere.
 - **If rejected at all three:** the rejection notes (if any) are useful editorial signal. Update `docs/launch/guest-post-pitches.md` with the rejection reasons + decision on whether to re-pitch elsewhere (Pattern Pulse, dev.to long-form, Increment, etc.).
 
 ## Tracking

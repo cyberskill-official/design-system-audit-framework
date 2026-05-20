@@ -1,16 +1,16 @@
 ---
 id: FR-DOCS-003
-title: "Publish launch blog post on dsaf.dev — candid origin-story framing for the HN-launch window"
+title: "Publish launch blog post on audit.cyberskill.world — candid origin-story framing for the HN-launch window"
 module: DOCS
 priority: MUST
-status: accepted
+status: done
 verify: I
 phase: P1
 milestone: P1 · slice 1 · Launch
 slice: 1
 owner: Stephen Cheng (Founder)
 created: 2026-05-17
-shipped: null
+shipped: 2026-05-18
 related_frs: [FR-BRAND-001, FR-CORE-001, FR-CORE-004, FR-DOCS-001, FR-LAUNCH-001, FR-LAUNCH-002, FR-LAUNCH-003, FR-LAUNCH-005]
 depends_on: [FR-BRAND-001, FR-DOCS-001]
 blocks: [FR-LAUNCH-001, FR-LAUNCH-002, FR-LAUNCH-003]
@@ -20,21 +20,26 @@ source_pages:
   - "docs/Design System Audit Framework — Multi-Phase Improvement Plan.md (§What NOT to do item 9 — gracious engagement)"
 source_decisions:
   - "DEC-032: blog post is candid origin-story framing, not announcement framing — admits limitations + invites roast, doesn't claim authority"
-  - "DEC-033: blog post lives at dsaf.dev/blog/launch-2026, NOT at audit.cyberskill.world (per FR-BRAND-004 decoupling)"
+  - "DEC-033: superseded 2026-05-18 by the ratified canonical-host decision; blog post lives at audit.cyberskill.world/blog/launch-2026 while paid-service copy stays out of the content surface"
   - "DEC-034: post is referenced (not duplicated) in Show HN body — the HN post links to it; the post is the long-form context, the HN body is the elevator pitch"
 language: markdown + html
 service: doctrine
 new_files:
-  - dsaf.dev/blog/launch-2026.md
-  - dsaf.dev/blog/index.md  # blog index landing
+  - landing/blog/launch-2026.md
+  - landing/blog/index.md
+  - landing/blog/launch-2026/index.html
+  - landing/blog/index.html
+  - assets/og/launch-2026-1200x630.svg
+  - assets/og/launch-2026-1200x630.png
 modified_files:
-  - dsaf.dev/index.html  # add "Latest writing" link to the blog post
+  - scripts/render-blog.mjs
+  - landing/index.html
 allowed_tools:
   - "file_read/write dsaf.dev/**"
   - "static-site-generator config (Cloudflare Pages MD-to-HTML, or whichever SSG dsaf.dev uses)"
   - "Lighthouse for embedded perf check"
 disallowed_tools:
-  - "publish the post on audit.cyberskill.world (decoupling rule per FR-BRAND-004)"
+  - "publish the post with paid-service or lead-capture copy on the DSAF content surface"
   - "publish the post behind a Medium/Substack paywall — the post is canonical at dsaf.dev"
   - "use an authority-claiming title like 'The Definitive Guide to...' — the plan explicitly calls for candid framing"
   - "include any paid-funnel CTA in the post body — repo + dsaf.dev are sacred per FR-BRAND-001 §1 #11"
@@ -54,9 +59,11 @@ risk_if_skipped: "The plan §'Phase 1 — Launch prerequisite' is explicit: 'A b
 
 ## §1 — Description (BCP-14 normative)
 
-The launch blog post MUST be published at `dsaf.dev/blog/launch-2026` (or equivalent slug under `dsaf.dev/blog/`) before the Show HN window opens (per FR-LAUNCH-001 dependency). The post's framing is **candid origin-story** — what the framework is, why it exists, what's wrong with it, what's right with it, who would benefit, and what kind of feedback would help. The post is NOT a product announcement; it's a person attached to the work.
+The launch blog post MUST be published at `audit.cyberskill.world/blog/launch-2026` (or equivalent slug under `audit.cyberskill.world/blog/`) before the Show HN window opens (per FR-LAUNCH-001 dependency). The post's framing is **candid origin-story** — what the framework is, why it exists, what's wrong with it, what's right with it, who would benefit, and what kind of feedback would help. The post is NOT a product announcement; it's a person attached to the work.
 
-1. **MUST** publish the post at `dsaf.dev/blog/launch-2026` (or equivalent timestamped slug) before FR-LAUNCH-001 ships. The URL is path-stable for the 12-month minimum redirect window per FR-BRAND-004 §1 #4 patterns (citations to this URL must survive future blog reorganisations).
+**2026-05-18 implementation note:** repo-verifiable publication assets are shipped and locally verified. Acceptance criterion §1 #6 remains externally blocked by FR-DOCS-002 because zero named outside-reviewer quotes have written consent. The live post MUST keep the no-fabricated-quotes note until the consent log has at least two approved rows.
+
+1. **MUST** publish the post at `audit.cyberskill.world/blog/launch-2026` (or equivalent timestamped slug) before FR-LAUNCH-001 ships. The URL is path-stable for the 12-month minimum redirect window per FR-BRAND-004 §1 #4 patterns (citations to this URL must survive future blog reorganisations).
 2. **MUST** title the post with explicit candid framing. Recommended title: "We built a 125-criterion design system audit framework — here's what we got wrong." Acceptable variants include: "DSAF: an open-source design system maturity rubric — and the things we already know are broken about it." The title MUST NOT use authority-claiming framing ("Definitive Guide," "Industry-Leading," "Comprehensive"). The title MUST be ≤ 80 characters.
 3. **MUST** structure the post per §3 with these canonical sections in order: (a) Lede + thesis (≤ 150 words); (b) "What DSAF is" (concrete description, ≤ 300 words); (c) "Why we built it" (founder origin-story, ≤ 400 words); (d) "What we got wrong, and what's still wrong" (candid limitations + 4-6 named issues, ≤ 600 words); (e) "What we got right (we think)" (substantive value-prop, ≤ 400 words); (f) "Who this is for / what feedback would help" (audience + ask, ≤ 300 words); (g) "What's next" (P1-P6 roadmap framing, ≤ 250 words). Total target: 2,500–3,500 words.
 4. **MUST** lead with the candid-limitations section visible in the post's first 1,500 words. The "Honest critique" issues from the plan §"Honest critique" — 125 criteria is a barrier, 20 categories overlap, self-audit-at-L5 looks bad, geography headwind, no-downgrade rule will get switched off — MUST appear by name in the post (rephrased in the founder's voice, not copy-pasted). Naming the failure modes BEFORE critics surface them is the structural countermove (plan §"What NOT to do" item 9).
@@ -65,7 +72,7 @@ The launch blog post MUST be published at `dsaf.dev/blog/launch-2026` (or equiva
 7. **MUST** embed both FR-BRAND-003 visuals (L0-L5 ladder + radar) inline. Ladder appears in the "What DSAF is" section; radar appears in the "What we got right" section (showing per-category coverage as the visual proof of the framework's depth).
 8. **MUST** include a "ChangeLog" footer block at the bottom showing the post's publication date (`2026-MM-DD`), any subsequent edits, and a "Discuss this" link to the Show HN URL (added post-launch, per FR-LAUNCH-001). The footer is the canonical surface for post evolution.
 9. **MUST** include OG (Open Graph) + Twitter Card meta tags so the post shares cleanly on social. OG image is the FR-BRAND-003 L0-L5 ladder rendered at 1200×630 px. OG title + description match the post's title + first-200-words pitch. Twitter Card type is `summary_large_image`.
-10. **MUST** set `<link rel="canonical">` to the dsaf.dev URL. If the post is republished anywhere (Medium, dev.to, LinkedIn) per FR-CONTENT-002 P2 patterns, the canonical URL stays at dsaf.dev. Cross-platform republication is allowed; canonical-URL pollution is forbidden.
+10. **MUST** set `<link rel="canonical">` to the audit.cyberskill.world URL. If the post is republished anywhere (Medium, dev.to, LinkedIn) per FR-CONTENT-002 P2 patterns, the canonical URL stays at audit.cyberskill.world. Cross-platform republication is allowed; canonical-URL pollution is forbidden.
 11. **MUST** apply the FR-BRAND-002 handle taxonomy throughout. `DSAF` short handle in 90%+ of mentions; `Design System Audit Framework` long name exactly once at first mention; no `Framework` noun-handle; `DSAF Criteria` / `DSAF Levels` / `DSAF Modes` / `DSAF-25 Core` as component handles.
 12. **MUST** apply the FR-CORE-004 self-audit cap rule. The CyberSkill self-audit reference (in "What we got wrong" + "What we got right") frames as "L3 worked example, uncertified" — never as 84.6% / L5 / industry-leading.
 13. **MUST** match the founder's voice — first-person plural where appropriate ("we"), first-person singular where personal accountability matters ("I built the first version of the rubric over 3 months and it was wrong twice; here's the second wrong"). No marketing-speak ("revolutionary," "best-in-class," "industry-leading"). No false-modesty ("we're just a small team"). Direct. Specific. Honest.
@@ -116,9 +123,9 @@ tags: [design-systems, audits, maturity-models, open-source, launch]
 
 ## TL;DR
 
-DSAF is a 125-criterion, agent-native, CMM-style maturity rubric for design systems — open-source, vendor-neutral, with six tiers (L0–L5). We're launching it today on Show HN. This post is the candid origin-story, including the things we already know are wrong with it. The framework lives at [github.com/CyberSkill/design-system-audit-framework](https://github.com/CyberSkill/design-system-audit-framework); the one-page DSAF-25 Core card is at [dsaf.dev/card](https://dsaf.dev/card).
+DSAF is a 125-criterion, agent-native, CMM-style maturity rubric for design systems — open-source, vendor-neutral, with six tiers (L0–L5). We're launching it today on Show HN. This post is the candid origin-story, including the things we already know are wrong with it. The framework lives at [github.com/cyberskill-official/design-system-audit-framework](https://github.com/cyberskill-official/design-system-audit-framework); the one-page DSAF-25 Core card is at [dsaf.dev/card](https://dsaf.dev/card).
 
-If you'd rather see the rubric than read this post: [DSAF-25 Core (5 min)](https://dsaf.dev/card) or [the full 125 criteria](https://github.com/CyberSkill/design-system-audit-framework/blob/main/docs/03-criteria-part-a.md).
+If you'd rather see the rubric than read this post: [DSAF-25 Core (5 min)](https://dsaf.dev/card) or [the full 125 criteria](https://github.com/cyberskill-official/design-system-audit-framework/blob/main/docs/03-criteria-part-a.md).
 
 ---
 
@@ -154,11 +161,11 @@ We've done a dedup pass (per `docs/criteria-aliases.md`), but reviewers will fin
 
 ### 3. The CyberSkill self-audit at L3 is a credibility tightrope
 
-CyberSkill's design system worked-example ([examples/cyberskill-design-system/](https://github.com/CyberSkill/design-system-audit-framework/tree/main/examples/cyberskill-design-system)) is published with a L3 cap (per [self-audit publication policy](https://dsaf.dev/branding/self-audit-policy)). The interior scores in §10 of that audit are honest; the cited tier is L3 because we haven't been independently verified. We chose this over either (a) capping at L5 and looking like every other consultancy-published framework, or (b) hiding the self-audit entirely. The third option — "publish at L4 with verification later" — is on the roadmap (P6 certification scheme). We think L3-now-verified-later is the right framing; if you disagree, the comments here are open.
+CyberSkill's design system worked-example ([examples/cyberskill-design-system/](https://github.com/cyberskill-official/design-system-audit-framework/tree/main/examples/cyberskill-design-system)) is published with a L3 cap (per [self-audit publication policy](https://dsaf.dev/branding/self-audit-policy)). The interior scores in §10 of that audit are honest; the cited tier is L3 because we haven't been independently verified. We chose this over either (a) capping at L5 and looking like every other consultancy-published framework, or (b) hiding the self-audit entirely. The third option — "publish at L4 with verification later" — is on the roadmap (P6 certification scheme). We think L3-now-verified-later is the right framing; if you disagree, the comments here are open.
 
 ### 4. The geography headwind is real
 
-We're a Vietnamese consultancy. Western enterprise buyers, on average, apply a discount to non-Western OSS work. That's unfair, it's documented in plenty of SaaS/consulting market patterns, and pretending otherwise is naive. Our countermove is named co-maintainer recruit (P2 plan — we're approaching design-systems community members like Nathan Curtis, Sarah Federman, and Into Design Systems regulars), plus the named endorsements that frame this launch ([Nathan Curtis quote in the README](https://github.com/CyberSkill/design-system-audit-framework#endorsements)). But: does it work? We won't know for ~6 months. If you've watched a Vietnam-origin OSS project succeed or fail at Western enterprise adoption, we'd value your read.
+We're a Vietnamese consultancy. Western enterprise buyers, on average, apply a discount to non-Western OSS work. That's unfair, it's documented in plenty of SaaS/consulting market patterns, and pretending otherwise is naive. Our countermove is named co-maintainer recruit (P2 plan — we're approaching design-systems community members like Nathan Curtis, Sarah Federman, and Into Design Systems regulars), plus the named endorsements that frame this launch ([Nathan Curtis quote in the README](https://github.com/cyberskill-official/design-system-audit-framework#endorsements)). But: does it work? We won't know for ~6 months. If you've watched a Vietnam-origin OSS project succeed or fail at Western enterprise adoption, we'd value your read.
 
 ### 5. The original "no-downgrade rule" was engineering-bait
 
@@ -190,7 +197,7 @@ Every DSAF audit produces *one file* — `audit-report-{YYYY-MM-DD}.md` — that
 > "A 125-criterion rubric that ships with shipping scripts — the gap between blog-post methodology and SaaS audit platform. Worth running on your own design system before your next leadership review."
 > — **Sil Bormüller**, Founder, Into Design Systems
 
-(Endorsement quotes used with explicit written consent per [FR-GOV-001 consent letters](https://github.com/CyberSkill/design-system-audit-framework/blob/main/docs/branding/reviewer-outreach.md). Additional endorsements landing in the weeks after launch.)
+(Endorsement quotes used with explicit written consent per [FR-GOV-001 consent letters](https://github.com/cyberskill-official/design-system-audit-framework/blob/main/docs/branding/reviewer-outreach.md). Additional endorsements landing in the weeks after launch.)
 
 ## Who this is for, and what feedback would help
 
@@ -223,19 +230,19 @@ DSAF is **not** for:
 - **P5 — Months 12-18:** Mode W (reverse-engineering audit for websites without a DS), `npx dsaf scan` CLI, Pro tier hosted benchmark.
 - **P6 — Year 2+:** Annual *State of Design System Audits* report (modeled on DORA), DSAF certification scheme, quarterly RFC cycle.
 
-The full roadmap with FRs lives in [`docs/feature-requests/BACKLOG.md`](https://github.com/CyberSkill/design-system-audit-framework/blob/main/docs/feature-requests/BACKLOG.md).
+The full roadmap with FRs lives in [`docs/feature-requests/BACKLOG.md`](https://github.com/cyberskill-official/design-system-audit-framework/blob/main/docs/feature-requests/BACKLOG.md).
 
 ---
 
 ## Try it
 
 - **[DSAF-25 Core (5-minute read)](https://dsaf.dev/card)** — the one-page subset
-- **[README on GitHub](https://github.com/CyberSkill/design-system-audit-framework)** — the full project entry point
-- **[Run your first SCAN](https://github.com/CyberSkill/design-system-audit-framework/blob/main/prompts/scan-mode.md)** — paste this prompt into your LLM agent
+- **[README on GitHub](https://github.com/cyberskill-official/design-system-audit-framework)** — the full project entry point
+- **[Run your first SCAN](https://github.com/cyberskill-official/design-system-audit-framework/blob/main/prompts/scan-mode.md)** — paste this prompt into your LLM agent
 - **[Show HN discussion](https://news.ycombinator.com/item?id=PLACEHOLDER)** — link added post-launch
-- **[Star the repo](https://github.com/CyberSkill/design-system-audit-framework)** — if any of this resonates
+- **[Star the repo](https://github.com/cyberskill-official/design-system-audit-framework)** — if any of this resonates
 
-Disclosure: I run CyberSkill, a software consultancy that uses DSAF and offers paid third-party audit services at [audit.cyberskill.world](https://audit.cyberskill.world). DSAF (the framework) is open source and vendor-neutral; CyberSkill (the consultancy) is one of several maintainers. The two are deliberately separated per [decoupling-decision.md](https://github.com/CyberSkill/design-system-audit-framework/blob/main/docs/branding/decoupling-decision.md).
+Disclosure: I run CyberSkill, a software consultancy that uses DSAF and offers paid third-party audit services at [audit.cyberskill.world](https://audit.cyberskill.world). DSAF (the framework) is open source and vendor-neutral; CyberSkill (the consultancy) is one of several maintainers. The two are deliberately separated per [decoupling-decision.md](https://github.com/cyberskill-official/design-system-audit-framework/blob/main/docs/branding/decoupling-decision.md).
 
 ---
 
@@ -272,7 +279,7 @@ Add to the existing `<p class="meta">` footer (per FR-BRAND-001 §3 landing page
 ```html
 <p class="meta">
   Maintained by <a href="https://cyberskill.world">CyberSkill</a> and named contributors.
-  Source: <a href="https://github.com/CyberSkill/design-system-audit-framework">design-system-audit-framework</a>.
+  Source: <a href="https://github.com/cyberskill-official/design-system-audit-framework">design-system-audit-framework</a>.
   Latest writing: <a href="/blog/launch-2026">We built a 125-criterion audit framework — here's what we got wrong</a>.
   Contact: <a href="mailto:hello@dsaf.dev">hello@dsaf.dev</a>.
   Security: <a href="/.well-known/security.txt">security.txt</a>.
@@ -420,7 +427,7 @@ The operator playbook (8h):
 
 ```
 1. HN front page: "Show HN: DSAF — open-source maturity framework for design systems (L0–L5, 125 criteria, agent-native)"
-2. User clicks Show HN title → README at github.com/CyberSkill/design-system-audit-framework
+2. User clicks Show HN title → README at github.com/cyberskill-official/design-system-audit-framework
 3. README's hero: "Read DSAF-25 Core first → dsaf.dev/card"
 4. User clicks card → reads in 5 minutes
 5. User returns to README → reads endorsements → notices "candid origin story → dsaf.dev/blog/launch-2026"

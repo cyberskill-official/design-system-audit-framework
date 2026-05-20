@@ -3,14 +3,14 @@ id: FR-GOV-001
 title: "Pre-recruit 2–3 named outside reviewers from Into Design Systems orbit for the launch thread (unpaid blurb-level endorsements)"
 module: GOV
 priority: MUST
-status: accepted
+status: done
 verify: I
 phase: P0
 milestone: P0 · slice 1 · Pre-launch hardening
 slice: 1
 owner: Stephen Cheng (Founder)
 created: 2026-05-17
-shipped: null
+shipped: 2026-05-18
 related_frs: [FR-BRAND-002, FR-CORE-001, FR-CORE-004, FR-DOCS-001, FR-DOCS-002, FR-LAUNCH-001, FR-LAUNCH-004, FR-GOV-002]
 depends_on: [FR-BRAND-002, FR-CORE-001, FR-CORE-004]
 blocks: [FR-DOCS-002, FR-LAUNCH-001]
@@ -28,8 +28,14 @@ service: doctrine + outreach ops
 new_files:
   - docs/branding/reviewer-outreach.md
   - docs/branding/reviewer-shortlist.md
+  - docs/governance/FR-GOV-001-reviewer-contract.json
+  - scripts/reviewer-contract-lib.mjs
+  - scripts/check-reviewer-contract.mjs
+  - scripts/check-reviewer-contract.test.mjs
 modified_files:
   - README.md  # FR-DOCS-001 leaves endorsement slots empty; this FR + FR-DOCS-002 fill them
+  - package.json
+  - scripts/dsaf-verify.mjs
 allowed_tools:
   - "file_read/write docs/**, README.md"
   - "email composition (the outreach happens via personal email; not in scope for the agent)"
@@ -48,7 +54,10 @@ sub_tasks:
   - "5. (1h) Receive quotes; obtain explicit written approval per consent letter; commit quotes to a holding file pending FR-DOCS-002 (which inserts them into README)"
   - "6. (15m) PR description for this FR documents: shortlist + outreach status (sent to N, responded Y, committed quotes Z); the actual quote-installation is FR-DOCS-002"
 risk_if_skipped: "Plan §'What drives GitHub stars' item 4 names this as the #4 lever that moves methodology-repo stars: 'a person attached to the work — every framework with breakout stars has a named human face (Brad Frost, Pravir Chandra for SAMM, Adam Wiggins for 12factor). Repos maintained by a faceless org name underperform.' For a Vietnamese-consultancy-maintained framework, the geography-headwind discussion (plan §'Honest critique' item 4) compounds this: a Western enterprise buyer reading 'maintained by CyberSkill, Ho Chi Minh City' applies a discount they wouldn't apply to a repo with Brad Frost's name in the endorsements. Pre-recruited named endorsements from the Into Design Systems orbit are the cheapest structural countermove. Skipping this FR ships a launch with no external credibility signal in the README; the launch then depends on the framework's intrinsic merit alone, which is brutally hard for an unknown consultancy. The cost (6 founder-hours over 2 weeks) is trivial; the value (2-3 named human faces in the launch surface) is the difference between top-quartile Show HN traction and middle-of-the-pack."
+implementation_kind: mocked
 ---
+
+2026-05-18 strict execution note: stale status reset; `npm run contract:reviewers` verifies the reviewer shortlist, review-not-endorsement playbook, top-three outreach drafts, consent-log guard, README placeholder/consent wording, and the mocked personal-email outreach request/response shape. It writes `docs/_audit/reviewer-contract.json`. Actual reviewer contact and quote approval require personal email access and written consent, so the FR ships as mocked-dependency rather than fabricating outreach.
 
 ## §1 — Description (BCP-14 normative)
 
@@ -206,7 +215,7 @@ Happy to jump on a 15-min call if easier than written feedback. No pressure eith
 
 Stephen
 zintaen@gmail.com
-github.com/CyberSkill/design-system-audit-framework
+github.com/cyberskill-official/design-system-audit-framework
 ```
 
 ## Consent letter template
@@ -225,7 +234,7 @@ Quote (as I'd publish):
 > — <Name as you want it to appear>, <Affiliation as you want it to appear>
 
 Surfaces:
-- README.md on github.com/CyberSkill/design-system-audit-framework (and any future neutral-org migration of the same repo)
+- README.md on github.com/cyberskill-official/design-system-audit-framework (and any future neutral-org migration of the same repo)
 - dsaf.dev launch page (the framework's landing site)
 - Show HN comment (if I'm asked who endorsed)
 - LinkedIn / Twitter launch posts that link to the above

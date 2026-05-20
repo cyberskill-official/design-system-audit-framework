@@ -13,7 +13,7 @@
  * Zero dependencies — Node 20+ built-ins only.
  */
 
-import { readFileSync, readdirSync, statSync, existsSync } from "node:fs";
+import { readFileSync, readdirSync, lstatSync, statSync, existsSync } from "node:fs";
 import { join, dirname, resolve, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -26,6 +26,8 @@ function walkMarkdown(dir, out = []) {
   for (const entry of readdirSync(dir)) {
     if (entry.startsWith(".") || entry === "node_modules" || entry === "dist") continue;
     const p = join(dir, entry);
+    const linkStat = lstatSync(p);
+    if (linkStat.isSymbolicLink()) continue;
     const stat = statSync(p);
     const rel = relative(ROOT, p);
     if (stat.isDirectory()) {
@@ -59,6 +61,7 @@ for (const file of files) {
     // Skip non-relative + non-md links
     if (!path) continue;                                 // pure anchor
     if (path.startsWith("http://") || path.startsWith("https://")) continue;
+    if (path.startsWith("/")) continue;                  // site-root route, verified by static-server smoke tests
     if (path.startsWith("mailto:")) continue;
     if (!path.endsWith(".md") && !path.includes("/")) continue;
 

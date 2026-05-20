@@ -1,0 +1,73 @@
+{
+  "color": {
+    "$type": "color",
+    "primitive": {
+      "blue-500": { "$value": "oklch(55% 0.18 250)", "$description": "Brand blue" },
+      "blue-600": { "$value": "oklch(49% 0.18 250)", "$description": "Brand blue strong" },
+      "gray-50": { "$value": "oklch(98% 0.01 250)", "$description": "Surface" },
+      "gray-900": { "$value": "oklch(20% 0.01 250)", "$description": "Text" }
+    },
+    "semantic": {
+      "action-primary": { "$value": "{color.primitive.blue-500}", "$description": "Primary action" },
+      "action-primary-hover": { "$value": "{color.primitive.blue-600}", "$description": "Primary action hover" },
+      "text-default": { "$value": "{color.primitive.gray-900}", "$description": "Text default" },
+      "surface-default": { "$value": "{color.primitive.gray-50}", "$description": "Surface default" }
+    },
+    "component": {
+      "button-primary-background": { "$value": "{color.semantic.action-primary}", "$description": "Button primary background" },
+      "button-primary-hover": { "$value": "{color.semantic.action-primary-hover}", "$description": "Button hover" },
+      "alert-info-background": { "$value": "{color.semantic.surface-default}", "$description": "Alert info background" },
+      "input-text": { "$value": "{color.semantic.text-default}", "$description": "Input text" }
+    }
+  },
+  "typography": {
+    "$type": "typography",
+    "body": { "$value": { "fontSize": "16px", "lineHeight": "24px" }, "$description": "Body" },
+    "small": { "$value": { "fontSize": "14px", "lineHeight": "20px" }, "$description": "Small" },
+    "h1": { "$value": { "fontSize": "40px", "lineHeight": "48px" }, "$description": "Heading" },
+    "h2": { "$value": { "fontSize": "32px", "lineHeight": "40px" }, "$description": "Heading" },
+    "h3": { "$value": { "fontSize": "24px", "lineHeight": "32px" }, "$description": "Heading" },
+    "label": { "$value": { "fontSize": "12px", "lineHeight": "16px" }, "$description": "Label" },
+    "mono": { "$value": { "fontSize": "13px", "lineHeight": "18px" }, "$description": "Mono" },
+    "display": { "$value": { "fontSize": "56px", "lineHeight": "64px" }, "$description": "Display" }
+  },
+  "spacing": {
+    "$type": "dimension",
+    "0": { "$value": "0px", "$description": "zero" },
+    "1": { "$value": "4px", "$description": "space 1" },
+    "2": { "$value": "8px", "$description": "space 2" },
+    "3": { "$value": "12px", "$description": "space 3" },
+    "4": { "$value": "16px", "$description": "space 4" },
+    "5": { "$value": "24px", "$description": "space 5" },
+    "6": { "$value": "32px", "$description": "space 6" },
+    "7": { "$value": "48px", "$description": "space 7" }
+  },
+  "elevation": {
+    "$type": "shadow",
+    "1": { "$value": "0 1px 2px rgb(0 0 0 / .16)", "$description": "level 1" },
+    "2": { "$value": "0 2px 4px rgb(0 0 0 / .16)", "$description": "level 2" },
+    "3": { "$value": "0 4px 12px rgb(0 0 0 / .16)", "$description": "level 3" },
+    "4": { "$value": "0 8px 24px rgb(0 0 0 / .16)", "$description": "level 4" }
+  },
+  "motion": {
+    "$type": "duration",
+    "fast": { "$value": "120ms", "$description": "fast" },
+    "base": { "$value": "200ms", "$description": "base" },
+    "slow": { "$value": "320ms", "$description": "slow" },
+    "ease": { "$type": "cubicBezier", "$value": [0.2, 0, 0, 1], "$description": "ease" }
+  },
+  "icon": {
+    "$type": "dimension",
+    "size-sm": { "$value": "16px", "$description": "small icon" },
+    "size-md": { "$value": "20px", "$description": "medium icon" },
+    "size-lg": { "$value": "24px", "$description": "large icon" },
+    "grid": { "$value": "24px", "$description": "grid" }
+  },
+  "grid": {
+    "$type": "dimension",
+    "columns": { "$value": "12", "$description": "columns" },
+    "gutter": { "$value": "24px", "$description": "gutter" },
+    "margin": { "$value": "32px", "$description": "margin" },
+    "breakpoint-md": { "$value": "768px", "$description": "medium breakpoint" }
+  }
+}

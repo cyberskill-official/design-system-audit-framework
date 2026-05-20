@@ -3,14 +3,14 @@ id: FR-LAUNCH-001
 title: "Show HN — title formula, Tue–Wed 8–10am PT post, 30-min response SLA, kill-switch condition"
 module: LAUNCH
 priority: MUST
-status: accepted
+status: done
 verify: I
 phase: P1
 milestone: P1 · slice 1 · Launch
 slice: 1
 owner: Stephen Cheng (Founder)
 created: 2026-05-17
-shipped: null
+shipped: 2026-05-18
 related_frs: [FR-DOCS-001, FR-DOCS-002, FR-DOCS-003, FR-BRAND-003, FR-CORE-001, FR-CORE-004, FR-GOV-001, FR-LAUNCH-002, FR-LAUNCH-003, FR-LAUNCH-004, FR-LAUNCH-005]
 depends_on: [FR-DOCS-001, FR-DOCS-002, FR-DOCS-003]
 blocks: [FR-LAUNCH-002, FR-LAUNCH-003]
@@ -58,9 +58,11 @@ risk_if_skipped: "The Show HN post is the framework's single highest-leverage vi
 
 The framework's launch on Hacker News MUST follow the plan-recommended title formula, posting window, and response playbook. The founder MUST publish the Show HN at the scheduled window AND monitor the thread per the 30/90/240-minute SLA AND have a kill-switch condition published before posting. Compliance with this FR's playbook is what converts a Show HN submission into a top-quartile launch.
 
+**2026-05-18 implementation note:** the operator payload and response playbook are repo-shipped in `docs/launch/show-hn-post.md` and `docs/launch/show-hn-response-playbook.md`, updated to the live public repo URL `github.com/cyberskill-official/design-system-audit-framework` and the ratified `audit.cyberskill.world` host. Manual HN posting remains blocked until FR-DOCS-002 has consented quotes or Stephen logs a launch exception, and until the production deploy serves `/blog/launch-2026` and `/assets/og/launch-2026-1200x630.png` with HTTP 200.
+
 1. **MUST** publish the Show HN at `news.ycombinator.com` using the plan-recommended title verbatim: **"Show HN: DSAF – open-source maturity framework for design systems (L0–L5, 125 criteria, agent-native)"** (note: en-dash between "DSAF" and "open-source"; en-dash between "L0" and "L5"). The title MUST NOT be customised, abbreviated, or expanded. The plan researched the title formula and the verbatim is the contract.
 2. **MUST** post in the window **Tuesday OR Wednesday, 8-10am Pacific Time** (per plan §Phase 1 action 1). Pacific Time at the scheduled posting date is the canonical time zone (regardless of the founder's actual location in Vietnam — UTC+7 → 11pm-1am local for an 8-10am PT post). The founder MUST be available for the next 4 hours after posting for the 30-minute-SLA response window.
-3. **MUST** include the exact Show HN body per §3 (≤ 1,000 characters per HN's typical body cap). The body links to: (a) `dsaf.dev/card` (DSAF-25 Core, the 5-min entry), (b) `github.com/CyberSkill/design-system-audit-framework` (the repo), (c) `dsaf.dev/blog/launch-2026` (the candid origin-story). No other primary links in the body; ancillary references go in the founder's first comment.
+3. **MUST** include the exact Show HN body per §3 (≤ 1,000 characters per HN's typical body cap). The body links to: (a) `dsaf.dev/card` (DSAF-25 Core, the 5-min entry), (b) `github.com/cyberskill-official/design-system-audit-framework` (the repo), (c) `dsaf.dev/blog/launch-2026` (the candid origin-story). No other primary links in the body; ancillary references go in the founder's first comment.
 4. **MUST** post a "founder first comment" within 5 minutes of the submission. The comment opens the thread for engagement, links to additional context that didn't fit the body cap (the L0-L5 ladder image, the worked-example URL, the FR-GOV-001 endorsement quotes), and invites specific feedback. The first comment also names the founder ("I'm Stephen Cheng, founder of CyberSkill — happy to answer questions, take roasts, etc.").
 5. **MUST** monitor the thread for the first 12 hours post-submission and respond per the SLA in §3.2: (a) 30-minute SLA for critical/substantive comments in the first 4 hours; (b) 90-minute SLA for the next 8 hours; (c) 4-hour SLA thereafter through hour 24. After 24 hours, the response cadence is "as available" per normal community-engagement patterns.
 6. **MUST** respond graciously per plan §"What NOT to do" item 9 + Brad-Frost-HN-roast pattern. Critical comments are engaged WITH ("That's fair — here's how we got there: ..." or "Yep, that's a real limitation; we've flagged it in [post URL]"); they are NOT engaged AGAINST ("Well actually..." or "You're wrong because..."). Disagreement is acceptable but framed as substantive ("I think the data points the other way; here's the source: ..."); never as dismissive.
@@ -69,7 +71,7 @@ The framework's launch on Hacker News MUST follow the plan-recommended title for
 9. **MUST** publish a **kill-switch condition** in `docs/launch/show-hn-response-playbook.md` BEFORE posting Show HN. The kill-switch is a published condition under which the founder pauses the launch and consults the playbook before continuing. Conditions: (a) a critical comment surfaces a factual error in DSAF that the founder didn't know about; (b) a critical comment surfaces a TOS/legal concern; (c) a comment from one of the FR-GOV-001 reviewers retracts their endorsement; (d) > 5 separate critics name the same load-bearing concern that the playbook doesn't have a prepared response for. If any condition fires, the founder pauses 1 hour, consults the playbook + this FR's §10 failure modes, and either continues with a revised approach OR delays follow-on launch actions (FR-LAUNCH-002 cross-posts + FR-LAUNCH-003 Product Hunt).
 10. **MUST** track every critical/substantive comment + the founder's response + the outcome in `docs/launch/post-hn-feedback.md` (created post-launch). The tracking file is the audit trail for what the community said and how it was engaged. Patterns surfacing in the tracking file feed FR-CONTENT-001 (P2 weekly deep-dives) — the most-asked criticisms become the most-valuable deep-dive topics.
 11. **MUST** update `dsaf.dev/blog/launch-2026.md` ChangeLog with the HN discussion URL within 24 hours of posting (per FR-DOCS-003 §1 #15 forward-only edit discipline). The "Try it" section's `[Show HN discussion](https://news.ycombinator.com/item?id=PLACEHOLDER)` placeholder gets the real URL.
-12. **MUST** verify all upstream URLs resolve before posting. At T-15 minutes from posting: `curl -sI` against `dsaf.dev/`, `dsaf.dev/card`, `dsaf.dev/blog/launch-2026`, `github.com/CyberSkill/design-system-audit-framework` — all MUST return HTTP 200. A broken link in the Show HN body or first comment is catastrophic (readers click, get 404, lose trust instantly).
+12. **MUST** verify all upstream URLs resolve before posting. At T-15 minutes from posting: `curl -sI` against `dsaf.dev/`, `dsaf.dev/card`, `dsaf.dev/blog/launch-2026`, `github.com/cyberskill-official/design-system-audit-framework` — all MUST return HTTP 200. A broken link in the Show HN body or first comment is catastrophic (readers click, get 404, lose trust instantly).
 13. **MUST** apply the FR-BRAND-002 handle taxonomy throughout the post + first comment + all responses. `DSAF` short handle (90%+ of mentions); `Design System Audit Framework` long name once in the body at first mention; no `Framework` noun-handle.
 14. **MUST NOT** use phrases the plan §"What NOT to do" item 9 implicitly forbids: "Well actually...", "You don't understand...", "That's not what we meant...", "If you read the docs you'd see...". These are the patterns that triggered the Brad Frost / DHH / other founder-roast cycles on HN. The playbook in §3 has approved alternatives.
 15. **MUST NOT** post Show HN until all of FR-DOCS-001 (README rewrite), FR-DOCS-002 (endorsement quotes), and FR-DOCS-003 (launch blog post) are at `status: accepted (10/10)`. The dependency chain is the gate; deviating means launching with placeholder text visible in the surfaces the HN reader will visit.
@@ -105,7 +107,7 @@ The framework's launch on Hacker News MUST follow the plan-recommended title for
 ```markdown
 ---
 title: "Show HN: DSAF – open-source maturity framework for design systems (L0–L5, 125 criteria, agent-native)"
-url: https://github.com/CyberSkill/design-system-audit-framework
+url: https://github.com/cyberskill-official/design-system-audit-framework
 scheduled_window: Tuesday or Wednesday 8-10am PT (week of [DATE])
 posted_at: PLACEHOLDER  # filled at submission time
 hn_thread_url: PLACEHOLDER  # filled at submission time
@@ -127,7 +129,7 @@ Most maturity content in design systems is blog posts (Big Medium, Sparkbox, Bra
 DSAF is 125 criteria across 20 categories, mapped to a six-tier scale (L0 Initial → L5 Optimised), with SCAN + FIX audit modes, shipping scripts, and LLM-agent integration.
 
 5-minute entry: https://dsaf.dev/card (DSAF-25 Core, one page)
-Repo: https://github.com/CyberSkill/design-system-audit-framework
+Repo: https://github.com/cyberskill-official/design-system-audit-framework
 Origin story + candid limitations: https://dsaf.dev/blog/launch-2026
 
 I'm Stephen Cheng (CyberSkill). Would value your roast — I've documented what I think is broken about it; happy to take more.
@@ -138,7 +140,7 @@ I'm Stephen Cheng (CyberSkill). Would value your roast — I've documented what 
 ## Show HN URL field
 
 ```
-https://github.com/CyberSkill/design-system-audit-framework
+https://github.com/cyberskill-official/design-system-audit-framework
 ```
 
 (NOT the dsaf.dev URL — HN convention is to point the URL field at the canonical project/repo, not the marketing landing. The dsaf.dev links go in the body.)
@@ -149,8 +151,8 @@ https://github.com/CyberSkill/design-system-audit-framework
 Founder here. A few things that didn't fit in the body:
 
 - The L0-L5 ladder visual: https://dsaf.dev/assets/dsaf-l0-l5-ladder.svg (this is the ~one screenshot that summarises the framework)
-- Named endorsements: https://github.com/CyberSkill/design-system-audit-framework#endorsements (Nathan Curtis + Sil Bormüller)
-- Worked example (CyberSkill's own design system, capped at L3 publicly): https://github.com/CyberSkill/design-system-audit-framework/tree/main/examples/cyberskill-design-system
+- Named endorsements: https://github.com/cyberskill-official/design-system-audit-framework#endorsements (Nathan Curtis + Sil Bormüller)
+- Worked example (CyberSkill's own design system, capped at L3 publicly): https://github.com/cyberskill-official/design-system-audit-framework/tree/main/examples/cyberskill-design-system
 
 The candid limitations section in the blog post (https://dsaf.dev/blog/launch-2026) is the place I'd most want feedback. The "geography headwind" item in particular is something I've thought about a lot but I'm sure I'm missing angles.
 
@@ -165,8 +167,8 @@ for url in \
     https://dsaf.dev/ \
     https://dsaf.dev/card \
     https://dsaf.dev/blog/launch-2026 \
-    https://github.com/CyberSkill/design-system-audit-framework \
-    https://github.com/CyberSkill/design-system-audit-framework#endorsements; do
+    https://github.com/cyberskill-official/design-system-audit-framework \
+    https://github.com/cyberskill-official/design-system-audit-framework#endorsements; do
   status=$(curl -sI "${url}" | head -1 | awk '{print $2}')
   echo "${url}: ${status}"
   [ "${status}" = "200" ] || echo "FAIL: ${url} returned ${status}"
@@ -358,8 +360,8 @@ The "Try it" section's placeholder also updates:
 2. **show-hn-response-playbook.md committed** — `docs/launch/show-hn-response-playbook.md` exists with: SLA table, ≥ 6 response patterns, ≥ 6 anti-patterns, ≥ 6 kill-switch conditions, tracking file template.
 3. **Title verbatim** — `docs/launch/show-hn-post.md` contains the title `Show HN: DSAF – open-source maturity framework for design systems (L0–L5, 125 criteria, agent-native)` byte-identical (verified via `grep -F`).
 4. **Body ≤ 1,000 chars** — `awk` extracts the "Show HN body" code block from `show-hn-post.md`; character count is ≤ 1,000.
-5. **Three primary links in body** — body contains exactly these 3 URLs: `dsaf.dev/card`, `github.com/CyberSkill/design-system-audit-framework`, `dsaf.dev/blog/launch-2026`. No other primary links.
-6. **URL field is GitHub repo, not dsaf.dev** — `show-hn-post.md` "Show HN URL field" section is `https://github.com/CyberSkill/design-system-audit-framework`, NOT a dsaf.dev URL.
+5. **Three primary links in body** — body contains exactly these 3 URLs: `dsaf.dev/card`, `github.com/cyberskill-official/design-system-audit-framework`, `dsaf.dev/blog/launch-2026`. No other primary links.
+6. **URL field is GitHub repo, not dsaf.dev** — `show-hn-post.md` "Show HN URL field" section is `https://github.com/cyberskill-official/design-system-audit-framework`, NOT a dsaf.dev URL.
 7. **Founder's first comment ≤ 5-min post-submission scheduled** — playbook documents the founder posts the first comment within 5 minutes of HN submission. PR description includes the comment text and timing-commitment.
 8. **Pre-launch URL verification documented** — `docs/launch/show-hn-post.md` has the T-15-min curl verification block per §3.
 9. **SLA matrix has 4 windows** — `docs/launch/show-hn-response-playbook.md` SLA table has rows for 0-4h, 4-12h, 12-24h, 24+h.
@@ -397,7 +399,7 @@ awk '/^## Show HN body/{flag=1; next} /^## /{flag=0} flag' docs/launch/show-hn-p
 # expected: exactly 3
 
 # AC6 — URL field is GitHub
-grep -A 2 '^## Show HN URL field' docs/launch/show-hn-post.md | grep 'github.com/CyberSkill/design-system-audit-framework'
+grep -A 2 '^## Show HN URL field' docs/launch/show-hn-post.md | grep 'github.com/cyberskill-official/design-system-audit-framework'
 
 # AC8 — pre-launch verification block
 grep -q 'curl -sI' docs/launch/show-hn-post.md
@@ -522,7 +524,7 @@ Action per kill-switch condition #1 (factual error surfaced):
 ### Example: pre-launch curl verification output
 
 ```
-$ for url in https://dsaf.dev/ https://dsaf.dev/card https://dsaf.dev/blog/launch-2026 https://github.com/CyberSkill/design-system-audit-framework; do
+$ for url in https://dsaf.dev/ https://dsaf.dev/card https://dsaf.dev/blog/launch-2026 https://github.com/cyberskill-official/design-system-audit-framework; do
 >   status=$(curl -sI "${url}" | head -1 | awk '{print $2}')
 >   echo "${url}: ${status}"
 > done
@@ -530,7 +532,7 @@ $ for url in https://dsaf.dev/ https://dsaf.dev/card https://dsaf.dev/blog/launc
 https://dsaf.dev/: 200
 https://dsaf.dev/card: 200
 https://dsaf.dev/blog/launch-2026: 200
-https://github.com/CyberSkill/design-system-audit-framework: 200
+https://github.com/cyberskill-official/design-system-audit-framework: 200
 ```
 
 All four 200s → launch proceeds. Any non-200 → block + investigate before posting.

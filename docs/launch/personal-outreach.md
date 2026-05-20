@@ -2,6 +2,7 @@
 
 **Status:** launch-ready.
 **FR:** FR-LAUNCH-004.
+**Canonical tracker:** [`headsup-outreach.md`](headsup-outreach.md). Full copy-paste drafts: [`../social/personal-outreach.md`](../social/personal-outreach.md).
 
 ## Rule
 
@@ -32,7 +33,7 @@ Hi <name>,
 
 I am launching DSAF next week: an open-source criteria set for design-system audits.
 The useful short surface is DSAF-25 Core: https://audit.cyberskill.world/card.
-The repo is here: https://github.com/CyberSkill/design-system-audit-framework.
+The repo is here: https://github.com/cyberskill-official/design-system-audit-framework.
 
 No ask to promote it.
 If you have five minutes and see a bad assumption, I would genuinely value the critique before more people read it.

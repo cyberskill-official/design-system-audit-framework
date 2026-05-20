@@ -1,0 +1,69 @@
+{
+  "schema_version": "2026-05-18",
+  "fr_id": "FR-BRAND-002",
+  "status": "strict-audit-contract",
+  "source_of_truth": [
+    "docs/branding/handle-taxonomy.md",
+    "docs/branding/glossary.md"
+  ],
+  "observability": {
+    "audit_output": "docs/_audit/brand-taxonomy-contract.json",
+    "correlation_key": "fr_id + file + rule_id",
+    "events": [
+      "surface_scanned",
+      "required_term_checked",
+      "banned_handle_checked",
+      "strict_audit_recorded"
+    ]
+  },
+  "scan": {
+    "roots": [
+      "README.md",
+      "CONTRIBUTING.md",
+      "SERVICES.md",
+      "docs",
+      "landing",
+      "prompts",
+      "templates"
+    ],
+    "extensions": [".md", ".html"],
+    "exclude_path_contains": [
+      "docs/feature-requests/",
+      "docs/Design System Audit Framework",
+      "docs/branding/handle-taxonomy.md",
+      "docs/branding/glossary.md",
+      "docs/branding/brand-audit-2026-05-18.md",
+      "docs/ops/deploy-smoke-2026-05-18.md",
+      "landing/blog/launch-2026.html",
+      "landing/blog/launch-2026/index.html"
+    ]
+  },
+  "required_terms": [
+    "DSAF",
+    "Design System Audit Framework",
+    "DSAF Criteria",
+    "DSAF-25 Core",
+    "DSAF Levels",
+    "DSAF Modes",
+    "SCAN mode",
+    "FIX mode",
+    "W mode"
+  ],
+  "banned_patterns": [
+    "\\b(the )?DSAF Framework\\b",
+    "\\bDSAF framework\\b",
+    "\\bthe Framework\\b",
+    "CyberSkill'?s framework",
+    "CyberSkill framework",
+    "#DesignSystemAuditFramework",
+    "#dsafFramework",
+    "#dsaf25",
+    "#dsafCore"
+  ],
+  "required_readme_h1": "# DSAF — Design System Audit Framework",
+  "minimum_dsaf_mentions": {
+    "README.md": 5,
+    "docs/branding/handle-taxonomy.md": 5,
+    "docs/branding/glossary.md": 5
+  }
+}

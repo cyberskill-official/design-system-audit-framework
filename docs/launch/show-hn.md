@@ -1,66 +1,33 @@
 # Show HN launch runbook
 
-**Status:** ready for launch window.
-**FR:** FR-LAUNCH-001.
+**FR:** FR-LAUNCH-001  
+**Status:** repo-ready; externally blocked by FR-DOCS-002 until at least two named outside-reviewer quotes have written consent, or Stephen logs a launch exception.
 
-## Timing
+## Canonical operator files
 
-Post Tuesday or Wednesday, 08:00-10:00 Pacific Time.
-Use the first hour for immediate replies and the first day for active monitoring.
+- [`show-hn-post.md`](show-hn-post.md) — exact title, URL field, body, first comment, schedule, and T-15 minute URL checks.
+- [`show-hn-response-playbook.md`](show-hn-response-playbook.md) — response SLA, reply patterns, anti-patterns, kill switch, and post-launch handoff.
+- [`post-hn-feedback.md`](post-hn-feedback.md) — live tracking file after the HN item exists.
 
-## Title options
+## Schedule
 
-1. `Show HN: DSAF, an open-source rubric for design-system audits`
-2. `Show HN: DSAF-25, a one-page design-system audit score`
-3. `Show HN: I made a 125-criterion audit rubric for design systems`
+Earliest candidate if consent lands in time:
 
-Use option 1 by default.
+| Slot | Pacific Time | Asia/Ho_Chi_Minh |
+|---|---|---|
+| Preferred | Tuesday, 2026-05-19, 08:30 PDT | Tuesday, 2026-05-19, 22:30 ICT |
+| Fallback | Wednesday, 2026-05-20, 08:30 PDT | Wednesday, 2026-05-20, 22:30 ICT |
 
-## Submission body
+If FR-DOCS-002 is still blocked at T-24h, roll forward to the next Tuesday or Wednesday 08:00-10:00 Pacific slot.
 
-DSAF is an open-source criteria set for auditing design-system maturity.
-The short version is DSAF-25 Core, a one-page scorecard.
-The full version is 125 criteria across system quality and UX quality, with prompts and scripts for LLM-assisted audits.
+## Manual posting checklist
 
-The thing I would most value: critique of the criteria boundaries.
-I expect some overlap, and the repo now documents the dedup methodology rather than pretending the boundaries are perfect.
-
-Links:
-
-- DSAF-25 Core: `https://audit.cyberskill.world/card`
-- Repo: `https://github.com/CyberSkill/design-system-audit-framework`
-- Launch note: `https://audit.cyberskill.world/blog/launch-2026`
-
-## Response SLA
-
-| Window | Response target |
-|---|---|
-| First 4 hours | every 30 minutes |
-| Hours 4-12 | every 60-90 minutes |
-| Hours 12-24 | every 3-4 hours |
-
-## Response patterns
-
-| Situation | Response |
-|---|---|
-| Real limitation | Acknowledge, name likely fix path, invite issue/PR |
-| Misread as sales pitch | Point to MIT license and separate SERVICES file |
-| Self-audit credibility critique | Point to self-audit cap policy |
-| 125 criteria too large | Point to DSAF-25 Core |
-| Geography or author credibility critique | Keep calm, return to artifacts and methodology |
-
-## Kill switch
-
-Pause cross-posting if:
-
-- HN removes or flags the post.
-- A serious factual issue in the repo is confirmed.
-- A published quote lacks consent.
-- The domain or repo link is broken.
-- The launch copy accidentally makes a prohibited self-audit claim.
-
-## Tracking
-
-Use [`post-hn-feedback.md`](post-hn-feedback.md) for the launch URL, substantive comments, and patterns that should become weekly deep-dives.
+1. Confirm FR-DOCS-001 and FR-DOCS-003 remain verified.
+2. Confirm FR-DOCS-002 is either shipped or explicitly waived for launch.
+3. Run the T-15 minute URL checks in `show-hn-post.md`.
+4. Submit the URL field, title, and body from `show-hn-post.md`.
+5. Post the founder first comment within five minutes.
+6. Run the response cadence from `show-hn-response-playbook.md`.
+7. Record every substantive thread in `post-hn-feedback.md`.
 
 *End of Show HN runbook.*

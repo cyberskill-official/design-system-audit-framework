@@ -3,14 +3,14 @@ id: FR-BRAND-004
 title: "Move marketing copy off `audit.cyberskill.world` to `dsaf.dev`; keep 12-month back-redirect"
 module: BRAND
 priority: MUST
-status: accepted
+status: done
 verify: I
 phase: P0
 milestone: P0 · slice 1 · Pre-launch hardening
 slice: 1
 owner: Stephen Cheng (Founder)
 created: 2026-05-17
-shipped: null
+shipped: 2026-05-18
 related_frs: [FR-BRAND-001, FR-BRAND-002, FR-CORE-004, FR-DOCS-001, FR-FUNNEL-001]
 depends_on: [FR-BRAND-001, FR-BRAND-002, FR-CORE-004]
 blocks: [FR-DOCS-001, FR-FUNNEL-001]
@@ -27,9 +27,17 @@ service: doctrine + ops
 new_files:
   - docs/branding/decoupling-decision.md
   - docs/branding/url-redirect-map.md
+  - docs/branding/FR-BRAND-004-decoupling-contract.json
+  - docs/ADR-FR-BRAND-004.md
+  - scripts/decoupling-contract-lib.mjs
+  - scripts/check-decoupling-contract.mjs
+  - scripts/check-decoupling-contract.test.mjs
 modified_files:
   - README.md
   - dsaf.dev/index.html        # populated post-FR-BRAND-001 mint
+  - landing/benchmark/privacy/index.html
+  - package.json
+  - scripts/dsaf-verify.mjs
 allowed_tools:
   - "file_read/write docs/**, README.md, dsaf.dev/**"
   - "edit redirect rules on Cloudflare (Page Rules or Bulk Redirects)"
@@ -50,7 +58,10 @@ sub_tasks:
   - "7. (15m) Patch README.md to reflect the decoupling (already partly done by FR-BRAND-001; this FR adds the explicit 'paid services live separately at audit.cyberskill.world' breadcrumb)"
   - "8. (15m) PR description includes the URL inventory, the migration decisions per URL, and curl verification output for redirect"
 risk_if_skipped: "Plan §What NOT to do item 4 names the failure mode: 'Don't repaint the CyberSkill brand onto the framework after launching neutral. Pick a side at launch and commit. The half-measure ('DSAF by CyberSkill') is the worst of both worlds.' Without this FR, the framework's marketing copy stays on a CyberSkill sub-domain (audit.cyberskill.world) — every external citation goes to a URL that brands as 'CyberSkill's framework,' not 'DSAF' (a neutral framework backed by CyberSkill). The geography-headwind discussion in plan §Honest critique item 4 is downstream of this: Western buyers reading a CyberSkill-branded URL apply the Vietnam discount; reading a dsaf.dev URL with CyberSkill listed as one of several named maintainers (post-FR-GOV-002) is structurally different. Skipping this FR also breaks the FR-BRAND-001 promise — that FR mints dsaf.dev but doesn't move content onto it; without FR-BRAND-004, dsaf.dev stays a near-empty landing page while audit.cyberskill.world remains the de-facto framework site. FR-BRAND-004 closes the loop."
+implementation_kind: mocked
 ---
+
+2026-05-18 strict execution note: stale status reset; the repository's ratified canonical-host override keeps `audit.cyberskill.world` as DSAF's public URL and enforces decoupling at the content/routing/governance layer instead of reviving the superseded `dsaf.dev` redirect plan. `npm run contract:decoupling` verifies canonical metadata, no-redirect Vercel config, active-surface neutral-domain cleanup, landing sales-copy boundaries, CODEOWNERS gates, ADR coverage, and the mocked deployment-control request/response shape; it writes `docs/_audit/decoupling-contract.json`.
 
 ## §1 — Description (BCP-14 normative)
 

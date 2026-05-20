@@ -46,7 +46,7 @@ Within each phase, group steps into 2–3 **waves** that can overlap in executio
 For each phase, write:
 
 1. **Goal** — one sentence: what this phase unlocks.
-2. **Audit lift** — estimated combined-score impact in pp (e.g., `+5 to +7 pp combined (84.6% → ~89–92%)`).
+2. **Audit lift** — estimated combined-score impact in pp (e.g., `+5 to +7 pp combined (68% → ~73–75%)`).
 3. **Dependencies** — what must complete before this phase starts.
 4. **Wave 1, 2, …** — each with a numbered step list. Each step:
    - **Bold action** — what to do.

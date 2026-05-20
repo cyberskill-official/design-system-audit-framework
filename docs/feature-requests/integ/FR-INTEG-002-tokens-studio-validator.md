@@ -3,14 +3,14 @@ id: FR-INTEG-002
 title: "Tokens Studio export validator — `@dsaf/tokens-validator` CLI + library; scores A.1 Foundations & Tokens subset from tokens.json"
 module: INTEG
 priority: SHOULD
-status: accepted
+status: done
 verify: T
 phase: P2
 milestone: P2 · slice 1 · Community velocity
 slice: 1
 owner: Stephen Cheng (Founder) + community engineer
 created: 2026-05-17
-shipped: null
+shipped: 2026-05-18
 related_frs: [FR-CORE-001, FR-CORE-003, FR-CORE-004, FR-INTEG-001, FR-INTEG-003, FR-CLI-001]
 depends_on: [FR-CORE-001, FR-INTEG-001]
 blocks: [FR-INTEG-003]
@@ -82,6 +82,8 @@ risk_if_skipped: "Plan §Phase 2 action 2 names the Tokens Studio export validat
 
 The framework SHOULD ship the Tokens Studio export validator at `@dsaf/tokens-validator` (npm) as a standalone CLI + a library importable from FR-INTEG-001's Storybook addon. The validator parses Tokens Studio JSON exports + DTCG-conformant `tokens.json` files; runs 9 validators (one per A.1 Foundations & Tokens criterion A.1.1-A.1.9); emits `CriterionScore[]` in the same shape as FR-INTEG-001's scoring engine. Supports MIT license, Vitest tests with ≥ 80% coverage, GitHub Actions CI, npm publishing under `@dsaf` org.
 
+**2026-05-18 implementation note:** the local package surface is repo-shipped at `packages/tokens-validator/` with CLI/library exports, nine A.1 validators, fixtures, tests, docs, changelog, and CI. The repository compatibility command is `npm run integ:tokens -- <tokens.json>`.
+
 1. **MUST** ship the validator at npm package name `@dsaf/tokens-validator`. The package is published from `packages/tokens-validator/` in the framework repo.
 2. **MUST** support two input formats: (a) **Tokens Studio JSON** — the format emitted by the Tokens Studio Figma plugin (https://tokens.studio); (b) **DTCG-conformant tokens.json** per criterion A.1.8 (DTCG 2024.06 minimum; DTCG 2025.10 preferred). Auto-detect format from the JSON shape at parse time.
 3. **MUST** ship 9 validators per §3, one per A.1 Foundations & Tokens criterion:
@@ -148,7 +150,7 @@ The framework SHOULD ship the Tokens Studio export validator at `@dsaf/tokens-va
   "author": "Stephen Cheng <hello@dsaf.dev>",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CyberSkill/design-system-audit-framework.git",
+    "url": "git+https://github.com/cyberskill-official/design-system-audit-framework.git",
     "directory": "packages/tokens-validator"
   },
   "type": "module",

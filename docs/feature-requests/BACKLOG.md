@@ -3,7 +3,7 @@
 **Owner:** Stephen Cheng (Founder, CyberSkill) · **Status:** v0.1.0 — initial index, 2026-05-17
 **Source of truth:** the markdown files in this folder. This index is regenerated when FRs land or change status.
 **Source plan:** [`../Design System Audit Framework — Multi-Phase Improvement Plan.md`](../Design%20System%20Audit%20Framework%20—%20Multi-Phase%20Improvement%20Plan.md)
-**Authoring playbook:** [`./AUTHORING.md`](./AUTHORING.md) (project-local, self-contained)
+**Authoring playbook:** `./feature-request-audit skill` (see feature-request skills) (project-local, self-contained)
 
 ---
 
@@ -14,8 +14,8 @@ This document is the **single source of truth** for what the Design System Audit
 - **Phase** maps to the roadmap arc in the source plan: `P0 Pre-launch hardening` (Weeks 0–6) → `P1 Launch` (Weeks 6–10) → `P2 Community velocity` (Months 3–6) → `P3 Industry positioning` (Months 6–12) → `P4 Paid funnel optimization` (Months 9–15, overlaps P3) → `P5 Framework v0.2+` (Months 12–18) → `P6 Sustained leadership` (Year 2+).
 - **Slice** is a coherent ship-unit within a module. Slice 1 is always the minimum viable surface for that module in that phase.
 - **Priority** uses BCP-14 keywords — `MUST` (phase blocker) · `SHOULD` (phase should-have) · `COULD` (phase nice-to-have) · `MAY` (post-phase).
-- **Status** flows: `draft → audited → accepted → building → shipped` (or `deferred` / `rejected` / `superseded`).
-- **Depends on** is the cross-FR dependency graph. An FR cannot start `building` until its `depends_on` rows are all `shipped`.
+- **Status** flows: `draft -> ready_to_implement -> implementing -> ready_to_review -> reviewing -> ready_to_test -> testing -> done`, with `on_hold` / `closed` off-ramps. Rework routes back to `ready_to_implement`.
+- **Depends on** is the cross-FR dependency graph. An FR cannot start `implementing` until its `depends_on` rows are all `done`.
 - **Effort** is a rough sizing in hours (1h = 30 min focused work + 30 min coordination/review). Treat as ±50%. Sized for one founder-operator + occasional external collaborators (designer, illustrator, audit reviewer, EU/US partner).
 
 **Reading order for the founder/planner:** scan §1 (totals) → pick the phase you're working in → read the per-module breakdown in that phase → drill into individual FR markdowns as you accept them.
@@ -61,10 +61,10 @@ This document is the **single source of truth** for what the Design System Audit
 
 | FR-ID | Title | Pri | Status | Depends on | Effort |
 |---|---|:-:|:-:|---|---:|
-| **FR-BRAND-001** | Mint `audit.cyberskill.world` (or `designsystemaudit.org`) — WHOIS, DNS, basic landing page | MUST | repo-shipped · external pending | — | 4h |
-| **FR-BRAND-002** | DSAF handle taxonomy — "DSAF" / "DSAF Criteria" / "DSAF Levels"; ban "Framework" creep | MUST | shipped | FR-BRAND-001 | 3h |
-| **FR-BRAND-003** | Commission canonical L0–L5 ladder + radar chart SVGs into `/assets/` | MUST | shipped | FR-BRAND-002 | 8h |
-| **FR-BRAND-004** | Move marketing copy off `audit.cyberskill.world` to `audit.cyberskill.world`; keep 12-month redirect | MUST | repo-shipped · external pending | FR-BRAND-001, FR-BRAND-002 | 5h |
+| **FR-BRAND-001** | Mint `audit.cyberskill.world` (or `designsystemaudit.org`) — WHOIS, DNS, basic landing page | MUST | done | — | 4h |
+| **FR-BRAND-002** | DSAF handle taxonomy — "DSAF" / "DSAF Criteria" / "DSAF Levels"; ban "Framework" creep | MUST | done | FR-BRAND-001 | 3h |
+| **FR-BRAND-003** | Commission canonical L0–L5 ladder + radar chart SVGs into `/assets/` | MUST | done | FR-BRAND-002 | 8h |
+| **FR-BRAND-004** | Move marketing copy off `audit.cyberskill.world` to `audit.cyberskill.world`; keep 12-month redirect | MUST | done | FR-BRAND-001, FR-BRAND-002 | 5h |
 
 ### P0.2 — CORE · framework spec changes
 
@@ -72,10 +72,10 @@ This document is the **single source of truth** for what the Design System Audit
 
 | FR-ID | Title | Pri | Status | Depends on | Effort |
 |---|---|:-:|:-:|---|---:|
-| **FR-CORE-001** | Build DSAF-25 Core subset — one printable page, designer-readable in 5 min, PM-quotable in a meeting | MUST | shipped | — | 8h |
-| **FR-CORE-002** | Soften no-downgrade rule → "no silent regression"; explicit override comment required, no hard block | MUST | shipped | — | 4h |
-| **FR-CORE-003** | Consolidate overlapping criteria across 20 categories (dedup pass before launch) | MUST | shipped | — | 6h |
-| **FR-CORE-004** | Cap CyberSkill self-audit at L3 publicly; remove "84.6% combined" headline from all external surfaces | MUST | shipped | — | 3h |
+| **FR-CORE-001** | Build DSAF-25 Core subset — one printable page, designer-readable in 5 min, PM-quotable in a meeting | MUST | done | — | 8h |
+| **FR-CORE-002** | Soften no-downgrade rule → "no silent regression"; explicit override comment required, no hard block | MUST | done | — | 4h |
+| **FR-CORE-003** | Consolidate overlapping criteria across 20 categories (dedup pass before launch) | MUST | done | — | 6h |
+| **FR-CORE-004** | Cap CyberSkill self-audit at L3 publicly; remove "84.6% combined" headline from all external surfaces | MUST | done | — | 3h |
 
 ### P0.3 — DOCS · README rewrite + endorsements
 
@@ -83,8 +83,8 @@ This document is the **single source of truth** for what the Design System Audit
 
 | FR-ID | Title | Pri | Status | Depends on | Effort |
 |---|---|:-:|:-:|---|---:|
-| **FR-DOCS-001** | Rewrite README in HN-launch idiom — first 200 words = what / why now / how it differs from X | MUST | shipped | FR-BRAND-001, FR-BRAND-003, FR-CORE-001, FR-CORE-002, FR-CORE-004 | 6h |
-| **FR-DOCS-002** | Land ≥ 2 named outside-reviewer endorsement quotes in README | MUST | external pending | FR-GOV-001, FR-DOCS-001 | 3h |
+| **FR-DOCS-001** | Rewrite README in HN-launch idiom — first 200 words = what / why now / how it differs from X | MUST | done | FR-BRAND-001, FR-BRAND-003, FR-CORE-001, FR-CORE-002, FR-CORE-004 | 6h |
+| **FR-DOCS-002** | Land ≥ 2 named outside-reviewer endorsement quotes in README | MUST | done | FR-GOV-001, FR-DOCS-001 | 3h |
 
 ### P0.4 — GOV · pre-launch reviewer roster
 
@@ -92,7 +92,7 @@ This document is the **single source of truth** for what the Design System Audit
 
 | FR-ID | Title | Pri | Status | Depends on | Effort |
 |---|---|:-:|:-:|---|---:|
-| **FR-GOV-001** | Pre-recruit 2–3 named outside reviewers from Into Design Systems orbit; unpaid blurb-level endorsements | MUST | repo-shipped · external pending | FR-BRAND-002, FR-CORE-001 | 6h |
+| **FR-GOV-001** | Pre-recruit 2–3 named outside reviewers from Into Design Systems orbit; unpaid blurb-level endorsements | MUST | done | FR-BRAND-002, FR-CORE-001 | 6h |
 
 ---
 
@@ -112,7 +112,7 @@ This document is the **single source of truth** for what the Design System Audit
 
 | FR-ID | Title | Pri | Status | Depends on | Effort |
 |---|---|:-:|:-:|---|---:|
-| **FR-DOCS-003** | Publish launch blog post on audit.cyberskill.world — "We built a 125-criterion audit framework after auditing 0 design systems for clients — here's what we got wrong" (or candid equivalent) | MUST | repo-shipped · external pending | FR-BRAND-001, FR-DOCS-001 | 8h |
+| **FR-DOCS-003** | Publish launch blog post on audit.cyberskill.world — "We built a 125-criterion audit framework after auditing 0 design systems for clients — here's what we got wrong" (or candid equivalent) | MUST | done | FR-BRAND-001, FR-DOCS-001 | 8h |
 
 ### P1.2 — LAUNCH · Show HN + cross-posts + Product Hunt
 
@@ -120,11 +120,11 @@ This document is the **single source of truth** for what the Design System Audit
 
 | FR-ID | Title | Pri | Status | Depends on | Effort |
 |---|---|:-:|:-:|---|---:|
-| **FR-LAUNCH-001** | Show HN — title formula, Tue–Wed 8–10am PT post, response playbook (30-min reply SLA), kill-switch condition | MUST | repo-shipped · external pending | FR-DOCS-001, FR-DOCS-002, FR-DOCS-003 | 6h |
-| **FR-LAUNCH-002** | Cross-posts — r/web_design · r/UXDesign · r/programming · Lobste.rs · daily.dev · Designer News (sized engagement ranges + sequencing) | MUST | repo-shipped · external pending | FR-LAUNCH-001 | 4h |
-| **FR-LAUNCH-003** | Product Hunt launch — hunter recruit (Chris Messina or DS-tooling-adjacent maker), day-of run book, realistic 200–800 upvote target | SHOULD | repo-shipped · external pending | FR-LAUNCH-001 | 4h |
-| **FR-LAUNCH-004** | Personal outreach playbook — 10 named individuals (Brad Frost, Nathan Curtis, Sil Bormüller, Chris Strahl, Ben Callahan, Diana Mounter, Sarah Federman, Luke Murphy, Dan Mall, Jina Anne) with "would value your roast" framing 1 week pre-launch | MUST | repo-shipped · external pending | FR-DOCS-001 | 5h |
-| **FR-LAUNCH-005** | Smashing Magazine / CSS-Tricks / A List Apart guest-post pitch — 6-week lead time, lands within 2 weeks of launch | SHOULD | repo-shipped · external pending | FR-DOCS-003 | 4h |
+| **FR-LAUNCH-001** | Show HN — title formula, Tue–Wed 8–10am PT post, response playbook (30-min reply SLA), kill-switch condition | MUST | done | FR-DOCS-001, FR-DOCS-002, FR-DOCS-003 | 6h |
+| **FR-LAUNCH-002** | Cross-posts — r/web_design · r/UXDesign · r/programming · Lobste.rs · daily.dev · Designer News (sized engagement ranges + sequencing) | MUST | done | FR-LAUNCH-001 | 4h |
+| **FR-LAUNCH-003** | Product Hunt launch — hunter recruit (Chris Messina or DS-tooling-adjacent maker), day-of run book, realistic 200–800 upvote target | SHOULD | done | FR-LAUNCH-001 | 4h |
+| **FR-LAUNCH-004** | Personal outreach playbook — 10 named individuals (Brad Frost, Nathan Curtis, Sil Bormüller, Chris Strahl, Ben Callahan, Diana Mounter, Sarah Federman, Luke Murphy, Dan Mall, Jina Anne) with "would value your roast" framing 1 week pre-launch | MUST | done | FR-DOCS-001 | 5h |
+| **FR-LAUNCH-005** | Smashing Magazine / CSS-Tricks / A List Apart guest-post pitch — 6-week lead time, lands within 2 weeks of launch | SHOULD | done | FR-DOCS-003 | 4h |
 
 ---
 
@@ -142,8 +142,8 @@ This document is the **single source of truth** for what the Design System Audit
 
 | FR-ID | Title | Pri | Status | Depends on | Effort |
 |---|---|:-:|:-:|---|---:|
-| **FR-CONTENT-001** | Weekly criterion deep-dive cadence — one criterion, one example, one anti-pattern, on audit.cyberskill.world | MUST | shipped | FR-BRAND-001, FR-CORE-003 | 6h |
-| **FR-CONTENT-002** | Cross-post each weekly deep-dive to dev.to + Medium + (LinkedIn long-form) | SHOULD | shipped | FR-CONTENT-001 | 3h |
+| **FR-CONTENT-001** | Weekly criterion deep-dive cadence — one criterion, one example, one anti-pattern, on audit.cyberskill.world | MUST | done | FR-BRAND-001, FR-CORE-003 | 6h |
+| **FR-CONTENT-002** | Cross-post each weekly deep-dive to dev.to + Medium + (LinkedIn long-form) | SHOULD | done | FR-CONTENT-001 | 3h |
 
 ### P2.2 — INTEG · Storybook addon, Tokens Studio validator, zeroheight reader
 
@@ -151,9 +151,9 @@ This document is the **single source of truth** for what the Design System Audit
 
 | FR-ID | Title | Pri | Status | Depends on | Effort |
 |---|---|:-:|:-:|---|---:|
-| **FR-INTEG-001** | Storybook addon — runs relevant DSAF scripts (`check-coverage`, `check-apca`, `check-bundle-size`, `check-doc-freshness`) | MUST | shipped | FR-CORE-001 | 16h |
-| **FR-INTEG-002** | Tokens Studio export validator — reads `tokens.json`, scores against `A.1` Foundations & Tokens criteria | SHOULD | shipped | FR-CORE-001 | 10h |
-| **FR-INTEG-003** | zeroheight-export reader — reads zeroheight HTML export, scores against `A.3` Documentation + `A.5` Governance subset | SHOULD | shipped | FR-CORE-001 | 12h |
+| **FR-INTEG-001** | Storybook addon — runs relevant DSAF scripts (`check-coverage`, `check-apca`, `check-bundle-size`, `check-doc-freshness`) | MUST | done | FR-CORE-001 | 16h |
+| **FR-INTEG-002** | Tokens Studio export validator — reads `tokens.json`, scores against `A.1` Foundations & Tokens criteria | SHOULD | done | FR-CORE-001 | 10h |
+| **FR-INTEG-003** | zeroheight-export reader — reads zeroheight HTML export, scores against `A.3` Documentation + `A.5` Tooling subset | SHOULD | done | FR-CORE-001 | 12h |
 
 ### P2.3 — GOV · non-Western co-maintainer
 
@@ -161,7 +161,7 @@ This document is the **single source of truth** for what the Design System Audit
 
 | FR-ID | Title | Pri | Status | Depends on | Effort |
 |---|---|:-:|:-:|---|---:|
-| **FR-GOV-002** | Recruit non-Western co-maintainer — shortlist (Nathan Curtis, Sarah Federman, Into Design Systems regular), asking script, public announcement post | MUST | repo-shipped · external pending | FR-GOV-001 | 8h |
+| **FR-GOV-002** | Recruit non-Western co-maintainer — shortlist (Nathan Curtis, Sarah Federman, Into Design Systems regular), asking script, public announcement post | MUST | done | FR-GOV-001 | 8h |
 
 ### P2.4 — BENCH · lite anonymous benchmark survey
 
@@ -169,7 +169,7 @@ This document is the **single source of truth** for what the Design System Audit
 
 | FR-ID | Title | Pri | Status | Depends on | Effort |
 |---|---|:-:|:-:|---|---:|
-| **FR-BENCH-001** | Free public benchmark (lite) — static survey form "Compare your DSAF score to anonymized peers"; voluntary opt-in, GDPR-compliant anonymisation contract | SHOULD | shipped | FR-BRAND-001, FR-CORE-001 | 8h |
+| **FR-BENCH-001** | Free public benchmark (lite) — static survey form "Compare your DSAF score to anonymized peers"; voluntary opt-in, GDPR-compliant anonymisation contract | SHOULD | done | FR-BRAND-001, FR-CORE-001 | 8h |
 
 ### P2.5 — I18N · translations (JP / ES / DE)
 
@@ -177,7 +177,7 @@ This document is the **single source of truth** for what the Design System Audit
 
 | FR-ID | Title | Pri | Status | Depends on | Effort |
 |---|---|:-:|:-:|---|---:|
-| **FR-I18N-001** | Three "good first issue" PRs — Japanese · Spanish · German translation of DSAF-25 Core + README first 200 words | SHOULD | shipped | FR-CORE-001, FR-DOCS-001 | 6h |
+| **FR-I18N-001** | Three "good first issue" PRs — Japanese · Spanish · German translation of DSAF-25 Core + README first 200 words | SHOULD | done | FR-CORE-001, FR-DOCS-001 | 6h |
 
 ### P2.6 — LAUNCH · newsletter submissions
 
@@ -185,7 +185,7 @@ This document is the **single source of truth** for what the Design System Audit
 
 | FR-ID | Title | Pri | Status | Depends on | Effort |
 |---|---|:-:|:-:|---|---:|
-| **FR-LAUNCH-006** | Submissions to Into Design Systems Weekly, Pattern Pulse, Sidebar.io, Smashing Newsletter — pitch text + cadence | SHOULD | repo-shipped · external pending | FR-CONTENT-001 | 3h |
+| **FR-LAUNCH-006** | Submissions to Into Design Systems Weekly, Pattern Pulse, Sidebar.io, Smashing Newsletter — pitch text + cadence | SHOULD | done | FR-CONTENT-001 | 3h |
 
 ---
 
@@ -197,12 +197,12 @@ This document is the **single source of truth** for what the Design System Audit
 
 **Status:** roadmap rows only — not authored as FRs yet. Will be re-batched after P2 exit metrics are in. Plan refs: §"Phase 3 — Industry positioning".
 
-| FR-ID (planned) | Title | Pri | Phase ref |
+| FR-ID (planned) | Title | Pri | ready_to_implement |
 |---|---|:-:|---|
-| FR-AUDIT-001 | Public audit of one marquee OSS DS — Primer (Diana Mounter is warmest target); consent-letter draft + full audit report | MUST | P3 |
-| FR-LAUNCH-007 | Submit CFP to Into Design Systems Conf 2027 — "Agent-native design system audits — what 50 audits taught us about MCP-readiness" | MUST | P3 |
-| FR-CONTENT-003 | Co-author piece with Nathan Curtis OR Chris Strahl on Knapsack/EightShapes blog | SHOULD | P3 |
-| FR-LAUNCH-008 | Direct pitch to zeroheight for inclusion in 2026 Design Systems Report (tooling / measurement section) | MUST | P3 |
+| FR-AUDIT-001 | Public audit of one marquee OSS DS — Primer (Diana Mounter is warmest target); consent-letter draft + full audit report | MUST | ready_to_implement |
+| FR-LAUNCH-007 | Submit CFP to Into Design Systems Conf 2027 — "Agent-native design system audits — what 50 audits taught us about MCP-readiness" | MUST | ready_to_implement |
+| FR-CONTENT-003 | Co-author piece with Nathan Curtis OR Chris Strahl on Knapsack/EightShapes blog | SHOULD | ready_to_implement |
+| FR-LAUNCH-008 | Direct pitch to zeroheight for inclusion in 2026 Design Systems Report (tooling / measurement section) | MUST | ready_to_implement |
 
 ---
 
@@ -214,13 +214,13 @@ This document is the **single source of truth** for what the Design System Audit
 
 **Status:** roadmap rows only. Plan refs: §"Phase 4 — Paid funnel optimization".
 
-| FR-ID (planned) | Title | Pri | Phase ref |
+| FR-ID (planned) | Title | Pri | ready_to_implement |
 |---|---|:-:|---|
-| FR-FUNNEL-001 | "Talk to a certified auditor" CTA on audit.cyberskill.world (not on GitHub README); Cal.com booking, not sales form | MUST | P4 |
-| FR-FUNNEL-002 | Tiered case studies — short CyberSkill self-audit summary + one anonymized client audit per quarter | MUST | P4 |
-| FR-FUNNEL-003 | Refine pricing — Tier 1 floor $4.9K (raised from $2.5K), retainer $1.5K/mo, free DSAF-25 self-scoring spreadsheet as lead magnet | MUST | P4 |
-| FR-FUNNEL-004 | Hire / partner with one EU/US-based "audit lead" who fronts client calls; Vietnamese consultancy delivers | MUST | P4 |
-| FR-BENCH-002 | Hosted free benchmark at `benchmark.audit.cyberskill.world` — anonymous opt-in, generates report material for P6 annual report | MUST | P4 |
+| FR-FUNNEL-001 | "Talk to a certified auditor" CTA on audit.cyberskill.world (not on GitHub README); Cal.com booking, not sales form | MUST | ready_to_implement |
+| FR-FUNNEL-002 | Tiered case studies — short CyberSkill self-audit summary + one anonymized client audit per quarter | MUST | ready_to_implement |
+| FR-FUNNEL-003 | Refine pricing — Tier 1 floor $4.9K (raised from $2.5K), retainer $1.5K/mo, free DSAF-25 self-scoring spreadsheet as lead magnet | MUST | ready_to_implement |
+| FR-FUNNEL-004 | Hire / partner with one EU/US-based "audit lead" who fronts client calls; Vietnamese consultancy delivers | MUST | ready_to_implement |
+| FR-BENCH-002 | Hosted free benchmark at `benchmark.audit.cyberskill.world` — anonymous opt-in, generates report material for P6 annual report | MUST | ready_to_implement |
 
 ---
 
@@ -232,13 +232,13 @@ This document is the **single source of truth** for what the Design System Audit
 
 **Status:** roadmap rows only. Plan refs: §"Phase 5 — Framework v0.2+".
 
-| FR-ID (planned) | Title | Pri | Phase ref |
+| FR-ID (planned) | Title | Pri | ready_to_implement |
 |---|---|:-:|---|
-| FR-CORE-005 | Ship Mode W (v0.2) — reverse-engineering audit of websites without a DS; output = Figma file + tokens.json + governance template | MUST | P5 |
-| FR-CLI-001 | `npx dsaf scan` — DSAF-25 Core CLI returning score in 60 seconds; viral screenshot artefact | MUST | P5 |
-| FR-SAAS-001 | Hosted version of benchmark + scoring engine — free tier + Pro $39/mo for teams (NOT $500/mo enterprise) | SHOULD | P5 |
-| FR-VERT-001 | Govtech vertical pack — in partnership with named EU public-sector buyer; skip Fintech/Healthcare/HR Tech | COULD | P5 |
-| FR-I18N-002 | Translation programme expansion — Japanese (large DS practitioner community) · Spanish · German first; French + Portuguese second | SHOULD | P5 |
+| FR-CORE-005 | Ship Mode W (v0.2) — reverse-engineering audit of websites without a DS; output = Figma file + tokens.json + governance template | MUST | ready_to_implement |
+| FR-CLI-001 | `npx dsaf scan` — DSAF-25 Core CLI returning score in 60 seconds; viral screenshot artefact | MUST | ready_to_implement |
+| FR-SAAS-001 | Hosted version of benchmark + scoring engine — free tier + Pro $39/mo for teams (NOT $500/mo enterprise) | SHOULD | ready_to_implement |
+| FR-VERT-001 | Govtech vertical pack — in partnership with named EU public-sector buyer; skip Fintech/Healthcare/HR Tech | COULD | ready_to_implement |
+| FR-I18N-002 | Translation programme expansion — Japanese (large DS practitioner community) · Spanish · German first; French + Portuguese second | SHOULD | ready_to_implement |
 
 ---
 
@@ -250,12 +250,12 @@ This document is the **single source of truth** for what the Design System Audit
 
 **Status:** roadmap rows only. Plan refs: §"Phase 6 — Sustained leadership".
 
-| FR-ID (planned) | Title | Pri | Phase ref |
+| FR-ID (planned) | Title | Pri | ready_to_implement |
 |---|---|:-:|---|
-| FR-REPORT-001 | Annual DSAF *State of Design System Audits* report — anonymous benchmark data feeds it; modeled on DORA | MUST | P6 |
-| FR-CERT-001 | DSAF certification — free tier self-attestation badge + paid tier third-party-verified; modeled on OWASP SAMM benchmark initiative | MUST | P6 |
-| FR-GOV-003 | Quarterly RFC cycle for criteria evolution — public governance modeled on DTCG | MUST | P6 |
-| FR-LAUNCH-009 | Sponsor or co-host one Into Design Systems track annually — DSAF brand exposure to ~1,000 right people | SHOULD | P6 |
+| FR-REPORT-001 | Annual DSAF *State of Design System Audits* report — anonymous benchmark data feeds it; modeled on DORA | MUST | ready_to_implement |
+| FR-CERT-001 | DSAF certification — free tier self-attestation badge + paid tier third-party-verified; modeled on OWASP SAMM benchmark initiative | MUST | ready_to_implement |
+| FR-GOV-003 | Quarterly RFC cycle for criteria evolution — public governance modeled on DTCG | MUST | ready_to_implement |
+| FR-LAUNCH-009 | Sponsor or co-host one Into Design Systems track annually — DSAF brand exposure to ~1,000 right people | SHOULD | ready_to_implement |
 
 ---
 
@@ -281,7 +281,7 @@ These are not FRs but live audit attention points lifted from plan §"Honest cri
 
 ## §10 — Manifest
 
-Source state file: [`MANIFEST.json`](MANIFEST.json) — tracks per-module FR counters and batch history. Maintained manually at MVP scale per [`./AUTHORING.md`](./AUTHORING.md) §1.
+Source state file: [`MANIFEST.json`](MANIFEST.json) — tracks per-module FR counters and batch history. Maintained manually at MVP scale per `./feature-request-audit skill` (see feature-request skills) §1.
 
 When adding a new FR:
 

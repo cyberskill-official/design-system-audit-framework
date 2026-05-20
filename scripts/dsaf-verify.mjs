@@ -16,6 +16,16 @@ const checks = [
   ["bundle-size", "scripts/check-bundle-size.mjs"],
   ["doc-freshness", "scripts/check-doc-freshness.mjs"],
   ["apca", "scripts/check-apca.mjs"],
+  ["criteria-dedup-contract", "scripts/check-criteria-dedup-contract.mjs"],
+  ["decoupling-contract", "scripts/check-decoupling-contract.mjs"],
+  ["dsaf-25-contract", "scripts/check-dsaf-25-contract.mjs"],
+  ["endorsement-contract", "scripts/check-endorsement-contract.mjs"],
+  ["launch-blog-contract", "scripts/check-launch-blog-contract.mjs"],
+  ["readme-contract", "scripts/check-readme-contract.mjs"],
+  ["regression-contract", "scripts/check-regression-contract.mjs"],
+  ["reviewer-contract", "scripts/check-reviewer-contract.mjs"],
+  ["visual-assets-contract", "scripts/check-visual-assets-contract.mjs"],
+  ["newsletter-contract", "scripts/check-newsletter-contract.mjs"],
 ];
 
 let failed = 0;

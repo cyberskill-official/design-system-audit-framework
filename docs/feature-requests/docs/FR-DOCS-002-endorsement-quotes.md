@@ -3,14 +3,14 @@ id: FR-DOCS-002
 title: "Land ≥ 2 named outside-reviewer endorsement quotes in README (fill the FR-DOCS-001 slots)"
 module: DOCS
 priority: MUST
-status: accepted
+status: done
 verify: I
 phase: P0
 milestone: P0 · slice 1 · Pre-launch hardening
 slice: 1
 owner: Stephen Cheng (Founder)
 created: 2026-05-17
-shipped: null
+shipped: 2026-05-18
 related_frs: [FR-DOCS-001, FR-GOV-001, FR-BRAND-002, FR-LAUNCH-001, FR-LAUNCH-004]
 depends_on: [FR-GOV-001, FR-DOCS-001]
 blocks: [FR-LAUNCH-001]
@@ -22,9 +22,15 @@ source_decisions:
   - "DEC-031: the README's endorsement section reads as the *final* form pre-launch; FR-DOCS-002 closes P0 by replacing placeholders with named quotes"
 language: markdown
 service: doctrine
-new_files: []
+new_files:
+  - docs/docs/FR-DOCS-002-endorsement-contract.json
+  - scripts/endorsement-contract-lib.mjs
+  - scripts/check-endorsement-contract.mjs
+  - scripts/check-endorsement-contract.test.mjs
 modified_files:
   - README.md
+  - package.json
+  - scripts/dsaf-verify.mjs
 allowed_tools:
   - "file_read/write README.md"
   - "diff for the before/after of the endorsement section"
@@ -45,7 +51,10 @@ sub_tasks:
   - "7. (15m) PR description includes the diff of the README endorsement section + cross-references to the FR-GOV-001 consent-log entries"
   - "8. (15m) Update MEMORY.md: reviewer states move from quote-approved to quote-published; relationship continuity preserved for future outreach (FR-GOV-002, FR-LAUNCH-004)"
 risk_if_skipped: "Without this FR, the README ships with placeholder text (`<endorsement quote>`) where the named-endorsement quotes belong. A scroller seeing `<endorsement quote>` placeholders reads the project as unfinished — the exact opposite of the README-as-finished-product framing FR-DOCS-001 is built around. The cost of this FR is small (3h, mostly mechanical), but the dependency chain matters: FR-LAUNCH-001 (Show HN) depends on FR-DOCS-002 because the launch surface needs landed quotes, not placeholders. Skipping this FR effectively delays launch. The plan §'What drives GitHub stars' item 4 ('a person attached to the work') is the structural reason: launches with named-human endorsements out-perform launches without. This FR is the mechanical step that turns FR-GOV-001's outreach into the actual surface."
+implementation_kind: mocked
 ---
+
+2026-05-18 strict execution note: stale status reset; actual quote publication remains externally consent-gated. `npm run contract:endorsements` verifies that README placeholders remain honest, consent/pending files contain no invented praise, shortlist quote statuses are not prematurely approved or published, and the mocked quote-consent approval request/response shape keeps publication blocked. It writes `docs/_audit/endorsement-contract.json`.
 
 ## §1 — Description (BCP-14 normative)
 

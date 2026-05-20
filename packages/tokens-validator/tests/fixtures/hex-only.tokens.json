@@ -1,0 +1,12 @@
+{
+  "color": {
+    "primary": { "$type": "color", "$value": "#0066cc" },
+    "secondary": { "$type": "color", "$value": "#ff6600" },
+    "neutral": { "$type": "color", "$value": "#eeeeee" },
+    "text": { "$type": "color", "$value": "#111111" }
+  },
+  "spacing": {
+    "sm": { "$type": "dimension", "$value": "8px" },
+    "md": { "$type": "dimension", "$value": "16px" }
+  }
+}

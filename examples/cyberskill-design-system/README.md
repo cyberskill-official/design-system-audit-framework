@@ -9,7 +9,8 @@
 | Initial audit | 2026-04-26 (baseline) |
 | Latest audit | 2026-04-27 (rigorous Mode S) |
 | Pre-audit combined | **74.7%** → L4 Managed |
-| Post-audit combined | **84.6%** → L5 Optimised |
+| Public cited level | **L3 Managed** — self-audit, uncertified |
+| Interior calibration | Preserved in the audit report for learning; not used as a public claim |
 | Delta | **+9.9 pp** in one development cycle |
 | Enterprise-grade thresholds | **7 / 7 pass** |
 | FIXED-criterion regressions | **0** |
@@ -20,7 +21,7 @@
 | File | Description |
 |---|---|
 | [`audit-report-2026-04-27.md`](./audit-report-2026-04-27.md) | The full Mode S audit. 138 criterion-rows, citations per criterion, machine-readable §10 / §11 tables, full SCAN flow signed off. |
-| [`improvement-plan.md`](./improvement-plan.md) | Phase 6 → Phase 8 step-by-step plan to push the score from 84.6% to ~95%. No calendar dates; each step has a "done when" condition. |
+| [`improvement-plan.md`](./improvement-plan.md) | Phase 6 → Phase 8 step-by-step plan to raise interior maturity evidence. No calendar dates; each step has a "done when" condition. |
 | [`_history.md`](./_history.md) | Audit history register — two rows so far, plus phase-milestone log of the work that landed between them. |
 
 ## What changed between 2026-04-26 and 2026-04-27
@@ -46,16 +47,16 @@ If you're auditing a system that's currently at L3 / L4, the [`audit-report`](./
 - How to structure the single-file output.
 - How to cite evidence per criterion.
 - How to compute the delta vs a parent audit.
-- How to declare the no-downgrade gate cleanly.
+- How to declare the no-silent-regression gate cleanly.
 - How to surface industry research alongside the score.
 
-If you're at L4 trying to break into L5, the [`improvement-plan`](./improvement-plan.md) shows what kind of phase plan unlocks L5 — and what doesn't.
+If you're at L4 trying to break into L5, the [`improvement-plan`](./improvement-plan.md) shows what kind of phase plan unlocks a verified top-tier claim — and what doesn't.
 
 ## Honest caveats
 
 This case study is the system that the framework was built *against*. The audit and the framework co-evolved. A truly external test of the framework happens when a different design system is audited against this rubric and produces an honest score. The framework's `examples/` directory will grow to hold those external case studies as community forks land — see the framework's [`CONTRIBUTING.md`](../../CONTRIBUTING.md).
 
-The 84.6% combined score also reflects intentional ceilings:
+The interior score also reflects intentional ceilings:
 
 - A.7 Adoption (63.3%) caps until the wiki SPA is publicly deployed.
 - B.8 Core Web Vitals caps at 3 until production traffic measures real LCP/INP/CLS.
@@ -67,12 +68,12 @@ These aren't framework flaws — they're the framework being honest about the di
 
 ## Want this kind of audit on your design system?
 
-CyberSkill offers paid audits using this framework — same methodology, same calibration discipline, run by the framework's authors. We deliver in 5–10 business days; the deliverable is a signed audit report + phased improvement plan + optional public case study with your logo.
+CyberSkill offers paid audits using DSAF — same methodology, same calibration discipline, run by the original authoring practice. We deliver in 5–10 business days; the deliverable is a signed audit report + phased improvement plan + optional public case study with your logo.
 
 See [`SERVICES.md`](../../SERVICES.md) for the four service tiers (audit / implementation / maintenance / vertical packs), or email **info@cyberskill.world** with subject **"Audit scoping call"** for a free 30-minute conversation.
 
-The framework alone is free. Most teams won't need us — and that's exactly the point. When self-serve isn't enough, we're here.
+DSAF alone is free. Most teams won't need us — and that's exactly the point. When self-serve isn't enough, we're here.
 
 ---
 
-*The CyberSkill Design System and this audit framework are both maintained by [CyberSkill](https://cyberskill.world). Hiện Thực Hoá Ý Chí — Turn Your Will Into Real.*
+*The CyberSkill Design System and DSAF are both maintained by [CyberSkill](https://cyberskill.world). Hiện Thực Hoá Ý Chí — Turn Your Will Into Real.*

@@ -1,0 +1,25 @@
+{
+  "name": "dsaf",
+  "version": "0.1.0",
+  "description": "DSAF Core 25 command line scanner.",
+  "type": "module",
+  "bin": {
+    "dsaf": "./src/cli.js"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "smoke": "node src/cli.js scan ../.. --json >/tmp/dsaf-cli-smoke.json && node -e \"const s=require('fs').readFileSync('/tmp/dsaf-cli-smoke.json','utf8'); const j=JSON.parse(s); if(j.core_count!==25) process.exit(1); console.log('dsaf cli smoke ok')\""
+  },
+  "cyberskill": {
+    "budgets": {
+      "source": 20000,
+      "gzip": 6000
+    }
+  },
+  "files": [
+    "src",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "license": "MIT"
+}

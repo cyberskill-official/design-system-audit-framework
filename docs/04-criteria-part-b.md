@@ -30,9 +30,9 @@ Same scoring scale as Part A (0–5; 0 absent, 3 built and shipped, 5 industry-l
 
 | # | Criterion | Tag | 0 | 3 | 5 |
 |---|---|---|---|---|---|
-| B2.1 | **Match between system and real-world / user mental model** (Nielsen H2) | FIXED | Mismatch | Familiar terminology | Validated by tree-test / card-sort with the actual audience |
-| B2.2 | **Navigation consistency** across product surfaces (Nielsen H4) | FIXED | Each section reinvents nav | Shared nav component | Cross-surface nav unification (Polaris 2025 unified Admin / Checkout / Customer Accounts is the benchmark) |
-| B2.3 | **Findability** | FIXED | No search | Search box | Faceted search, recent/saved, AI search; analytics close the loop on zero-results |
+| B2.1 | **Match between system and real-world / user mental model** (Nielsen H2) | FIXED | Mismatch | Familiar terminology | Validated by tree-test / card-sort with the actual audience; interviews and glossary evidence show product language matches user language |
+| B2.2 | **Navigation consistency and platform standards** (Nielsen H4) | FIXED | Each section reinvents nav | Shared nav component | Cross-surface nav unification with platform conventions (Apple HIG / Material); Polaris 2025 unified Admin / Checkout / Customer Accounts is the benchmark |
+| B2.3 | **Findability and recognition over recall** (Nielsen H6) | FIXED | No search; users must memorise commands | Search box with persistent labels | Faceted search, recent/saved items, autocomplete, smart defaults, and AI search; analytics close the loop on zero-results |
 | B2.4 | **Wayfinding** (breadcrumbs, page titles, focus visible) | FIXED | Missing | Present | Plus visited-state, progress indicators, "you are here" pattern in deep flows |
 | B2.5 | **Card sorting / tree testing** done at IA design time | FIXED | None | Once at launch | Re-validated at every major IA change |
 
@@ -44,12 +44,11 @@ Same scoring scale as Part A (0–5; 0 absent, 3 built and shipped, 5 industry-l
 
 | # | Criterion | Tag | 0 | 3 | 5 |
 |---|---|---|---|---|---|
-| B3.1 | **Visibility of system status** (Nielsen H1) — feedback within 100ms / 1s / 10s | FIXED | None | Loading states present | Skeleton screens, optimistic UI, real-time progress, async-safe UI patterns |
+| B3.1 | **Visibility of system status** (Nielsen H1) — feedback within 100ms / 1s / 10s | FIXED | None | Loading states present | Variable-length skeleton screens matching real content, optimistic UI, real-time progress, async-safe UI patterns, and perceived-performance instrumentation |
 | B3.2 | **Affordances & signifiers** | FIXED | Ambiguous | Standard buttons, links, fields | Strong visual affordances per platform; verified via 5-second testing |
-| B3.3 | **Error prevention & recovery** (Nielsen H5 + H9) | FIXED | Errors crash flow | Validation + clear messages | Inline validation, undo (Gmail-style), structured "what happened, what to do next" error copy |
+| B3.3 | **Error prevention & recovery** (Nielsen H5 + H9) | FIXED | Errors crash flow | Validation + clear messages | Inline validation, constraint-based inputs, confirm-destructive patterns, undo (Gmail-style), and structured "what happened, what to do next" recovery copy |
 | B3.4 | **Empty states** | FIXED | Blank | Generic "no data" | Educational, action-oriented empty states with primary action and link to docs |
-| B3.5 | **Loading & skeleton states** | FIXED | Spinner only | Skeletons | Variable-length skeletons matching real content; perceived performance optimised |
-| B3.6 | **User control & freedom** (Nielsen H3) — undo, redo, cancel, escape | FIXED | None | Cancel buttons | Undo on destructive actions; pending-state cancellation; persistent drafts |
+| B3.6 | **User control, freedom & efficiency** (Nielsen H3 + H7) — undo, redo, cancel, escape, shortcuts | FIXED | None | Cancel buttons and some shortcuts | Undo on destructive actions, pending-state cancellation, persistent drafts, keyboard shortcuts, command palette, and user customisation |
 | B3.7 | **Spatial / 3D interaction** (visionOS-class) | DYNAMIC | N/A | Touch + keyboard only | Spatial guidance for eye tracking, hand gestures, depth, spatial audio |
 | B3.8 | **Agentic-UX patterns** | DYNAMIC | None | Static AI features | Documented patterns for human-on-the-loop, human-in-the-loop, mixed initiative, confidence visualisation, source attribution, recovery |
 
@@ -62,7 +61,7 @@ Same scoring scale as Part A (0–5; 0 absent, 3 built and shipped, 5 industry-l
 | # | Criterion | Tag | 0 | 3 | 5 |
 |---|---|---|---|---|---|
 | B4.1 | **Visual hierarchy** | FIXED | Flat or chaotic | Scale + weight + color hierarchy | Scientifically validated via eye-tracking / 5-second test; primary action obvious |
-| B4.2 | **Aesthetic & minimalist design** (Nielsen H8) | FIXED | Cluttered | Clean | Every visual element justifies its presence; intentional negative space |
+| B4.2 | **Aesthetic & minimalist design** (Nielsen H8) | FIXED | Cluttered | Clean | Every visual element justifies its presence; intentional negative space; visual reduction is verified during heuristic review |
 | B4.3 | **Brand expression** | FIXED | Generic | On-brand | Distinctive within constraints |
 | B4.4 | **Emotional resonance** | DYNAMIC | Sterile | Considered tone | Intentionally evokes the desired emotion (Material 3 Expressive's research found expressive designs rated higher on "energetic", "playful", "friendly") |
 | B4.5 | **Density & ergonomics** | FIXED | One density | Comfortable + compact | Density choice exposed to users; respects platform conventions |
@@ -106,21 +105,12 @@ Same scoring scale as Part A (0–5; 0 absent, 3 built and shipped, 5 industry-l
 **Maps to doctrine:** enterprise patterns, component states, surfaces.
 
 > Anchored on Nielsen's 10 Usability Heuristics (1990, refined 1994, language updated 2024) and Shneiderman's 8 Golden Rules.
+> Individual heuristic evidence lives in the IA, interaction, and visual categories above; this category audits the review cadence, coverage discipline, and help surface.
 
 | # | Criterion | Tag | 0 | 3 | 5 |
 |---|---|---|---|---|---|
-| B7.1 | **Heuristic evaluation cadence** | FIXED | Never | Pre-launch | Quarterly heuristic eval per surface; documented findings tracked to closure |
-| B7.2 | **Visibility of system status** (H1) | FIXED | Poor | Adequate | Excellent — feedback at 100ms, 1s, 10s thresholds |
-| B7.3 | **Match real-world** (H2) | FIXED | System jargon | User language | Validated via interviews + glossary |
-| B7.4 | **User control & freedom** (H3) | FIXED | None | Cancel/back | Undo, redo, draft persistence, escape |
-| B7.5 | **Consistency & standards** (H4) | FIXED | Inconsistent | Consistent within product | Consistent within product *and* with platform conventions (Apple HIG / Material) |
-| B7.6 | **Error prevention** (H5) | FIXED | None | Validation | Constraint-based input (date pickers, masks); confirm-destructive |
-| B7.7 | **Recognition over recall** (H6) | FIXED | Memorise cmds | Persistent labels | Recently-used, autocomplete, smart defaults |
-| B7.8 | **Flexibility & efficiency** (H7) | FIXED | None | Some shortcuts | Keyboard shortcuts, command palette, customisation (Linear-class) |
-| B7.9 | **Aesthetic & minimalist** (H8) | FIXED | Cluttered | Reasonable | Intentional |
-| B7.10 | **Help users recognize / diagnose / recover from errors** (H9) | FIXED | "Error 500" | Plain English | Plain English + suggested action + recovery link + reduce blame language |
+| B7.1 | **Heuristic evaluation cadence and coverage** | FIXED | Never | Pre-launch review covers common heuristics | Quarterly heuristic eval per surface; Nielsen and Shneiderman coverage is mapped to the owning criteria above and documented findings are tracked to closure |
 | B7.11 | **Help & documentation** (H10) | FIXED | None | FAQ | Contextual help, in-product tours, AI-assisted help |
-| B7.12 | **Shneiderman additions** (informative feedback, dialog closure, easy reversal of actions) | FIXED | Not assessed | Most present | All 8 golden rules verified |
 
 ---
 

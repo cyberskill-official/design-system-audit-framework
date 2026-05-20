@@ -41,6 +41,8 @@ The `Framework` ban exists because "the Framework" as a sentence subject is a ja
 
 This taxonomy is enforced at PR review on external-facing surfaces (README, `docs/`, `audit.cyberskill.world/`, blog posts in `audit.cyberskill.world/blog/`). PRs that introduce text on these surfaces are reviewed against this file. PRs that touch only internal artefacts (templates, scripts, audit reports) are NOT subject to the taxonomy.
 
+The executable strict-audit contract is [`FR-BRAND-002-taxonomy-contract.json`](FR-BRAND-002-taxonomy-contract.json) plus `npm run contract:brand-taxonomy`. It scans the forward-facing surfaces where the taxonomy is expected to hold and writes structured evidence to `docs/_audit/brand-taxonomy-contract.json`.
+
 ## Forward-only
 
 Existing published content (DMs already sent, conference CFPs already submitted, blog drafts in progress at the time this taxonomy ratifies) is not retroactively rewritten. The taxonomy applies to new external surfaces from the date of ratification (2026-05-17) onward.

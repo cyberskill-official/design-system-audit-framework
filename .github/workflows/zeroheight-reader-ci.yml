@@ -1,0 +1,20 @@
+name: zeroheight Reader CI
+
+on:
+  pull_request:
+    paths:
+      - "packages/zeroheight-reader/**"
+      - "scripts/zeroheight-reader.mjs"
+      - ".github/workflows/zeroheight-reader-ci.yml"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm --prefix packages/zeroheight-reader test
+      - run: npm --prefix packages/zeroheight-reader run smoke
+      - run: npm run integ:zeroheight -- packages/zeroheight-reader/tests/fixtures/zeroheight-export-sample

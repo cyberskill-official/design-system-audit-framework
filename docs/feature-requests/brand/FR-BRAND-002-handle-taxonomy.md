@@ -3,14 +3,14 @@ id: FR-BRAND-002
 title: "DSAF handle taxonomy — `DSAF` / `DSAF Criteria` / `DSAF Levels`; ban 'Framework' creep"
 module: BRAND
 priority: MUST
-status: accepted
+status: done
 verify: I
 phase: P0
 milestone: P0 · slice 1 · Pre-launch hardening
 slice: 1
 owner: Stephen Cheng (Founder)
 created: 2026-05-17
-shipped: null
+shipped: 2026-05-18
 related_frs: [FR-BRAND-001, FR-BRAND-003, FR-BRAND-004, FR-CORE-001, FR-DOCS-001]
 depends_on: [FR-BRAND-001]
 blocks: [FR-BRAND-003, FR-BRAND-004, FR-DOCS-001, FR-CORE-001, FR-GOV-001]
@@ -25,11 +25,16 @@ service: doctrine
 new_files:
   - docs/branding/handle-taxonomy.md
   - docs/branding/glossary.md
+  - docs/branding/FR-BRAND-002-taxonomy-contract.json
+  - scripts/brand-taxonomy-contract-lib.mjs
+  - scripts/check-brand-taxonomy-contract.mjs
+  - scripts/check-brand-taxonomy-contract.test.mjs
 modified_files:
   - README.md
   - docs/01-introduction.md
   - docs/02-framework.md
   - docs/07-maturity-tiers.md
+  - package.json
 allowed_tools:
   - "file_read/write docs/**"
   - "file_read/write README.md"
@@ -48,6 +53,8 @@ sub_tasks:
   - "6. (15m) PR description includes the before/after grep counts as evidence"
 risk_if_skipped: "Without a fixed handle taxonomy, the framework's brand drifts during launch — 'Design System Audit Framework,' 'the DSAF framework,' 'DSAF framework,' 'DSAF tool,' and 'DSAF methodology' all proliferate in blog posts, conference talks, and inbound mentions. Long-name proliferation is the slow death of methodology brands (see how '12-factor methodology' beat 'twelve-factor application methodology' in search dominance; see how 'atomic design' won over 'the atomic design system methodology'). The plan §Naming explicitly calls 'Framework' creep as a failure mode — 'call the criteria the DSAF Criteria and the maturity scale the DSAF Levels' is the operative line. Skipping this FR means every downstream FR that quotes the framework's name has to make the naming choice ad-hoc; the resulting inconsistency is mechanically hard to undo once content is published and search-indexed."
 ---
+
+**2026-05-18 strict execution note:** stale status was reset and FR-BRAND-002 was re-processed with an executable taxonomy contract. `npm run contract:brand-taxonomy` scans external-facing surfaces, excludes intentional spec/source-plan examples, and writes `docs/_audit/brand-taxonomy-contract.json`. No external dependency mock was needed.
 
 ## §1 — Description (BCP-14 normative)
 

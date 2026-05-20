@@ -1,44 +1,26 @@
 # Product Hunt launch runbook
 
-**Status:** ready for launch preparation.
-**FR:** FR-LAUNCH-003.
+**FR:** FR-LAUNCH-003  
+**Status:** repo-ready; externally blocked by hunter confirmation/self-submit decision and production deploy.
 
-## Positioning
+## Canonical Operator File
 
-Product Hunt is secondary to Show HN.
-Use it for a wider maker audience after the HN surface is stable.
+Use [`product-hunt-launch.md`](product-hunt-launch.md) for:
 
-## Hunter shortlist
+- Listing copy.
+- Concrete launch schedule.
+- Six gallery asset paths.
+- Hunter shortlist and outreach.
+- Maker first comment.
+- Day-of response cadence.
+- Blockers and post-launch tracking.
 
-| Priority | Candidate | Why |
-|---:|---|---|
-| 1 | Chris Messina | Maker/tooling adjacency and PH history |
-| 2 | DS-tooling founder with active PH history | More targeted audience |
-| 3 | Founder self-submit | Fallback if no warm hunter accepts |
+## Manual Gate
 
-## Asset checklist
+Do not submit Product Hunt until:
 
-- Product name: `DSAF`
-- Tagline: `Open-source criteria for design-system audits`
-- URL: `https://audit.cyberskill.world`
-- Repo URL: `https://github.com/CyberSkill/design-system-audit-framework`
-- Visual: `assets/dsaf-25-card.svg`
-- First comment: candid origin story plus request for criteria critique
-
-## Day-of runbook
-
-| Time | Action |
-|---|---|
-| T-7d | Confirm hunter or self-submit |
-| T-2d | Upload assets and first comment draft |
-| T | Launch |
-| T+1h | Reply to substantive comments |
-| T+24h | Record votes, comments, traffic, leads |
-
-## Target
-
-Realistic target is 200-800 votes.
-Do not coordinate voting.
-Do not offer incentives.
+1. FR-LAUNCH-001 has a live or explicitly waived Show HN dependency.
+2. `/blog/launch-2026` and `/assets/og/launch-2026-1200x630.png` return HTTP 200 in production.
+3. A hunter is confirmed or Stephen chooses self-submit by the T-3d decision point.
 
 *End of Product Hunt runbook.*

@@ -3,14 +3,14 @@ id: FR-DOCS-001
 title: "Rewrite README in HN-launch idiom — first 200 words = what / why now / how it differs from X"
 module: DOCS
 priority: MUST
-status: accepted
+status: done
 verify: I
 phase: P0
 milestone: P0 · slice 1 · Pre-launch hardening
 slice: 1
 owner: Stephen Cheng (Founder)
 created: 2026-05-17
-shipped: null
+shipped: 2026-05-18
 related_frs: [FR-BRAND-001, FR-BRAND-002, FR-BRAND-003, FR-BRAND-004, FR-CORE-001, FR-CORE-002, FR-CORE-004, FR-GOV-001, FR-DOCS-002, FR-LAUNCH-001]
 depends_on: [FR-BRAND-001, FR-BRAND-002, FR-BRAND-003, FR-BRAND-004, FR-CORE-001, FR-CORE-002, FR-CORE-004]
 blocks: [FR-DOCS-002, FR-LAUNCH-001]
@@ -26,8 +26,14 @@ language: markdown
 service: doctrine
 new_files:
   - README.md  # rewritten from scratch — the prior README is preserved in git history
+  - docs/docs/FR-DOCS-001-readme-contract.json
+  - scripts/readme-contract-lib.mjs
+  - scripts/check-readme-contract.mjs
+  - scripts/check-readme-contract.test.mjs
 modified_files:
   - docs/01-introduction.md  # cross-link adjustments after README becomes the canonical entry point
+  - package.json
+  - scripts/dsaf-verify.mjs
 allowed_tools:
   - "file_read/write README.md, docs/01-introduction.md"
   - "wc / awk for word-count verification"
@@ -46,7 +52,10 @@ sub_tasks:
   - "5. (45m) Cross-link patches — docs/01-introduction.md Reading Order updated; ensure README references all canonical surfaces (dsaf-25.md, regression-policy.md, self-audit-policy.md, decoupling-decision.md)"
   - "6. (15m) Banned-phrase grep — confirm no 84.6%, no 'Framework' noun-handle, no email form, no 'talk to sales' button"
 risk_if_skipped: "The plan §'What drives GitHub stars' item 1 names this as the #1 lever that moves methodology-repo stars: 'A README that reads like a finished product, not documentation — repo IS the landing page for HN.' Without this FR, the README ships as documentation (which it currently is — a reasonable introduction file). Documentation doesn't pull HN front-page traffic; finished-product copy does. Skipping this FR means FR-LAUNCH-001 (Show HN) ships with a README that reads as 'one of many DS-tooling repos' rather than 'the open-source alternative to the SaaS audit platforms (zeroheight / Knapsack / Supernova)' — exactly the framing the plan §'What drives GitHub stars' item 3 names as stars-mover #3. The cost of this FR is one founder-session of polished prose; the value is the launch-week star trajectory."
+implementation_kind: mocked
 ---
+
+2026-05-18 strict execution note: stale status reset; `npm run contract:readme` verifies the README launch-copy contract: first-200-word what/why-now/comparison pitch, above-the-fold ladder/radar embeds, DSAF-25 cross-link, Quick Start, Reading Order, endorsement placeholder consent guard, handle taxonomy, banned funnel-copy patterns, and the mocked colleague-skim request/response shape. It writes `docs/_audit/readme-contract.json`. The original `dsaf.dev` canonical requirement is superseded by the FR-BRAND-004 canonical-host override.
 
 ## §1 — Description (BCP-14 normative)
 
@@ -141,7 +150,7 @@ Three things changed in the design-systems space recently. (1) The SaaS consolid
 
 ```bash
 # Clone the repo
-git clone https://github.com/CyberSkill/design-system-audit-framework
+git clone https://github.com/cyberskill-official/design-system-audit-framework
 cd design-system-audit-framework
 
 # Read the DSAF-25 Core in 5 minutes
@@ -218,7 +227,7 @@ Branding: [`docs/branding/`](docs/branding/) — handle taxonomy, decoupling dec
 
 ---
 
-*Framework version: DSAF v1 (2026-05-17). Rubric version: 125 criteria + DSAF-25 Core. License: MIT. Repo: github.com/CyberSkill/design-system-audit-framework. Site: dsaf.dev.*
+*Framework version: DSAF v1 (2026-05-17). Rubric version: 125 criteria + DSAF-25 Core. License: MIT. Repo: github.com/cyberskill-official/design-system-audit-framework. Site: dsaf.dev.*
 ```
 
 ### `docs/01-introduction.md` — Reading Order patch (post-README rewrite)
@@ -399,7 +408,7 @@ This passes because: "what" beat (in the next paragraph: "125 criteria across 20
 
 \`\`\`bash
 # Clone the repo
-git clone https://github.com/CyberSkill/design-system-audit-framework
+git clone https://github.com/cyberskill-official/design-system-audit-framework
 cd design-system-audit-framework
 
 # Read the DSAF-25 Core in 5 minutes
@@ -447,7 +456,7 @@ All resolved at authoring time:
 | README references a doc file that doesn't exist | broken link | Bad first impression | All Reading Order links MUST be verified at PR land; CI link-checker (post-launch) catches future drift |
 | Maintainer block reads as CyberSkill marketing | reader feedback | OSS-trust degradation | FR-BRAND-004 decoupling rule is enforced — the maintainer block is one paragraph; paid-services breadcrumb is one sentence at the bottom |
 | README ships before FR-BRAND-003 visuals → broken `<picture>` blocks | AC2 grep returns 0 | Reader sees `<img>` broken | Block this FR on FR-BRAND-003 ship (depends_on declares this); if FR-BRAND-003 slips, ship README with text placeholder for visuals and a "visuals landing in [date]" note |
-| Quick Start command sequence is wrong (e.g., wrong repo URL) | reader follows + fails | Bad first run | The repo URL `github.com/CyberSkill/design-system-audit-framework` is verified at PR; CODEOWNERS for README catches future drift |
+| Quick Start command sequence is wrong (e.g., wrong repo URL) | reader follows + fails | Bad first run | The repo URL `github.com/cyberskill-official/design-system-audit-framework` is verified at PR; CODEOWNERS for README catches future drift |
 | HN post lands before README rewrite is at 10/10 | accidental early launch | Reader sees draft README | FR-LAUNCH-001 explicitly depends on FR-DOCS-001 + FR-DOCS-002; the dependency chain is the gate |
 
 ---
@@ -458,7 +467,7 @@ All resolved at authoring time:
 - **Why a Maintainer section at the bottom, not the top:** the plan §"What drives GitHub stars" item 4 names "a person attached to the work" as the #4 stars-mover. The Maintainer section is that person; it's at the bottom because the FIRST glance should be the pitch + visuals + Quick Start, not credit. Credit belongs after value-prop established.
 - **About the L3-framed worked example link:** the link is the conversion path from "interested" to "running." A reader who scrolls to the worked example sees a *real* audit report — not a marketing summary. The L3 framing per FR-CORE-004 is preserved so the reader gets the honest example, not a manicured one.
 - **About the endorsement slots:** they're load-bearing pre-launch. A README with 2 named endorsement quotes from the design-systems community reads 5× more credible than one without. FR-GOV-001 + FR-DOCS-002 are the upstream gates; if they slip, the launch slips with them (FR-LAUNCH-001 dependency).
-- **About the Quick Start's `git clone` URL:** the actual URL `github.com/CyberSkill/design-system-audit-framework` becomes `github.com/dsaf/spec` (or similar neutral org) when FR-GOV-002 (P2) migrates the repo. Until then, the CyberSkill org URL is the canonical. Post-FR-GOV-002, this FR's URL patch will need an update in a follow-up FR.
+- **About the Quick Start's `git clone` URL:** the actual URL `github.com/cyberskill-official/design-system-audit-framework` becomes `github.com/dsaf/spec` (or similar neutral org) when FR-GOV-002 (P2) migrates the repo. Until then, the CyberSkill org URL is the canonical. Post-FR-GOV-002, this FR's URL patch will need an update in a follow-up FR.
 - **About no `<details>` collapsing in first 600 words:** GitHub's default rendering shows `<details>` as collapsed; a scroller sees a heading without content. The first 600 words are the value-prop surface — they MUST be fully visible without click. `<details>` is welcome for sub-sections after the value-prop is established (e.g., a "Full criteria list" `<details>` later in the README would be reasonable).
 - **About the colleague-skim test cadence:** running the test once is the minimum. The optimal is to run it 2-3 times with different colleagues, iterate between, and ship when 2 of 3 PASS spontaneously. The PR description records the final pass.
 - **The README is going to be read by HN, Twitter, Reddit, LinkedIn, conference Q&A audiences — all different.** The first 200 words have to land for *each* of those audiences. HN cares about technical specificity; Twitter cares about screenshot value; Reddit cares about explanatory clarity; LinkedIn cares about positioning. The §3 first-200-words draft attempts to hit all four: technical (125-criterion, agent-native), screenshot-able (visual diff DSAF vs SaaS), explanatory (the "missing artefact" framing), positioning (the named SaaS competitors).

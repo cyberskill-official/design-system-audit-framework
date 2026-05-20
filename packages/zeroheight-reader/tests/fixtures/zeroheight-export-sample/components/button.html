@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Button component</title>
+  </head>
+  <body>
+    <aside class="sidebar" role="navigation">
+      <a href="../index.html">Overview</a>
+    </aside>
+    <nav aria-label="Breadcrumb" class="breadcrumb">
+      <a href="../index.html">Home</a>
+      <a href="../index.html">Components</a>
+      <span>Button</span>
+    </nav>
+    <main>
+      <h1>Button component</h1>
+      <p>Reviewed: 2026-05-02</p>
+
+      <h2>Usage guidelines</h2>
+      <p>Use the primary button for the main decision on a page. Choose secondary or tertiary variants when the action is less important.</p>
+
+      <h2>Anatomy</h2>
+      <p>The component includes label, icon slot, loading state, size, density, and disabled state.</p>
+
+      <h2>Code examples</h2>
+      <p>Install the code package before using examples.</p>
+      <pre><code>npm install @acme/design-system
+import { Button } from "@acme/design-system";
+&lt;Button variant="primary"&gt;Save&lt;/Button&gt;</code></pre>
+
+      <h2>Do's and Don'ts</h2>
+      <p>Do use one primary button per decision area because it protects hierarchy. Don't use disabled buttons without explaining the blocked state. Avoid destructive labels without confirmation.</p>
+
+      <h2>Accessibility notes</h2>
+      <p>Use aria-label only when the visible label is absent. The button must support keyboard activation, visible focus, and screen reader names.</p>
+
+      <h2>Figma library</h2>
+      <p>Figma library embed for the production component set.</p>
+      <iframe title="Figma library embed" src="https://www.figma.com/embed?embed_host=zeroheight&amp;url=https://figma.com/file/example"></iframe>
+
+      <h2>Storybook</h2>
+      <p>Storybook embed includes viewport and theme controls for QA.</p>
+      <iframe title="Storybook Button" src="https://storybook.example.com/iframe.html?id=button--primary"></iframe>
+    </main>
+  </body>
+</html>

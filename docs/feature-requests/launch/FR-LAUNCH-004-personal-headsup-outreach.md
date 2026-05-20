@@ -3,14 +3,14 @@ id: FR-LAUNCH-004
 title: "Personal heads-up outreach to 10 named individuals 1 week pre-launch — informational only, not vote-asking"
 module: LAUNCH
 priority: MUST
-status: accepted
+status: done
 verify: I
 phase: P1
 milestone: P1 · slice 1 · Launch
 slice: 1
 owner: Stephen Cheng (Founder)
 created: 2026-05-17
-shipped: null
+shipped: 2026-05-18
 related_frs: [FR-GOV-001, FR-LAUNCH-001, FR-LAUNCH-002, FR-LAUNCH-003, FR-CONTENT-003, FR-AUDIT-001]
 depends_on: [FR-LAUNCH-001, FR-DOCS-003, FR-GOV-001]
 blocks: []
@@ -53,12 +53,14 @@ risk_if_skipped: "Plan §Phase 1 action 4 names this as a substantive launch-pre
 
 The framework's launch MUST include personal heads-up outreach to 10 named individuals at T-7 days (target window T-7 to T-5 days pre-launch). The outreach is **informational** — it tells the recipient that DSAF is launching on Show HN + Product Hunt + cross-posts on [DATE], links them the materials, and asks one substantive question. The outreach is explicitly NOT a request to upvote, share, comment, or amplify; vote-manipulation is forbidden across all FR-LAUNCH-* FRs uniformly.
 
+**2026-05-18 implementation note:** the heads-up tracker is repo-shipped in `docs/launch/headsup-outreach.md`, with the ten named recipients, concrete May 2026 timing, response modes, and manual-send guardrails. Full per-recipient drafts are in `docs/social/personal-outreach.md`. The original T-7 window for a May 19 Show HN slot is already missed, so manual sending is blocked until the launch date rolls forward or Stephen accepts a late-send exception.
+
 1. **MUST** send personal heads-up emails to 10 named individuals at T-7 days from FR-LAUNCH-001 Show HN posting date. The 10 are drawn from FR-GOV-001's shortlist (`docs/branding/reviewer-shortlist.md`) but the heads-up status is *independent* of endorsement-outreach status — a reviewer may have done endorsement outreach and now also gets heads-up (one personalised note covers both), OR a reviewer may have been skipped for endorsement outreach (e.g., not warm enough) but is still in scope for heads-up.
 2. **MUST** frame each email per §3 template: (a) subject line names DSAF + "heads-up" framing; (b) opens with personalised context (one sentence tied to the recipient's recent work / interest / public commentary); (c) provides the launch date + canonical URLs (dsaf.dev/card + repo + blog post + planned Show HN URL); (d) asks one substantive question relevant to the recipient's expertise; (e) explicitly disclaims the upvote-ask ("not asking you to upvote / share / amplify — informational only").
 3. **MUST NOT** ask the recipient to upvote, post supportive comments, share to their network, or amplify the launch in any way. The plan §Phase 1 action 4 is explicit: "a heads-up + a question (not a request to upvote)." Vote manipulation violates HN / PH / Reddit / Lobste.rs / daily.dev / Designer News terms uniformly; the framing keeps the operator clear of the violation surface AND respects the recipient's autonomy.
 4. **MUST** ask one substantive question per email per §3 template. The question is tied to the recipient's expertise (e.g., for a token-systems expert: "one thing you've recently questioned about how teams architect token systems?"; for a research-methods expert: "what's the under-rated UX research signal that DSAF should be measuring but probably isn't?"). The question gives the recipient something to engage with that's not "amplify our launch."
 5. **MUST** personalise each email per recipient — no mass-blast templates with `<Name>` placeholders. Per FR-GOV-001 §3 anti-patterns, mass-blast is a tell that the founder doesn't care about the individual. Personalisation is the signal that the relationship is being treated as relationship, not as a node in an audience.
-6. **MUST** include the same canonical URLs as Show HN: dsaf.dev/card (5-min entry), github.com/CyberSkill/design-system-audit-framework (repo), dsaf.dev/blog/launch-2026 (origin story). The Show HN URL is *planned* (placeholder until FR-LAUNCH-001 ships) — if the heads-up sends at T-7 days, the Show HN URL doesn't exist yet; the heads-up says "Show HN goes live Tue/Wed at 8-10am PT; URL TBD; I'll send a one-line note when it's up if useful."
+6. **MUST** include the same canonical URLs as Show HN: dsaf.dev/card (5-min entry), github.com/cyberskill-official/design-system-audit-framework (repo), dsaf.dev/blog/launch-2026 (origin story). The Show HN URL is *planned* (placeholder until FR-LAUNCH-001 ships) — if the heads-up sends at T-7 days, the Show HN URL doesn't exist yet; the heads-up says "Show HN goes live Tue/Wed at 8-10am PT; URL TBD; I'll send a one-line note when it's up if useful."
 7. **MUST** respect three response modes (mirrors FR-GOV-001 §3): (i) "no response" — no chase beyond one polite follow-up at T-3 days; (ii) "thanks, will look" — log + no further action expected; (iii) "substantive engagement" — engage per their substance + log per FR-CONTENT-001 deep-dive candidates if applicable.
 8. **MUST** send the heads-up window at T-7 to T-5 days. Earlier than T-7 days: the recipient forgets by launch time. Later than T-5 days: the recipient doesn't have meaningful time to engage if interested. The window is the operational sweet spot.
 9. **MUST NOT** send a "did you see this?" follow-up on launch day or after. The heads-up is the only ask in this FR; a follow-up reads as pressure. If the recipient saw the launch and engaged organically, great; if not, the relationship preserves.
@@ -158,7 +160,7 @@ A heads-up: DSAF — Design System Audit Framework — launches on Show HN + Pro
 Materials in case you want a pre-launch look:
 
 - 5-min entry: https://dsaf.dev/card (DSAF-25 Core, one-page subset)
-- Repo: https://github.com/CyberSkill/design-system-audit-framework
+- Repo: https://github.com/cyberskill-official/design-system-audit-framework
 - Origin story + candid limitations: https://dsaf.dev/blog/launch-2026
 
 [1 substantive question tied to their expertise per §3.2]
@@ -171,7 +173,7 @@ Show HN goes live next [Tue/Wed] 8-10am PT; URL TBD; I'll send a one-line note w
 
 Stephen
 zintaen@gmail.com
-github.com/CyberSkill/design-system-audit-framework
+github.com/cyberskill-official/design-system-audit-framework
 ```
 
 (Character count: ~1,600 chars — fits comfortably in any email client; no images, no attachments.)
@@ -368,7 +370,7 @@ A heads-up: DSAF — Design System Audit Framework — launches on Show HN + Pro
 Materials in case you want a pre-launch look:
 
 - 5-min entry: https://dsaf.dev/card (DSAF-25 Core, one-page subset)
-- Repo: https://github.com/CyberSkill/design-system-audit-framework
+- Repo: https://github.com/cyberskill-official/design-system-audit-framework
 - Origin story + candid limitations: https://dsaf.dev/blog/launch-2026
 
 The question that's been on my mind since I read your Medium piece: what's the under-rated measurement signal that DS teams should be tracking but mostly aren't? (DSAF's B.7 has the obvious ones — adoption telemetry, deprecation-warning hit rate — but I suspect we're missing 1-2 that someone with your engagement-count would notice.)

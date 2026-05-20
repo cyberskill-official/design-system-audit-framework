@@ -1,13 +1,13 @@
 # Cross-publishing template
 
-**Use for:** EXECUTION_PLAN.md task O10. Per deep-dive published on `audit.cyberskill.world/blog/`, syndicate at T+24h to dev.to, T+48h to Medium, T+72h to LinkedIn long-form.
-**Discipline:** the canonical URL stays `https://audit.cyberskill.world/blog/<slug>`. Every syndication copy carries the canonical link visibly and uses platform-native canonical tags where supported.
+**Use for:** EXECUTION_PLAN.md task O10. Per deep-dive published on `audit.cyberskill.world/blog/deep-dives/<slug>`, syndicate at T+24h to dev.to, T+48h to Medium, T+72h to LinkedIn long-form.
+**Discipline:** the canonical URL stays `https://audit.cyberskill.world/blog/deep-dives/<slug>`. Every syndication copy carries the canonical link visibly and uses platform-native canonical tags where supported.
 
 ## Why the stagger
 
 | Channel | Lag | Why this lag |
 |---|---|---|
-| Canonical (`audit.cyberskill.world/blog/<slug>`) | T+0 | Source of truth |
+| Canonical (`audit.cyberskill.world/blog/deep-dives/<slug>`) | T+0 | Source of truth |
 | dev.to | T+24h | dev.to supports `canonical_url` natively; allow 24h for search engines to index the canonical first |
 | Medium | T+48h | Medium's canonical handling is weaker; the 48h lag prevents accidental ranking-cannibalisation |
 | LinkedIn long-form | T+72h | LinkedIn doesn't honour canonical tags at all — treat it as a teaser with a link back, not as a syndication |
@@ -22,8 +22,8 @@ title: "<Same as canonical post>"
 published: true
 description: "<Same as canonical post meta description>"
 tags: designsystems, accessibility, opensource, frontend
-canonical_url: https://audit.cyberskill.world/blog/<slug>
-cover_image: https://audit.cyberskill.world/og-image.png
+canonical_url: https://audit.cyberskill.world/blog/deep-dives/<slug>
+cover_image: https://audit.cyberskill.world/assets/og/launch-2026-1200x630.png
 ---
 ```
 
@@ -32,8 +32,8 @@ cover_image: https://audit.cyberskill.world/og-image.png
 ```markdown
 ---
 
-*Originally published at [audit.cyberskill.world/blog/<slug>](https://audit.cyberskill.world/blog/<slug>).*
-*DSAF Criteria source: [github.com/CyberSkill/design-system-audit-framework](https://github.com/CyberSkill/design-system-audit-framework).*
+*Originally published at [audit.cyberskill.world/blog/deep-dives/<slug>](https://audit.cyberskill.world/blog/deep-dives/<slug>).*
+*DSAF Criteria source: [github.com/cyberskill-official/design-system-audit-framework](https://github.com/cyberskill-official/design-system-audit-framework).*
 ```
 
 ## Medium template (T+48h)
@@ -43,7 +43,7 @@ cover_image: https://audit.cyberskill.world/og-image.png
 **First line (must be the very first paragraph):**
 
 ```
-This piece was originally published at audit.cyberskill.world/blog/<slug>. The canonical version is there; this is a syndication copy.
+This piece was originally published at audit.cyberskill.world/blog/deep-dives/<slug>. The canonical version is there; this is a syndication copy.
 ```
 
 **Body footer (paste at the END of every Medium post):**
@@ -51,12 +51,12 @@ This piece was originally published at audit.cyberskill.world/blog/<slug>. The c
 ```markdown
 ---
 
-**Read the canonical version at [audit.cyberskill.world/blog/<slug>](https://audit.cyberskill.world/blog/<slug>).**
+**Read the canonical version at [audit.cyberskill.world/blog/deep-dives/<slug>](https://audit.cyberskill.world/blog/deep-dives/<slug>).**
 
-DSAF is an open-source design-system audit framework. Source: [github.com/CyberSkill/design-system-audit-framework](https://github.com/CyberSkill/design-system-audit-framework).
+DSAF is an open-source design-system audit framework. Source: [github.com/cyberskill-official/design-system-audit-framework](https://github.com/cyberskill-official/design-system-audit-framework).
 ```
 
-Medium SEO note: also add `<link rel="canonical">` via Medium's "Settings" → "More options" → "Tell us more about your story" → "Canonical URL." Paste `https://audit.cyberskill.world/blog/<slug>`.
+Medium SEO note: also add `<link rel="canonical">` via Medium's "Settings" → "More options" → "Tell us more about your story" → "Canonical URL." Paste `https://audit.cyberskill.world/blog/deep-dives/<slug>`.
 
 ## LinkedIn long-form template (T+72h)
 
@@ -64,24 +64,18 @@ Medium SEO note: also add `<link rel="canonical">` via Medium's "Settings" → "
 **Body opening (first 2 paragraphs — these are what shows in the feed-preview):**
 
 ```
-This is a syndication of a piece I published this week at audit.cyberskill.world/blog/<slug>. Sharing the LinkedIn version because the conversation here is different from the dev/design crowd that reads the canonical.
+This is a syndication of a piece I published this week at audit.cyberskill.world/blog/deep-dives/<slug>. Sharing the LinkedIn version because the conversation here is different from the dev/design crowd that reads the canonical.
 
-The full piece is ~1,800 words. The short version follows.
+The full piece follows. LinkedIn has no machine-readable canonical field, so the first paragraph and footer point back to the canonical article.
 ```
 
-**Body:** condensed version of the canonical post — 600–900 words, not the full 1,800. Keep:
-
-- Why-it-matters paragraph (one paragraph max)
-- The "what good looks like" example (one paragraph)
-- The anti-pattern paragraph
-- A 5-row excerpt of the checklist (not all of it)
-- A closing CTA: "Full piece + checklist at audit.cyberskill.world/blog/<slug>"
+**Body:** the same full article as the canonical post, with only platform-required formatting adjustments. Do not condense or add platform-exclusive sections.
 
 **Footer:**
 
 ```
-Canonical version: https://audit.cyberskill.world/blog/<slug>
-Full DSAF Criteria: https://github.com/CyberSkill/design-system-audit-framework
+Canonical version: https://audit.cyberskill.world/blog/deep-dives/<slug>
+Full DSAF Criteria: https://github.com/cyberskill-official/design-system-audit-framework
 ```
 
 ## Anti-patterns (these get the post de-canonicalised by search)

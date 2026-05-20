@@ -3,14 +3,14 @@ id: FR-CORE-003
 title: "Consolidate overlapping criteria across 20 categories (dedup pass before launch)"
 module: CORE
 priority: MUST
-status: accepted
+status: done
 verify: I
 phase: P0
 milestone: P0 · slice 1 · Pre-launch hardening
 slice: 1
 owner: Stephen Cheng (Founder)
 created: 2026-05-17
-shipped: null
+shipped: 2026-05-18
 related_frs: [FR-CORE-001, FR-CORE-002, FR-CORE-004, FR-BRAND-002]
 depends_on: []
 blocks: [FR-CORE-001]  # FR-CORE-001 §3b leaves Part B IDs illustrative pending this dedup pass
@@ -28,11 +28,18 @@ service: doctrine
 new_files:
   - docs/criteria-dedup-methodology.md
   - docs/criteria-aliases.md
+  - docs/core/FR-CORE-003-dedup-contract.json
+  - scripts/criteria-dedup-contract-lib.mjs
+  - scripts/check-criteria-dedup-contract.mjs
+  - scripts/check-criteria-dedup-contract.test.mjs
 modified_files:
   - docs/03-criteria-part-a.md
   - docs/04-criteria-part-b.md
   - docs/dsaf-25.md      # may need ID updates if Part B renumbers (per FR-CORE-001 §3b caveat)
   - examples/cyberskill-design-system/improvement-plan.md  # only if the example cites a merged-away ID
+  - README.md
+  - package.json
+  - scripts/dsaf-verify.mjs
 allowed_tools:
   - "file_read/write docs/**, examples/**"
   - "grep / ripgrep for criterion ID patterns (e.g., 'A[0-9]+\\.[0-9]+', 'B[0-9]+\\.[0-9]+')"
@@ -54,6 +61,8 @@ sub_tasks:
   - "8. PR description: total criterion-count before / after (e.g., 125 → 118), list of merges with primary + alias IDs, the candidate pairs that were considered but kept distinct (with rationale)"
 risk_if_skipped: "The plan §Honest critique item 2 is explicit: '20 categories almost certainly overlap.' Examples flagged: 'where do design tokens for accessibility or content + a11y sit?' Without a dedup pass, the framework ships with ambiguous criterion-coverage boundaries — and the first audit that hits an overlap reports two different scores for what's effectively the same gap, contradicting itself. Reviewers at HN / Twitter / conference Q&A will spot the overlaps within the first day of launch and the framework's credibility takes a hit. Skipping this FR also blocks FR-CORE-001's Part B ID stabilisation (FR-CORE-001 §3b says the Part B IDs are illustrative pending FR-CORE-003) — so the DSAF-25 Core can't reach final form without this FR. The dedup pass is pre-launch hygiene; it's expected, it's mechanical, and it's the kind of work that *should* happen once and never again — exactly why FR-CORE-003 ships a deterministic methodology (`docs/criteria-dedup-methodology.md`), not just an ad-hoc merge list."
 ---
+
+**2026-05-18 strict execution note:** stale status was reset and FR-CORE-003 was re-processed with an executable criteria-dedup contract. `npm run contract:criteria-dedup` verifies that the live rubric stays at 125 rows, all 20 category prefixes remain populated, 13 merged-away IDs resolve to live primaries without alias chains or ID reuse, and DSAF-25/example surfaces do not cite aliases. It writes `docs/_audit/criteria-dedup-contract.json`.
 
 ## §1 — Description (BCP-14 normative)
 

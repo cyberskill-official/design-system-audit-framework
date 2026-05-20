@@ -15,8 +15,10 @@ Every URL in this bundle is `https://audit.cyberskill.world/` (the canonical hos
 | [`product-hunt.md`](product-hunt.md) | Product Hunt launch | O6 |
 | [`guest-post-pitches.md`](guest-post-pitches.md) | Smashing / CSS-Tricks / A List Apart | O7 |
 | [`co-maintainer-outreach.md`](co-maintainer-outreach.md) | Co-maintainer recruit | O8 |
+| [`translation-recruitment.md`](translation-recruitment.md) | JP/ES/DE translation contributors | FR-I18N-001 |
 | [`cross-publishing-template.md`](cross-publishing-template.md) | Per-deep-dive syndication | O10 |
 | [`newsletter-submissions.md`](newsletter-submissions.md) | Per-deep-dive newsletter pitches | O11 |
+| [`FR-LAUNCH-006-social-payload.json`](FR-LAUNCH-006-social-payload.json) | Newsletter mock request/response contract | FR-LAUNCH-006 |
 
 ## Style rules (applied to every file in this bundle)
 
@@ -25,7 +27,7 @@ Every URL in this bundle is `https://audit.cyberskill.world/` (the canonical hos
 - **One ask per message.** Never bundle "read this" + "tweet this" + "join the project."
 - **No paid CTA** anywhere in this bundle. Per FR-BRAND-002 / FR-CORE-004 / FR-BRAND-004.
 - **No self-graded L4/L5 claim.** Per FR-CORE-004 the public cap is L3 unverified.
-- **Forward-only on handle taxonomy.** Use `DSAF` after first mention; never "the DSAF Framework," never "DSAF framework."
+- **Forward-only on handle taxonomy.** Use `DSAF` after first mention; avoid the banned noun-handle forms listed in [`../branding/handle-taxonomy.md`](../branding/handle-taxonomy.md).
 
 ## Editorial review checklist (before sending)
 

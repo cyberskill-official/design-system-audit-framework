@@ -3,14 +3,14 @@ id: FR-CONTENT-002
 title: "Cross-post each weekly deep-dive to dev.to + Medium + LinkedIn — canonical-URL preservation discipline"
 module: CONTENT
 priority: SHOULD
-status: accepted
+status: done
 verify: I
 phase: P2
 milestone: P2 · slice 1 · Community velocity
 slice: 1
 owner: Stephen Cheng (Founder) + future co-maintainer (post-FR-GOV-002)
 created: 2026-05-17
-shipped: null
+shipped: 2026-05-18
 related_frs: [FR-CONTENT-001, FR-LAUNCH-005, FR-BRAND-001, FR-BRAND-002, FR-CORE-004, FR-BRAND-004]
 depends_on: [FR-CONTENT-001]
 blocks: []
@@ -52,6 +52,8 @@ risk_if_skipped: "Plan §Phase 2 action 1 names cross-publishing alongside the w
 ## §1 — Specification (BCP-14 normative)
 
 Each weekly deep-dive from FR-CONTENT-001 MUST be cross-published to three platforms: **dev.to**, **Medium**, **LinkedIn**. Cross-publishing happens T+24-72 hours after dsaf.dev publication (allowing canonical-URL indexing). The cross-published version is the same content as the dsaf.dev original, with canonical URL pointing back to dsaf.dev. The "Discussion" section on the dsaf.dev post updates within 24h of cross-publication to link the 3 cross-platform discussion threads.
+
+**2026-05-18 implementation note:** the cross-publishing pack is repo-shipped for the canonical host `audit.cyberskill.world`: `docs/content/cross-publishing-playbook.md` has platform procedures and a dated Week 1 posting schedule; `scripts/render-cross-publishing-drafts.mjs` generates full-content manual drafts; Week 1 dev.to, Medium, and LinkedIn drafts are present under `docs/content/deep-dives/cross-publishing/`.
 
 1. **MUST** cross-publish each weekly deep-dive (from FR-CONTENT-001) to dev.to + Medium + LinkedIn. The cross-publishing happens at T+24-72 hours after the dsaf.dev publication time (Tuesday 08:00 PT publication → cross-publish window Wednesday 08:00 PT through Friday 08:00 PT).
 2. **MUST** set the canonical URL to the dsaf.dev URL on each cross-published version. Per-platform canonical-URL fields: dev.to uses `canonical_url` in the frontmatter (or the "Canonical URL" field in the post editor); Medium uses the "Set canonical link" option in the post settings (added the publisher-stories canonical-link feature in ~2021); LinkedIn long-form articles use a less-formal canonical (the article links back to dsaf.dev at the top + bottom, plus search-engine signal via header noted in §3).
@@ -172,7 +174,7 @@ This deep-dive has discussion threads on:
 - [Medium response thread](Medium URL)
 - [LinkedIn long-form post](LinkedIn URL)
 
-Reach out via [hello@dsaf.dev](mailto:hello@dsaf.dev) or open an issue on [GitHub](https://github.com/CyberSkill/design-system-audit-framework/issues).
+Reach out via [hello@dsaf.dev](mailto:hello@dsaf.dev) or open an issue on [GitHub](https://github.com/cyberskill-official/design-system-audit-framework/issues).
 ```
 
 ## §3.3 — Per-platform anti-patterns

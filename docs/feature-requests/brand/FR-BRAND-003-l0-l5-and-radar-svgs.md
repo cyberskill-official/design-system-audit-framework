@@ -3,14 +3,14 @@ id: FR-BRAND-003
 title: "Commission canonical L0–L5 ladder + radar chart SVGs into `/assets/`"
 module: BRAND
 priority: MUST
-status: accepted
+status: done
 verify: I
 phase: P0
 milestone: P0 · slice 1 · Pre-launch hardening
 slice: 1
 owner: Stephen Cheng (Founder) + commissioned illustrator
 created: 2026-05-17
-shipped: null
+shipped: 2026-05-18
 related_frs: [FR-BRAND-001, FR-BRAND-002, FR-CORE-001, FR-DOCS-001, FR-CONTENT-001, FR-LAUNCH-001]
 depends_on: [FR-BRAND-002, FR-CORE-001]
 blocks: [FR-DOCS-001, FR-CONTENT-001, FR-LAUNCH-001]
@@ -35,11 +35,17 @@ new_files:
   - assets/dsaf-radar-print.pdf
   - assets/dsaf-visual-design-spec.md
   - assets/dsaf-radar-template.json
+  - docs/branding/FR-BRAND-003-visual-assets-contract.json
+  - scripts/visual-assets-contract-lib.mjs
+  - scripts/check-visual-assets-contract.mjs
+  - scripts/check-visual-assets-contract.test.mjs
 modified_files:
   - README.md
   - docs/01-introduction.md
   - docs/07-maturity-tiers.md
   - docs/dsaf-25.md
+  - package.json
+  - scripts/dsaf-verify.mjs
 allowed_tools:
   - "file_read/write assets/**, docs/**, README.md"
   - "SVG authoring (Figma export, hand-edit in text editor, or commissioned illustrator)"
@@ -63,7 +69,10 @@ sub_tasks:
   - "8. (30m) Patch docs/dsaf-25.md to embed the radar template near the 'How to use' section"
   - "9. (15m) Run §5 verification: Lighthouse score on embedded SVGs, xmllint accessibility, file sizes within caps"
 risk_if_skipped: "The plan §'What drives GitHub stars' item 2 names this as one of four levers that move methodology-repo stars: 'one killer visual that gets screenshotted on social media (DORA's elite-vs-low cluster chart; 12factor's twelve-line manifesto).' Without canonical visuals, every conference-talk slide, every Twitter post, every blog post about DSAF improvises a visual — usually a generic CMM ladder borrowed from elsewhere, or a default radar chart from a library. The brand's iconic surface becomes inconsistent and unrecognisable. The plan §'Naming, branding, governance' is explicit: 'Frameworks that broke through have one iconic visual (atomic-design's chemistry diagram; 12factor's twelve numbered cards). Commission a single radar/spider chart variant + an L0–L5 ladder graphic that becomes the framework's screenshot.' Skipping this FR also blocks FR-DOCS-001 (README rewrite needs the visuals above the fold), FR-CONTENT-001 (weekly criterion deep-dives use the radar to show category coverage), and FR-LAUNCH-001 (Show HN post uses both visuals as attached images). The cost is one focused-session-with-an-illustrator; the value is the screenshot that defines the brand for 5+ years."
+implementation_kind: mocked
 ---
+
+2026-05-18 strict execution note: stale status reset; `npm run contract:visual-assets` verifies ladder/radar SVG accessibility, viewBox/version metadata, file-size/PDF bounds, radar-template axes, README/docs references, and the mocked thumbnail-recognition trial; it writes `docs/_audit/visual-assets-contract.json`. Human reviewer screenshot recognition is physical/manual and captured as a mocked dependency.
 
 ## §1 — Description (BCP-14 normative)
 

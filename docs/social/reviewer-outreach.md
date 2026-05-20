@@ -32,9 +32,9 @@ If the read is interesting but a quote isn't right, that's a complete answer. If
 Materials:
 
 - 25-row Core: https://audit.cyberskill.world/card
-- README draft: https://github.com/CyberSkill/design-system-audit-framework
+- README draft: https://github.com/cyberskill-official/design-system-audit-framework
 - Launch blog post: https://audit.cyberskill.world/blog/launch-2026
-- Self-audit publication policy: https://github.com/CyberSkill/design-system-audit-framework/blob/main/docs/branding/self-audit-policy.md
+- Self-audit publication policy: https://github.com/cyberskill-official/design-system-audit-framework/blob/main/docs/branding/self-audit-policy.md
 
 If the timing is tight or this isn't a fit, a one-line reply is the right answer.
 
@@ -68,7 +68,7 @@ Consent flow if the quote works:
 Materials:
 
 - 25-row Core: https://audit.cyberskill.world/card
-- Repo: https://github.com/CyberSkill/design-system-audit-framework
+- Repo: https://github.com/cyberskill-official/design-system-audit-framework
 - Launch blog post: https://audit.cyberskill.world/blog/launch-2026
 
 Aware this is a busy time of year for the community. "Not now" is a complete answer.
@@ -105,9 +105,9 @@ Consent flow if the quote works:
 Materials:
 
 - 25-row Core: https://audit.cyberskill.world/card
-- Repo: https://github.com/CyberSkill/design-system-audit-framework
+- Repo: https://github.com/cyberskill-official/design-system-audit-framework
 - Launch blog post: https://audit.cyberskill.world/blog/launch-2026
-- Self-audit publication policy (the part I most expect critique on): https://github.com/CyberSkill/design-system-audit-framework/blob/main/docs/branding/self-audit-policy.md
+- Self-audit publication policy (the part I most expect critique on): https://github.com/cyberskill-official/design-system-audit-framework/blob/main/docs/branding/self-audit-policy.md
 
 No ask to amplify. If it's not for you, "not for me" is the right reply.
 

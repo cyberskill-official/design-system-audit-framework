@@ -211,7 +211,7 @@ A `BLOCKED` row pauses the cycle and routes to `@Human[decide]`.
 1. Run all `scripts/check-*.mjs` — record pass/fail for each.
 2. Re-score each affected criterion using the §1 procedure.
 3. Compare against pre-audit score.
-4. **No-silent-regression gate**: any criterion below its pre-audit score → emit an override-log row, tag the §10 score row, and pause for approval or rollback if unresolved.
+4. **No-silent-regression gate**: any criterion below its pre-audit score → emit an `override_log` row, tag the §10 score row, and pause for approval or rollback if unresolved.
 
 **Verification block**:
 
@@ -225,7 +225,7 @@ A `BLOCKED` row pauses the cycle and routes to `@Human[decide]`.
 | `build-design-md.mjs --check` | ✓ | DESIGN.md in sync |
 | Unresolved regressions | `0` | required = 0 |
 
-### Override log
+### Override log (`override_log`)
 
 | Criterion | Pre | Post | Delta | Cause | Approver | Date | Tag | Notes |
 |---|---:|---:|---:|---|---|---|---|---|

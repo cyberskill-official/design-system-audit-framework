@@ -60,4 +60,8 @@ Its interior score remains useful as learning and calibration material.
 Changes to this policy require a DSAF governance proposal.
 Until then, all published self-audits follow the cap table above.
 
+## Strict-audit contract
+
+The executable guard for this policy is [`FR-CORE-004-self-audit-contract.json`](FR-CORE-004-self-audit-contract.json) plus `npm run contract:self-audit`. It checks that CyberSkill public surfaces use L3 framing, that old percentage and L5 headlines do not leak onto public marketing surfaces, and that the interior worked audit still preserves its original calibration data.
+
 *End of self-audit policy.*

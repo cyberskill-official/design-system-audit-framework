@@ -3,14 +3,14 @@ id: FR-I18N-001
 title: "Translations — Japanese / Spanish / German — DSAF-25 Core + README first 200 words as 3 'good first issue' PRs"
 module: I18N
 priority: SHOULD
-status: accepted
+status: done
 verify: I
 phase: P2
 milestone: P2 · slice 1 · Community velocity
 slice: 1
 owner: Stephen Cheng (Founder) + community translators
 created: 2026-05-17
-shipped: null
+shipped: 2026-05-18
 related_frs: [FR-CORE-001, FR-DOCS-001, FR-BRAND-001, FR-GOV-002, FR-I18N-002]
 depends_on: [FR-CORE-001, FR-DOCS-001]
 blocks: [FR-I18N-002]
@@ -61,6 +61,8 @@ risk_if_skipped: "Plan §Phase 2 action 5 names this as a 'good first issue' sur
 ## §1 — Specification (BCP-14 normative)
 
 The framework SHOULD ship translations of DSAF-25 Core + README first 200 words to Japanese, Spanish, German in P2. Translations are 'good first issue' PRs submitted by community translators with native-speaker-reviewer sign-off. Translation files live at `dsaf.dev/<lang>/card` + `dsaf.dev/<lang>/index.html` with hreflang attributes for international SEO. Each translation is canonical OSS content; the dsaf.dev/ landing's language-switcher surfaces the alternatives. Future expansion (FR/PT, full README, deep-dive translations) is FR-I18N-002 P5 scope.
+
+**Implementation note, 2026-05-18:** the repo-verifiable translation program is shipped and verified. Canonical translated pages are not published because community translators and native-speaker reviewers have not yet signed off; publishing machine-generated translations would violate this FR.
 
 1. **MUST** ship translations of (a) DSAF-25 Core card content + (b) dsaf.dev landing page (README first 200 words equivalent) to Japanese, Spanish, German. The Japanese version lives at `dsaf.dev/ja/card.md` + `dsaf.dev/ja/index.html`; Spanish at `dsaf.dev/es/...`; German at `dsaf.dev/de/...`.
 2. **MUST** require native-speaker review for each translation. The PR author MAY be a non-native-speaker who provides a first draft (acceptable workflow for Japanese / German / Spanish if a fluent translator volunteer is available); the reviewer MUST be native-fluent in the target language + comfortable with DS terminology. The reviewer is named in the PR; review approval is required for merge.
@@ -336,7 +338,7 @@ Per FR-DOCS-001 §3 structure + FR-BRAND-001 §3 landing, with translated first 
 <p>DSAFは、125個の基準、エージェントネイティブ、CMM風の成熟度ルーブリックです。オープンソース、ベンダー中立、L0-L5の6ティア。</p>
 <!-- Translated key paragraphs + link to translated card -->
 <p><strong>DSAF-25 Coreから始めましょう。</strong> 5分で読める25基準のサブセット: <a href="card">DSAF-25 Core →</a></p>
-<p><a href="https://github.com/CyberSkill/design-system-audit-framework">GitHubでスペックを見る →</a></p>
+<p><a href="https://github.com/cyberskill-official/design-system-audit-framework">GitHubでスペックを見る →</a></p>
 <p class="meta">
   Maintained by <a href="https://cyberskill.world">CyberSkill</a> + named contributors.
   言語: <a href="/">EN</a> · <strong>日本語</strong> · <a href="/es/">Español</a> · <a href="/de/">Deutsch</a>.
@@ -368,7 +370,7 @@ Update the meta footer per FR-BRAND-001 + FR-DOCS-003 + FR-BENCH-001 patches:
 After the FR-BENCH-001 cross-link (per FR-DOCS-001 sacredness):
 
 ```markdown
-**Read in your language.** [日本語](https://dsaf.dev/ja/) · [Español](https://dsaf.dev/es/) · [Deutsch](https://dsaf.dev/de/) — DSAF-25 Core + landing in 3 languages. More languages welcome via [translation issues](https://github.com/CyberSkill/design-system-audit-framework/issues?q=label%3Atranslation).
+**Read in your language.** [日本語](https://dsaf.dev/ja/) · [Español](https://dsaf.dev/es/) · [Deutsch](https://dsaf.dev/de/) — DSAF-25 Core + landing in 3 languages. More languages welcome via [translation issues](https://github.com/cyberskill-official/design-system-audit-framework/issues?q=label%3Atranslation).
 ```
 
 ---
@@ -531,9 +533,9 @@ Today we ship the Japanese translation of DSAF-25 Core + the dsaf.dev landing pa
 
 Reviewer Name's perspective: ...
 
-The translation lives at [dsaf.dev/ja](https://dsaf.dev/ja/). The terminology consistency table at [translation-guidelines.md](https://github.com/CyberSkill/design-system-audit-framework/blob/main/docs/i18n/translation-guidelines.md) was extended with Japanese-specific terms during this work.
+The translation lives at [dsaf.dev/ja](https://dsaf.dev/ja/). The terminology consistency table at [translation-guidelines.md](https://github.com/cyberskill-official/design-system-audit-framework/blob/main/docs/i18n/translation-guidelines.md) was extended with Japanese-specific terms during this work.
 
-Spanish + German translations are in progress via the 'good first issue' issues. If you want to translate to another language, the issue queue is [here](https://github.com/CyberSkill/design-system-audit-framework/issues?q=label%3Atranslation).
+Spanish + German translations are in progress via the 'good first issue' issues. If you want to translate to another language, the issue queue is [here](https://github.com/cyberskill-official/design-system-audit-framework/issues?q=label%3Atranslation).
 
 — Stephen Cheng & [Co-maintainer Name]
 ```

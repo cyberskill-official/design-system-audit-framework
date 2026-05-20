@@ -1,0 +1,49 @@
+{
+  "schema_version": "2026-05-18",
+  "fr_id": "FR-CORE-004",
+  "status": "strict-audit-contract",
+  "observability": {
+    "audit_output": "docs/_audit/self-audit-cap-contract.json",
+    "correlation_key": "fr_id + file + rule_id",
+    "events": [
+      "policy_checked",
+      "public_surface_scanned",
+      "interior_audit_preservation_checked",
+      "strict_audit_recorded"
+    ]
+  },
+  "policy_file": "docs/branding/self-audit-policy.md",
+  "required_public_files": {
+    "README.md": ["Complete L3 self-audit", "self-audit publication policy"],
+    "docs/01-introduction.md": ["self-audit publication cap", "caps at L3"],
+    "docs/07-maturity-tiers.md": ["Self-audit cap rule", "L3 (Managed) maximum without third-party verification"],
+    "examples/cyberskill-design-system/README.md": ["Public cited level", "L3 Managed"],
+    "examples/cyberskill-design-system/improvement-plan.md": ["Worked Example Audit (L3 self-audit, uncertified)", "Cited public Level", "L3 (Managed)"],
+    "examples/cyberskill-design-system/_history.md": ["L3 capped", "self-audit cap"]
+  },
+  "scan": {
+    "roots": ["README.md", "SERVICES.md", "docs", "landing", "prompts", "templates", "examples/cyberskill-design-system"],
+    "extensions": [".md", ".html"],
+    "exclude_path_contains": [
+      "docs/feature-requests/",
+      "docs/Design System Audit Framework",
+      "docs/branding/FR-CORE-004-self-audit-contract.json",
+      "docs/_audit/",
+      "examples/cyberskill-design-system/audit-report-2026-04-27.md"
+    ]
+  },
+  "forbidden_public_patterns": [
+    "84\\.6% combined",
+    "CyberSkill[^\\n]{0,160}84\\.6",
+    "CyberSkill[^\\n]{0,160}L5 Optim",
+    "CyberSkill[^\\n]{0,160}industry-leading",
+    "CyberSkill[^\\n]{0,160}top tier",
+    "CyberSkill[^\\n]{0,160}top-tier"
+  ],
+  "interior_audit_file": "examples/cyberskill-design-system/audit-report-2026-04-27.md",
+  "interior_must_preserve": [
+    "combined: 84.6",
+    "tier: L5 Optimised",
+    "| Post-audit combined score | **84.6%** (L5 Optimised) |"
+  ]
+}

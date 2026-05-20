@@ -1,0 +1,162 @@
+{
+  "schema_version": "2026-05-18",
+  "fr_id": "FR-GOV-001",
+  "status": "strict-audit-contract-mocked-dependency",
+  "observability": {
+    "audit_output": "docs/_audit/reviewer-contract.json",
+    "correlation_key": "fr_id + reviewer_name + rule_id",
+    "events": [
+      "shortlist_scanned",
+      "outreach_playbook_checked",
+      "consent_guard_checked",
+      "readme_placeholder_checked",
+      "mock_outreach_checked",
+      "strict_audit_recorded"
+    ]
+  },
+  "edge_case_matrix": [
+    {
+      "case": "Null shortlist",
+      "failure_vector": "No public reviewer candidate inventory exists.",
+      "expected_handling": "Fail the contract; outreach cannot proceed without candidates."
+    },
+    {
+      "case": "Duplicate reviewer rows",
+      "failure_vector": "Shortlist padding repeats names and overstates coverage.",
+      "expected_handling": "Fail unique-name check."
+    },
+    {
+      "case": "Quote before consent",
+      "failure_vector": "README publishes a named endorsement while the consent log is empty.",
+      "expected_handling": "Fail consent guard; keep placeholders until FR-DOCS-002."
+    },
+    {
+      "case": "Paid or amplification ask",
+      "failure_vector": "Outreach asks for compensation, upvotes, reposts, or public praise.",
+      "expected_handling": "Fail forbidden-ask scan."
+    },
+    {
+      "case": "Malformed consent scope",
+      "failure_vector": "Consent template omits exact quote text, approved surfaces, duration, or retraction window.",
+      "expected_handling": "Fail consent-template requirements."
+    },
+    {
+      "case": "No email/account access",
+      "failure_vector": "Unattended execution cannot send personal emails or receive written approvals.",
+      "expected_handling": "Use the mocked outreach-send request/response contract and keep statuses as operator-owned."
+    }
+  ],
+  "files": {
+    "shortlist": "docs/branding/reviewer-shortlist.md",
+    "branding_playbook": "docs/branding/reviewer-outreach.md",
+    "social_drafts": "docs/social/reviewer-outreach.md",
+    "consent_log": "docs/branding/reviewer-consent-log.md",
+    "readme": "README.md"
+  },
+  "expected_reviewers": [
+    "Nathan Curtis",
+    "Sil Bormüller",
+    "Brad Frost",
+    "Chris Strahl",
+    "Ben Callahan",
+    "Diana Mounter",
+    "Sarah Federman",
+    "Luke Murphy",
+    "Dan Mall",
+    "Jina Anne"
+  ],
+  "status_values": [
+    "not-contacted",
+    "contacted",
+    "replied-positive",
+    "feedback-no-quote",
+    "quote-approved",
+    "quote-published",
+    "declined",
+    "no-response"
+  ],
+  "required_playbook_strings": [
+    "review, not endorsement",
+    "would value your roast",
+    "Do not ask for upvotes, reposts, public praise, or paid endorsement.",
+    "Send outreach one to two weeks before Show HN.",
+    "Follow up once after five business days",
+    "Approved surfaces: README, audit.cyberskill.world launch page, Show HN launch comment",
+    "Retraction: remove within 7 days of written request"
+  ],
+  "required_social_draft_strings": [
+    "Nathan Curtis",
+    "Sil Bormüller",
+    "Brad Frost",
+    "exact quote text",
+    "Email reply with \"approved\"",
+    "README ships the quote byte-identical to your approval",
+    "No ask to amplify.",
+    "No follow-ups beyond the one in personal-outreach.md."
+  ],
+  "required_consent_strings": [
+    "No README quote may be published without a non-empty row in this table.",
+    "| _none_ | _none_ | _none_ | _none_ | _pending_ | no public quote approved |"
+  ],
+  "required_readme_strings": [
+    "Named outside-reviewer quotes are not published until explicit written consent is logged.",
+    "docs/branding/reviewer-shortlist.md",
+    "docs/branding/reviewer-consent-log.md",
+    "Do not replace them with invented praise.",
+    "> \"<endorsement quote"
+  ],
+  "forbidden_outreach_patterns": [
+    "please endorse",
+    "please retweet",
+    "please upvote",
+    "co-maintainer status",
+    "guaranteed quote"
+  ],
+  "required_package_scripts": {
+    "contract:reviewers": "node scripts/check-reviewer-contract.mjs",
+    "test:reviewer-contract": "node --test scripts/check-reviewer-contract.test.mjs"
+  },
+  "outreach_mock_contract": {
+    "endpoint": "POST /mock/reviewer-outreach-send",
+    "request": {
+      "fr_id": "FR-GOV-001",
+      "ask_type": "review-not-endorsement",
+      "compensation": "none",
+      "materials": [
+        "https://audit.cyberskill.world/card",
+        "https://github.com/cyberskill-official/design-system-audit-framework",
+        "https://audit.cyberskill.world/blog/launch-2026",
+        "docs/branding/self-audit-policy.md"
+      ],
+      "recipients": [
+        {
+          "rank": 1,
+          "name": "Nathan Curtis",
+          "status": "not-contacted"
+        },
+        {
+          "rank": 2,
+          "name": "Sil Bormüller",
+          "status": "not-contacted"
+        },
+        {
+          "rank": 3,
+          "name": "Brad Frost",
+          "status": "not-contacted"
+        }
+      ],
+      "blocked_reason": "Personal email account access and written reviewer consent require the operator."
+    },
+    "response": {
+      "status_code": 202,
+      "body": {
+        "accepted": true,
+        "fr_id": "FR-GOV-001",
+        "sent_count": 0,
+        "mocked_recipient_count": 3,
+        "consent_approvals": 0,
+        "observability_key": "FR-GOV-001:reviewer-outreach:mock-send"
+      }
+    }
+  }
+}

@@ -3,14 +3,14 @@ id: FR-LAUNCH-006
 title: "Submissions to Into Design Systems Weekly + Pattern Pulse + Sidebar.io + Smashing Newsletter — per-deep-dive cadence"
 module: LAUNCH
 priority: SHOULD
-status: accepted
+status: done
 verify: I
 phase: P2
 milestone: P2 · slice 1 · Community velocity
 slice: 1
 owner: Stephen Cheng (Founder) + future co-maintainer (post-FR-GOV-002)
 created: 2026-05-17
-shipped: null
+shipped: 2026-05-18
 related_frs: [FR-CONTENT-001, FR-CONTENT-002, FR-LAUNCH-001, FR-LAUNCH-005]
 depends_on: [FR-CONTENT-001]
 blocks: []
@@ -26,7 +26,14 @@ language: markdown + ops
 service: doctrine + outreach ops
 new_files:
   - docs/launch/newsletter-submissions.md   # per-newsletter submission procedure + tracking
-modified_files: []
+  - docs/social/FR-LAUNCH-006-social-payload.json   # exact mock request/response contract for missing newsletter services
+  - scripts/check-newsletter-contract.mjs   # dependency-free contract test + mock submitter
+modified_files:
+  - docs/social/newsletter-submissions.md
+  - docs/social/README.md
+  - README.md
+  - package.json
+  - scripts/dsaf-verify.mjs
 allowed_tools:
   - "file_read/write docs/launch/**"
   - "manual newsletter submission via each platform's submission form / email"
@@ -43,7 +50,10 @@ sub_tasks:
   - "3. (per-deep-dive monitoring) Track which deep-dives get picked up in which newsletters (per-newsletter publication schedules vary)"
   - "4. (every 4 weeks, ~15m) Review newsletter inclusion-pattern; feed back to FR-CONTENT-001 topic prioritisation (topics that get picked up are signals of community resonance)"
 risk_if_skipped: "Plan §Phase 2 action 4 names these 4 newsletters explicitly. Newsletter audiences are typically design-systems-niche subscribers — high signal-to-noise. Into Design Systems Weekly reaches ~29k LinkedIn-followers via the IDS newsletter + community emails (the plan §'Design systems community signal map' names IDS as the field's center of gravity). Pattern Pulse + Sidebar.io + Smashing Newsletter each reach ~10-50k engaged readers. Skipping this FR cedes 4 curated channels to the framework's target audience. The cost is small (~15min/week during FR-CONTENT-001 active cadence; ~3h cumulative over 12 weeks); the value is the multiplicative reach when newsletters pick up deep-dives (typically 1-2 of 4 newsletters pick up a given deep-dive based on relevance fit; cumulative inclusion rate over 12 weeks: ~20-40% of deep-dives get into at least 1 newsletter)."
+implementation_kind: mocked
 ---
+
+**2026-05-18 strict execution note:** repo-verifiable deliverables are shipped. Direct publishing is intentionally not attempted because the target newsletter services require human-owned accounts, login sessions, editor relationships, or a verified submission destination. The missing-service surface is isolated in `docs/social/FR-LAUNCH-006-social-payload.json`; `scripts/check-newsletter-contract.mjs` validates the exact request/response shape and mock submitter. Backlog state is `shipped + strict-audited + mocked-dependency`.
 
 ## §1 — Specification (BCP-14 normative)
 

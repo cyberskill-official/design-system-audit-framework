@@ -1,6 +1,6 @@
 # A1.1: Color tokens are governance, not naming decoration
 
-**Canonical URL:** `https://audit.cyberskill.world/blog/week-01-a1-1-color-tokens`
+**Canonical URL:** `https://audit.cyberskill.world/blog/deep-dives/week-01-a1-1-color-tokens`
 **DSAF criterion:** `A1.1` — Color tokens with primitive → semantic → component layers
 **Tag:** `FIXED`
 **Reading time:** ~7 minutes
@@ -30,7 +30,7 @@ The problem isn't the naming. The problem is that flat tokens — primitive-only
 
 The three-layer architecture exists to push semantic decisions back into the system. A primitive (`blue-500`) is a hex value with a name. A semantic token (`color-action-primary`) is a *decision* — "the system has decided that primary action elements use this colour, and consumers should not relitigate that decision per-component." A component-scoped token (`button-primary-background`) is the last refinement: the system can change the button's specific shade without changing every other action element.
 
-When a team takes this criterion seriously, three things change. First, design reviews stop arguing about specific hex values — they argue about whether a new use-case needs a new semantic token, which is the right level for the argument. Second, dark mode and high-contrast mode become tractable, because the primitive layer can swap and the semantic layer rebinds automatically. Third, accessibility audits get faster, because contrast guarantees live in the token math (criterion A8.1 — see the [contrast-guarantees deep-dive](./week-05-a8-1-contrast-guarantees.md)) rather than per-component.
+When a team takes this criterion seriously, three things change. First, design reviews stop arguing about specific hex values — they argue about whether a new use-case needs a new semantic token, which is the right level for the argument. Second, dark mode and high-contrast mode become tractable, because the primitive layer can swap and the semantic layer rebinds automatically. Third, accessibility audits get faster, because contrast guarantees live in the token math (criterion A8.1) rather than per-component.
 
 The criterion is `FIXED` because the layering either exists in the codebase or it doesn't — there's no version of the world where "we use primitive → semantic tokens" requires re-scoring quarterly. The standards around colour spaces (OKLCH / P3 at the 5/5 level) are `DYNAMIC`, but they sit on top of this row in A1.9.
 
@@ -112,6 +112,6 @@ A1.1 is part of **DSAF-25 Core** — row 1 of 25. In the full DSAF Criteria it s
 
 *Score yourself on this criterion right now: open [DSAF-25 Core](https://audit.cyberskill.world/card). It takes 5 minutes.*
 
-*Full DSAF rubric + open-source repo: [github.com/CyberSkill/design-system-audit-framework](https://github.com/CyberSkill/design-system-audit-framework).*
+*Full DSAF rubric + open-source repo: [github.com/cyberskill-official/design-system-audit-framework](https://github.com/cyberskill-official/design-system-audit-framework).*
 
 *Was this useful? The full series: [audit.cyberskill.world/blog](https://audit.cyberskill.world/blog).*

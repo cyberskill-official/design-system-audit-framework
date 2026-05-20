@@ -7,7 +7,7 @@ Interior calculation per rubric remains in [`audit-report-2026-04-27.md`](./audi
 The public cap is set by the [self-audit publication policy](../../docs/branding/self-audit-policy.md).
 
 This document is a complete worked example of a DSAF self-audit.
-Use it to understand the SCAN + FIX flow, not as a claim that CyberSkill has independent top-tier verification.
+Use it to understand the SCAN + FIX flow, not as a claim that CyberSkill has independent verification.
 
 **Realistic ceiling without external action:** capped publicly at L3 until verification.
 **Realistic ceiling with full execution of Phases 6–8:** higher interior scores may be possible, but public claims still follow the cap policy.
@@ -163,7 +163,7 @@ Phases run mostly sequentially but **W1, W2, W3** within Phase 6 can overlap. Ph
 This plan deliberately does **not** chase the last few criteria that gate on:
 
 1. **Year-over-year trend data** (B.10.6 triangulation, A.4.6 roadmap transparency at 5+) — needs ≥ 2 annual audits with measurable deltas. Pure calendar.
-2. **A multi-year sustained-quality streak** — some industry-leading benchmarks require a track record, not a snapshot. Pure calendar.
+2. **A multi-year sustained-quality streak** — some external benchmarks require a track record, not a snapshot. Pure calendar.
 3. **Fortune-500 marquee adoption** — sales cycle is 6–18 months minimum. Worth pursuing in parallel with Phase 7, but not the gating activity.
 
 These criteria sit at scores 4 in the current audit. They lift to 5 *naturally* as Phases 6–8 execute and time passes. Pushing them artificially is theatre.

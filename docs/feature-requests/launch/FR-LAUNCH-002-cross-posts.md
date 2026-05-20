@@ -3,14 +3,14 @@ id: FR-LAUNCH-002
 title: "Cross-posts to r/web_design · r/UXDesign · r/programming · Lobste.rs · daily.dev · Designer News — sized engagement ranges + T+4h-to-T+12h sequencing"
 module: LAUNCH
 priority: MUST
-status: accepted
+status: done
 verify: I
 phase: P1
 milestone: P1 · slice 1 · Launch
 slice: 1
 owner: Stephen Cheng (Founder)
 created: 2026-05-17
-shipped: null
+shipped: 2026-05-18
 related_frs: [FR-DOCS-001, FR-DOCS-003, FR-LAUNCH-001, FR-LAUNCH-003, FR-LAUNCH-005, FR-CONTENT-001]
 depends_on: [FR-LAUNCH-001]
 blocks: []
@@ -55,11 +55,13 @@ risk_if_skipped: "Plan §Phase 1 — Launch action 2 specifies the cross-post li
 
 The framework's launch MUST cross-post to six platforms following Show HN, with each platform's post customised to its community norms, sequenced to gather Show HN traction signal first, and monitored per a per-platform engagement SLA. Each cross-post links to the same canonical URLs (dsaf.dev/card + GitHub repo + dsaf.dev/blog/launch-2026); only the body copy + timing + per-platform conventions vary.
 
+**2026-05-18 implementation note:** the cross-post operator files are repo-shipped in `docs/launch/cross-posts.md` and `docs/social/cross-posts.md`, with concrete timing tied to the May 19/20 2026 Show HN candidate slot and the live public repo URL `github.com/cyberskill-official/design-system-audit-framework`. Manual posting remains blocked until FR-LAUNCH-001 has a live HN URL and the production blog/OG assets return HTTP 200.
+
 1. **MUST** post to all six platforms in the launch window: (a) **r/web_design** on Reddit, (b) **r/UXDesign** on Reddit, (c) **r/programming** on Reddit, (d) **Lobste.rs**, (e) **daily.dev**, (f) **Designer News**. The platform list is from plan §Phase 1 action 2 verbatim; deviating means giving up a piece of the launch surface.
 2. **MUST** sequence the cross-posts at T+4h to T+12h after Show HN per §3.1 timing table. T+0 is the Show HN submission; the cross-posts come AFTER Show HN trajectory is visible (typically the front-page positioning has settled by T+4h). Posting cross-posts simultaneously with Show HN dilutes attention; posting later than T+12h means the day-of-launch buzz has faded.
 3. **MUST** customise each platform's post body per §3 — no copy-paste cross-posting. Each community has different norms: r/web_design wants visuals + actionable practical framing; r/UXDesign wants UX-narrative framing; r/programming wants technical-spec framing; Lobste.rs wants depth + considered framing; daily.dev wants headline-driven framing; Designer News wants design-conversation framing. The body MUST match the community.
 4. **MUST** declare a sized engagement range per platform per §3.2. The ranges set realistic expectations: r/web_design typical 200-600 upvotes for a launch like DSAF; r/UXDesign typical 100-300; r/programming typical 50-200 (broader audience, harder to convert); Lobste.rs typical 20-80 (smaller community but higher-quality signal); daily.dev typical 50-150; Designer News typical 30-100. The PR description records the ranges; the post-launch tracking captures actual numbers.
-5. **MUST** use the same canonical URLs across all platforms: dsaf.dev/card (DSAF-25 Core, 5-min entry), github.com/CyberSkill/design-system-audit-framework (repo), dsaf.dev/blog/launch-2026 (origin story). Single canonical, multi-surface — different bodies, same destinations. URL fragments are OK per platform (e.g., a r/UXDesign post may link directly to a Part B criterion); the *primary* canonicals stay.
+5. **MUST** use the same canonical URLs across all platforms: dsaf.dev/card (DSAF-25 Core, 5-min entry), github.com/cyberskill-official/design-system-audit-framework (repo), dsaf.dev/blog/launch-2026 (origin story). Single canonical, multi-surface — different bodies, same destinations. URL fragments are OK per platform (e.g., a r/UXDesign post may link directly to a Part B criterion); the *primary* canonicals stay.
 6. **MUST NOT** ask anyone (followers, employees, FR-LAUNCH-004 heads-up recipients, FR-GOV-001 reviewers) to upvote on any platform. Each platform has its own vote-manipulation detection; consequences range from post removal (Reddit) to account ban (Lobste.rs). The launch trajectory is whatever organic engagement the post generates.
 7. **MUST NOT** create a brand-new account on any platform just to post the launch. Lobste.rs is invite-only; daily.dev allows new accounts but new-account submissions are flagged. The founder posts from an existing account with non-zero standing (per AC2 verification). If account standing doesn't exist on a platform, that platform is SKIPPED in this FR's submission — the operator MAY revisit post-P1 once standing is built.
 8. **MUST** monitor each cross-post thread per the per-platform SLA in §3.3. The SLAs are looser than Show HN's 30-minute SLA (the cross-posts are secondary surfaces, not primary), but engagement still matters. Reddit thread response SLA is 2 hours for the first 4 hours, then 4 hours through hour 24; Lobste.rs SLA is 4 hours for the first 12 hours (smaller community, slower cadence); daily.dev + Designer News SLA is "as available" (lighter engagement expectations).
@@ -161,7 +163,7 @@ Apply the FR-LAUNCH-001 §3 response-pattern templates verbatim — they're plat
 > DSAF — Design System Audit Framework — is 125 criteria across 20 categories (system + UX), mapped to L0 → L5 maturity tiers. It ships with shipping scripts and LLM-agent integration.
 >
 > 5-min entry: https://dsaf.dev/card (one-page DSAF-25 Core)
-> Repo: https://github.com/CyberSkill/design-system-audit-framework
+> Repo: https://github.com/cyberskill-official/design-system-audit-framework
 > What I think is broken about it: https://dsaf.dev/blog/launch-2026
 >
 > Sample visual: [DSAF radar — 20-axis spider chart per category, https://dsaf.dev/assets/dsaf-radar.svg]
@@ -181,7 +183,7 @@ Apply the FR-LAUNCH-001 §3 response-pattern templates verbatim — they're plat
 > DSAF (Design System Audit Framework) splits the rubric: Part A is 63 criteria on the system; Part B is 62 criteria on the UX it produces. Each gets a per-category roll-up; the combined score maps to L0–L5 tiers.
 >
 > 5-min entry: https://dsaf.dev/card (one-page subset)
-> Full rubric: https://github.com/CyberSkill/design-system-audit-framework/blob/main/docs/04-criteria-part-b.md (Part B — UX)
+> Full rubric: https://github.com/cyberskill-official/design-system-audit-framework/blob/main/docs/04-criteria-part-b.md (Part B — UX)
 > Origin story + candid limitations: https://dsaf.dev/blog/launch-2026
 >
 > I'm Stephen Cheng — currently on Show HN too: [Show HN URL].
@@ -203,7 +205,7 @@ Apply the FR-LAUNCH-001 §3 response-pattern templates verbatim — they're plat
 > - Shipping scripts: bundle-size, contrast (APCA + WCAG), coverage, doc-freshness, link-check
 > - LLM-agent integration via structured prompts; MCP-server-ready
 >
-> Code: https://github.com/CyberSkill/design-system-audit-framework
+> Code: https://github.com/cyberskill-official/design-system-audit-framework
 > 5-min entry: https://dsaf.dev/card
 > What we got wrong (the candid origin story): https://dsaf.dev/blog/launch-2026
 >
@@ -219,11 +221,11 @@ Apply the FR-LAUNCH-001 §3 response-pattern templates verbatim — they're plat
 >
 > DSAF is a criteria-graded maturity rubric — 125 criteria across 20 categories, mapped to L0 → L5 tiers (CMM-style). It's the artifact I wanted when customers asked "how mature is our design system" and the only available answers were blog posts (Atomic Design, Big Medium) or SaaS-gated platforms (zeroheight, Knapsack).
 >
-> Repo + docs: https://github.com/CyberSkill/design-system-audit-framework
+> Repo + docs: https://github.com/cyberskill-official/design-system-audit-framework
 > One-page summary: https://dsaf.dev/card
 > Origin story including candid limitations (what we got wrong): https://dsaf.dev/blog/launch-2026
 >
-> Disclosure: I run CyberSkill, a software consultancy. DSAF is open source (MIT); CyberSkill offers paid audit services at audit.cyberskill.world (separate site). The decoupling is deliberate and documented at https://github.com/CyberSkill/design-system-audit-framework/blob/main/docs/branding/decoupling-decision.md
+> Disclosure: I run CyberSkill, a software consultancy. DSAF is open source (MIT); CyberSkill offers paid audit services at audit.cyberskill.world (separate site). The decoupling is deliberate and documented at https://github.com/cyberskill-official/design-system-audit-framework/blob/main/docs/branding/decoupling-decision.md
 >
 > Would value the Lobste.rs community's reads, particularly on the no-silent-regression rule design and the criteria-overlap dedup methodology.
 >
@@ -237,7 +239,7 @@ Apply the FR-LAUNCH-001 §3 response-pattern templates verbatim — they're plat
 
 > A 125-criterion maturity rubric for design systems. Open source. Tier scale from L0 (ad-hoc) to L5 (industry-leading). Ships with LLM-agent prompts. Free alternative to SaaS audit platforms.
 >
-> Repo: https://github.com/CyberSkill/design-system-audit-framework
+> Repo: https://github.com/cyberskill-official/design-system-audit-framework
 > 5-min entry: https://dsaf.dev/card
 > Currently trending on HN: [Show HN URL]
 
@@ -253,7 +255,7 @@ Apply the FR-LAUNCH-001 §3 response-pattern templates verbatim — they're plat
 >
 > The candid limitations post: https://dsaf.dev/blog/launch-2026
 > 5-min entry: https://dsaf.dev/card
-> Repo: https://github.com/CyberSkill/design-system-audit-framework
+> Repo: https://github.com/cyberskill-official/design-system-audit-framework
 >
 > What would the DN community most want to push back on? Geography-headwind, no-silent-regression rule, the 125-criterion barrier, or something I haven't named?
 
@@ -308,7 +310,7 @@ Extend the FR-LAUNCH-001 tracking file with per-platform tabs:
 3. **Sequencing offsets per §3.1** — each platform's T+offset is in the 4-12h post-Show-HN window.
 4. **Engagement ranges per platform** — each platform in §3.2 has Low / Mid / High columns populated with realistic numbers per the plan.
 5. **Customised body per platform** — `grep -cE '^### (r/|Lobste|daily|Designer)' docs/launch/cross-posts.md` ≥ 6. Each body is platform-customised (different titles, different framings, NOT byte-identical copies).
-6. **Canonical URLs in every body** — every platform's body links to dsaf.dev/card, github.com/CyberSkill/design-system-audit-framework, and (where appropriate) dsaf.dev/blog/launch-2026.
+6. **Canonical URLs in every body** — every platform's body links to dsaf.dev/card, github.com/cyberskill-official/design-system-audit-framework, and (where appropriate) dsaf.dev/blog/launch-2026.
 7. **No vote-manipulation language** — `grep -ciE 'upvote|please upvote|ask.*upvote' docs/launch/cross-posts.md` returns 0.
 8. **No copy-paste cross-posting** — verified by reviewer at PR: each post body's first 200 chars are demonstrably different from others (different opening hook, different community framing).
 9. **Per-platform SLAs documented** — §3.3 SLA table covers all 6 platforms (or 5 if daily.dev + Designer News combined as "lighter touch").
@@ -344,7 +346,7 @@ grep -cE '^### (r/|Lobste|daily|Designer)' docs/launch/cross-posts.md
 # AC6 — canonical URLs in bodies
 grep -c 'dsaf.dev/card' docs/launch/cross-posts.md
 # expected: ≥ 6 (one per platform body)
-grep -c 'github.com/CyberSkill/design-system-audit-framework' docs/launch/cross-posts.md
+grep -c 'github.com/cyberskill-official/design-system-audit-framework' docs/launch/cross-posts.md
 # expected: ≥ 6
 
 # AC7 — no vote-manipulation language

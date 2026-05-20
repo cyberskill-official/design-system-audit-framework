@@ -9,20 +9,40 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
 endobj
 4 0 obj
-<< /Length 262 >>
+<< /Length 2111 >>
 stream
-BT
-/F1 18 Tf
-72 770 Td
-(DSAF-25 Core) Tj
-/F1 10 Tf
-0 -28 Td
-(Printable source: assets/dsaf-25-card.svg) Tj
-0 -18 Td
-(Score 25 criteria from 0 to 5. Sum / 125 * 100.) Tj
-0 -18 Td
-(Use DSAF-25 for first-pass scoring; use DSAF-125 for signed audits.) Tj
-ET
+q 1 1 1 rg 0 0 595 842 re f Q
+0 0 0 rg
+BT /F1 22 Tf 54 790 Td (DSAF-25 Core) Tj ET
+BT /F1 9 Tf 54 772 Td (Score each row 0-5. Sum / 125 * 100. First pass, not a substitute for the full DSAF Criteria.) Tj ET
+BT /F1 11 Tf 54 744 Td (Part A: System) Tj ET
+BT /F1 8.5 Tf 54 726 Td (1. A1.1 Color tokens with primitive to semantic to component layers) Tj ET
+BT /F1 8.5 Tf 54 708 Td (2. A1.8 Token format and DTCG conformance) Tj ET
+BT /F1 8.5 Tf 54 690 Td (3. A1.9 Modern color spaces) Tj ET
+BT /F1 8.5 Tf 54 672 Td (4. A2.1 Coverage of Top 20 components) Tj ET
+BT /F1 8.5 Tf 54 654 Td (5. A2.4 Variant and state coverage) Tj ET
+BT /F1 8.5 Tf 54 636 Td (6. A3.1 Usage guidelines per component) Tj ET
+BT /F1 8.5 Tf 54 618 Td (7. A4.2 RFC process) Tj ET
+BT /F1 8.5 Tf 54 600 Td (8. A4.3 Semver discipline) Tj ET
+BT /F1 8.5 Tf 54 582 Td (9. A5.4 Storybook or equivalent) Tj ET
+BT /F1 8.5 Tf 54 564 Td (10. A5.5 CI/CD for the system itself) Tj ET
+BT /F1 8.5 Tf 54 546 Td (11. A6.1 Light and dark mode parity) Tj ET
+BT /F1 8.5 Tf 54 528 Td (12. A7.1 Coverage percentage) Tj ET
+BT /F1 8.5 Tf 54 510 Td (13. A8.1 Contrast guarantees) Tj ET
+BT /F1 8.5 Tf 54 492 Td (14. A9.1 Bundle size budgets) Tj ET
+BT /F1 8.5 Tf 54 474 Td (15. A10.3 AI-rules file for agents) Tj ET
+BT /F1 11 Tf 54 448 Td (Part B: UX) Tj ET
+BT /F1 8.5 Tf 54 430 Td (16. B1.1 Method diversity) Tj ET
+BT /F1 8.5 Tf 54 412 Td (17. B2.1 Match between system and user mental model) Tj ET
+BT /F1 8.5 Tf 54 394 Td (18. B3.3 Error prevention and recovery) Tj ET
+BT /F1 8.5 Tf 54 376 Td (19. B4.1 Visual hierarchy) Tj ET
+BT /F1 8.5 Tf 54 358 Td (20. B5.2 WCAG 2.2 Level AA conformance) Tj ET
+BT /F1 8.5 Tf 54 340 Td (21. B6.1 Voice and tone documentation) Tj ET
+BT /F1 8.5 Tf 54 322 Td (22. B7.1 Heuristic evaluation cadence) Tj ET
+BT /F1 8.5 Tf 54 304 Td (23. B8.1 LCP at 75th percentile) Tj ET
+BT /F1 8.5 Tf 54 286 Td (24. B9.1 No-dark-pattern guarantee) Tj ET
+BT /F1 8.5 Tf 54 268 Td (25. B10.1 HEART framework adoption) Tj ET
+BT /F1 7.5 Tf 54 58 Td (Source: docs/dsaf-25.md and assets/dsaf-25-card.svg. Public card: https://audit.cyberskill.world/card.) Tj ET
 endstream
 endobj
 5 0 obj
@@ -35,9 +55,9 @@ xref
 0000000058 00000 n 
 0000000115 00000 n 
 0000000241 00000 n 
-0000000553 00000 n 
+0000002404 00000 n 
 trailer
 << /Size 6 /Root 1 0 R >>
 startxref
-623
+2474
 %%EOF

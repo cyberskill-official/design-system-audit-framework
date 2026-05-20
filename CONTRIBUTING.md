@@ -1,6 +1,6 @@
 # Contributing to the Design System Audit Framework
 
-Thank you for considering a contribution. The framework is intentionally opinionated, but every part of it is open to revision through the proposal flow described below.
+Thank you for considering a contribution. DSAF is intentionally opinionated, but every part of it is open to revision through the proposal flow described below.
 
 ## Three kinds of contribution
 
@@ -20,10 +20,14 @@ File an issue first using the template `Substantive proposal`. Discuss for at le
 - An update to the relevant criterion rubric anchors (0 / 3 / 5).
 
 **Approval window:** 14 days. Two maintainer approvals required.
+Until the FR-GOV-002 co-maintainer seat is accepted, this means founder approval after the public 14-day discussion window.
+After a co-maintainer is active, it means approval from both current maintainers unless an RFC explicitly defines a broader rule.
 
-### 3. Architectural — modes, actors, scoring algorithm, the no-downgrade rule
+### 3. Architectural — modes, actors, scoring algorithm, the no-silent-regression rule
 
-These are the framework's invariants. Changes require a full RFC. See `docs/rfc-template.md` (coming in v0.2). RFC discussion is at minimum 30 days, requires three maintainer approvals, and triggers a major version bump.
+These are the framework's invariants. Changes require a full RFC. See `docs/rfc-template.md` (coming in v0.2). RFC discussion is at minimum 30 days and triggers a major version bump.
+Before the maintainer group reaches three people, RFC approval requires all active maintainers plus a public decision note.
+After the group reaches three people, RFC approval requires three maintainer approvals.
 
 ## Adding your own audit as a case study
 
@@ -57,7 +61,7 @@ Translations into other languages are very welcome. Open an issue first to coord
 
 ## Naming and taxonomy
 
-PRs that introduce text on external-facing surfaces (`README.md`, anything under `docs/`, anything under `audit.cyberskill.world/`, anything destined for a blog or social post) are reviewed against the DSAF handle taxonomy at [`docs/branding/handle-taxonomy.md`](docs/branding/handle-taxonomy.md). The short version: use `DSAF` as the brand, use the long name `Design System Audit Framework` once per surface at first mention, use `DSAF Criteria` / `DSAF Levels` / `DSAF Modes` / `DSAF-25 Core` as the component handles, and never use `Framework` as a capitalised noun-handle.
+PRs that introduce text on external-facing surfaces (`README.md`, anything under `docs/`, anything under `audit.cyberskill.world/`, anything destined for a blog or social post) are reviewed against the DSAF handle taxonomy at [`docs/branding/handle-taxonomy.md`](docs/branding/handle-taxonomy.md). The short version: use `DSAF` as the brand, use the long name once per surface at first mention, use `DSAF Criteria` / `DSAF Levels` / `DSAF Modes` / `DSAF-25 Core` as the component handles, and never use `Framework` as a capitalised noun-handle.
 
 The glossary at [`docs/branding/glossary.md`](docs/branding/glossary.md) is the source of truth for every DSAF-specific term. New coined terms are added there in the same PR that coins them.
 
@@ -66,6 +70,8 @@ The glossary at [`docs/branding/glossary.md`](docs/branding/glossary.md) is the 
 DSAF is maintained by Stephen Cheng and CyberSkill as the original authoring practice.
 The co-maintainer role charter lives at [`docs/governance/co-maintainer-charter.md`](./docs/governance/co-maintainer-charter.md).
 Candidates are not publicly attributed before written acceptance and co-signed announcement.
+The public maintainer list in [`README.md`](./README.md) includes the open co-maintainer seat until acceptance.
+Post-acceptance, update README, this file, the announcement post, and GitHub access in that order.
 
 ## Governance
 

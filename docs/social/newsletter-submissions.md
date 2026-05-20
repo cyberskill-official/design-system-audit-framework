@@ -2,31 +2,46 @@
 
 **Use for:** EXECUTION_PLAN.md task O11. Submit each newly-published deep-dive to all four newsletters at T+24h after the canonical post goes live.
 
-Newsletters in scope (per FR-LAUNCH-006):
+Newsletters in scope (per FR-LAUNCH-006).
+Do not auto-submit; copy/paste manually after verifying the live URL.
 
 | Newsletter | URL | Submission form |
 |---|---|---|
-| Into Design Systems Weekly | intodesignsystems.com/newsletter | Editor submission (in-newsletter contact) |
-| Pattern Pulse | patternpulse.io | Form on site footer |
-| Sidebar.io | sidebar.io | sidebar.io/submit |
-| Smashing Newsletter | smashingmagazine.com/the-smashing-newsletter | Editor submission via Smashing pitch flow |
+| Into Design Systems Weekly | <https://www.intodesignsystems.com/about> | Manual relationship/email or current community contact |
+| Pattern Pulse | `<verify current URL before sending>` | Destination not verified on 2026-05-18 |
+| Sidebar.io | <https://sidebar.io/submit> | Public submit route; login/sign-up required |
+| Smashing Newsletter | <https://www.smashingmagazine.com/the-smashing-newsletter/> and <https://www.smashingmagazine.com/contact/> | Contact form `Link suggestion`; no paid placement |
 
 Submit only when the post is actually live at `https://audit.cyberskill.world/blog/<slug>`. Submitting before the post resolves is a sure-fire way to lose editorial trust.
 
 ---
+
+## Week 1 Source Content
+
+Use this exact content for the first submission cycle.
+
+| Field | Value |
+|---|---|
+| Post title | A1.1: Color tokens are governance, not naming decoration |
+| Canonical URL | `https://audit.cyberskill.world/blog/deep-dives/week-01-a1-1-color-tokens/` |
+| Criterion | `A1.1` |
+| Publish time | Tuesday, 2026-06-16, 08:00 PT / 22:00 ICT |
+| Submission window | Wednesday, 2026-06-17, 08:00 PT / 22:00 ICT |
 
 ## 1. Into Design Systems Weekly
 
 **Submission text (paste into the form / editor email):**
 
 ```
-New DSAF criterion deep-dive: "<post title>" — practical example, anti-pattern, and a 5-row checklist for DS teams.
+New DSAF criterion deep-dive: "A1.1: Color tokens are governance, not naming decoration" — practical example, anti-pattern, and checklist for DS teams.
 
-Canonical URL: https://audit.cyberskill.world/blog/<slug>
-Tags: <relevant DSAF criterion ID — e.g. A1.1, B5.2>
+Canonical URL: https://audit.cyberskill.world/blog/deep-dives/week-01-a1-1-color-tokens/
+Tags: A1.1, design tokens, design systems governance
 Author: Stephen Cheng
 
-DSAF is the open Design System Audit Framework (MIT licensed). Repo: github.com/CyberSkill/design-system-audit-framework
+DSAF is the open Design System Audit Framework (MIT licensed). Repo: github.com/cyberskill-official/design-system-audit-framework
+
+No follow-up needed; thanks for considering.
 ```
 
 ## 2. Pattern Pulse
@@ -34,11 +49,13 @@ DSAF is the open Design System Audit Framework (MIT licensed). Repo: github.com/
 **Submission text:**
 
 ```
-Criterion deep-dive for DS teams: "<post title>". Anchored 0–5 rubric, one concrete example, one anti-pattern, one practical checklist.
+Criterion deep-dive for DS teams: "A1.1: Color tokens are governance, not naming decoration." Anchored 0–5 rubric, one concrete example, one anti-pattern, one practical checklist.
 
-Canonical URL: https://audit.cyberskill.world/blog/<slug>
+Canonical URL: https://audit.cyberskill.world/blog/deep-dives/week-01-a1-1-color-tokens/
 
-Part of DSAF — open methodology for design-system audits. github.com/CyberSkill/design-system-audit-framework
+Part of DSAF — open methodology for design-system audits. github.com/cyberskill-official/design-system-audit-framework
+
+Note: Pattern Pulse destination was not verified on 2026-05-18. Do not send until the operator confirms the current submission path.
 ```
 
 ## 3. Sidebar.io
@@ -46,11 +63,11 @@ Part of DSAF — open methodology for design-system audits. github.com/CyberSkil
 **Submission text:**
 
 ```
-Title: <post title>
+Title: A1.1: Color tokens are governance, not naming decoration
 
-URL: https://audit.cyberskill.world/blog/<slug>
+URL: https://audit.cyberskill.world/blog/deep-dives/week-01-a1-1-color-tokens/
 
-Description (max 240 chars): A practical look at <criterion ID + name> — what good looks like, the anti-pattern, and a checklist you can paste into your DS audit today. Part of DSAF, an open MIT-licensed maturity framework.
+Description (max 240 chars): A practical look at A1.1 color tokens: what good token governance looks like, the anti-pattern, and a checklist teams can paste into a design-system audit.
 
 Author: Stephen Cheng
 ```
@@ -64,10 +81,10 @@ Subject: Pitch for inclusion — DSAF criterion deep-dive
 
 Hi <editor name>,
 
-I'd like to submit "<post title>" for consideration in The Smashing Newsletter. It's a practical criterion deep-dive from DSAF (an open design-system audit framework) — anchored example, anti-pattern, and a 5-row checklist DS leads can apply this week.
+I'd like to submit "A1.1: Color tokens are governance, not naming decoration" for consideration in The Smashing Newsletter. It's a practical criterion deep-dive from DSAF (an open design-system audit framework) with an anchored example, anti-pattern, and checklist design-system leads can apply this week.
 
-Canonical: https://audit.cyberskill.world/blog/<slug>
-DSAF repo: https://github.com/CyberSkill/design-system-audit-framework
+Canonical: https://audit.cyberskill.world/blog/deep-dives/week-01-a1-1-color-tokens/
+DSAF repo: https://github.com/cyberskill-official/design-system-audit-framework
 
 The post is non-promotional — no paid CTA, no SaaS pitch — and fits the practical-frontend tone of the newsletter.
 
@@ -86,6 +103,7 @@ CyberSkill
 5. **No service CTA** in the submission text. The newsletter readers are getting the rubric, not the paid audit.
 6. **No URL parameters.** Canonical URL only — no `?utm=newsletter` tracking params.
 7. **No request to modify the post text** after a newsletter includes it. The byte-identical canonical is the canonical.
+8. **No Pattern Pulse send until destination is verified.** Update `docs/launch/newsletter-submissions.md` when the current destination is known.
 
 ## Four-week inclusion review
 

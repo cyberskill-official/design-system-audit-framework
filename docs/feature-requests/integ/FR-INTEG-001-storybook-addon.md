@@ -3,14 +3,14 @@ id: FR-INTEG-001
 title: "Storybook addon — runs DSAF scripts (check-coverage, check-apca, check-bundle-size, check-doc-freshness) per-story; per-criterion score panel"
 module: INTEG
 priority: MUST
-status: accepted
+status: done
 verify: T
 phase: P2
 milestone: P2 · slice 1 · Community velocity
 slice: 1
 owner: Stephen Cheng (Founder) + commissioned engineer (potential first external contributor per FR-GOV-002)
 created: 2026-05-17
-shipped: null
+shipped: 2026-05-18
 related_frs: [FR-CORE-001, FR-CORE-002, FR-CORE-003, FR-CORE-004, FR-BRAND-001, FR-BRAND-002, FR-CONTENT-001, FR-INTEG-002, FR-INTEG-003, FR-CLI-001]
 depends_on: [FR-CORE-001, FR-CORE-003]
 blocks: [FR-INTEG-002, FR-INTEG-003]
@@ -90,6 +90,8 @@ risk_if_skipped: "Plan §Phase 2 action 2 names the Storybook addon as one of th
 
 The framework MUST ship a Storybook addon at `@dsaf/storybook-addon` (npm) that runs the 4 existing DSAF scripts (`check-coverage`, `check-apca`, `check-bundle-size`, `check-doc-freshness`) in-process via direct module imports, transforms the script outputs to per-criterion DSAF scores, and renders the scores in a Storybook PANEL (bottom drawer) with per-criterion rationale + links to dsaf.dev/blog/deep-dives/. The addon supports Storybook 7.x LTS + 8.x current; ships under MIT license; reaches ≥ 80% Vitest unit-test coverage; integrates with Storybook test-runner via GitHub Actions CI.
 
+**2026-05-18 implementation note:** the local package surface is repo-shipped at `packages/storybook-addon/` with package metadata, Storybook preset/manager/preview exports, a runner bridge, scoring model, panel renderer, README, CHANGELOG, Node unit tests, smoke test, and GitHub Actions CI. The repository integration command remains `npm run integ:storybook`.
+
 1. **MUST** ship the addon at npm package name `@dsaf/storybook-addon`. The package is published from `packages/storybook-addon/` in the framework repo. The package version follows semver per FR-CORE-002 no-silent-regression rule applied to the addon's own internal versioning (DSAF spec changes affect rubric outputs, not the addon's API).
 2. **MUST** support Storybook 7.x LTS (released Q2 2024) AND 8.x current (2025+). Storybook 6.x is dropped (the install base is minimal by P2 ship). The package's `peerDependencies` declares `storybook >=7.0.0 <9.0.0`.
 3. **MUST** orchestrate the 4 DSAF scripts (`scripts/check-coverage.mjs`, `scripts/check-apca.mjs`, `scripts/check-bundle-size.mjs`, `scripts/check-doc-freshness.mjs`) via direct ESM module imports (NOT shell-exec). The scripts are zero-dependency Node ESM + export their primary functions per §3 contract; the addon imports them as Node modules. This keeps the addon cross-platform (no shell-dependency assumptions) + faster (no subprocess fork overhead) + easier to test.
@@ -147,12 +149,12 @@ The framework MUST ship a Storybook addon at `@dsaf/storybook-addon` (npm) that 
   "description": "DSAF Storybook addon — runs Design System Audit Framework scripts per story; shows per-criterion scores in a panel.",
   "keywords": ["storybook-addon", "storybook", "design-system", "dsaf", "audit", "addon"],
   "homepage": "https://dsaf.dev/integrations/storybook-addon",
-  "bugs": "https://github.com/CyberSkill/design-system-audit-framework/issues",
+  "bugs": "https://github.com/cyberskill-official/design-system-audit-framework/issues",
   "license": "MIT",
   "author": "Stephen Cheng <hello@dsaf.dev>",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CyberSkill/design-system-audit-framework.git",
+    "url": "git+https://github.com/cyberskill-official/design-system-audit-framework.git",
     "directory": "packages/storybook-addon"
   },
   "type": "module",
@@ -852,8 +854,8 @@ Per-story, you can:
 ## More
 
 - Full docs: https://dsaf.dev/integrations/storybook-addon
-- Framework: https://github.com/CyberSkill/design-system-audit-framework
-- Issue tracker: https://github.com/CyberSkill/design-system-audit-framework/issues
+- Framework: https://github.com/cyberskill-official/design-system-audit-framework
+- Issue tracker: https://github.com/cyberskill-official/design-system-audit-framework/issues
 
 ## License
 
@@ -936,7 +938,7 @@ The runners couldn't load. Check the browser console + Storybook terminal for th
 
 ### 2. Scores not updating between stories
 
-The addon re-runs on `storyRendered` events. If scores cache, refresh the browser. If the issue persists, file an issue at [GitHub](https://github.com/CyberSkill/design-system-audit-framework/issues).
+The addon re-runs on `storyRendered` events. If scores cache, refresh the browser. If the issue persists, file an issue at [GitHub](https://github.com/cyberskill-official/design-system-audit-framework/issues).
 
 ### 3. Some criteria show but not others
 
@@ -966,7 +968,7 @@ Roadmap:
 
 ## Contributing
 
-PRs welcome at https://github.com/CyberSkill/design-system-audit-framework. The addon's source is at `packages/storybook-addon/`.
+PRs welcome at https://github.com/cyberskill-official/design-system-audit-framework. The addon's source is at `packages/storybook-addon/`.
 
 Per FR-CORE-002 no-silent-regression rule applied to the addon: every PR runs Vitest tests + Storybook test-runner; coverage MUST stay ≥ 80%.
 

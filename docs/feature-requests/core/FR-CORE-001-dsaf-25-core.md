@@ -3,14 +3,14 @@ id: FR-CORE-001
 title: "Build DSAF-25 Core subset — one printable page, designer-readable in 5 min, PM-quotable in a meeting"
 module: CORE
 priority: MUST
-status: accepted
+status: done
 verify: I
 phase: P0
 milestone: P0 · slice 1 · Pre-launch hardening
 slice: 1
 owner: Stephen Cheng (Founder)
 created: 2026-05-17
-shipped: null
+shipped: 2026-05-18
 related_frs: [FR-BRAND-002, FR-BRAND-003, FR-CORE-002, FR-CORE-003, FR-CORE-004, FR-DOCS-001, FR-INTEG-001, FR-CLI-001]
 depends_on: []
 blocks: [FR-BRAND-003, FR-DOCS-001, FR-CONTENT-001, FR-INTEG-001, FR-INTEG-002, FR-INTEG-003, FR-BENCH-001, FR-I18N-001, FR-CLI-001]
@@ -30,11 +30,17 @@ new_files:
   - docs/dsaf-25-card.md
   - assets/dsaf-25-card.svg
   - assets/dsaf-25-card-print.pdf
+  - docs/core/FR-CORE-001-dsaf-25-contract.json
+  - scripts/dsaf-25-contract-lib.mjs
+  - scripts/check-dsaf-25-contract.mjs
+  - scripts/check-dsaf-25-contract.test.mjs
 modified_files:
   - README.md
   - docs/01-introduction.md
   - docs/branding/glossary.md
   - templates/audit-report-template.md
+  - package.json
+  - scripts/dsaf-verify.mjs
 allowed_tools:
   - "file_read/write docs/**, assets/**, README.md, templates/**"
   - "SVG editing (hand-written or via Figma export)"
@@ -56,7 +62,10 @@ sub_tasks:
   - "8. (30m) Add the DSAF-25 Core scoring block to templates/audit-report-template.md (additive — does not break DSAF-125 scoring)"
   - "9. (30m) PR description includes a printed test (literally print the PDF and time a designer reading it; capture the result)"
 risk_if_skipped: "Without a DSAF-25 Core subset, the framework's 125-criterion surface stays un-shareable. The plan §Honest critique item 1 is explicit: 'No one will ever screenshot it. There must be a Core 25 that fits on one page and is what 90% of people quote.' Every methodology brand that broke through had a memorable surface form — DORA's four metrics, 12-factor's twelve lines, SAMM's fifteen practices. DSAF without a Core is a framework that admires its own depth and cedes the share-graph to less rigorous competitors. Skipping this FR also blocks FR-BRAND-003 (the L0–L5 + radar visual identity needs the Core 25 to render at a meaningful resolution), FR-DOCS-001 (the README's hero section needs a Core handle to lead with), FR-INTEG-001/002/003 (the Storybook addon and validators are infeasible at 125-criterion scope — they're feasible at 25), FR-BENCH-001 (the lite benchmark survey can only realistically run the Core 25, not all 125), FR-I18N-001 (translating 25 criteria is plausible; translating 125 is not), and FR-CLI-001 (`npx dsaf scan` is the headline P5 deliverable and needs the Core 25 to score in 60 seconds)."
+implementation_kind: mocked
 ---
+
+**2026-05-18 strict execution note:** stale status was reset and FR-CORE-001 was re-processed with an executable DSAF-25 contract. `npm run contract:dsaf-25` verifies the exact 25 IDs, all A1-A10/B1-B10 category coverage, verbatim criterion names and tags against DSAF-125, inline public-card SVG requirements, printable PDF bounds, the `dsaf_25_score` template field, and writes `docs/_audit/dsaf-25-contract.json`. The designer five-minute read and PM recall trials are physical human-validation gates, so their request/response shape is captured by the mocked validation contract.
 
 ## §1 — Description (BCP-14 normative)
 
@@ -316,7 +325,7 @@ All four renderings carry the same 25 criteria, the same scoring formula, and th
 Per [self-audit publication policy](../docs/branding/self-audit-policy.md). DSAF-25 cited tiers follow the same cap as DSAF-125 cited tiers.
 
 ---
-DSAF v1 · DSAF-25 Core is a verbatim subset of DSAF-125 · Full rubric: `docs/03-criteria-part-a.md` + `docs/04-criteria-part-b.md` · Card: `dsaf.dev/card` · Repo: github.com/CyberSkill/design-system-audit-framework
+DSAF v1 · DSAF-25 Core is a verbatim subset of DSAF-125 · Full rubric: `docs/03-criteria-part-a.md` + `docs/04-criteria-part-b.md` · Card: `dsaf.dev/card` · Repo: github.com/cyberskill-official/design-system-audit-framework
 ```
 
 ### `assets/dsaf-25-card.svg` — design intent (not code; SVG body authored by the founder + commissioned illustrator)

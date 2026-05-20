@@ -1,0 +1,207 @@
+{
+  "schema_version": "2026-05-18",
+  "fr_id": "FR-BRAND-004",
+  "status": "strict-audit-contract-mocked-dependency",
+  "decision_mode": "content_layer_canonical_host_override",
+  "canonical_host": "audit.cyberskill.world",
+  "canonical_url": "https://audit.cyberskill.world/",
+  "architectural_deviation": {
+    "adr": "docs/ADR-FR-BRAND-004.md",
+    "original_plan": "Migrate framework marketing to dsaf.dev and install 12-month path-preserving redirects.",
+    "accepted_plan": "Keep audit.cyberskill.world as canonical and enforce DSAF/CyberSkill separation at the content, routing, and governance layers.",
+    "self_approved": true,
+    "approval_date": "2026-05-18"
+  },
+  "observability": {
+    "audit_output": "docs/_audit/decoupling-contract.json",
+    "correlation_key": "fr_id + canonical_host + file + rule_id",
+    "events": [
+      "canonical_surface_scanned",
+      "redirect_posture_checked",
+      "boundary_copy_checked",
+      "codeowners_gate_checked",
+      "deployment_control_mock_checked",
+      "strict_audit_recorded"
+    ]
+  },
+  "edge_case_matrix": [
+    {
+      "case": "Null URL inventory",
+      "failure_vector": "Original migration inventory is empty or omitted.",
+      "expected_handling": "Historical redirect map states no redirects are installed and preserves the original rows for future revival."
+    },
+    {
+      "case": "Stale neutral-domain canonical",
+      "failure_vector": "An active public page points canonical, OG, privacy, or CTA traffic to dsaf.dev.",
+      "expected_handling": "Fail the contract; active surfaces must use audit.cyberskill.world."
+    },
+    {
+      "case": "Blanket redirect race",
+      "failure_vector": "A redirect or rewrite is configured while the canonical host is also audit.cyberskill.world.",
+      "expected_handling": "Fail the contract; landing/vercel.json must not contain redirects or rewrites for this override."
+    },
+    {
+      "case": "Redirect-to-nowhere",
+      "failure_vector": "Historical map is revived without checking destination routes.",
+      "expected_handling": "Keep the map historical until a new FR re-batches neutral-domain migration and verifies destinations."
+    },
+    {
+      "case": "Sales copy leakage",
+      "failure_vector": "Landing pages gain pricing, audit scoping, lead capture, or contact-sales copy.",
+      "expected_handling": "Fail the contract; commercial service copy stays in SERVICES.md or a separate project."
+    },
+    {
+      "case": "Concurrent content edit",
+      "failure_vector": "A future maintainer changes boundary docs without founder/future-co-maintainer review.",
+      "expected_handling": "Fail CODEOWNERS check when decoupling files are no longer gated."
+    },
+    {
+      "case": "External deployment evidence unavailable",
+      "failure_vector": "Vercel or edge-control-plane state cannot be mutated or proven from the repo without credentials.",
+      "expected_handling": "Use the mocked deployment-control contract and keep repo evidence strict."
+    }
+  ],
+  "files": {
+    "decision_file": "docs/branding/decoupling-decision.md",
+    "domain_decision_file": "docs/branding/domain-decision.md",
+    "redirect_map": "docs/branding/url-redirect-map.md",
+    "adr_file": "docs/ADR-FR-BRAND-004.md",
+    "vercel_config": "landing/vercel.json",
+    "codeowners": ".github/CODEOWNERS"
+  },
+  "required_decision_sections": [
+    "## Decision",
+    "## Why we're keeping the URL on CyberSkill infra",
+    "## Redirect posture",
+    "## Copy guardrails"
+  ],
+  "required_decision_strings": [
+    "Brand decoupling is achieved **at the content layer**, not the URL layer.",
+    "The framework runs at `https://audit.cyberskill.world/`",
+    "There is no redirect to install.",
+    "Do not describe DSAF as a CyberSkill product.",
+    "Do not put paid-service CTAs on DSAF's primary docs or landing page.",
+    "Do route paid-audit conversations to `SERVICES.md`, not the framework surfaces."
+  ],
+  "required_domain_decision_strings": [
+    "**Canonical URL:** `https://audit.cyberskill.world/`.",
+    "The earlier plan to mint a neutral `dsaf.dev` domain",
+    "is **not being pursued**",
+    "The brand-coupling is mitigated by **page content discipline**, not URL choice"
+  ],
+  "required_redirect_map_strings": [
+    "**No redirects are installed.**",
+    "**Current canonical URL:** `https://audit.cyberskill.world/`",
+    "`audit.cyberskill.world` IS the canonical URL",
+    "The file is retained because the FR specs"
+  ],
+  "historical_redirect_inventory": {
+    "minimum_rows": 10,
+    "allowed_actions": [
+      "migrate-content",
+      "migrate-and-rewrite",
+      "keep-on-cyberskill"
+    ]
+  },
+  "canonical_surfaces": [
+    {
+      "path": "README.md",
+      "required": [
+        "https://audit.cyberskill.world",
+        "SERVICES.md",
+        "methodology surface stays neutral"
+      ]
+    },
+    {
+      "path": "landing/index.html",
+      "required": [
+        "<link rel=\"canonical\" href=\"https://audit.cyberskill.world/\">",
+        "<meta property=\"og:url\" content=\"https://audit.cyberskill.world/\">",
+        "DSAF — Design System Audit Framework"
+      ]
+    },
+    {
+      "path": "landing/card/index.html",
+      "required": [
+        "<link rel=\"canonical\" href=\"https://audit.cyberskill.world/card\">",
+        "DSAF-25 Core card"
+      ]
+    },
+    {
+      "path": "landing/benchmark/privacy/index.html",
+      "required": [
+        "<link rel=\"canonical\" href=\"https://audit.cyberskill.world/benchmark/privacy/\">",
+        "info@cyberskill.world"
+      ]
+    },
+    {
+      "path": "landing/README.md",
+      "required": [
+        "`https://audit.cyberskill.world`",
+        "No paid-service CTA, pricing, or sales form lives here.",
+        "No redirect rules ship from here"
+      ]
+    }
+  ],
+  "active_surface_neutral_domain_forbidden": [
+    "README.md",
+    "landing"
+  ],
+  "active_surface_extensions": [
+    ".html",
+    ".md",
+    ".xml",
+    ".txt"
+  ],
+  "landing_public_files": [
+    "landing/index.html",
+    "landing/card/index.html",
+    "landing/benchmark/index.html",
+    "landing/benchmark/results.html"
+  ],
+  "forbidden_landing_patterns": [
+    "\\bAudit scoping call\\b",
+    "\\bcontact[- ]the[- ]sales\\b",
+    "\\bsales form\\b",
+    "\\bpricing tiers\\b",
+    "\\bfree 30-minute conversation\\b",
+    "\\bSERVICES\\.md\\b",
+    "\\bpaid audit\\b",
+    "mailto:info@cyberskill\\.world"
+  ],
+  "required_codeowners": [
+    "/docs/branding/decoupling-decision.md @StephenCheng @future-co-maintainer",
+    "/docs/branding/url-redirect-map.md @StephenCheng @future-co-maintainer"
+  ],
+  "required_package_scripts": {
+    "contract:decoupling": "node scripts/check-decoupling-contract.mjs",
+    "test:decoupling-contract": "node --test scripts/check-decoupling-contract.test.mjs"
+  },
+  "deployment_mock_contract": {
+    "endpoint": "POST /mock/canonical-boundary-deployment-check",
+    "request": {
+      "fr_id": "FR-BRAND-004",
+      "canonical_host": "audit.cyberskill.world",
+      "build_root": "landing/",
+      "desired_redirect_rules": [],
+      "verification_vectors": [
+        "canonical_meta",
+        "vercel_config_no_redirects",
+        "boundary_copy",
+        "codeowners_gate"
+      ],
+      "blocked_control_plane": "Vercel production state and historical Cloudflare redirect rules require operator credentials."
+    },
+    "response": {
+      "status_code": 202,
+      "body": {
+        "accepted": true,
+        "fr_id": "FR-BRAND-004",
+        "canonical_host": "audit.cyberskill.world",
+        "redirect_rules_count": 0,
+        "external_control_plane": "mocked",
+        "observability_key": "FR-BRAND-004:audit.cyberskill.world:deployment-boundary"
+      }
+    }
+  }
+}

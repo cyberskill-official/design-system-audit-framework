@@ -3,14 +3,14 @@ id: FR-CONTENT-001
 title: "Weekly criterion deep-dive cadence on dsaf.dev — one criterion, one example, one anti-pattern, per week"
 module: CONTENT
 priority: MUST
-status: accepted
+status: done
 verify: I
 phase: P2
 milestone: P2 · slice 1 · Community velocity
 slice: 1
 owner: Stephen Cheng (Founder) + future co-maintainer (post-FR-GOV-002)
 created: 2026-05-17
-shipped: null
+shipped: 2026-05-18
 related_frs: [FR-BRAND-001, FR-CORE-001, FR-CORE-003, FR-DOCS-003, FR-LAUNCH-001, FR-LAUNCH-002, FR-LAUNCH-006, FR-CONTENT-002, FR-GOV-002]
 depends_on: [FR-CORE-001, FR-DOCS-003]
 blocks: [FR-CONTENT-002, FR-LAUNCH-006]
@@ -55,6 +55,8 @@ risk_if_skipped: "The plan §Phase 2 action 1 names this as the first P2 content
 ## §1 — Description (BCP-14 normative)
 
 The framework MUST publish weekly criterion deep-dives on dsaf.dev for a 12-week initial commitment (P2, Months 3-6). Each deep-dive follows the fixed **CEA format** (Criterion + Example + Anti-pattern) per §3 template + a "How to self-score" section. The cadence is weekly (every Tuesday 08:00 PT, matching the Show HN posting rhythm). Topic prioritisation comes from the launch tracking-file patterns (the most-asked critic concerns become the first deep-dives).
+
+**2026-05-18 implementation note:** the cadence is repo-shipped for the canonical host `audit.cyberskill.world`: `docs/content/deep-dive-schedule.md` has a dated 12-week Tuesday schedule, `docs/content/deep-dives/_template.md` defines the CEA structure, `docs/content/deep-dives/week-01-a1-1-color-tokens.md` is a 1,391-word publishable Week 1 article, and `landing/blog/deep-dives/` now renders a public index plus the Week 1 post.
 
 1. **MUST** publish one deep-dive per week for 12 weeks (Weeks 11-22 of the project — i.e., the first 12 weeks of P2 starting from launch week +4). Each deep-dive lives at `dsaf.dev/blog/deep-dives/<YYYY-MM-DD>-<criterion-id>-<slug>.md` (e.g., `dsaf.dev/blog/deep-dives/2026-09-08-a1-1-color-tokens-three-tier-architecture.md`).
 2. **MUST** follow the **CEA format** per §3 template — each post has: (a) frontmatter (title, date, canonical, criterion ID, OG meta); (b) Criterion section — verbatim quote of the criterion from `docs/03-criteria-part-a.md` or `docs/04-criteria-part-b.md` per FR-CORE-001 verbatim-quote rule; (c) Example section — a real-world example of a system that scores high on this criterion, with screenshot + per-anchor (0/3/5) explanation; (d) Anti-pattern section — a real-world example (anonymised where needed) of a system that scores low + the gotchas to avoid; (e) How to self-score section — the 3-question self-assessment checklist tied to the criterion's 0-3-5 anchors; (f) Cross-references — links to adjacent criteria + dsaf.dev/card + the relevant docs/ section.
@@ -179,7 +181,7 @@ This deep-dive has discussion threads on:
 - [Medium response thread](LINK-added-post-FR-CONTENT-002)
 - [LinkedIn long-form post](LINK-added-post-FR-CONTENT-002)
 
-Reach out via [hello@dsaf.dev](mailto:hello@dsaf.dev) or open an issue on [GitHub](https://github.com/CyberSkill/design-system-audit-framework/issues).
+Reach out via [hello@dsaf.dev](mailto:hello@dsaf.dev) or open an issue on [GitHub](https://github.com/cyberskill-official/design-system-audit-framework/issues).
 
 ## ChangeLog
 
@@ -287,7 +289,7 @@ Cadence: every Tuesday 08:00 PT. Initial commitment: 12 weeks (P2, Months 3-6). 
 
 Subscribe via [RSS](../rss.xml) for notifications when new deep-dives publish.
 
-Topic suggestions / feedback: [hello@dsaf.dev](mailto:hello@dsaf.dev) or [GitHub issues](https://github.com/CyberSkill/design-system-audit-framework/issues).
+Topic suggestions / feedback: [hello@dsaf.dev](mailto:hello@dsaf.dev) or [GitHub issues](https://github.com/cyberskill-official/design-system-audit-framework/issues).
 ```
 
 ### `dsaf.dev/blog/index.md` — patch to add deep-dives section

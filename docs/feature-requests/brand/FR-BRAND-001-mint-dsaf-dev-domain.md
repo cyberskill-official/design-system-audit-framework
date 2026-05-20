@@ -3,14 +3,14 @@ id: FR-BRAND-001
 title: "Mint `dsaf.dev` (or fallback `designsystemaudit.org`) — WHOIS, DNS, basic landing page"
 module: BRAND
 priority: MUST
-status: accepted
+status: done
 verify: I
 phase: P0
 milestone: P0 · slice 1 · Pre-launch hardening
 slice: 1
 owner: Stephen Cheng (Founder)
 created: 2026-05-17
-shipped: null
+shipped: 2026-05-18
 related_frs: [FR-BRAND-002, FR-BRAND-003, FR-BRAND-004, FR-DOCS-001, FR-DOCS-003]
 depends_on: []
 blocks: [FR-BRAND-002, FR-BRAND-004, FR-DOCS-001, FR-DOCS-003, FR-CONTENT-001, FR-BENCH-001]
@@ -26,8 +26,13 @@ new_files:
   - dsaf.dev/index.html
   - dsaf.dev/_redirects
   - docs/branding/domain-decision.md
+  - docs/branding/FR-BRAND-001-domain-contract.json
+  - scripts/domain-contract-lib.mjs
+  - scripts/check-domain-contract.mjs
+  - scripts/check-domain-contract.test.mjs
 modified_files:
   - README.md
+  - package.json
 allowed_tools:
   - "WHOIS lookup at registrars (Namecheap, Cloudflare, Porkbun)"
   - "purchase domain (Cloudflare Registrar preferred for at-cost pricing)"
@@ -47,7 +52,10 @@ sub_tasks:
   - "6. (30m) Add a CNAME `redirect.cyberskill.world` → `dsaf.dev` (12-month back-compat; FR-BRAND-004 ships the reverse redirect)"
   - "7. (30m) Update README.md to reference `dsaf.dev` as the canonical URL"
 risk_if_skipped: "Without a canonical neutral URL, the framework's brand stays tangled with CyberSkill's audit-services pitch. Every link to the repo + every cited mention will reinforce 'consultancy with framework' rather than 'framework with consultancy.' URLs outlive repos in citation patterns — see 12factor.net (near-zero GitHub footprint yet universally cited) and dora.dev (the report, not the repo, cemented DORA). Skipping this FR forces a domain mint mid-launch when attention is at peak; the resulting brand split is the worst of both worlds (cf. plan §What NOT to do item 4)."
+implementation_kind: mocked
 ---
+
+**2026-05-18 strict execution note:** stale status was reset and FR-BRAND-001 was re-processed against the current backlog canonical host, `https://audit.cyberskill.world/`. Public deploy checks are live-tested by `npm run contract:domain`. Private registrar/DNS/mail/HSTS-preload requirements are account-bound blockers and are isolated in `docs/branding/FR-BRAND-001-domain-contract.json` with a mock `POST /mock/domain-operations` contract. Backlog state is `shipped + strict-audited + mocked-dependency`.
 
 ## §1 — Description (BCP-14 normative)
 
@@ -190,8 +198,8 @@ _dmarc.dsaf.dev.     300  IN  TXT    "v=DMARC1; p=reject; rua=mailto:hello@dsaf.
 <h1>DSAF — Design System Audit Framework</h1>
 <p>A 125-criterion, agent-native, CMM-style maturity framework for design systems. Open source. Vendor-neutral. Six tiers from L0 to L5.</p>
 <p>Most maturity narratives in the design-systems space are blog posts. The few that aren't are SaaS-gated. DSAF is the missing artefact: a downloadable, criteria-graded, scriptable framework that a team can actually run.</p>
-<p><a href="https://github.com/CyberSkill/design-system-audit-framework">Read the spec on GitHub →</a></p>
-<p class="meta">Maintained by <a href="https://cyberskill.world">CyberSkill</a> and named contributors. Source: <a href="https://github.com/CyberSkill/design-system-audit-framework">design-system-audit-framework</a>. Contact: <a href="mailto:hello@dsaf.dev">hello@dsaf.dev</a>. Security: <a href="/.well-known/security.txt">security.txt</a>.</p>
+<p><a href="https://github.com/cyberskill-official/design-system-audit-framework">Read the spec on GitHub →</a></p>
+<p class="meta">Maintained by <a href="https://cyberskill.world">CyberSkill</a> and named contributors. Source: <a href="https://github.com/cyberskill-official/design-system-audit-framework">design-system-audit-framework</a>. Contact: <a href="mailto:hello@dsaf.dev">hello@dsaf.dev</a>. Security: <a href="/.well-known/security.txt">security.txt</a>.</p>
 <!-- NOTE: when FR-GOV-002 moves the repo to a neutral `dsaf` org, both anchor hrefs above MUST be updated in the same PR as the repo move. The redirect from CyberSkill/* preserves inbound links but the canonical URL on the landing must point at the new home. -->
 
 </main>

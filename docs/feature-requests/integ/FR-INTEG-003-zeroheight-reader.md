@@ -3,14 +3,14 @@ id: FR-INTEG-003
 title: "zeroheight-export HTML reader — `@dsaf/zeroheight-reader` CLI + library; scores A.3 Documentation + A.5 Tooling subset"
 module: INTEG
 priority: SHOULD
-status: accepted
+status: done
 verify: T
 phase: P2
 milestone: P2 · slice 1 · Community velocity
 slice: 1
 owner: Stephen Cheng (Founder) + community engineer
 created: 2026-05-17
-shipped: null
+shipped: 2026-05-18
 related_frs: [FR-CORE-001, FR-CORE-003, FR-CORE-004, FR-INTEG-001, FR-INTEG-002, FR-CLI-001]
 depends_on: [FR-CORE-001, FR-INTEG-001]
 blocks: []
@@ -75,6 +75,8 @@ risk_if_skipped: "Plan §Phase 2 action 2 names zeroheight reader as the third o
 ## §1 — Specification (BCP-14 normative)
 
 The framework SHOULD ship the zeroheight-export reader at `@dsaf/zeroheight-reader` (npm) as a standalone CLI + library. The reader parses zeroheight static HTML exports; runs 10 validators across A.3 Documentation (7 criteria) + A.5 Tooling (3 of 6 criteria in scope); emits `CriterionScore[]` matching FR-INTEG-001 contract.
+
+**Implementation note, 2026-05-18:** repo-shipped as a zero-build ESM package under `packages/zeroheight-reader/`, matching the existing FR-INTEG-001/002 package pattern. The package declares `cheerio` for published use and falls back to a small local static HTML reader during repository tests when dependencies are not installed. It emits both keyed `checks` and array-form `criterion_scores`, plus `audit_targets` and the FR-CORE-004 cap footer.
 
 1. **MUST** ship at npm package `@dsaf/zeroheight-reader`.
 2. **MUST** accept input as: (a) path to a directory containing the zeroheight HTML export; (b) path to a single index.html file (single-page export).

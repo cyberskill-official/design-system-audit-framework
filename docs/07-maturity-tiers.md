@@ -2,6 +2,8 @@
 
 DSAF reports a single **combined score** (Part A and Part B averaged) and maps it to a **DSAF Level** from L0 to L5. The L0–L5 tier names borrow from CMM and ITIL, with criteria specific to design systems.
 
+![DSAF L0-L5 Maturity Ladder](../assets/dsaf-l0-l5-ladder.svg)
+
 ---
 
 ## §1 The DSAF Levels (six tiers)
@@ -13,7 +15,7 @@ DSAF reports a single **combined score** (Part A and Part B averaged) and maps i
 | L2 | 55–65% | **Defined** | The system is documented and named. There's an owner. Basic tokens (colour + spacing + typography) ship in code. Light/dark modes exist for at least one UI surface. Versioning is informal. |
 | L3 | 65–75% | **Managed** | The system is versioned in CI. There's a Storybook (or equivalent). Token coverage is measured. Components have variant matrices. WCAG 2.x AA self-claimed. Adoption tracked manually. |
 | L4 | 75–85% | **Managed (advanced)** | Multi-platform tokens (CSS + Swift + Android). RFC process for changes. CI gates on bundle size, contrast, and a11y. Federated contribution model. Roadmap public. Adoption telemetry exists. |
-| L5 | 85%+ | **Optimised** | Industry-leading on multiple categories. Independently audited a11y. Open source. Multi-framework distribution. AI-native (MCP server, DESIGN.md, Code Connect). Telemetry-driven improvement loop. Trend data across ≥ 2 audits. |
+| L5 | 85%+ | **Optimised** | Externally validated across multiple categories. Independently audited a11y. Open source. Multi-framework distribution. AI-native (MCP server, DESIGN.md, Code Connect). Telemetry-driven improvement loop. Trend data across ≥ 2 audits. |
 
 The DSAF Level is a coarse summary. Two systems at "L4" can look very different — one weak on a11y but strong on tooling, the other the reverse. Always read the per-category roll-up alongside the DSAF Level.
 
@@ -84,7 +86,7 @@ You need: multi-platform output (at minimum: CSS + JS/TS for the same tokens), b
 
 ### L4 → L5 (85%)
 
-You need: an independent third-party WCAG audit on file, a public OSS release with > 50 GitHub stars and ≥ 5 external contributors, multi-framework distribution (web components + at least one wrapper), an MCP server or equivalent agent integration, generative theming or similar advanced tooling, ≥ 2 prior audits with trend data, and at least one named customer using the system in production with measurable adoption metrics. This is the threshold for "industry-leading, not just self-described".
+You need: an independent third-party WCAG audit on file, a public OSS release with > 50 GitHub stars and ≥ 5 external contributors, multi-framework distribution (web components + at least one wrapper), an MCP server or equivalent agent integration, generative theming or similar advanced tooling, ≥ 2 prior audits with trend data, and at least one named customer using the system in production with measurable adoption metrics. This is the threshold for "externally proven, not just self-described".
 
 ---
 
@@ -98,7 +100,7 @@ The biggest L4-to-L5 gates are **time** and **external action**, not engineering
 - **Trend data across ≥ 2 audits** — calendar-bound.
 - **Named customer adoption** — sales cycle 6–18 months minimum.
 
-A system can have *everything else* at L5 and still cap at ~88% because it lacks one of these gates. That's not a flaw — it's DSAF being honest about what "industry-leading" actually means.
+A system can have *everything else* at L5 and still cap at ~88% because it lacks one of these gates. That's not a flaw — it's DSAF being honest about what "externally proven" actually means.
 
 ---
 
@@ -120,7 +122,7 @@ When communicating internally or externally, prefer:
 |---|---|
 | "We're at L4." | "We crossed L4 in audit `<date>` with `<combined %>` combined; A.8 at `<x>` is the gate to L5." |
 | "We're enterprise-grade." | "We pass all 7 enterprise-grade thresholds as of audit `<date>`." |
-| "We're industry-leading." | "We're at L5 Optimised on `<combined %>`. The remaining gap to a perfect score is `<external action>` — not DSAF theatre." |
+| "We're the highest tier." | "We're at L5 (Optimised) on `<combined %>`. The remaining gap to a perfect score is `<external action>` — not DSAF theatre." |
 | "We're better than `<competitor>`." | DSAF doesn't compare systems. Score yourself; let consumers compare. |
 
 DSAF refuses to produce a "we're better than X" claim. There is no leaderboard. Two systems at the same combined score can have entirely different shapes and trade-offs.

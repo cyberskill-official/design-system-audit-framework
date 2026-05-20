@@ -92,7 +92,7 @@ For each item:
 ## Hard rules
 
 1. Cite verifiable sources only. Vendor blog posts, official spec text, regulator's site, peer-reviewed research. Random tweets and aggregator posts are not citations.
-2. **No marketing language.** Don't say a system is "industry-leading" because the vendor says so. Compare to objective rubric anchors.
+2. **No marketing language.** Don't call a system best-in-class because the vendor says so. Compare to objective rubric anchors.
 3. Distinguish between **proposal**, **draft**, **stable**, and **deprecated**. A WCAG 3.0 working draft is not a standard you have to comply with; APCA-W3 v0.1.9 is conditionally adoptable; ECMAScript Stage 4 is committed; Stage 1 is speculation.
 4. Flag conflicts. If two competing standards exist (e.g., DTCG vs Style Dictionary's older format), surface the conflict — don't silently pick one.
 5. Note deprecations. If a method, API, or framework is deprecated by its owner, flag for retirement in the design system.

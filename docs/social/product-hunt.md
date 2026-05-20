@@ -3,6 +3,7 @@
 **Use for:** EXECUTION_PLAN.md task O6.
 **When:** within 24h of the Show HN submission. Vote velocity matters in the first 4 hours.
 **Account requirement:** PH submissions benefit from a warm hunter. Reach out to Chris Messina (maker/PH co-founder, hunts DS-adjacent tools) **T-7d** with a one-line ask. Fallback: self-submit on launch day.
+**Canonical operator file:** [`../launch/product-hunt-launch.md`](../launch/product-hunt-launch.md).
 
 ---
 
@@ -15,18 +16,20 @@
 | Description (≤ 260 chars) | `Open-source rubric for design-system maturity. 25-row Core fits on one page; full 125 criteria for signed audits. Markdown-native, agent-ready, MIT licensed. No SaaS lock-in.` |
 | Topics | `Design Tools` · `Open Source` · `Developer Tools` |
 | Website link | `https://audit.cyberskill.world/` |
-| GitHub link | `https://github.com/CyberSkill/design-system-audit-framework` |
+| GitHub link | `https://github.com/cyberskill-official/design-system-audit-framework` |
 | First-comment by maker | (see below) |
 | Twitter / X handle | (whatever DSAF social handle reserves — populate before submission) |
 
 ## Gallery / media (in priority order)
 
-1. **Hero card image** — `landing/og-image.png` (or `landing/social-card-1200x675.png` once shipped per A11). 1200×630 px for the main PH thumbnail. **Required.**
-2. **DSAF-25 Core SVG screenshot** — full card view exported from `https://audit.cyberskill.world/card`. 1600×900 px.
-3. **L0–L5 ladder** — exported from the landing page hero. 1600×900 px.
-4. **README first-screen screenshot** — the H1 + first paragraph + the comparison table. 1600×900 px.
+1. **Hero card image** — `assets/ph/dsaf-thumbnail-1200x630.png`. 1200×630 px for the main PH thumbnail. **Required.**
+2. **DSAF radar screenshot** — `assets/ph/dsaf-radar-screenshot-1200x750.png`.
+3. **DSAF-25 Core preview** — `assets/ph/dsaf-25-card-screenshot-1200x750.png`.
+4. **README first-screen preview** — `assets/ph/dsaf-readme-screenshot-1200x750.png`.
+5. **Worked audit preview** — `assets/ph/dsaf-audit-screenshot-1200x750.png`.
+6. **Logo** — `assets/ph/dsaf-logo-240.png`.
 
-If the gallery only accepts 3, drop the README screenshot. The L0–L5 ladder is the one that gets re-shared on Twitter/LinkedIn from PH.
+If the gallery only accepts 3, use the hero card, DSAF-25 Core preview, and radar screenshot.
 
 ## Maker's first comment (post within 5 minutes of go-live)
 
@@ -70,7 +73,7 @@ I'm launching DSAF (Design System Audit Framework) next Tuesday on Show HN, then
 
 Live preview: https://audit.cyberskill.world/
 
-I'd value you hunting it on PH if it's the kind of methodology release you'd otherwise upvote. Genuinely no obligation — if it's not a fit, a one-line "not for me" is the right reply.
+I'd value you hunting it on PH if it is the kind of methodology release you would otherwise share. Genuinely no obligation — if it's not a fit, a one-line "not for me" is the right reply.
 
 If yes, I'll send you the PH submission draft on launch eve and you can post it whenever in the first hour you're around.
 

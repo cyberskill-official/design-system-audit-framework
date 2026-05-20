@@ -1,0 +1,27 @@
+{
+  "name": "@dsaf/tokens-validator",
+  "version": "0.1.0",
+  "description": "DSAF Tokens Studio and DTCG validator for A.1 Foundations & Tokens criteria.",
+  "type": "module",
+  "license": "MIT",
+  "private": false,
+  "bin": {
+    "dsaf-tokens-validator": "./src/cli.js"
+  },
+  "exports": {
+    ".": "./src/index.js",
+    "./cli": "./src/cli.js"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "smoke": "node src/cli.js tests/fixtures/dtcg-conformant.tokens.json >/tmp/dsaf-tokens-validator-smoke.json && node -e \"const s=require('fs').readFileSync('/tmp/dsaf-tokens-validator-smoke.json','utf8'); if(!s.includes('audit_targets')) process.exit(1); console.log('tokens-validator smoke ok')\""
+  },
+  "files": [
+    "src",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

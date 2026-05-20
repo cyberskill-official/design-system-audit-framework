@@ -70,7 +70,7 @@ The human reviewer chooses whether to approve the trade-off with notes or roll b
 
 This is the second backstop. Even if individual criterion scores look reasonable, a perverse interaction between fixes can lower the combined score. The whole-batch check catches this and makes the decision explicit.
 
-**Postcondition for transition to `SIGNED`:** §8 final score block is populated; combined score did not decrease.
+**Postcondition for transition to `SIGNED`:** §8 final score block is populated; any combined-score decrease has a batch-level override in §7 or has been rolled back.
 
 ### `SIGNED`
 

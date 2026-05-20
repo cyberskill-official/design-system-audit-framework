@@ -3,14 +3,14 @@ id: FR-LAUNCH-005
 title: "Smashing / CSS-Tricks / A List Apart guest-post pitch — 6-week lead time, lands within 2 weeks of launch"
 module: LAUNCH
 priority: SHOULD
-status: accepted
+status: done
 verify: I
 phase: P1
 milestone: P1 · slice 1 · Launch
 slice: 1
 owner: Stephen Cheng (Founder)
 created: 2026-05-17
-shipped: null
+shipped: 2026-05-18
 related_frs: [FR-DOCS-003, FR-LAUNCH-001, FR-CONTENT-001, FR-CONTENT-002, FR-CONTENT-003]
 depends_on: [FR-DOCS-003]
 blocks: []
@@ -52,6 +52,8 @@ risk_if_skipped: "Plan §Phase 1 action 5 names this as a substantive launch-pre
 
 The framework's launch SHOULD include guest-post pitches to three tier-1 design-systems / web-development publications: **Smashing Magazine**, **CSS-Tricks**, **A List Apart**. The pitches are submitted at T-6 weeks from FR-LAUNCH-001 Show HN posting date with the goal that at least one article lands within 2 weeks of launch. Each pitch is a distinct topic (NOT re-pitching the same article across all 3); each pitch's article is *different from* the FR-DOCS-003 launch blog post (publications want fresh content).
 
+**2026-05-18 implementation note:** the canonical runbook is repo-shipped at `docs/launch/guest-post-pitches.md`; full copy-paste pitch drafts live in `docs/social/guest-post-pitches.md`. Current submission surfaces were checked for Smashing Magazine, CSS-Tricks, and A List Apart. For the May 19, 2026 Show HN slot, the T-8/T-6/T-4 guest-post windows are already missed, so the original "lands within 2 weeks of launch" outcome is blocked by editorial lead time unless the launch date rolls forward.
+
 1. **MUST** publish pitch playbook at `docs/launch/guest-post-pitches.md` per §3 with: per-publication editorial contact research, per-publication tone calibration, topic shortlist (3-6 candidate topics), 3 distinct pitch email templates (one per publication), and a tracking format.
 2. **MUST** pitch 3 distinct articles, one per publication. The same article pitched across all 3 violates publication norms (each publication wants first-publication rights). Each article is calibrated to the publication's typical content style + length expectations + audience.
 3. **MUST** pitch at T-6 weeks from FR-LAUNCH-001 Show HN posting date. Earlier than T-8 weeks: publications often reject pitches without near-term ship dates ("we don't plan that far ahead"). Later than T-4 weeks: the 6-8-week editorial cycle won't land the article within 2 weeks of launch. T-6 weeks is the operational sweet spot.
@@ -64,7 +66,7 @@ The framework's launch SHOULD include guest-post pitches to three tier-1 design-
 10. **MUST** apply the FR-BRAND-002 handle taxonomy throughout pitches AND draft articles. `DSAF` short handle; long name `Design System Audit Framework` exactly once at first mention; no `Framework` noun-handle.
 11. **MUST** apply the FR-CORE-004 self-audit cap rule. Guest articles do NOT reference CyberSkill's self-audit at L5; the worked example is mentioned (where relevant) only as "complete worked L3 self-audit example."
 12. **MUST NOT** include paid-funnel CTAs or "Talk to a certified auditor" links in any guest article. The articles are about substance; the dsaf.dev URL is the canonical link (NOT audit.cyberskill.world). Plan §"What NOT to do" item 1 generalises to all launch-surface communications.
-13. **MUST** include in each pitch the canonical dsaf.dev links as proof-of-existence: dsaf.dev/card (DSAF-25 Core, 5-min entry), github.com/CyberSkill/design-system-audit-framework (repo). The launch URL (Show HN) is "planned for [DATE]" pre-launch; post-launch it's the actual URL.
+13. **MUST** include in each pitch the canonical dsaf.dev links as proof-of-existence: dsaf.dev/card (DSAF-25 Core, 5-min entry), github.com/cyberskill-official/design-system-audit-framework (repo). The launch URL (Show HN) is "planned for [DATE]" pre-launch; post-launch it's the actual URL.
 14. **MUST** track each pitch + response in `docs/launch/guest-post-pitches.md` per §3 tracking format. Patterns across publications (which angles get acceptance, which get rejection) feed FR-CONTENT-001 deep-dive prioritisation.
 15. **MUST NOT** use third-party SEO / content-promotion services that promise guaranteed publication. These services typically work via paid relationships with publication editors; using them violates editorial-integrity norms + risks being publicly exposed.
 
@@ -195,7 +197,7 @@ I'd like to pitch an article for [Publication]:
 
 **Materials for context:**
 - 5-min entry to DSAF: https://dsaf.dev/card (the one-page DSAF-25 Core subset)
-- Repo: https://github.com/CyberSkill/design-system-audit-framework
+- Repo: https://github.com/cyberskill-official/design-system-audit-framework
 - The candid limitations blog post (separate from this pitch): https://dsaf.dev/blog/launch-2026
 
 **Delivery:** I can deliver the first draft within 2 weeks of acceptance; flexible on publication date.
@@ -206,7 +208,7 @@ Happy to revise the pitch if a different angle or topic fits [Publication]'s edi
 
 Stephen
 zintaen@gmail.com
-github.com/CyberSkill/design-system-audit-framework
+github.com/cyberskill-official/design-system-audit-framework
 ```
 
 (Character count: ~1,800 chars before per-publication customisation; ~2,200-2,500 chars with outline filled in.)
