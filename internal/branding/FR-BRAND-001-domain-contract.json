@@ -1,0 +1,203 @@
+{
+  "schema_version": "2026-05-18",
+  "fr_id": "FR-BRAND-001",
+  "status": "shipped + mocked-dependency",
+  "canonical_host": "audit.cyberskill.world",
+  "canonical_url": "https://audit.cyberskill.world/",
+  "reason": "The public internal/landing contract can be verified live. Registrar, DNS-zone administration, mailbox forwarding, and HSTS preload submission require private CyberSkill/Vercel/Cloudflare account access, so those operations are isolated behind a mock service contract.",
+  "observability": {
+    "audit_output": "outputs/_audit/domain-contract.json",
+    "correlation_key": "fr_id + canonical_host + operation_id",
+    "events": [
+      "live_http_checked",
+      "dns_checked",
+      "private_operation_blocked",
+      "mock_operation_accepted",
+      "strict_audit_recorded"
+    ]
+  },
+  "public_live_contract": {
+    "https_status": 200,
+    "http_redirect_statuses": [301, 308],
+    "required_headers": {
+      "strict-transport-security": ["max-age=63072000", "includeSubDomains", "preload"],
+      "content-security-policy": ["default-src 'self'", "form-action 'self'", "frame-ancestors 'none'"],
+      "x-content-type-options": ["nosniff"],
+      "x-frame-options": ["DENY"],
+      "referrer-policy": ["strict-origin-when-cross-origin"]
+    },
+    "required_routes": [
+      "/",
+      "/card",
+      "/.well-known/security.txt",
+      "/robots.txt",
+      "/sitemap.xml"
+    ],
+    "forbidden_landing_patterns": [
+      "<form",
+      "<input",
+      "Schedule a demo",
+      "Book a call",
+      "Talk to sales"
+    ]
+  },
+  "mock_service": {
+    "endpoint": "POST /mock/domain-operations",
+    "request_required_fields": [
+      "fr_id",
+      "operation_id",
+      "provider",
+      "canonical_host",
+      "requested_action",
+      "evidence_required",
+      "public_verification_command"
+    ],
+    "response_required_fields": [
+      "accepted",
+      "status",
+      "operation_id",
+      "manual_review",
+      "next_public_check"
+    ]
+  },
+  "private_operations": [
+    {
+      "operation_id": "dns-caa-records",
+      "provider": "cloudflare-dns",
+      "blocker": "Zone-level DNS changes require private Cloudflare/CyberSkill access.",
+      "request": {
+        "method": "POST",
+        "url": "/mock/domain-operations",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "fr_id": "FR-BRAND-001",
+          "operation_id": "dns-caa-records",
+          "provider": "cloudflare-dns",
+          "canonical_host": "audit.cyberskill.world",
+          "requested_action": "Publish CAA records permitting letsencrypt.org and pki.goog for the CyberSkill zone or document inherited certificate-authority policy.",
+          "evidence_required": [
+            "DNS provider record export or dashboard screenshot",
+            "dig CAA cyberskill.world output after propagation"
+          ],
+          "public_verification_command": "dig CAA cyberskill.world"
+        }
+      },
+      "expected_response": {
+        "status": 202,
+        "body": {
+          "accepted": true,
+          "status": "mocked-accepted",
+          "operation_id": "dns-caa-records",
+          "manual_review": true,
+          "next_public_check": "dig CAA cyberskill.world"
+        }
+      }
+    },
+    {
+      "operation_id": "registrar-2fa-vault",
+      "provider": "domain-registrar-password-vault",
+      "blocker": "Registrar 2FA, hardware keys, and vault co-admin evidence require private account access.",
+      "request": {
+        "method": "POST",
+        "url": "/mock/domain-operations",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "fr_id": "FR-BRAND-001",
+          "operation_id": "registrar-2fa-vault",
+          "provider": "domain-registrar-password-vault",
+          "canonical_host": "audit.cyberskill.world",
+          "requested_action": "Confirm registrar auto-renew, at least two FIDO2/WebAuthn keys, SMS 2FA disabled, and read-only renewal access in a CyberSkill-administered vault.",
+          "evidence_required": [
+            "Registrar 2FA settings screenshot",
+            "Vault access-control screenshot or export",
+            "Auto-renew screenshot"
+          ],
+          "public_verification_command": "not public; private account evidence only"
+        }
+      },
+      "expected_response": {
+        "status": 202,
+        "body": {
+          "accepted": true,
+          "status": "mocked-accepted",
+          "operation_id": "registrar-2fa-vault",
+          "manual_review": true,
+          "next_public_check": "not public"
+        }
+      }
+    },
+    {
+      "operation_id": "mail-forwarding",
+      "provider": "cyberskill-mail",
+      "blocker": "Forwarding delivery to the founder inbox cannot be proven without mailbox access.",
+      "request": {
+        "method": "POST",
+        "url": "/mock/domain-operations",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "fr_id": "FR-BRAND-001",
+          "operation_id": "mail-forwarding",
+          "provider": "cyberskill-mail",
+          "canonical_host": "audit.cyberskill.world",
+          "requested_action": "Confirm the security.txt contact mailbox forwards to the responsible operator and does not auto-respond.",
+          "evidence_required": [
+            "Test email timestamp",
+            "Received email header screenshot or export",
+            "No-autoresponder confirmation"
+          ],
+          "public_verification_command": "curl -s https://audit.cyberskill.world/.well-known/security.txt"
+        }
+      },
+      "expected_response": {
+        "status": 202,
+        "body": {
+          "accepted": true,
+          "status": "mocked-accepted",
+          "operation_id": "mail-forwarding",
+          "manual_review": true,
+          "next_public_check": "curl -s https://audit.cyberskill.world/.well-known/security.txt"
+        }
+      }
+    },
+    {
+      "operation_id": "hsts-preload-submit",
+      "provider": "hstspreload.org",
+      "blocker": "Submitting to the preload list is an external service action with asynchronous review.",
+      "request": {
+        "method": "POST",
+        "url": "/mock/domain-operations",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "fr_id": "FR-BRAND-001",
+          "operation_id": "hsts-preload-submit",
+          "provider": "hstspreload.org",
+          "canonical_host": "audit.cyberskill.world",
+          "requested_action": "Submit audit.cyberskill.world for HSTS preload review after confirming headers.",
+          "evidence_required": [
+            "hstspreload.org status output",
+            "Submission timestamp or status URL"
+          ],
+          "public_verification_command": "curl -s 'https://hstspreload.org/api/v2/status?domain=audit.cyberskill.world'"
+        }
+      },
+      "expected_response": {
+        "status": 202,
+        "body": {
+          "accepted": true,
+          "status": "mocked-accepted",
+          "operation_id": "hsts-preload-submit",
+          "manual_review": true,
+          "next_public_check": "curl -s 'https://hstspreload.org/api/v2/status?domain=audit.cyberskill.world'"
+        }
+      }
+    }
+  ]
+}

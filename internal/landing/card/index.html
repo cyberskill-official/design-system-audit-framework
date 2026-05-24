@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DSAF-25 Core card</title>
+  <meta name="description" content="The DSAF-25 Core card — a one-page entry point to the full DSAF Criteria. Score each row 0–5; sum ÷ 125 × 100.">
+
+  <link rel="canonical" href="https://audit.cyberskill.world/card">
+  <meta name="theme-color" content="#fbfaf7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1623" media="(prefers-color-scheme: dark)">
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #fbfaf7;
+      --bg-elev: #ffffff;
+      --ink: #1f2a44;
+      --ink-strong: #0c1530;
+      --muted: #54647f;
+      --line: #d8dfeb;
+      --accent: #d28b00;
+      --accent-soft: #f9ecc8;
+      --accent-ink: #6c4500;
+      --shadow: 0 8px 24px -16px rgba(15, 21, 30, 0.16);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f1623;
+        --bg-elev: #18223a;
+        --ink: #f3f5fb;
+        --ink-strong: #ffffff;
+        --muted: #b5c0d6;
+        --line: #2a3653;
+        --accent: #efc362;
+        --accent-soft: #2b2415;
+        --accent-ink: #fde6b1;
+        --shadow: 0 8px 24px -16px rgba(0, 0, 0, 0.6);
+      }
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Iowan Old Style", "Source Serif Pro", Georgia, serif;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    .ui { font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+    a { color: var(--ink-strong); text-decoration-color: var(--line); text-underline-offset: 4px; }
+    a:hover { text-decoration-color: var(--accent); }
+    main { max-width: 920px; margin: 0 auto; padding: 32px 20px 64px; }
+    .crumb { font-family: Inter, ui-sans-serif, system-ui, sans-serif; font-size: 13.5px; color: var(--muted); margin: 0 0 28px; }
+    .crumb a { color: var(--muted); text-decoration: none; }
+    .crumb a:hover { color: var(--ink-strong); }
+    h1 {
+      font-family: "Iowan Old Style", Georgia, serif;
+      font-weight: 700;
+      font-size: clamp(32px, 4.8vw, 46px);
+      line-height: 1.1;
+      color: var(--ink-strong);
+      margin: 0 0 14px;
+      letter-spacing: -0.01em;
+    }
+    .blurb { font-size: 17.5px; color: var(--muted); max-width: 60ch; margin: 0 0 28px; }
+    .wrap {
+      background: var(--bg-elev);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 22px;
+      overflow-x: auto;
+      box-shadow: var(--shadow);
+    }
+    svg.embed { display: block; max-width: 100%; height: auto; color: var(--ink); }
+    .meta {
+      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+      font-size: 13.5px;
+      color: var(--muted);
+      margin: 18px 0 0;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .meta code { background: var(--accent-soft); color: var(--accent-ink); padding: 1px 6px; border-radius: 4px; font-family: "JetBrains Mono", Menlo, monospace; font-size: 12.5px; }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="crumb"><a href="/">← DSAF</a> · The card</p>
+    <h1>DSAF-25 Core card</h1>
+    <p class="blurb">A one-page subset of the full DSAF Criteria. Score each row 0–5. Sum ÷ 125 × 100 = your DSAF-25 percentage. The card is the share-handle; the full 125 stays the signed-audit source of truth.</p>
+    <div class="wrap">
+      <svg class="embed" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 540" role="img" aria-labelledby="card-title card-desc">
+        <title id="card-title">DSAF-25 Core criteria</title>
+        <desc id="card-desc">Twenty-five design-system audit criteria across system maturity (Part A, 15 rows) and produced UX (Part B, 10 rows). Score each row from zero to five, then sum and divide by one hundred and twenty-five to get the DSAF-25 percentage.</desc>
+        <rect width="840" height="540" fill="transparent"/>
+
+        <text x="24" y="38" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="800" fill="currentColor">DSAF-25 Core</text>
+        <text x="24" y="62" font-family="Inter, system-ui, sans-serif" font-size="13" fill="currentColor" opacity="0.7">
+          Twenty-five criteria. Score 0–5 each. Sum / 125 × 100 = DSAF-25 percentage. First pass — not a substitute for the full DSAF Criteria.
+        </text>
+
+        <line x1="24" y1="92" x2="816" y2="92" stroke="currentColor" stroke-opacity="0.15"/>
+        <text x="24" y="118" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="800" fill="currentColor" letter-spacing="2">PART A · SYSTEM</text>
+        <text x="816" y="118" text-anchor="end" font-family="Inter, system-ui, sans-serif" font-size="12" fill="currentColor" opacity="0.6">15 rows</text>
+
+        <g font-family="Inter, system-ui, sans-serif" font-size="13" fill="currentColor">
+          <text x="24" y="148"><tspan font-weight="700">A1.1</tspan>  Color tokens (primitive → semantic → component)</text>
+          <text x="424" y="148"><tspan font-weight="700">A1.8</tspan>  DTCG-conformant token format</text>
+          <text x="24" y="172"><tspan font-weight="700">A1.9</tspan>  Modern color spaces (OKLCH, P3)</text>
+          <text x="424" y="172"><tspan font-weight="700">A2.1</tspan>  Top-20 component coverage</text>
+          <text x="24" y="196"><tspan font-weight="700">A2.4</tspan>  Variant + state coverage</text>
+          <text x="424" y="196"><tspan font-weight="700">A3.1</tspan>  Per-component usage guidance</text>
+          <text x="24" y="220"><tspan font-weight="700">A4.2</tspan>  RFC process</text>
+          <text x="424" y="220"><tspan font-weight="700">A4.3</tspan>  Semver discipline</text>
+          <text x="24" y="244"><tspan font-weight="700">A5.4</tspan>  Storybook or equivalent</text>
+          <text x="424" y="244"><tspan font-weight="700">A5.5</tspan>  CI/CD for the system itself</text>
+          <text x="24" y="268"><tspan font-weight="700">A6.1</tspan>  Light + dark mode parity</text>
+          <text x="424" y="268"><tspan font-weight="700">A7.1</tspan>  Adoption coverage measured</text>
+          <text x="24" y="292"><tspan font-weight="700">A8.1</tspan>  Contrast guarantees in token math</text>
+          <text x="424" y="292"><tspan font-weight="700">A9.1</tspan>  Bundle-size budgets</text>
+          <text x="24" y="316"><tspan font-weight="700">A10.3</tspan> AI-rules file for agents</text>
+        </g>
+
+        <line x1="24" y1="340" x2="816" y2="340" stroke="currentColor" stroke-opacity="0.15"/>
+        <text x="24" y="366" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="800" fill="currentColor" letter-spacing="2">PART B · UX</text>
+        <text x="816" y="366" text-anchor="end" font-family="Inter, system-ui, sans-serif" font-size="12" fill="currentColor" opacity="0.6">10 rows</text>
+
+        <g font-family="Inter, system-ui, sans-serif" font-size="13" fill="currentColor">
+          <text x="24" y="394"><tspan font-weight="700">B1.1</tspan>  Research method diversity</text>
+          <text x="424" y="394"><tspan font-weight="700">B2.1</tspan>  System ↔ user mental model match</text>
+          <text x="24" y="418"><tspan font-weight="700">B3.3</tspan>  Error prevention + recovery</text>
+          <text x="424" y="418"><tspan font-weight="700">B4.1</tspan>  Visual hierarchy</text>
+          <text x="24" y="442"><tspan font-weight="700">B5.2</tspan>  WCAG 2.2 AA conformance</text>
+          <text x="424" y="442"><tspan font-weight="700">B6.1</tspan>  Voice + tone documentation</text>
+          <text x="24" y="466"><tspan font-weight="700">B7.1</tspan>  Heuristic evaluation cadence</text>
+          <text x="424" y="466"><tspan font-weight="700">B8.1</tspan>  LCP at the 75th percentile</text>
+          <text x="24" y="490"><tspan font-weight="700">B9.1</tspan>  No-dark-pattern guarantee</text>
+          <text x="424" y="490"><tspan font-weight="700">B10.1</tspan> HEART metrics adopted</text>
+        </g>
+
+        <line x1="24" y1="510" x2="816" y2="510" stroke="currentColor" stroke-opacity="0.15"/>
+        <text x="24" y="528" font-family="Inter, system-ui, sans-serif" font-size="11" fill="currentColor" opacity="0.65">Full source: framework/dsaf-25.md  ·  Printable: assets/dsaf-25-card.svg  ·  Self-audits cap publicly at L3 without third-party verification.</text>
+      </svg>
+    </div>
+    <p class="meta">
+      <span>Score field: <code>dsaf_25_score</code></span>
+      <span><a href="https://github.com/cyberskill-official/design-system-audit-framework/blob/main/framework/dsaf-25.md">framework/dsaf-25.md →</a></span>
+    </p>
+  </main>
+</body>
+</html>

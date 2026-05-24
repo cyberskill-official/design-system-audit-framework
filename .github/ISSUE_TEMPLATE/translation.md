@@ -12,8 +12,7 @@ assignees: ""
 
 ## Scope
 
-- Translate `docs/dsaf-25.md`.
-- Translate `docs/dsaf-25-card.md`.
+- Translate `framework/dsaf-25.md`.
 - Translate the first-read landing copy from `README.md`.
 - Add translated static pages under `landing/<lang>/index.html` and `landing/<lang>/card/index.html`.
 
@@ -23,7 +22,7 @@ Do not translate the full 125 DSAF Criteria in this issue.
 
 - Keep criterion IDs unchanged.
 - Keep `DSAF` and `DSAF-25 Core` as proper nouns.
-- Follow `docs/i18n/translation-guidelines.md`.
+- Follow `guidelines/i18n/translation-guidelines.md`.
 - Preserve the self-audit cap rule.
 - Add hreflang alternates only for languages that have shipped.
 - Do not add paid-funnel calls to action.

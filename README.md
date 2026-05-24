@@ -10,16 +10,16 @@ DSAF is a 125-criterion, agent-native, CMM-style maturity rubric for design syst
 
 Why now: design systems have become operational infrastructure. They carry accessibility risk, release policy, performance budgets, contribution paths, adoption telemetry, and AI-agent rules. The commercial platforms zeroheight, Knapsack, and Supernova help teams operate systems, but there is still room for an open-source, criteria-graded maturity rubric that can live in a repository. How it differs: Compared with SaaS platforms, DSAF is plain markdown plus scripts; compared with Brad Frost's frontend-guidelines-questionnaire, it produces scored evidence, DSAF Levels, SCAN/FIX modes, a no-silent-regression record, and a maximal enterprise loop for direct files or public URLs.
 
-Read [`docs/dsaf-25.md`](./docs/dsaf-25.md) first if you only have 5 minutes. The full DSAF Criteria live in [`docs/03-criteria-part-a.md`](./docs/03-criteria-part-a.md) and [`docs/04-criteria-part-b.md`](./docs/04-criteria-part-b.md).
+Read [`framework/dsaf-25.md`](./framework/dsaf-25.md) first if you only have 5 minutes. The full DSAF Criteria live in [`framework/03-criteria-part-a.md`](./framework/03-criteria-part-a.md) and [`framework/04-criteria-part-b.md`](./framework/04-criteria-part-b.md).
 
 <picture>
-  <source srcset="./assets/dsaf-l0-l5-ladder-dark.svg" media="(prefers-color-scheme: dark)">
-  <img src="./assets/dsaf-l0-l5-ladder.svg" alt="DSAF Levels ladder from L0 Initial to L5 Optimised" width="100%">
+  <source srcset="./framework/assets/dsaf-l0-l5-ladder-dark.svg" media="(prefers-color-scheme: dark)">
+  <img src="./framework/assets/dsaf-l0-l5-ladder.svg" alt="DSAF Levels ladder from L0 Initial to L5 Optimised" width="100%">
 </picture>
 
 <picture>
-  <source srcset="./assets/dsaf-radar-dark.svg" media="(prefers-color-scheme: dark)">
-  <img src="./assets/dsaf-radar.svg" alt="DSAF radar chart showing Part A design-system categories and Part B UX categories" width="100%">
+  <source srcset="./framework/assets/dsaf-radar-dark.svg" media="(prefers-color-scheme: dark)">
+  <img src="./framework/assets/dsaf-radar.svg" alt="DSAF radar chart showing Part A design-system categories and Part B UX categories" width="100%">
 </picture>
 
 ## Quick Start
@@ -29,34 +29,34 @@ git clone https://github.com/cyberskill-official/design-system-audit-framework.g
 cd design-system-audit-framework
 npm install
 npm run verify
-node scripts/audit-init.mjs /path/to/your/design-system
+node framework/scripts/audit-init.mjs /path/to/your/design-system
 ```
 
-Then open [`prompts/scan-mode.md`](./prompts/scan-mode.md), paste it into your LLM agent, and point the agent at the target system plus the framework docs.
+Then open [`prompts/scan-mode.md`](./guidelines/prompts/scan-mode.md), paste it into your LLM agent, and point the agent at the target system plus the framework docs.
 
 ## What DSAF Produces
 
 | Output | Where | Purpose |
 |---|---|---|
-| DSAF-25 Core | [`docs/dsaf-25.md`](./docs/dsaf-25.md) | Five-minute first pass for leaders, PMs, and system owners. |
-| DSAF Criteria | [`docs/03-criteria-part-a.md`](./docs/03-criteria-part-a.md), [`docs/04-criteria-part-b.md`](./docs/04-criteria-part-b.md) | Canonical 125-row rubric across system quality and produced UX quality. |
-| DSAF Modes | [`docs/02-framework.md`](./docs/02-framework.md), [`prompts/`](./prompts/) | SCAN/FIX modes, human pause, action routing, and no-silent-regression rules. |
-| DSAF Levels | [`docs/07-maturity-tiers.md`](./docs/07-maturity-tiers.md) | L0-L5 maturity interpretation, enterprise-grade floors, and self-audit cap policy. |
-| Audit template | [`templates/audit-report-template.md`](./templates/audit-report-template.md) | Single-file report shape for ordinary DSAF audits. |
-| Maximal enterprise benchmark | [`docs/bench/maximal-enterprise-benchmark.md`](./docs/bench/maximal-enterprise-benchmark.md) | 371-row AUTO/MANUAL table for strict file and URL audits. |
-| File/URL runner | [`scripts/maximal-audit.mjs`](./scripts/maximal-audit.mjs) | Creates `ANALYZED_DESIGN_REPORT.md` and `IMPROVED_DESIGN.md`. |
-| Verification scripts | [`scripts/`](./scripts/) | Link, coverage, bundle, freshness, APCA, regression, visual, and contract checks. |
-| Complete L3 self-audit example | [`examples/cyberskill-design-system/`](./examples/cyberskill-design-system/) | Worked example with audit history preserved. |
-| Public site | [`landing/`](./landing/) | Static site for [`audit.cyberskill.world`](https://audit.cyberskill.world). |
+| DSAF-25 Core | [`framework/dsaf-25.md`](./framework/dsaf-25.md) | Five-minute first pass for leaders, PMs, and system owners. |
+| DSAF Criteria | [`framework/03-criteria-part-a.md`](./framework/03-criteria-part-a.md), [`framework/04-criteria-part-b.md`](./framework/04-criteria-part-b.md) | Canonical 125-row rubric across system quality and produced UX quality. |
+| DSAF Modes | [`framework/02-framework.md`](./framework/02-framework.md), [`prompts/`](./guidelines/prompts) | SCAN/FIX modes, human pause, action routing, and no-silent-regression rules. |
+| DSAF Levels | [`framework/07-maturity-tiers.md`](./framework/07-maturity-tiers.md) | L0-L5 maturity interpretation, enterprise-grade floors, and self-audit cap policy. |
+| Audit template | [`templates/audit-report-template.md`](./framework/templates/audit-report-template.md) | Single-file report shape for ordinary DSAF audits. |
+| Maximal enterprise benchmark | [`framework/bench/maximal-enterprise-benchmark.md`](./framework/bench/maximal-enterprise-benchmark.md) | 371-row AUTO/MANUAL table for strict file and URL audits. |
+| File/URL runner | [`scripts/maximal-audit.mjs`](./framework/scripts/maximal-audit.mjs) | Creates `ANALYZED_DESIGN_REPORT.md` and `IMPROVED_DESIGN.md`. |
+| Verification scripts | [`scripts/`](./framework/scripts) | Link, coverage, bundle, freshness, APCA, regression, visual, and contract checks. |
+| Complete L3 self-audit example | [`examples/cyberskill-design-system/`](./framework/examples/cyberskill-design-system) | Worked example with audit history preserved. |
+| Public site | [`landing/`](./internal/landing) | Static site for [`audit.cyberskill.world`](https://audit.cyberskill.world). |
 
 ## Core Audit Workflow
 
 1. Prepare the target repo or docs folder with doctrine, tokens, component docs, Storybook or equivalent, accessibility reports, release notes, adoption data, and prior audits if available.
-2. Run `node scripts/audit-init.mjs /path/to/your/design-system`.
-3. Paste [`prompts/scan-mode.md`](./prompts/scan-mode.md) into your LLM agent.
+2. Run `node framework/scripts/audit-init.mjs /path/to/your/design-system`.
+3. Paste [`prompts/scan-mode.md`](./guidelines/prompts/scan-mode.md) into your LLM agent.
 4. Review the generated `audit-report-{YYYY-MM-DD}.md`.
 5. A human reviewer approves, rejects, or defers findings in section 4.
-6. Paste [`prompts/fix-mode.md`](./prompts/fix-mode.md) only after the human pause is complete.
+6. Paste [`prompts/fix-mode.md`](./guidelines/prompts/fix-mode.md) only after the human pause is complete.
 7. Re-run checks, update scores, and sign the report.
 
 The pause between SCAN and FIX is not ceremony. It is how DSAF prevents an agent from silently changing a system before the owner accepts the finding.
@@ -66,8 +66,8 @@ The pause between SCAN and FIX is not ceremony. It is how DSAF prevents an agent
 For stricter audits, use the maximal enterprise runner. It supports both direct file input and public URL input:
 
 ```bash
-npm run audit:maximal -- --input /path/to/DESIGN.md --out docs/generated/my-file-case
-npm run audit:maximal -- --input https://design-system.service.gov.uk/ --out docs/generated/govuk-url-case --max-pages 8
+npm run audit:maximal -- --input /path/to/DESIGN.md --out outputs/generated/my-file-case
+npm run audit:maximal -- --input https://design-system.service.gov.uk/ --out outputs/generated/govuk-url-case --max-pages 8
 npm run audit:maximal:cases
 npm run check:maximal:cases
 ```
@@ -81,7 +81,7 @@ Each case directory contains exactly:
 
 The maximal table currently covers 371 criteria: the 125 canonical rows, 30 strict proof-loop rows, and 216 large-enterprise expansion rows. Every row has `Type = AUTO` or `Type = MANUAL`, so users can distinguish what a script or source edit can improve from what needs human evidence.
 
-Generated outputs do not contain commercial strategy. The public methodology surface stays neutral; commercial service planning belongs in [`docs/strategy/framework-monetization-plan.md`](./docs/strategy/framework-monetization-plan.md) or [`SERVICES.md`](./SERVICES.md).
+Generated outputs do not contain commercial strategy. The public methodology surface stays neutral; commercial service planning belongs in [`internal/strategy/framework-monetization-plan.md`](./internal/strategy/framework-monetization-plan.md).
 
 ## Verification
 
@@ -125,13 +125,13 @@ Open `http://localhost:4173/` and check `/`, `/card`, `/blog/launch-2026`, `robo
 
 | # | File | Purpose |
 |---|---|---|
-| 1 | [`docs/01-introduction.md`](./docs/01-introduction.md) | Extended introduction, audience, and output shape. |
-| 2 | [`docs/02-framework.md`](./docs/02-framework.md) | Modes, actors, scoring, and no-silent-regression. |
-| 3 | [`docs/dsaf-25.md`](./docs/dsaf-25.md) | DSAF-25 Core, the one-page entry point. |
-| 4 | [`docs/05-running-an-audit.md`](./docs/05-running-an-audit.md) | Step-by-step audit workflow. |
-| 5 | [`docs/07-maturity-tiers.md`](./docs/07-maturity-tiers.md) | DSAF Levels and enterprise-grade floors. |
-| 6 | [`prompts/scan-mode.md`](./prompts/scan-mode.md) | Paste this into your LLM for SCAN mode. |
-| 7 | [`docs/08-improvement-plan.md`](./docs/08-improvement-plan.md) | Turn findings into a phased improvement plan. |
+| 1 | [`guidelines/01-introduction.md`](./guidelines/01-introduction.md) | Extended introduction, audience, and output shape. |
+| 2 | [`framework/02-framework.md`](./framework/02-framework.md) | Modes, actors, scoring, and no-silent-regression. |
+| 3 | [`framework/dsaf-25.md`](./framework/dsaf-25.md) | DSAF-25 Core, the one-page entry point. |
+| 4 | [`guidelines/05-running-an-audit.md`](./guidelines/05-running-an-audit.md) | Step-by-step audit workflow. |
+| 5 | [`framework/07-maturity-tiers.md`](./framework/07-maturity-tiers.md) | DSAF Levels and enterprise-grade floors. |
+| 6 | [`prompts/scan-mode.md`](./guidelines/prompts/scan-mode.md) | Paste this into your LLM for SCAN mode. |
+| 7 | [`guidelines/08-improvement-plan.md`](./guidelines/08-improvement-plan.md) | Turn findings into a phased improvement plan. |
 
 ## Maturity Levels
 
@@ -144,7 +144,7 @@ Open `http://localhost:4173/` and check `/`, `/card`, `/blog/launch-2026`, `robo
 | L4 Managed advanced | 75-85% | Multi-platform, governed, measured. |
 | L5 Optimised | 85%+ | Externally validated, community-proven, AI-native. |
 
-Published self-audits cap at L3 without third-party verification. See the [self-audit publication policy](./docs/branding/self-audit-policy.md).
+Published self-audits cap at L3 without third-party verification. See the [self-audit publication policy](./internal/branding/self-audit-policy.md).
 
 ## Integrations
 
@@ -162,13 +162,13 @@ DSAF is maintained in the open.
 | Maintainer | Role | Bio |
 |---|---|---|
 | Stephen Cheng | Founder and original maintainer | Vietnam-based founder of CyberSkill; accountable for the original rubric, examples, launch materials, and repository stewardship. |
-| Co-maintainer seat | Open, FR-GOV-002 | The role charter is published in [`docs/governance/co-maintainer-charter.md`](./docs/governance/co-maintainer-charter.md). Candidates are not publicly attributed until written acceptance and co-signed announcement. |
+| Co-maintainer seat | Open, FR-GOV-002 | The role charter is published in [`internal/governance/co-maintainer-charter.md`](./internal/governance/co-maintainer-charter.md). Candidates are not publicly attributed until written acceptance and co-signed announcement. |
 
-Substantive criteria changes should open an issue first. Architecture changes use the governance/RFC path. Translation work starts with [`docs/i18n/good-first-issues.md`](./docs/i18n/good-first-issues.md).
+Substantive criteria changes should open an issue first. Architecture changes use the governance/RFC path. Translation work starts with [`guidelines/i18n/good-first-issues.md`](./guidelines/i18n/good-first-issues.md).
 
 ## External Review Status
 
-Named outside-reviewer quotes are not published until explicit written consent is logged. The outreach materials are in [`docs/social/reviewer-outreach.md`](./docs/social/reviewer-outreach.md), the shortlist is in [`docs/branding/reviewer-shortlist.md`](./docs/branding/reviewer-shortlist.md), and the consent log is in [`docs/branding/reviewer-consent-log.md`](./docs/branding/reviewer-consent-log.md).
+Named outside-reviewer quotes are not published until explicit written consent is logged. The outreach materials are in [`internal/social/reviewer-outreach-playbook-and-templates.md`](./internal/social/reviewer-outreach-playbook-and-templates.md), the shortlist is in [`internal/branding/reviewer-shortlist.md`](./internal/branding/reviewer-shortlist.md), and the consent log is in [`internal/branding/reviewer-consent-log.md`](./internal/branding/reviewer-consent-log.md).
 
 > "<endorsement quote, <= 280 chars>" — <Reviewer Name>, <Affiliation>
 
@@ -178,11 +178,11 @@ These slots are placeholders for FR-DOCS-002. Do not replace them with invented 
 
 ## Commercial Work
 
-The repo is free and self-serve. CyberSkill's commercial audit and implementation services are documented separately in [`SERVICES.md`](./SERVICES.md) so the methodology surface stays neutral.
+The repo is free and self-serve. CyberSkill's commercial audit and implementation services are documented separately in [`framework-monetization-plan.md`](./internal/strategy/framework-monetization-plan.md) so the methodology surface stays neutral.
 
 ## Contributing
 
-Read [`CONTRIBUTING.md`](./CONTRIBUTING.md). Small edits can open a PR directly; larger changes should include rationale, affected criteria, expected verification, and migration notes for existing audits.
+Read [`CONTRIBUTING.md`](./guidelines/CONTRIBUTING.md). Small edits can open a PR directly; larger changes should include rationale, affected criteria, expected verification, and migration notes for existing audits.
 
 ## License
 

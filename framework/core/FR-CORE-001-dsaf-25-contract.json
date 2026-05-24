@@ -1,0 +1,226 @@
+{
+  "schema_version": "2026-05-18",
+  "fr_id": "FR-CORE-001",
+  "status": "strict-audit-contract",
+  "observability": {
+    "audit_output": "outputs/_audit/dsaf-25-contract.json",
+    "correlation_key": "fr_id + artifact + criterion_id + rule_id",
+    "events": [
+      "core_subset_parsed",
+      "source_rubric_loaded",
+      "artifact_checked",
+      "manual_validation_mock_checked",
+      "strict_audit_recorded"
+    ]
+  },
+  "edge_case_matrix": [
+    {
+      "case": "null_or_missing_artifact",
+      "risk": "A referenced Core artefact is absent or empty.",
+      "expected": "Fail with the missing artifact path."
+    },
+    {
+      "case": "duplicate_or_missing_core_id",
+      "risk": "The card silently has fewer or more than 25 unique rows.",
+      "expected": "Fail exact-order and uniqueness checks."
+    },
+    {
+      "case": "category_coverage_gap",
+      "risk": "One Part A or Part B category disappears from the one-page subset.",
+      "expected": "Fail the category coverage rule for every missing prefix."
+    },
+    {
+      "case": "verbatim_drift",
+      "risk": "DSAF-25 rewords a full-rubric criterion and becomes a parallel rubric.",
+      "expected": "Fail criterion-name and tag comparison against DSAF-125 source rows."
+    },
+    {
+      "case": "malformed_score_contract",
+      "risk": "Audit reports cannot distinguish DSAF-25 from DSAF-125 scores.",
+      "expected": "Fail if `dsaf_25_score` or the sum-divided-by-125 formula disappears."
+    },
+    {
+      "case": "non_inline_public_card",
+      "risk": "The public card hides the criteria from screen readers and crawlers.",
+      "expected": "Fail if `/card` uses an external image instead of inline SVG text."
+    },
+    {
+      "case": "print_extremes",
+      "risk": "The printable asset is missing, huge, or not sheet-sized.",
+      "expected": "Fail SVG/PDF existence, size, title, desc, and viewBox checks."
+    },
+    {
+      "case": "human_trial_unavailable",
+      "risk": "Five-minute designer read and PM recall trials require named humans.",
+      "expected": "Mark as mocked only when the request/response shape is complete."
+    }
+  ],
+  "files": {
+    "core_doc": "framework/dsaf-25.md",
+    "card_doc": "framework/dsaf-25.md",
+    "part_a": "framework/03-criteria-part-a.md",
+    "part_b": "framework/04-criteria-part-b.md",
+    "svg": "framework/assets/dsaf-25-card.svg",
+    "pdf": "framework/assets/dsaf-25-card-print.pdf",
+    "landing_card": "internal/landing/card/index.html",
+    "audit_template": "framework/templates/audit-report-template.md",
+    "readme": "README.md",
+    "package_json": "package.json"
+  },
+  "required_core_ids": [
+    "A1.1",
+    "A1.8",
+    "A1.9",
+    "A2.1",
+    "A2.4",
+    "A3.1",
+    "A4.2",
+    "A4.3",
+    "A5.4",
+    "A5.5",
+    "A6.1",
+    "A7.1",
+    "A8.1",
+    "A9.1",
+    "A10.3",
+    "B1.1",
+    "B2.1",
+    "B3.3",
+    "B4.1",
+    "B5.2",
+    "B6.1",
+    "B7.1",
+    "B8.1",
+    "B9.1",
+    "B10.1"
+  ],
+  "expected_counts": {
+    "total": 25,
+    "part_a": 15,
+    "part_b": 10
+  },
+  "required_category_prefixes": [
+    "A1",
+    "A2",
+    "A3",
+    "A4",
+    "A5",
+    "A6",
+    "A7",
+    "A8",
+    "A9",
+    "A10",
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7",
+    "B8",
+    "B9",
+    "B10"
+  ],
+  "required_strings": {
+    "framework/dsaf-25.md": [
+      "dsaf_125_version:",
+      "It is not DSAF Lite.",
+      "dsaf_25_score%",
+      "full DSAF Criteria",
+      "Publication cap",
+      "DSAF-25 Core is the shareable entry point",
+      "Use the full DSAF Criteria for signed audits."
+    ],
+    "framework/templates/audit-report-template.md": [
+      "dsaf_25_score"
+    ],
+    "README.md": [
+      "npm run test:dsaf-25-contract",
+      "npm run contract:dsaf-25"
+    ]
+  },
+  "required_package_scripts": [
+    "contract:dsaf-25",
+    "test:dsaf-25-contract"
+  ],
+  "asset_contract": {
+    "max_svg_bytes": 50000,
+    "max_pdf_bytes": 200000,
+    "min_pdf_bytes": 1000,
+    "required_svg_strings": [
+      "<title",
+      "<desc",
+      "role=\"img\"",
+      "width=\"210mm\"",
+      "height=\"297mm\"",
+      "viewBox="
+    ],
+    "required_landing_strings": [
+      "<svg",
+      "<title",
+      "<desc",
+      "aria-labelledby",
+      "DSAF-25 Core"
+    ],
+    "forbidden_landing_strings": [
+      "<img src=\"/assets/dsaf-25-card.svg\"",
+      "<img src=\"framework/assets/dsaf-25-card.svg\""
+    ]
+  },
+  "manual_validation_contract": {
+    "mock_endpoint": "POST /mock/dsaf-25-human-validation",
+    "request_required_fields": [
+      "fr_id",
+      "trial_id",
+      "participant_role",
+      "participant_relationship",
+      "artifact",
+      "started_at",
+      "completed_at",
+      "elapsed_seconds",
+      "criterion_recalled"
+    ],
+    "allowed_roles": [
+      "designer",
+      "product_manager"
+    ],
+    "mock_requests": [
+      {
+        "fr_id": "FR-CORE-001",
+        "trial_id": "mock-designer-read-001",
+        "participant_role": "designer",
+        "participant_relationship": "external_mock",
+        "artifact": "framework/dsaf-25.md",
+        "started_at": "2026-05-18T00:00:00.000Z",
+        "completed_at": "2026-05-18T00:04:42.000Z",
+        "elapsed_seconds": 282,
+        "criterion_recalled": "A8.1 Contrast guarantees (WCAG 2.2 AA: 4.5:1 text / 3:1 UI; APCA-W3 readiness)"
+      },
+      {
+        "fr_id": "FR-CORE-001",
+        "trial_id": "mock-pm-recall-001",
+        "participant_role": "product_manager",
+        "participant_relationship": "external_mock",
+        "artifact": "framework/dsaf-25-card.md",
+        "started_at": "2026-05-18T00:00:00.000Z",
+        "completed_at": "2026-05-18T00:38:00.000Z",
+        "elapsed_seconds": 2280,
+        "criterion_recalled": "B9.1 No-dark-pattern guarantee (FTC's 4 categories: false belief, concealed info, unauthorised charges, manipulated privacy choices)"
+      }
+    ],
+    "response_required_fields": [
+      "status",
+      "trial_id",
+      "accepted",
+      "evidence_kind",
+      "checked_at"
+    ],
+    "mock_response": {
+      "status": "mocked-accepted",
+      "trial_id": "mock-dsaf-25-human-validation",
+      "accepted": true,
+      "evidence_kind": "contract-only-human-trial-shape",
+      "checked_at": "2026-05-18T00:00:00.000Z"
+    }
+  }
+}
