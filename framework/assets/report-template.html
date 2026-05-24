@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{REPORT_TITLE}}</title>
+  <style>
+    :root {
+      --cyber-umber: #1A1818;
+      --cyber-ochre: #C08D38;
+      --cyber-ochre-light: #d6a75a;
+      --cyber-glass: rgba(255, 255, 255, 0.03);
+      --cyber-border: rgba(192, 141, 56, 0.2);
+      --cyber-text: #E5E0D8;
+      --cyber-text-dim: #9A958E;
+      --cyber-red: #D24A4A;
+      --cyber-green: #4AD27A;
+      --cyber-blue: #4A90D2;
+    }
+    body {
+      background-color: var(--cyber-umber);
+      color: var(--cyber-text);
+      font-family: 'Be Vietnam Pro', -apple-system, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+    header {
+      background: linear-gradient(180deg, rgba(192,141,56,0.1) 0%, rgba(26,24,24,0) 100%);
+      padding: 4rem 2rem 3rem;
+      border-bottom: 1px solid var(--cyber-border);
+      text-align: center;
+    }
+    h1, h2, h3, h4, h5 {
+      font-weight: 500;
+      color: var(--cyber-ochre);
+      margin-top: 2.5rem;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-top: 0;
+      letter-spacing: -0.02em;
+    }
+    h2 { font-size: 1.75rem; border-bottom: 1px solid var(--cyber-border); padding-bottom: 0.5rem; }
+    h3 { font-size: 1.25rem; color: var(--cyber-text); }
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      background: var(--cyber-glass);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--cyber-border);
+    }
+    th, td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--cyber-border);
+      font-size: 0.9rem;
+    }
+    th {
+      background: rgba(192, 141, 56, 0.1);
+      color: var(--cyber-ochre-light);
+      font-weight: 600;
+    }
+    tr:last-child td { border-bottom: none; }
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      background: rgba(0,0,0,0.3);
+      padding: 0.2em 0.4em;
+      border-radius: 4px;
+      font-size: 0.85em;
+      color: var(--cyber-ochre-light);
+    }
+    pre {
+      background: rgba(0,0,0,0.5);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--cyber-border);
+      overflow-x: auto;
+    }
+    pre code {
+      background: none;
+      padding: 0;
+      color: var(--cyber-text);
+    }
+    blockquote {
+      margin: 1.5rem 0;
+      padding: 1rem 1.5rem;
+      border-left: 4px solid var(--cyber-ochre);
+      background: var(--cyber-glass);
+      border-radius: 0 8px 8px 0;
+      color: var(--cyber-text-dim);
+    }
+    a {
+      color: var(--cyber-ochre);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s ease;
+    }
+    a:hover {
+      border-bottom-color: var(--cyber-ochre);
+    }
+    .score-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      background: rgba(192,141,56,0.1);
+      color: var(--cyber-ochre-light);
+      border: 1px solid var(--cyber-border);
+    }
+    .score-high { color: var(--cyber-green); border-color: rgba(74, 210, 122, 0.3); background: rgba(74, 210, 122, 0.1); }
+    .score-medium { color: var(--cyber-ochre); border-color: rgba(192, 141, 56, 0.3); }
+    .score-low { color: var(--cyber-red); border-color: rgba(210, 74, 74, 0.3); background: rgba(210, 74, 74, 0.1); }
+    
+    @media (max-width: 880px) {
+      main { padding: 1rem; }
+      table { display: block; overflow-x: auto; white-space: nowrap; }
+    }
+  
+  .score-badge { display: inline-block; padding: 4px 8px; border-radius: 4px; font-weight: bold; color: white; }
+  .score-high { background-color: #10b981; }
+  .score-medium { background-color: #f59e0b; }
+  .score-low { background-color: #ef4444; }
+  table { width: 100%; border-collapse: collapse; margin: 2rem 0; display: block; overflow-x: auto; white-space: nowrap; }
+  th, td { border: 1px solid #e2e8f0; padding: 12px; text-align: left; max-width: 400px; overflow: hidden; text-overflow: ellipsis; }
+  th { background-color: #f8fafc; position: sticky; top: 0; z-index: 10; }
+  .dashboard-summary { display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
+  .dashboard-card { background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); flex: 1; min-width: 200px; text-align: center; }
+  .dashboard-card h3 { margin-top: 0; color: #64748b; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  .dashboard-card .value { font-size: 2rem; font-weight: bold; color: #0f172a; margin: 0.5rem 0; }
+  .search-box { width: 100%; padding: 0.75rem; border: 1px solid #cbd5e1; border-radius: 4px; margin-bottom: 1rem; font-size: 1rem; }
+  body { background-color: #f1f5f9; }
+  .container { background-color: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+
+  body.dark-theme { background-color: #0f172a; color: #f8fafc; }
+  body.dark-theme .container { background-color: #1e293b; color: #f8fafc; }
+  body.dark-theme th { background-color: #334155; color: #f8fafc; }
+  body.dark-theme td { border-color: #475569; color: #cbd5e1; }
+  body.dark-theme .dashboard-card { background-color: #334155; color: #f8fafc; }
+  body.dark-theme .dashboard-card .value { color: #f8fafc; }
+</style>
+</head>
+<body>
+  <header>
+    <h1>{{REPORT_TITLE}}</h1>
+    <div style="color: var(--cyber-text-dim); margin-top: 1rem;">CyberSkill Design System Audit Framework</div>
+  </header>
+  <main>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+      <input type="text" id="searchInput" class="search-box" placeholder="Search criteria..." onkeyup="searchTable()" style="margin-bottom: 0; width: 75%;">
+      <button onclick="document.body.classList.toggle('dark-theme')" style="padding: 10px 20px; cursor: pointer; border: 1px solid var(--cyber-border); border-radius: 4px; background: transparent; color: var(--cyber-ochre);">Toggle Theme</button>
+    </div>
+    <div id="content">{{REPORT_CONTENT}}</div>
+  </main>
+  <script>
+    function searchTable() {
+      const input = document.getElementById("searchInput");
+      const filter = input.value.toUpperCase();
+      const tables = document.getElementsByTagName("table");
+      for (let i = 0; i < tables.length; i++) {
+        const tr = tables[i].getElementsByTagName("tr");
+        for (let j = 1; j < tr.length; j++) {
+          let txtValue = tr[j].textContent || tr[j].innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[j].style.display = "";
+          } else {
+            tr[j].style.display = "none";
+          }
+        }
+      }
+    }
+    
+    // Add dashboard summary cards dynamically based on the first table
+    window.onload = function() {
+      const summaryTable = document.querySelector('table');
+      if(summaryTable) {
+        const rows = summaryTable.querySelectorAll('tr');
+        const dashboard = document.createElement('div');
+        dashboard.className = 'dashboard-summary';
+        
+        let addedCards = 0;
+        rows.forEach((row, index) => {
+          if(index === 0 || addedCards >= 4) return;
+          const cells = row.querySelectorAll('td');
+          if(cells.length === 2 && cells[0].innerText.includes('average')) {
+             const card = document.createElement('div');
+             card.className = 'dashboard-card';
+             card.innerHTML = '<h3>' + cells[0].innerText + '</h3><div class="value">' + cells[1].innerHTML + '</div>';
+             dashboard.appendChild(card);
+             addedCards++;
+          }
+        });
+        
+        summaryTable.parentNode.insertBefore(dashboard, summaryTable);
+      }
+    }
+  </script>
+</body>
+</html>

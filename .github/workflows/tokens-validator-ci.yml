@@ -4,7 +4,7 @@ on:
   pull_request:
     paths:
       - "framework/packages/tokens-validator/**"
-      - "framework/scripts/tokens-studio-validator.mjs"
+      - "framework/scripts/bin/tokens-studio-validator.mjs"
       - ".github/workflows/tokens-validator-ci.yml"
 
 jobs:

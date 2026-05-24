@@ -635,274 +635,104 @@
       position: absolute;
       top: 3px;
       left: 27px;
-      transition: left 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease;
+      transition: left 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.4s ease;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
 
-    /* ─────────────────────────────── BEFORE DSAF OVERRIDES ─────────────────────────────── */
-    body.dsaf-before {
-      background: #FFFFFF !important;
-      color: #000000 !important;
-      font-family: "Times New Roman", Times, serif !important;
-      line-height: 1.25 !important;
-      padding: 0 !important;
+    /* ─────────────────────────────── MAGICAL ANIMATIONS ─────────────────────────────── */
+    @keyframes morphShimmer {
+      0% { opacity: 0; transform: scale(0.95) translateY(10px); filter: blur(8px); }
+      50% { opacity: 0.8; filter: blur(2px) brightness(1.3) drop-shadow(0 0 15px var(--accent)); transform: scale(1.02) translateY(-2px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
     }
-    body.dsaf-before * {
-      font-family: "Times New Roman", Times, serif !important;
-      border-radius: 0 !important;
-      box-shadow: none !important;
-      backdrop-filter: none !important;
-      -webkit-backdrop-filter: none !important;
-      transition: none !important;
-      border-color: #000000 !important;
+    @keyframes textGlowIn {
+      0% { opacity: 0; filter: blur(4px); }
+      100% { opacity: 1; filter: blur(0) drop-shadow(0 0 8px rgba(244, 186, 23, 0.4)); }
     }
-    body.dsaf-before .frame {
-      max-width: 100% !important;
-      padding: 16px !important;
+    @keyframes textGlowOut {
+      0% { filter: drop-shadow(0 0 8px rgba(244, 186, 23, 0.4)); }
+      100% { filter: drop-shadow(0 0 0 rgba(244, 186, 23, 0)); }
     }
-    body.dsaf-before header.site {
-      display: block !important;
-      margin-bottom: 24px !important;
-      border-bottom: 2px solid #000000 !important;
-      padding-bottom: 12px !important;
+    
+    .transforming {
+      animation: morphShimmer 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
-    body.dsaf-before .brand {
-      font-size: 28px !important;
-      font-weight: bold !important;
-    }
-    body.dsaf-before .brand .dot {
-      display: none !important;
-    }
-    body.dsaf-before nav.primary {
-      display: block !important;
-      margin-top: 12px !important;
-    }
-    body.dsaf-before nav.primary a {
-      display: inline-block !important;
-      margin-right: 16px !important;
-      color: #0000EE !important;
-      text-decoration: underline !important;
-    }
-    body.dsaf-before .hero {
-      padding: 0 !important;
-    }
-    body.dsaf-before .eyebrow {
-      display: block !important;
-      margin-bottom: 12px !important;
-      font-weight: normal !important;
-    }
-    body.dsaf-before .eyebrow .pill {
-      background: none !important;
-      border: none !important;
-      padding: 0 !important;
-      color: #000000 !important;
-      font-weight: normal !important;
-    }
-    body.dsaf-before h1 {
-      font-size: 32px !important;
-      font-weight: bold !important;
-      color: #000000 !important;
-      letter-spacing: 0 !important;
-      line-height: 1.1 !important;
-      margin-bottom: 12px !important;
-    }
-    body.dsaf-before .lede {
-      font-size: 16px !important;
-      max-width: 100% !important;
-      line-height: 1.3 !important;
-      margin-bottom: 12px !important;
-    }
-    body.dsaf-before .sub {
-      font-size: 14px !important;
-      max-width: 100% !important;
-      color: #555555 !important;
-      margin-bottom: 16px !important;
-    }
-    body.dsaf-before .cta-row {
-      display: block !important;
-    }
-    body.dsaf-before .btn {
-      display: inline-block !important;
-      min-height: 0 !important;
-      padding: 6px 12px !important;
-      border: 1px solid #000000 !important;
-      background: #EFEFEF !important;
-      color: #000000 !important;
-      text-decoration: none !important;
-      font-weight: normal !important;
-      font-size: 14px !important;
-      margin-right: 12px !important;
-      margin-bottom: 12px !important;
-    }
-    body.dsaf-before .btn:hover {
-      background: #DDDDDD !important;
-      transform: none !important;
-      box-shadow: none !important;
-    }
-    body.dsaf-before .btn .arrow {
-      display: none !important;
-    }
-    body.dsaf-before .quick-meta {
-      display: none !important;
-    }
-    body.dsaf-before section {
-      margin-top: 32px !important;
-    }
-    body.dsaf-before .section-head {
-      display: block !important;
-      border-bottom: 1px solid #000000 !important;
-      margin-bottom: 16px !important;
-      padding-bottom: 4px !important;
-    }
-    body.dsaf-before .section-num {
-      display: block !important;
-      margin-top: 4px !important;
-      color: #555555 !important;
-      font-weight: normal !important;
-    }
-    body.dsaf-before h2 {
-      font-size: 24px !important;
-      font-weight: bold !important;
-      letter-spacing: 0 !important;
-    }
-    body.dsaf-before .section-blurb {
-      font-size: 14px !important;
-      color: #000000 !important;
-      margin-bottom: 16px !important;
-    }
-    body.dsaf-before .tiles {
-      display: block !important;
-    }
-    body.dsaf-before .tile {
-      border: 2px dashed red !important;
-      background: #FFFFE0 !important;
-      padding: 16px !important;
-      margin-bottom: 16px !important;
-      box-shadow: none !important;
-      transform: none !important;
-    }
-    body.dsaf-before .tile .icon {
-      display: none !important;
-    }
-    body.dsaf-before .tile h3 {
-      font-size: 18px !important;
-      margin: 8px 0 !important;
-    }
-    body.dsaf-before .card-frame {
-      border: 1px solid #000000 !important;
-      padding: 0 !important;
-    }
-    body.dsaf-before .card-inner {
-      border: none !important;
-      padding: 12px !important;
-    }
-    body.dsaf-before .card-foot {
-      padding: 12px !important;
-      border-top: 1px solid #000000 !important;
-    }
-    body.dsaf-before .card-foot a {
-      color: #0000EE !important;
-    }
-    body.dsaf-before .ladder-grid {
-      display: block !important;
-    }
-    body.dsaf-before .ladder-frame {
-      border: 1px solid #000000 !important;
-      padding: 12px !important;
-      margin-bottom: 16px !important;
-    }
-    body.dsaf-before .cap-card {
-      border: 1px solid #000000 !important;
-      padding: 16px !important;
-      background: #FFFFFF !important;
-    }
-    body.dsaf-before .cap-table th {
-      background: #EEEEEE !important;
-      border: 1px solid #000000 !important;
-      color: #000000 !important;
-    }
-    body.dsaf-before .cap-table td {
-      border: 1px solid #000000 !important;
-    }
-    body.dsaf-before .cap-note {
-      border-left: 5px solid red !important;
-      background: #FFF0F0 !important;
-      padding: 8px !important;
-    }
-    body.dsaf-before .offers-grid {
-      display: block !important;
-    }
-    body.dsaf-before .offer-card {
-      border: 2px dashed green !important;
-      background: #E8FFE8 !important;
-      padding: 16px !important;
-      margin-bottom: 16px !important;
-      height: auto !important;
-    }
-    body.dsaf-before .offer-header {
-      display: block !important;
-    }
-    body.dsaf-before .offer-badge {
-      display: inline !important;
-      background: none !important;
-      border: none !important;
-      padding: 0 !important;
-      font-weight: bold !important;
-      color: #008000 !important;
-    }
-    body.dsaf-before .offer-title {
-      font-size: 18px !important;
-      margin: 8px 0 !important;
-    }
-    body.dsaf-before .offer-desc {
-      font-size: 13px !important;
-      margin-bottom: 12px !important;
-    }
-    body.dsaf-before .offer-cost {
-      border-top: 1px solid #000000 !important;
-      padding-top: 8px !important;
-      font-size: 13px !important;
-    }
-    body.dsaf-before .offer-cost span {
-      color: #008000 !important;
-    }
-    body.dsaf-before footer.site {
-      display: block !important;
-      border-top: 2px solid #000000 !important;
-      padding-top: 16px !important;
-      margin-top: 48px !important;
-    }
-    body.dsaf-before footer.site > div {
-      margin-bottom: 24px !important;
-    }
-    body.dsaf-before footer.site h4 {
-      font-size: 14px !important;
-      font-weight: bold !important;
-      margin-bottom: 8px !important;
-    }
-    body.dsaf-before footer.site a {
-      color: #0000EE !important;
-      text-decoration: underline !important;
-      padding: 1px 0 !important;
-    }
-    body.dsaf-before .legal {
-      border-top: 1px solid #000000 !important;
-      padding-top: 12px !important;
+    .transforming-text {
+      animation: textGlowIn 0.5s ease forwards, textGlowOut 1s 0.5s ease forwards;
     }
 
-    /* Before toggle state */
-    body.dsaf-before .transformation-floating-bar {
-      border-color: #D23B00 !important;
-    }
-    body.dsaf-before .glass-toggle {
-      background: #D23B00 !important;
-    }
-    body.dsaf-before .toggle-knob {
-      left: 3px !important;
-      background: #FFFFFF !important;
-    }
+    /* ─────────────────────────────── REALISTIC BEFORE DSAF OVERRIDES ─────────────────────────────── */
 
-    /* ─────────────────────────────── responsive */
+    /* Realistic Before Styles - Inherits dark/light mode but breaks design rules */
+    .dsaf-before {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Times New Roman", serif;
+    }
+    .dsaf-before .glass-panel {
+      background: var(--bg-elev);
+      border: 1px dashed var(--line);
+      border-radius: 0;
+      box-shadow: none;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+    .dsaf-before h1, .dsaf-before h2, .dsaf-before h3 {
+      font-family: Arial, sans-serif;
+      letter-spacing: normal;
+      font-weight: normal;
+    }
+    .dsaf-before a { color: var(--ink); text-decoration: underline; }
+    .dsaf-before .btn-primary { background: var(--ink-strong); color: var(--bg); border-radius: 0; box-shadow: none; border: none; font-family: Arial, sans-serif;}
+    .dsaf-before .btn-secondary { background: transparent; color: var(--ink); border-radius: 0; border: 2px solid var(--ink); box-shadow: none; backdrop-filter: none; font-family: Arial, sans-serif;}
+    .dsaf-before .tile .icon { background: transparent; color: var(--ink); border: 1px solid var(--line); box-shadow: none; border-radius: 0; }
+    .dsaf-before .cap-table th { background: transparent; color: var(--ink-strong); border-bottom: 2px solid var(--ink); }
+    .dsaf-before .brand .dot { display: none; }
+    .dsaf-before .eyebrow .pill { background: transparent; color: var(--ink); border: 1px solid var(--line); border-radius: 0; }
+    .dsaf-before .criteria-tooltip { display: none !important; }
+    
+    /* Criteria Tooltips */
+    .criteria-tooltip {
+      position: absolute;
+      cursor: help;
+      z-index: 60;
+    }
+    .criteria-tooltip .pulse {
+      width: 14px; height: 14px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 0 0 rgba(244, 186, 23, 0.7);
+      animation: pulseRing 1.5s infinite;
+    }
+    @keyframes pulseRing {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(244, 186, 23, 0.7); }
+      70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(244, 186, 23, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(244, 186, 23, 0); }
+    }
+    .criteria-tooltip .popover {
+      position: absolute;
+      bottom: 24px; left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      background: var(--bg-elev);
+      border: 1px solid var(--accent);
+      padding: 14px;
+      border-radius: 12px;
+      width: 260px;
+      font-size: 13.5px;
+      color: var(--ink);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+      opacity: 0; visibility: hidden;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none;
+      font-family: var(--font-base);
+    }
+    .criteria-tooltip:hover .popover {
+      opacity: 1; visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+    .criteria-tooltip strong { color: var(--accent); display: block; margin-bottom: 6px; font-family: "JetBrains Mono", monospace; font-size: 12px; letter-spacing: 0.05em; }
+
+/* ─────────────────────────────── responsive */
     @media (max-width: 880px) {
       .frame { padding: 32px 16px 80px; }
       header.site { margin-bottom: 48px; }
@@ -921,9 +751,27 @@
       html { scroll-behavior: auto; }
       .btn, .btn .arrow, body, body * { transition: none !important; }
     }
+  
+    html.dark { color-scheme: dark; }
+    html.dark body { background: #120904; color: #fcf9f5; }
+    /* Variables override */
+    html.dark {
+      --bg: #120904;
+      --bg-elev: #1E1109;
+      --ink: #FCF9F5;
+      --ink-strong: #FFFFFF;
+      --muted: #AD9A8E;
+      --line: #362115;
+      --line-strong: #543725;
+      --panel: rgba(30, 17, 9, 0.55);
+      --code-bg: #2C1A10;
+      --shadow: 0 4px 30px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.2);
+      --glass-border: rgba(255, 255, 255, 0.08);
+    }
   </style>
 </head>
 <body>
+<button onclick="document.documentElement.classList.toggle('dark')" style="position:fixed;top:20px;right:20px;z-index:9999;background:var(--panel);border:1px solid var(--glass-border);color:var(--ink-strong);padding:8px 16px;border-radius:999px;cursor:pointer;backdrop-filter:blur(10px);">Theme</button>
   <div class="frame">
 
     <header class="site">
@@ -1276,26 +1124,83 @@
 
   <script>
     (function() {
-      const toggleBtn = document.getElementById('dsaf-toggle');
-      const knob = document.getElementById('toggle-knob');
-      const labelBefore = document.getElementById('label-before');
-      const labelAfter = document.getElementById('label-after');
-      let isBefore = false;
-
-      toggleBtn.addEventListener('click', function() {
-        isBefore = !isBefore;
-        toggleBtn.setAttribute('aria-pressed', isBefore ? 'true' : 'false');
-        if (isBefore) {
-          document.body.classList.add('dsaf-before');
-          labelBefore.classList.add('active');
-          labelAfter.classList.remove('active');
-        } else {
-          document.body.classList.remove('dsaf-before');
-          labelBefore.classList.remove('active');
-          labelAfter.classList.add('active');
-        }
+      // Create slider DOM
+      const originalContent = document.querySelector('.frame');
+      
+      // Wrap everything in a container
+      const wrapper = document.createElement('div');
+      wrapper.id = 'reveal-wrapper';
+      wrapper.style.cssText = 'position: relative; width: 100%; overflow: hidden; min-height: 100vh;';
+      
+      const afterLayer = document.createElement('div');
+      afterLayer.id = 'reveal-after';
+      afterLayer.style.cssText = 'width: 100%;';
+      
+      const beforeLayer = document.createElement('div');
+      beforeLayer.id = 'reveal-before';
+      beforeLayer.className = 'dsaf-before';
+      beforeLayer.style.cssText = 'position: absolute; top: 0; left: 0; width: 50%; height: 100%; overflow: hidden; z-index: 50;';
+      
+      // We must wrap the original content so we can clone it
+      const originalParent = originalContent.parentNode;
+      afterLayer.appendChild(originalContent);
+      beforeLayer.appendChild(originalContent.cloneNode(true));
+      
+      wrapper.appendChild(afterLayer);
+      wrapper.appendChild(beforeLayer);
+      
+      // Add the slider handle
+      const handle = document.createElement('div');
+      handle.id = 'reveal-handle';
+      handle.style.cssText = 'position: absolute; top: 0; bottom: 0; left: 50%; width: 4px; background: var(--accent); cursor: ew-resize; z-index: 100; transform: translateX(-50%); box-shadow: 0 0 15px rgba(244, 186, 23, 0.5);';
+      
+      const handleKnob = document.createElement('div');
+      handleKnob.style.cssText = 'position: sticky; top: 50vh; transform: translate(-50%, -50%); width: 48px; height: 48px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--umber); box-shadow: 0 4px 15px rgba(0,0,0,0.3); font-weight: bold; font-family: "JetBrains Mono", monospace; font-size: 14px; margin-left: 2px; border: 3px solid white;';
+      handleKnob.innerHTML = '&lt;&gt;';
+      handle.appendChild(handleKnob);
+      wrapper.appendChild(handle);
+      
+      originalParent.insertBefore(wrapper, document.querySelector('.transformation-floating-bar'));
+      
+      // Remove old floating bar
+      const oldBar = document.querySelector('.transformation-floating-bar');
+      if (oldBar) oldBar.remove();
+      
+      // Slider interaction
+      let isDragging = false;
+      
+      function updateSlider(clientX) {
+        const rect = wrapper.getBoundingClientRect();
+        let x = clientX - rect.left;
+        x = Math.max(0, Math.min(x, rect.width));
+        const percent = (x / rect.width) * 100;
+        beforeLayer.style.width = percent + '%';
+        handle.style.left = percent + '%';
+      }
+      
+      handle.addEventListener('mousedown', () => isDragging = true);
+      window.addEventListener('mouseup', () => isDragging = false);
+      window.addEventListener('mousemove', (e) => {
+        if (isDragging) updateSlider(e.clientX);
       });
+      
+      handle.addEventListener('touchstart', () => isDragging = true);
+      window.addEventListener('touchend', () => isDragging = false);
+      window.addEventListener('touchmove', (e) => {
+        if (isDragging) {
+           updateSlider(e.touches[0].clientX);
+           e.preventDefault();
+        }
+      }, { passive: false });
+      
+      // Fix before layer inner container width to match screen
+      function resizeBefore() {
+         const beforeFrame = beforeLayer.querySelector('.frame');
+         beforeFrame.style.width = window.innerWidth + 'px';
+      }
+      window.addEventListener('resize', resizeBefore);
+      resizeBefore();
     })();
-  </script>
+</script>
 </body>
 </html>

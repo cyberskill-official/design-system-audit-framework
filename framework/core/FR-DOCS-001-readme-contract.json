@@ -93,7 +93,7 @@
     "required_strings": [
       "git clone https://github.com/cyberskill-official/design-system-audit-framework.git",
       "npm run verify",
-      "node framework/scripts/audit-init.mjs",
+      "node framework/scripts/bin/audit-init.mjs",
       "guidelines/prompts/scan-mode.md"
     ]
   },
@@ -166,8 +166,8 @@
     ]
   },
   "required_package_scripts": {
-    "contract:readme": "node framework/scripts/check-readme-contract.mjs",
-    "test:readme-contract": "node --test framework/scripts/check-readme-contract.test.mjs"
+    "contract:readme": "node framework/scripts/checks/check-readme-contract.mjs",
+    "test:readme-contract": "node --test framework/scripts/test/check-readme-contract.test.mjs"
   },
   "skim_mock_contract": {
     "endpoint": "POST /mock/readme-skim-review",

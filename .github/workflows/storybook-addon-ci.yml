@@ -4,8 +4,8 @@ on:
   pull_request:
     paths:
       - "framework/packages/storybook-addon/**"
-      - "framework/scripts/check-*.mjs"
-      - "framework/scripts/storybook-addon-runner.mjs"
+      - "framework/scripts/checks/check-*.mjs"
+      - "framework/scripts/bin/storybook-addon-runner.mjs"
       - ".github/workflows/storybook-addon-ci.yml"
 
 jobs:

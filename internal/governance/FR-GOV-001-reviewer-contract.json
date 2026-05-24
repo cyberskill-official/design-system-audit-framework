@@ -113,8 +113,8 @@
     "guaranteed quote"
   ],
   "required_package_scripts": {
-    "contract:reviewers": "node framework/scripts/check-reviewer-contract.mjs",
-    "test:reviewer-contract": "node --test framework/scripts/check-reviewer-contract.test.mjs"
+    "contract:reviewers": "node framework/scripts/checks/check-reviewer-contract.mjs",
+    "test:reviewer-contract": "node --test framework/scripts/test/check-reviewer-contract.test.mjs"
   },
   "outreach_mock_contract": {
     "endpoint": "POST /mock/reviewer-outreach-send",

@@ -122,8 +122,8 @@
     "min_bytes": 5000
   },
   "required_package_scripts": {
-    "contract:launch-blog": "node framework/scripts/check-launch-blog-contract.mjs",
-    "test:launch-blog-contract": "node --test framework/scripts/check-launch-blog-contract.test.mjs"
+    "contract:launch-blog": "node framework/scripts/checks/check-launch-blog-contract.mjs",
+    "test:launch-blog-contract": "node --test framework/scripts/test/check-launch-blog-contract.test.mjs"
   },
   "deploy_mock_contract": {
     "endpoint": "POST /mock/launch-blog-deploy-verification",

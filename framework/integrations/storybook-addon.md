@@ -23,7 +23,7 @@ export default {
 
 ## What It Runs
 
-The addon calls the repository runner [`../../scripts/storybook-addon-runner.mjs`](../scripts/storybook-addon-runner.mjs), which runs:
+The addon uses the CLI runner [`../../scripts/bin/storybook-addon-runner.mjs`](../scripts/bin/storybook-addon-runner.mjs) for standalone mode.
 
 - `check-coverage.mjs`
 - `check-apca.mjs`

@@ -29,7 +29,7 @@ git clone https://github.com/cyberskill-official/design-system-audit-framework.g
 cd design-system-audit-framework
 npm install
 npm run verify
-node framework/scripts/audit-init.mjs /path/to/your/design-system
+node framework/scripts/bin/audit-init.mjs /path/to/your/design-system
 ```
 
 Then open [`prompts/scan-mode.md`](./guidelines/prompts/scan-mode.md), paste it into your LLM agent, and point the agent at the target system plus the framework docs.
@@ -44,7 +44,7 @@ Then open [`prompts/scan-mode.md`](./guidelines/prompts/scan-mode.md), paste it 
 | DSAF Levels | [`framework/07-maturity-tiers.md`](./framework/07-maturity-tiers.md) | L0-L5 maturity interpretation, enterprise-grade floors, and self-audit cap policy. |
 | Audit template | [`templates/audit-report-template.md`](./framework/templates/audit-report-template.md) | Single-file report shape for ordinary DSAF audits. |
 | Maximal enterprise benchmark | [`framework/bench/maximal-enterprise-benchmark.md`](./framework/bench/maximal-enterprise-benchmark.md) | 371-row AUTO/MANUAL table for strict file and URL audits. |
-| File/URL runner | [`scripts/maximal-audit.mjs`](./framework/scripts/maximal-audit.mjs) | Creates `ANALYZED_DESIGN_REPORT.md` and `IMPROVED_DESIGN.md`. |
+| File/URL runner | [`scripts/bin/maximal-audit.mjs`](./framework/scripts/bin/maximal-audit.mjs) | Creates `ANALYZED_DESIGN_REPORT.md` and `IMPROVED_DESIGN.md`. |
 | Verification scripts | [`scripts/`](./framework/scripts) | Link, coverage, bundle, freshness, APCA, regression, visual, and contract checks. |
 | Complete L3 self-audit example | [`examples/cyberskill-design-system/`](./framework/examples/cyberskill-design-system) | Worked example with audit history preserved. |
 | Public site | [`landing/`](./internal/landing) | Static site for [`audit.cyberskill.world`](https://audit.cyberskill.world). |
@@ -52,7 +52,7 @@ Then open [`prompts/scan-mode.md`](./guidelines/prompts/scan-mode.md), paste it 
 ## Core Audit Workflow
 
 1. Prepare the target repo or docs folder with doctrine, tokens, component docs, Storybook or equivalent, accessibility reports, release notes, adoption data, and prior audits if available.
-2. Run `node framework/scripts/audit-init.mjs /path/to/your/design-system`.
+2. Run `node framework/scripts/bin/audit-init.mjs /path/to/your/design-system`.
 3. Paste [`prompts/scan-mode.md`](./guidelines/prompts/scan-mode.md) into your LLM agent.
 4. Review the generated `audit-report-{YYYY-MM-DD}.md`.
 5. A human reviewer approves, rejects, or defers findings in section 4.
