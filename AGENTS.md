@@ -1,1 +1,1 @@
-/Users/stephencheng/Projects/CyberSkill/cyberos/memory/docs/AGENTS.md
+/Users/stephencheng/Projects/CyberSkill/cyberos/modules/memory/cyberos/data/AGENTS.md

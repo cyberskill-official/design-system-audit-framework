@@ -5,6 +5,7 @@
 ```bash
 npx dsaf scan
 npx dsaf scan path/to/repo --json
+npx dsaf scan --json path/to/repo
 ```
 
 The scanner is deliberately fast and conservative. It walks text-like files, looks for observable evidence for the 25 DSAF Core criteria, returns a score, and repeats the self-audit public cap in the output.

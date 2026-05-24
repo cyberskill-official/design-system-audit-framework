@@ -15,6 +15,7 @@ const checks = [
   ["coverage", "scripts/check-coverage.mjs"],
   ["bundle-size", "scripts/check-bundle-size.mjs"],
   ["doc-freshness", "scripts/check-doc-freshness.mjs"],
+  ["maximal-cases", "scripts/check-maximal-cases.mjs"],
   ["apca", "scripts/check-apca.mjs"],
   ["criteria-dedup-contract", "scripts/check-criteria-dedup-contract.mjs"],
   ["decoupling-contract", "scripts/check-decoupling-contract.mjs"],

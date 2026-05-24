@@ -22,6 +22,16 @@ post_audit_score:
   combined: 0.0
   tier: L?
 delta_pp: 0.0
+maximal_overlay:
+  enabled: false
+  criteria_count: 0
+  auto_average: 0
+  manual_average: 0
+  auto_gap_count: 0
+  manual_gap_count: 0
+  hard_blockers: []
+  manual_required_blockers: []
+  artifact_recreation_required: false
 ---
 
 # Audit YYYY-MM-DD
@@ -77,6 +87,10 @@ Inline tags drive routing:
 | Regressions | `0 unresolved` (must remain 0 unresolved to sign) |
 | Findings | `N total` (`A` agent-fixable, `B` human-required) |
 | Industry updates flagged | `M` (filled by §2) |
+| Maximal Track A | `off` or `x / 1000` |
+| Maximal Track B | `off` or `y / 1000` |
+| Maximal Track C | `off` or `z / 1000` |
+| Artifact re-creation | `off` / `fresh` / `stale` / `blocked` |
 
 ---
 
@@ -200,6 +214,12 @@ For each plan row, log the result:
 
 A `BLOCKED` row pauses the cycle and routes to `@Human[decide]`.
 
+### Artifact re-creation log (maximal overlay only)
+
+| Artifact ID | Source inputs | Re-create command | Outputs | Verification command | Status | Notes |
+|---|---|---|---|---|---|---|
+| _not enabled_ |  |  |  |  |  |  |
+
 ---
 
 ## §7 FIX — Verification `@Agent[fix]`
@@ -244,6 +264,18 @@ If any row's tag is `UNRESOLVED`, the audit must stay at `RE_AUDIT` and §9 rema
 Update frontmatter `post_audit_score` block. Update §0 Snapshot.
 
 If `combined` decreased vs pre-audit, record a batch-level regression in §7. The human reviewer approves the trade-off or rolls back the batch.
+
+### Maximal enterprise overlay (optional)
+
+Fill this table only when `maximal_overlay.enabled: true`.
+
+| Summary | Pre | Post | Delta | Hard blockers |
+|---|---:|---:|---:|---|
+| Unified criterion average | 0 | 0 | 0 | none |
+| AUTO criterion average | 0 | 0 | 0 | none |
+| MANUAL evidence average | 0 | 0 | 0 | manual backlog |
+| AUTO gap count | 0 | 0 | 0 | none |
+| MANUAL gap count | 0 | 0 | 0 | manual backlog |
 
 ---
 

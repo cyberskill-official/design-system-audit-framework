@@ -10,6 +10,7 @@ You are running a **FIX-mode design system audit cycle** using the Design System
 
 - **The audit report from SCAN:** `<design-system-path>/_audit/audit-report-{date}.md` — already populated through §4 with `status: AWAITING_REVIEW` (or `FIXING` if you're resuming)
 - **Framework rules:** `<framework-path>/docs/02-framework.md`
+- **Optional maximal enterprise overlay:** `<framework-path>/docs/bench/maximal-enterprise-benchmark.md` when the report frontmatter has `maximal_overlay.enabled: true`
 - **The design system being audited:** `<design-system-path>` — you may modify files here according to approved findings
 - **Check scripts:** `<framework-path>/scripts/check-*.mjs` — used for the no-silent-regression verification gate
 
@@ -41,8 +42,9 @@ Populate §5 with the plan table.
 For each plan row:
 
 1. Apply the fix as described.
-2. Log the result in §6 with status `DONE` or `BLOCKED` (with reason).
-3. A `BLOCKED` row pauses the cycle; route to `@Human[decide]` and stop.
+2. If the maximal overlay is enabled, re-create every affected real artifact after changing doctrine, source data, scripts, packages, examples, assets, or templates.
+3. Log the source edit and artifact re-creation result in §6 with status `DONE` or `BLOCKED` (with reason).
+4. A `BLOCKED` row pauses the cycle; route to `@Human[decide]` and stop.
 
 Update the frontmatter: `status: VERIFYING` after the last successful row.
 
@@ -56,6 +58,14 @@ Run all check scripts. Record pass/fail for each:
 - `check-apca.mjs` (color contrast)
 - Any other check scripts the framework or system ships
 - `build-design-md.mjs --check` (rules-file staleness)
+
+If the maximal overlay is enabled, also verify every artifact re-creation row:
+
+- `recreate_command` ran or is explicitly `missing-generator`.
+- Expected outputs exist.
+- Generated outputs are fresh relative to source inputs.
+- Verification command passed.
+- The artifact track score does not improve for blocked or stale outputs.
 
 Then re-score every criterion that any fix touched. Compare against pre-audit score (in frontmatter `pre_audit_score` block).
 
@@ -77,6 +87,8 @@ Refresh §10 with post-fix scores. Recompute category roll-ups, Part A %, Part B
 If `combined` decreased vs `pre_audit_score.combined`, record a batch-level regression in §7. The human reviewer approves the trade-off or rolls back the batch.
 
 If combined increased: populate §8 with the delta narrative ("biggest movers", "categories that changed", "tier transition if any").
+
+If the maximal enterprise overlay is enabled, refresh the unified AUTO/MANUAL criterion table in §8. AUTO rows may reach perfect only when no automatable hard blockers remain and all affected generated artifacts were re-created or verified fresh. MANUAL rows record human-only proof and may remain below perfect, but they must be blocked from audited claims until evidence exists.
 
 ### Step 6 — Sign-off block (§9)
 
@@ -107,7 +119,8 @@ The human's sign-off advances `status: SIGNED`.
 4. Never fabricate verification results. If a check script fails, log it.
 5. Never delete prior audit reports.
 6. Never sign off on the audit yourself. §9 is human-only.
-7. If a fix breaks something the verification gate doesn't catch, stop and route to `@Human[rollback]`. The framework prefers a paused audit to a silently broken system.
+7. Never award AUTO criterion credit for prose alone when the row requires a real artifact. Real artifacts must exist, regenerate, verify, and conform.
+8. If a fix breaks something the verification gate doesn't catch, stop and route to `@Human[rollback]`. The framework prefers a paused audit to a silently broken system.
 
 ## What to do if something goes wrong
 

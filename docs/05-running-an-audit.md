@@ -15,6 +15,7 @@ Before invoking the agent:
    - The target design system folder is accessible (the agent can read its docs / tokens / source).
    - The previous audit report (if any) is accessible (used for delta + no-silent-regression gate).
    - The output folder exists and is writable.
+   - For maximal enterprise audits, the target's artifact re-creation commands are known or explicitly marked `missing-generator`, and manual-only evidence is routed to `MANUAL` criterion rows.
 4. **Pick a Co-Auditor.** A human who will independently re-score 5+ random criteria. Calibration may be waived for the very first audit; from the second onward it's not waivable.
 
 ## Step 1 — Initialise the audit folder
@@ -77,8 +78,9 @@ The agent will:
 
 1. **Plan** (§5) — sequence approved fixes, declare revert command per fix, run a dry-run if possible.
 2. **Execute** (§6) — apply each fix; log per-step result.
-3. **Verify** (§7) — run all `scripts/check-*.mjs`; re-score affected criteria; enforce the no-silent-regression gate (any regression is surfaced with a tag, cause, and override-or-rollback decision).
-4. **Re-audit** (§8) — refresh §10 with post-fix scores; recompute combined score; if combined decreased vs pre-audit, the drop is handled as a batch-level regression in §7.
+3. **Re-create artifacts** — when the maximal overlay is enabled, rebuild every generated artifact touched by the fix, or log `missing-generator` with owner and acceptance test.
+4. **Verify** (§7) — run all `scripts/check-*.mjs`; re-score affected criteria; enforce the no-silent-regression gate (any regression is surfaced with a tag, cause, and override-or-rollback decision).
+5. **Re-audit** (§8) — refresh §10 with post-fix scores; recompute combined score; if combined decreased vs pre-audit, the drop is handled as a batch-level regression in §7.
 
 The agent **stops** at §9 with `status: RE_AUDIT`. The post-fix report is on disk.
 
@@ -115,6 +117,7 @@ Between formal audits, the framework expects:
 | Per release | Doc freshness check; DESIGN.md regen | `scripts/check-doc-freshness.mjs`, `scripts/build-design-md.mjs --check` |
 | Annually | Full Mode S audit with human Co-Auditor calibration | This file, end-to-end |
 | Ad-hoc | Industry research (between cycles) | [`prompts/research-mode.md`](../prompts/research-mode.md) |
+| Ad-hoc | Maximal enterprise overlay, file/URL audit runner, and artifact re-creation loop | [`docs/bench/maximal-enterprise-benchmark.md`](bench/maximal-enterprise-benchmark.md) |
 
 Each appended audit row in `_history.md` is the single source of truth for "where the system is at". Plot deltas across rows to spot regressions.
 

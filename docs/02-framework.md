@@ -16,6 +16,8 @@ The audit measures the *current* state of the system. No fixes. The agent re-sco
 
 The audit *applies* the human-approved fixes from the SCAN cycle. The agent sequences the fixes, executes them with rollback paths declared up front, runs verification, re-scores affected criteria, and submits the final report for sign-off. Output: same file, sections §5 through §9 populated.
 
+When the maximal enterprise overlay is enabled, FIX mode also regenerates every affected real artifact after doctrine or source changes. Examples: generated benchmark data, criteria aliases, visual assets, package metadata, Storybook/equivalent exports, token outputs, docs pages, and contract JSON. If no re-creation command exists, the finding remains open as `missing-generator` rather than being counted as complete. Manual-only proof is labeled `MANUAL` in the unified criterion table rather than hidden inside automated scoring.
+
 **Never run FIX without SCAN.** The fix mode requires the findings table from SCAN to know what to do. DSAF refuses if §4 is empty.
 
 **Always pause between SCAN and FIX.** This is the human's gate to approve, reject, or defer each finding. Skipping it is a DSAF Mode violation.
@@ -95,7 +97,7 @@ A finding's owner determines what happens next:
 
 ### `FIXING` — `@Agent[fix]`, mode `FIX`
 
-For each approved finding, the agent: writes the fix, declares the revert command, runs the change. Output: §5 plan + §6 execution log.
+For each approved finding, the agent: writes the fix, declares the revert command, runs the change, and triggers artifact re-creation for every generated output affected by the change. Output: §5 plan + §6 execution log.
 
 ### `VERIFYING` — `@Agent[fix]`, mode `FIX`
 
@@ -141,6 +143,21 @@ Every criterion scores on the same scale:
 | 3 | Built | Built and shipped, but not measured / not maintained |
 | 4 | Measured | Built, shipped, measured, with telemetry / CI / tests |
 | 5 | Industry-leading | Built, shipped, measured, externally validated, ahead of common practice |
+
+### Maximal enterprise overlay
+
+DSAF's 0-5 criteria remain the canonical audit score. For strict "push it as far as possible" audits, a reviewer may enable the maximal enterprise overlay in [`docs/bench/maximal-enterprise-benchmark.md`](bench/maximal-enterprise-benchmark.md).
+
+The overlay adds one unified criterion table:
+
+| Row type | Measures | Perfect means |
+|---|---|---|
+| `AUTO` | Requirements that can be proven by source doctrine, packages, docs, scripts, generated files, examples, tokens, reports, dashboards, public pages, and verification commands. | Real evidence exists, regenerates when needed, verifies, and matches the doctrine. |
+| `MANUAL` | Requirements that need human proof: manual AT, counsel review, independent audit, production telemetry review, customer research, designer workflow review, or accountable sign-off. | Human-only evidence is attached before audited claims are made. |
+
+The overlay does not create a new DSAF level. A target can be L5 and still have AUTO or MANUAL gaps because a required artifact is missing, stale, nonconforming, or not yet human-reviewed.
+
+When enabled, Step 4 of the maximal loop is: implement approved improvements in both source doctrine and real artifacts, then trigger artifact re-creation. A missing generator is a blocker, not a pass.
 
 ### FIXED vs DYNAMIC
 

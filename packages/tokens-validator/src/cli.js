@@ -10,7 +10,15 @@ export function runCli(argv = process.argv.slice(2)) {
     console.error("Usage: dsaf-tokens-validator <tokens.json>");
     return 2;
   }
-  const source = JSON.parse(readFileSync(input, "utf8"));
+
+  let source;
+  try {
+    source = JSON.parse(readFileSync(input, "utf8"));
+  } catch (error) {
+    console.error(`[tokens-validator] Could not parse JSON: ${error.message}`);
+    return 1;
+  }
+
   const summary = validateTokens(source);
   console.log(JSON.stringify({ input, ...summary }, null, 2));
   return 0;

@@ -19,6 +19,8 @@ DSAF reports a single **combined score** (Part A and Part B averaged) and maps i
 
 The DSAF Level is a coarse summary. Two systems at "L4" can look very different — one weak on a11y but strong on tooling, the other the reverse. Always read the per-category roll-up alongside the DSAF Level.
 
+For maximal audits, the enterprise overlay in [`docs/bench/maximal-enterprise-benchmark.md`](bench/maximal-enterprise-benchmark.md) can be reported beside the DSAF Level. It does not create L6 or replace L0-L5. It answers a different question: which large-enterprise requirements are evidenced, which AUTO rows can be improved through source/artifact work, and which MANUAL rows require human proof before audited claims.
+
 ---
 
 ## §2 Enterprise-grade thresholds

@@ -93,6 +93,7 @@ Examples of good "Done when" conditions:
 
 - `curl -I https://design.example.com/v0.1.0/loader.js` returns 200 with the SRI hash.
 - `npm view @your-org/tokens version` returns 0.1.0.
+- `npm run build:tokens && npm run verify:tokens` regenerates token outputs and verifies no stale generated files remain.
 - A signed letter from the vendor is on file.
 - The dashboard at `<URL>` shows real LCP / INP / CLS data within 48h of deploy.
 
@@ -165,6 +166,18 @@ Example:
 - B.10.3 (task success) caps at 3 because no telemetry.
 
 → Single phase: "Public release". One step (`vercel --prod`) lifts 4 categories at once.
+
+### Artifact-recreation grouping
+
+If a doctrine change requires generated artifacts to be rebuilt, keep the source edit and re-creation command in the same phase. A maximal-overlay phase is not done when the markdown changes; it is done when the generated artifact is fresh and verified.
+
+Example:
+
+- Finding: "Token doctrine now requires DTCG alias validation."
+- Finding: "Generated CSS/TS token outputs are stale."
+- Finding: "Storybook examples still reference old token names."
+
+→ Single phase: "Token conformance refresh". Steps: update doctrine, update token source, run token build, update Storybook examples, run verification.
 
 ### Sequencing-based grouping
 

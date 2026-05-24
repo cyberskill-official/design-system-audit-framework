@@ -35,3 +35,25 @@ test("formatSummary includes the public self-audit cap", () => {
 test("runCli handles missing paths", () => {
   assert.equal(runCli(["scan", "/definitely/not/here"]), 2);
 });
+
+test("runCli accepts flags before the scan path", () => {
+  const root = fixture();
+  const logs = [];
+  const originalLog = console.log;
+  console.log = (message) => logs.push(message);
+
+  try {
+    assert.equal(runCli(["scan", "--json", root]), 0);
+  } finally {
+    console.log = originalLog;
+  }
+
+  const output = JSON.parse(logs.join("\n"));
+  assert.equal(output.input, root);
+  assert.equal(output.core_count, 25);
+});
+
+test("runCli rejects unknown flags and extra paths", () => {
+  assert.equal(runCli(["scan", "--unknown"]), 2);
+  assert.equal(runCli(["scan", fixture(), fixture()]), 2);
+});

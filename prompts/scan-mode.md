@@ -9,6 +9,7 @@ You are running a **SCAN-mode design system audit** using the Design System Audi
 ## What I'm giving you
 
 - **Framework rules:** the file at `<framework-path>/docs/02-framework.md`
+- **Optional maximal enterprise overlay:** `<framework-path>/docs/bench/maximal-enterprise-benchmark.md` when the user requests the strict unified AUTO/MANUAL criterion loop
 - **Criteria Part A:** `<framework-path>/docs/03-criteria-part-a.md` (10 categories, 63 criteria)
 - **Criteria Part B:** `<framework-path>/docs/04-criteria-part-b.md` (10 categories, 62 criteria)
 - **Audit report template:** `<framework-path>/templates/audit-report-template.md`
@@ -41,6 +42,10 @@ Populate §10 of the report with the full 125-row criteria table. Compute catego
 
 If more than 25% of criteria would score `Lo` confidence, **stop** and emit the report with `status: REFUSED` and §3 explaining what's missing.
 
+If the maximal enterprise overlay is enabled, also produce the unified enterprise criterion table. Every row must include `Type` (`AUTO` or `MANUAL`), category, criterion, score, level, confidence, evidence found, missing signals, citation refs, required proof, suggested improvement, acceptance gate, and output action.
+
+Do not let doctrine prose earn artifact credit. Missing generated outputs, missing packages, stale assets, missing evidence registers, or missing re-creation commands remain blockers on the relevant AUTO rows. Human-only proof is labeled `MANUAL` and cannot be claimed audited until evidence exists.
+
 ### Step 2 — Industry research (§2 + §11)
 
 Web-search for new or updated standards since the previous audit (or since 2026-Q1 if no previous audit exists). Cover at minimum:
@@ -71,6 +76,8 @@ Enumerate every gap that affects the score. For each:
 - Declare rollback safety (yes / no / n/a). For `@Agent[fix]` rows, the revert command must be specified.
 
 Findings that lift the score by < 0.5 pp combined and are bounded by `@Human[manual]` work can be deferred — they don't need to be in the FIX plan, just tracked in §12.
+
+For maximal-enterprise findings, include the affected criterion id, `AUTO`/`MANUAL` type, hard blocker, and artifact re-creation requirement. If a claimed artifact has no rebuild command, add a `missing-generator` finding.
 
 ### Step 4 — Open questions (§12)
 

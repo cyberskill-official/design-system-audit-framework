@@ -7,6 +7,8 @@
 The lite benchmark is a voluntary, anonymous self-scoring survey for DSAF-25 Core.
 It is designed to collect aggregate peer-comparison data without required personal data, paid-funnel copy, or a custom backend.
 
+The lite benchmark is intentionally not the maximal enterprise benchmark. Teams that need strict AUTO/MANUAL proof use [`maximal-enterprise-benchmark.md`](maximal-enterprise-benchmark.md), which adds the expanded criterion table and requires artifact re-creation after approved fixes.
+
 ## Questions
 
 The production form has 29 required questions and one optional free-text field.
