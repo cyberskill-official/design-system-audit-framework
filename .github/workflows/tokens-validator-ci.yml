@@ -3,8 +3,8 @@ name: Tokens Validator CI
 on:
   pull_request:
     paths:
-      - "framework/packages/tokens-validator/**"
-      - "framework/scripts/bin/tokens-studio-validator.mjs"
+      - "packages/tokens-validator/**"
+      - "scripts/bin/tokens-studio-validator.mjs"
       - ".github/workflows/tokens-validator-ci.yml"
 
 jobs:
@@ -15,6 +15,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - run: npm --prefix framework/packages/tokens-validator test
-      - run: npm --prefix framework/packages/tokens-validator run smoke
-      - run: npm run integ:tokens -- framework/packages/tokens-validator/tests/fixtures/dtcg-conformant.tokens.json
+      - run: npm --prefix packages/tokens-validator test
+      - run: npm --prefix packages/tokens-validator run smoke
+      - run: npm run integ:tokens -- packages/tokens-validator/tests/fixtures/dtcg-conformant.tokens.json

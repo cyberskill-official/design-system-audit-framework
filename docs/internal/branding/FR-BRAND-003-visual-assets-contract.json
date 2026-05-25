@@ -1,0 +1,190 @@
+{
+  "schema_version": "2026-05-18",
+  "fr_id": "FR-BRAND-003",
+  "status": "strict-audit-contract",
+  "observability": {
+    "audit_output": "outputs/_audit/visual-assets-contract.json",
+    "correlation_key": "fr_id + asset + rule_id",
+    "events": [
+      "svg_asset_checked",
+      "pdf_asset_checked",
+      "radar_template_checked",
+      "recognition_mock_checked",
+      "strict_audit_recorded"
+    ]
+  },
+  "edge_case_matrix": [
+    {
+      "case": "missing_visual_asset",
+      "risk": "README or launch surfaces reference a non-existent canonical visual.",
+      "expected": "Fail the exact asset path."
+    },
+    {
+      "case": "malformed_svg_accessibility",
+      "risk": "Screen readers and crawlers cannot identify the visual.",
+      "expected": "Fail missing role, title, desc, metadata, or text elements."
+    },
+    {
+      "case": "wrong_viewbox",
+      "risk": "The visual no longer prints at the promised A4/letter-safe aspect.",
+      "expected": "Fail asset-specific viewBox checks."
+    },
+    {
+      "case": "oversized_svg_or_pdf",
+      "risk": "A raster image, embedded font, or decorative payload slipped into the asset.",
+      "expected": "Fail byte-size and gzip-size caps."
+    },
+    {
+      "case": "radar_axis_drift",
+      "risk": "The radar no longer maps to the 20 DSAF categories.",
+      "expected": "Fail unless the JSON template has exactly 20 axes, 10 Part A and 10 Part B."
+    },
+    {
+      "case": "enterprise_floor_missing",
+      "risk": "The diagnostic radar stops communicating the enterprise threshold.",
+      "expected": "Fail if `enterprise_floor`/threshold text disappears."
+    },
+    {
+      "case": "ladder_gate_copy_missing",
+      "risk": "The ladder becomes decorative and stops showing transition gates.",
+      "expected": "Fail unless L0-L5 labels and multiple gate callouts are present."
+    },
+    {
+      "case": "human_thumbnail_test_unavailable",
+      "risk": "The screenshot recognition test needs named reviewers.",
+      "expected": "Mark as mocked only when the recognition-trial shape is complete."
+    }
+  ],
+  "svg_assets": [
+    {
+      "path": "docs/framework/assets/dsaf-l0-l5-ladder.svg",
+      "kind": "ladder",
+      "viewBox": "0 0 210 297",
+      "required_text": ["L0", "L1", "L2", "L3", "L4", "L5", "Initial", "Repeatable", "Defined", "Managed", "Optimised"],
+      "required_patterns": ["Gate to L1", "Gate to L2", "Gate to L3", "Gate to L4", "Gate to L5", "self-audits cite L3"]
+    },
+    {
+      "path": "docs/framework/assets/dsaf-l0-l5-ladder-dark.svg",
+      "kind": "ladder-dark",
+      "viewBox": "0 0 210 297",
+      "required_text": ["L0", "L1", "L2", "L3", "L4", "L5", "Initial", "Repeatable", "Defined", "Managed", "Optimised"],
+      "required_patterns": ["Gate to L1", "Gate to L2", "Gate to L3", "Gate to L4", "Gate to L5", "self-audits cite L3"]
+    },
+    {
+      "path": "docs/framework/assets/dsaf-radar.svg",
+      "kind": "radar",
+      "viewBox": "0 0 297 210",
+      "required_text": ["A.1", "A.10", "B.1", "B.10", "Foundations", "Accessibility", "enterprise_floor"],
+      "required_patterns": ["20 category axes", "threshold", "dsaf-radar-template.json"]
+    },
+    {
+      "path": "docs/framework/assets/dsaf-radar-dark.svg",
+      "kind": "radar-dark",
+      "viewBox": "0 0 297 210",
+      "required_text": ["A.1", "A.10", "B.1", "B.10", "Foundations", "Accessibility", "enterprise_floor"],
+      "required_patterns": ["20-axis", "threshold", "dsaf-radar-template.json"]
+    }
+  ],
+  "pdf_assets": [
+    "docs/framework/assets/dsaf-l0-l5-ladder-print.pdf",
+    "docs/framework/assets/dsaf-radar-print.pdf"
+  ],
+  "size_caps": {
+    "max_svg_bytes": 80000,
+    "max_svg_gzip_bytes": 30000,
+    "min_pdf_bytes": 1000,
+    "max_pdf_bytes": 200000
+  },
+  "radar_template": {
+    "path": "docs/framework/assets/dsaf-radar-template.json",
+    "expected_axes": 20,
+    "expected_part_a": 10,
+    "expected_part_b": 10,
+    "required_axis_fields": ["id", "name", "part", "weight", "value_pct", "enterprise_floor_pct"]
+  },
+  "required_strings": {
+    "docs/framework/assets/dsaf-visual-design-spec.md": [
+      "## Canonical visuals",
+      "## Typography",
+      "## Color palette",
+      "## Proportions and viewBox",
+      "## Accessibility contract",
+      "## File-size caps",
+      "## Screenshot test",
+      "## Versioning",
+      "## Enterprise-grade boundary on the radar"
+    ],
+    "README.md": [
+      "docs/framework/assets/dsaf-l0-l5-ladder.svg",
+      "docs/framework/assets/dsaf-l0-l5-ladder-dark.svg",
+      "docs/framework/assets/dsaf-radar.svg",
+      "docs/framework/assets/dsaf-radar-dark.svg",
+      "npm run test:visual-assets-contract",
+      "npm run contract:visual-assets"
+    ],
+    "docs/guidelines/01-introduction.md": [
+      "docs/framework/assets/dsaf-l0-l5-ladder.svg",
+      "docs/framework/assets/dsaf-radar.svg"
+    ],
+    "docs/framework/04-maturity-tiers.md": [
+      "docs/framework/assets/dsaf-l0-l5-ladder.svg"
+    ],
+    "docs/framework/02-dsaf-25-core.md": [
+      "docs/framework/assets/dsaf-radar-template.json",
+      "docs/framework/assets/dsaf-radar.svg"
+    ]
+  },
+  "required_package_scripts": [
+    "contract:visual-assets",
+    "test:visual-assets-contract"
+  ],
+  "recognition_mock_contract": {
+    "mock_endpoint": "POST /mock/visual-recognition-review",
+    "request_required_fields": [
+      "fr_id",
+      "trial_id",
+      "reviewer_role",
+      "asset",
+      "viewport",
+      "identified_subject",
+      "result"
+    ],
+    "allowed_results": ["pass", "partial-pass"],
+    "mock_requests": [
+      {
+        "fr_id": "FR-BRAND-003",
+        "trial_id": "mock-ladder-designer",
+        "reviewer_role": "designer",
+        "asset": "docs/framework/assets/dsaf-l0-l5-ladder.svg",
+        "viewport": "1200x675",
+        "identified_subject": "DSAF L0-L5 maturity ladder",
+        "result": "pass"
+      },
+      {
+        "fr_id": "FR-BRAND-003",
+        "trial_id": "mock-radar-engineering-lead",
+        "reviewer_role": "engineering_lead",
+        "asset": "docs/framework/assets/dsaf-radar.svg",
+        "viewport": "1200x675",
+        "identified_subject": "DSAF 20-axis radar chart",
+        "result": "pass"
+      },
+      {
+        "fr_id": "FR-BRAND-003",
+        "trial_id": "mock-ladder-pm",
+        "reviewer_role": "product_manager",
+        "asset": "docs/framework/assets/dsaf-l0-l5-ladder.svg",
+        "viewport": "1200x675",
+        "identified_subject": "tier ladder from L0 to L5",
+        "result": "partial-pass"
+      }
+    ],
+    "response_required_fields": ["status", "accepted", "trial_count", "checked_at"],
+    "mock_response": {
+      "status": "mocked-accepted",
+      "accepted": true,
+      "trial_count": 3,
+      "checked_at": "2026-05-18T00:00:00.000Z"
+    }
+  }
+}

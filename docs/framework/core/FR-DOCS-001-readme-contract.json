@@ -1,0 +1,196 @@
+{
+  "schema_version": "2026-05-18",
+  "fr_id": "FR-DOCS-001",
+  "status": "strict-audit-contract-mocked-dependency",
+  "readme_file": "README.md",
+  "intro_file": "docs/guidelines/01-introduction.md",
+  "observability": {
+    "audit_output": "outputs/_audit/readme-contract.json",
+    "correlation_key": "fr_id + file + rule_id",
+    "events": [
+      "readme_pitch_scanned",
+      "visual_position_checked",
+      "quick_start_checked",
+      "reading_order_checked",
+      "forbidden_funnel_copy_checked",
+      "skim_mock_checked",
+      "strict_audit_recorded"
+    ]
+  },
+  "edge_case_matrix": [
+    {
+      "case": "Null README",
+      "failure_vector": "README missing or unreadable.",
+      "expected_handling": "Fail the contract before launch evidence can pass."
+    },
+    {
+      "case": "First 200 words lose a beat",
+      "failure_vector": "Pitch explains what DSAF is but omits why now or comparison to alternatives.",
+      "expected_handling": "Fail first-200-word contract."
+    },
+    {
+      "case": "Visuals slip below the fold",
+      "failure_vector": "Ladder or radar embed moves below Quick Start after later edits.",
+      "expected_handling": "Fail visual-position rule."
+    },
+    {
+      "case": "Paid funnel leaks upward",
+      "failure_vector": "README gains email capture, demo, sales, or book-a-call copy.",
+      "expected_handling": "Fail forbidden-funnel-copy rule; internal/SERVICES.md breadcrumb remains the only commercial pointer."
+    },
+    {
+      "case": "Placeholder quotes become fake praise",
+      "failure_vector": "Endorsement placeholders are replaced without consent log evidence.",
+      "expected_handling": "Fail consent-guard rule until FR-DOCS-002 provides approved quote rows."
+    },
+    {
+      "case": "Manual colleague skim unavailable",
+      "failure_vector": "A named colleague cannot be recruited inside unattended execution.",
+      "expected_handling": "Use the mocked skim-review request/response contract and mark the FR mocked-dependency."
+    }
+  ],
+  "first_200": {
+    "word_limit": 200,
+    "required_patterns": {
+      "what": [
+        "125-criterion",
+        "agent-native",
+        "CMM-style maturity rubric"
+      ],
+      "why_now": [
+        "zeroheight",
+        "Knapsack",
+        "Supernova",
+        "open-source",
+        "criteria-graded maturity rubric"
+      ],
+      "differs": [
+        "How it differs",
+        "Compared with SaaS platforms",
+        "frontend-guidelines-questionnaire"
+      ]
+    }
+  },
+  "visuals": {
+    "max_line": 36,
+    "paths": [
+      "docs/framework/assets/dsaf-l0-l5-ladder.svg",
+      "docs/framework/assets/dsaf-radar.svg"
+    ]
+  },
+  "early_cross_links": {
+    "max_chars": 3000,
+    "required": [
+      "docs/framework/dsaf-25.md",
+      "5 minutes",
+      "DSAF Criteria"
+    ]
+  },
+  "quick_start": {
+    "section": "## Quick Start",
+    "minimum_commands": 3,
+    "maximum_commands": 5,
+    "required_strings": [
+      "git clone https://github.com/cyberskill-official/design-system-audit-framework.git",
+      "npm run verify",
+      "node framework/scripts/bin/audit-init.mjs",
+      "docs/guidelines/prompts/scan-mode.md"
+    ]
+  },
+  "reading_order": {
+    "section": "## Reading Order",
+    "expected_rows": 7,
+    "required_links": [
+      "docs/guidelines/01-introduction.md",
+      "docs/framework/02-framework.md",
+      "docs/framework/dsaf-25.md",
+      "docs/guidelines/05-running-an-audit.md",
+      "docs/framework/07-maturity-tiers.md",
+      "docs/guidelines/prompts/scan-mode.md",
+      "docs/guidelines/08-improvement-plan.md"
+    ],
+    "intro_required": [
+      "[`README.md`](../README.md) — start here",
+      "[`dsaf-25.md`](../framework/dsaf-25.md)",
+      "[`prompts/scan-mode.md`](./prompts/scan-mode.md)"
+    ]
+  },
+  "required_readme_strings": [
+    "DSAF-25 Core",
+    "DSAF Criteria",
+    "DSAF Levels",
+    "SCAN/FIX modes",
+    "no-silent-regression",
+    "Complete L3 self-audit example",
+    "self-audit publication policy",
+    "docs/internal/strategy/framework-monetization-plan.md",
+    "methodology surface stays neutral"
+  ],
+  "forbidden_readme_patterns": [
+    "<form",
+    "<input[^>]+email",
+    "email-capture",
+    "\\bsubscribe\\b",
+    "Talk to a certified",
+    "Contact (us|sales|CyberSkill)",
+    "Schedule (a|your) demo",
+    "Book (a|your) call",
+    "84\\.6",
+    "industry[- ]?leading",
+    "top tier",
+    "\\b(the )?DSAF Framework\\b",
+    "\\bDSAF framework\\b",
+    "cyberos",
+    "sale-noti",
+    "cyberskill/landing-page",
+    "https://dsaf\\.dev",
+    "\\bhello@dsaf\\.dev\\b"
+  ],
+  "handle_requirements": {
+    "minimum_dsaf_mentions": 10,
+    "maximum_long_name_mentions": 2,
+    "required_component_handles": [
+      "DSAF Criteria",
+      "DSAF Levels",
+      "DSAF Modes",
+      "DSAF-25 Core"
+    ]
+  },
+  "endorsement_slots": {
+    "minimum_slots": 2,
+    "placeholder_pattern": "^> \"<endorsement quote",
+    "consent_guard_strings": [
+      "Named outside-reviewer quotes are not published until explicit written consent is logged.",
+      "Do not replace them with invented praise.",
+      "docs/internal/branding/reviewer-consent-log.md"
+    ]
+  },
+  "required_package_scripts": {
+    "contract:readme": "node framework/scripts/checks/check-readme-contract.mjs",
+    "test:readme-contract": "node --test framework/scripts/test/check-readme-contract.test.mjs"
+  },
+  "skim_mock_contract": {
+    "endpoint": "POST /mock/readme-skim-review",
+    "request": {
+      "fr_id": "FR-DOCS-001",
+      "surface": "README.md",
+      "duration_seconds": 60,
+      "reviewer_role": "external_colleague_mock",
+      "participant_relationship": "external_mock",
+      "summary_sentences": [
+        "DSAF is an open, criteria-based way to audit design-system maturity with a fast DSAF-25 entry point and a fuller 125-criterion path.",
+        "It differs from SaaS platforms and checklist essays because it is repo-native, scriptable, and designed for human reviewers working with LLM agents."
+      ]
+    },
+    "response": {
+      "status_code": 202,
+      "body": {
+        "accepted": true,
+        "fr_id": "FR-DOCS-001",
+        "surface": "README.md",
+        "skim_result": "pass",
+        "observability_key": "FR-DOCS-001:README.md:skim-review"
+      }
+    }
+  }
+}

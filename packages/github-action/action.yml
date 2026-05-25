@@ -1,0 +1,29 @@
+name: 'CyberSkill DSAF Audit'
+description: 'Automatically audit UI changes in pull requests against the Design System Audit Framework (DSAF).'
+branding:
+  icon: 'shield'
+  color: 'orange'
+
+inputs:
+  github-token:
+    description: 'GitHub token for PR commenting and fetching diffs'
+    required: true
+  gemini-api-key:
+    description: 'Google Gemini API key for the AI audit engine'
+    required: true
+  min-score:
+    description: 'Minimum required score (0-100) to pass the build'
+    required: false
+    default: '85'
+  target-dir:
+    description: 'The directory containing your UI components and styles'
+    required: false
+    default: 'src/'
+  strict-mode:
+    description: 'If true, enforces zero tolerance on critical accessibility violations'
+    required: false
+    default: 'false'
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'

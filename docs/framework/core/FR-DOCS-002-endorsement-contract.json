@@ -1,0 +1,110 @@
+{
+  "schema_version": "2026-05-18",
+  "fr_id": "FR-DOCS-002",
+  "status": "strict-audit-contract-mocked-dependency",
+  "observability": {
+    "audit_output": "outputs/_audit/endorsement-contract.json",
+    "correlation_key": "fr_id + reviewer + rule_id",
+    "events": [
+      "readme_placeholder_checked",
+      "consent_log_checked",
+      "pending_quotes_checked",
+      "shortlist_quote_status_checked",
+      "mock_quote_approval_checked",
+      "strict_audit_recorded"
+    ]
+  },
+  "edge_case_matrix": [
+    {
+      "case": "Null consent log",
+      "failure_vector": "Reviewer approval source of truth is missing.",
+      "expected_handling": "Fail the contract; no quote can publish."
+    },
+    {
+      "case": "Invented quote in pending file",
+      "failure_vector": "Placeholder is replaced with illustrative praise before approval.",
+      "expected_handling": "Fail no-fabrication guard."
+    },
+    {
+      "case": "README real quote without consent",
+      "failure_vector": "README has a named block quote while consent rows remain empty.",
+      "expected_handling": "Fail quote-count parity."
+    },
+    {
+      "case": "Affiliation drift",
+      "failure_vector": "Published attribution differs from consent-approved attribution.",
+      "expected_handling": "Contract supports byte-identical matching once approvals exist; current mocked state keeps zero published quotes."
+    },
+    {
+      "case": "Retraction window",
+      "failure_vector": "A reviewer revokes consent but quote remains published.",
+      "expected_handling": "Future approved-state contract must fail; current mocked state has no quote to retract."
+    },
+    {
+      "case": "No written approvals",
+      "failure_vector": "Unattended execution cannot obtain named reviewer consent.",
+      "expected_handling": "Use the mocked quote-consent approval contract and keep README placeholders honest."
+    }
+  ],
+  "files": {
+    "readme": "README.md",
+    "consent_log": "docs/internal/branding/reviewer-consent-log.md",
+    "pending_quotes": "docs/internal/branding/reviewer-quotes-pending.md",
+    "shortlist": "docs/internal/branding/reviewer-shortlist.md"
+  },
+  "readme_requirements": {
+    "placeholder_pattern": "^> \"<endorsement quote",
+    "minimum_placeholders_without_consent": 2,
+    "required_strings": [
+      "Named outside-reviewer quotes are not published until explicit written consent is logged.",
+      "Do not replace them with invented praise.",
+      "docs/internal/branding/reviewer-consent-log.md"
+    ],
+    "forbidden_without_consent_pattern": "^> \"[^<]"
+  },
+  "consent_log_requirements": [
+    "**Status:** empty until written consent arrives.",
+    "| _none_ | _none_ | _none_ | _none_ | _pending_ | no public quote approved |",
+    "No README quote may be published without a non-empty row in this table."
+  ],
+  "pending_quotes_requirements": [
+    "**Status:** no public quotes approved.",
+    "This file intentionally contains no illustrative quotes.",
+    "FR-DOCS-002 remains externally gated until at least two reviewers approve exact quote text and attribution strings.",
+    "| _none_ | _none_ | _none_ | pending outreach |"
+  ],
+  "shortlist_requirements": [
+    "No public quote is approved yet.",
+    "README therefore states the review status instead of fabricating endorsements."
+  ],
+  "forbidden_fabrication_patterns": [
+    "DSAF is the criteria-graded artefact",
+    "Worth running on your own design system",
+    "quote-approved \\(2026",
+    "quote-published \\(2026"
+  ],
+  "required_package_scripts": {
+    "contract:endorsements": "node framework/scripts/checks/check-endorsement-contract.mjs",
+    "test:endorsement-contract": "node --test framework/scripts/test/check-endorsement-contract.test.mjs"
+  },
+  "quote_approval_mock_contract": {
+    "endpoint": "POST /mock/reviewer-quote-consent-approval",
+    "request": {
+      "fr_id": "FR-DOCS-002",
+      "minimum_required_approvals": 2,
+      "approved_quotes": [],
+      "blocked_reason": "Named reviewer quote approval requires written consent from external people through Stephen/operator accounts."
+    },
+    "response": {
+      "status_code": 202,
+      "body": {
+        "accepted": true,
+        "fr_id": "FR-DOCS-002",
+        "approved_count": 0,
+        "publication_action": "keep_placeholders",
+        "mocked_dependency": true,
+        "observability_key": "FR-DOCS-002:reviewer-quotes:mock-consent"
+      }
+    }
+  }
+}

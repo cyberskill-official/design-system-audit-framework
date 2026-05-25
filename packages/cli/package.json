@@ -1,0 +1,40 @@
+{
+  "name": "@cyberskill/dsaf",
+  "version": "1.0.0",
+  "description": "Design System Audit Framework - Agentic AI Auto-Fixer",
+  "main": "dist/cli.js",
+  "bin": {
+    "dsaf": "./dist/cli.js"
+  },
+  "scripts": {
+    "build": "esbuild src/index.ts --bundle --platform=node --target=node20 --outfile=dist/cli.js",
+    "prepublishOnly": "npm run build",
+    "test": "jest"
+  },
+  "keywords": [
+    "design-system",
+    "audit",
+    "ai",
+    "gemini",
+    "cli",
+    "auto-fix"
+  ],
+  "author": "CyberSkill",
+  "license": "MIT",
+  "type": "commonjs",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.98.0",
+    "@google/genai": "^2.6.0",
+    "commander": "^14.0.3",
+    "kleur": "^4.1.5",
+    "openai": "^6.39.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/node": "^25.9.1",
+    "esbuild": "^0.28.0",
+    "jest": "^30.4.2",
+    "ts-jest": "^29.4.11",
+    "typescript": "^6.0.3"
+  }
+}

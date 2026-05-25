@@ -3,8 +3,8 @@ name: zeroheight Reader CI
 on:
   pull_request:
     paths:
-      - "framework/packages/zeroheight-reader/**"
-      - "framework/scripts/bin/zeroheight-reader.mjs"
+      - "packages/zeroheight-reader/**"
+      - "scripts/bin/zeroheight-reader.mjs"
       - ".github/workflows/zeroheight-reader-ci.yml"
 
 jobs:
@@ -15,6 +15,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - run: npm --prefix framework/packages/zeroheight-reader test
-      - run: npm --prefix framework/packages/zeroheight-reader run smoke
-      - run: npm run integ:zeroheight -- framework/packages/zeroheight-reader/tests/fixtures/zeroheight-export-sample
+      - run: npm --prefix packages/zeroheight-reader test
+      - run: npm --prefix packages/zeroheight-reader run smoke
+      - run: npm run integ:zeroheight -- packages/zeroheight-reader/tests/fixtures/zeroheight-export-sample

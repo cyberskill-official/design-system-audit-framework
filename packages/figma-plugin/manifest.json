@@ -1,0 +1,11 @@
+{
+  "name": "DSAF - Design System Audit",
+  "id": "123456789",
+  "api": "1.0.0",
+  "main": "dist/code.js",
+  "ui": "src/ui.html",
+  "editorType": ["figma"],
+  "networkAccess": {
+    "allowedDomains": ["http://localhost:3005", "https://api.cyberskill.com"]
+  }
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: -apple-system, sans-serif; padding: 20px; background: #FCF9F5; color: #1F0A00; }
+    h2 { font-size: 16px; margin-bottom: 8px; }
+    p { font-size: 13px; color: #7A665A; margin-bottom: 20px; }
+    button {
+      background: #1F0A00; color: #fff; border: none; padding: 10px 16px; border-radius: 6px;
+      font-size: 14px; font-weight: 600; cursor: pointer; width: 100%; transition: background 0.2s;
+    }
+    button:hover { background: #F4BA17; color: #45210E; }
+    #status { margin-top: 16px; font-size: 12px; font-weight: 600; color: #F4BA17; text-align: center; }
+    .result { margin-top: 16px; padding: 12px; background: #fff; border: 1px solid #E8DFD8; border-radius: 8px; font-size: 12px; display: none; }
+  </style>
+</head>
+<body>
+  <h2>DSAF Audit Engine</h2>
+  <p>Scan your Figma variables and components for design system maturity violations.</p>
+  
+  <button id="auditBtn">Run DSAF Audit</button>
+  <div id="status"></div>
+  <div id="result" class="result"></div>
+
+  <script>
+    document.getElementById('auditBtn').onclick = () => {
+      document.getElementById('status').innerText = 'Scanning Figma Canvas...';
+      parent.postMessage({ pluginMessage: { type: 'run-audit' } }, '*');
+    };
+
+    window.onmessage = async (event) => {
+      const msg = event.data.pluginMessage;
+      
+      if (msg.type === 'audit-data') {
+        document.getElementById('status').innerText = 'Analyzing with Gemini...';
+        
+        try {
+          // Send to SaaS backend
+          const res = await fetch('http://localhost:3005/api/audit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              files: [{ name: 'figma-nodes.json', content: JSON.stringify(msg.data, null, 2) }]
+            })
+          });
+
+          const data = await res.json();
+          document.getElementById('status').innerText = 'Complete!';
+          
+          const resultDiv = document.getElementById('result');
+          resultDiv.style.display = 'block';
+          resultDiv.innerHTML = `
+            <strong style="color: ${data.score >= 85 ? '#10B981' : '#D23B00'}; font-size: 24px;">${data.score}/100</strong><br/>
+            <span style="color: #7A665A">${data.summary}</span><br/><br/>
+            <strong>Violations:</strong> ${data.violations ? data.violations.length : 0}
+          `;
+
+          // Tell Figma to highlight violating nodes if there are any
+          if (data.violations && data.violations.length > 0) {
+            parent.postMessage({ pluginMessage: { type: 'highlight-violations', violations: data.violations } }, '*');
+          }
+
+        } catch (e) {
+          document.getElementById('status').innerText = 'Error: ' + e.message;
+          document.getElementById('status').style.color = '#D23B00';
+        }
+      }
+    };
+  </script>
+</body>
+</html>
