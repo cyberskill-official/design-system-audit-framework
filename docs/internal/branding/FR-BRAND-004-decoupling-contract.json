@@ -172,8 +172,8 @@
     "/internal/branding/brand-decoupling-domain-decision.md @StephenCheng @future-co-maintainer"
   ],
   "required_package_scripts": {
-    "contract:decoupling": "node scripts/checks/",
-    "test:decoupling-contract": "node --test scripts/test/"
+    "contract:decoupling": "node scripts/checks/check-decoupling-contract.mjs",
+    "test:decoupling-contract": "node --test scripts/test/check-decoupling-contract.test.mjs"
   },
   "deployment_mock_contract": {
     "endpoint": "POST /mock/canonical-boundary-deployment-check",

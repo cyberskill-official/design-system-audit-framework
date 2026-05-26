@@ -56,7 +56,7 @@
   ],
   "files": {
     "policy": "docs/framework/05-regression-policy.md",
-    "framework": "docs/framework/02-dsaf-25-core.md",
+    "framework": "docs/framework/dsaf-25.md",
     "fix_cycle": "docs/guidelines/06-fix-cycle.md",
     "levels": "docs/framework/04-maturity-tiers.md",
     "template": "docs/framework/templates/audit-report-template.md",
@@ -78,7 +78,7 @@
       "`UNRESOLVED`",
       "Older audits with `no_downgrade: true` remain valid"
     ],
-    "docs/framework/02-dsaf-25-core.md": [
+    "docs/framework/dsaf-25.md": [
       "## §4 No-silent-regression rule",
       "no_silent_regression",
       "RE_AUDIT (awaiting override)",

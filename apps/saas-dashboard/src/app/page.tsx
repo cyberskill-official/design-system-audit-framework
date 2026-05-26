@@ -22,7 +22,7 @@ export default function DashboardPage() {
   const [result, setResult] = useState<AuditResult | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [apiKey, setApiKey] = useState('');
-  const [provider, setProvider] = useState('gemini');
+  const [provider, setProvider] = useState('');
   const [model, setModel] = useState('');
   const [baseUrl, setBaseUrl] = useState('');
 
@@ -62,10 +62,17 @@ export default function DashboardPage() {
     setResult(null);
 
     try {
+      // Only send non-empty overrides so server env vars take effect
+      const payload: Record<string, any> = { files };
+      if (provider) payload.provider = provider;
+      if (model) payload.model = model;
+      if (baseUrl) payload.baseUrl = baseUrl;
+      if (apiKey) payload.apiKey = apiKey;
+
       const response = await fetch('/api/audit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ files, apiKey, provider, model, baseUrl })
+        body: JSON.stringify(payload)
       });
 
       const data = await response.json();
@@ -97,6 +104,7 @@ export default function DashboardPage() {
             onChange={e => setProvider(e.target.value)}
             style={{ width: '100%', padding: '12px 16px', borderRadius: '8px', border: '1px solid var(--border-color)', background: 'var(--bg-color)', color: 'var(--text-primary)' }}
           >
+            <option value="">Auto (server configured)</option>
             <option value="gemini">Google Gemini</option>
             <option value="openai">OpenAI (or Compatible)</option>
             <option value="anthropic">Anthropic</option>

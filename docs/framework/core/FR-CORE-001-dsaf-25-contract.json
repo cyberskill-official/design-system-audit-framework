@@ -56,13 +56,13 @@
     }
   ],
   "files": {
-    "core_doc": "docs/framework/02-dsaf-25-core.md",
-    "card_doc": "docs/framework/02-dsaf-25-core.md",
+    "core_doc": "docs/framework/dsaf-25.md",
+    "card_doc": "docs/framework/dsaf-25.md",
     "part_a": "docs/framework/03-full-criteria.md",
     "part_b": "docs/framework/03-full-criteria.md",
     "svg": "docs/framework/assets/dsaf-25-card.svg",
     "pdf": "docs/framework/assets/dsaf-25-card-print.pdf",
-    "landing_card": "apps/landing/src/app/page.tsx",
+    "landing_card": "apps/landing/card/index.html",
     "audit_template": "docs/framework/templates/audit-report-template.md",
     "readme": "README.md",
     "package_json": "package.json"
@@ -122,7 +122,7 @@
     "B10"
   ],
   "required_strings": {
-    "docs/framework/02-dsaf-25-core.md": [
+    "docs/framework/dsaf-25.md": [
       "dsaf_125_version:",
       "It is not DSAF Lite.",
       "dsaf_25_score%",
@@ -190,7 +190,7 @@
         "trial_id": "mock-designer-read-001",
         "participant_role": "designer",
         "participant_relationship": "external_mock",
-        "artifact": "docs/framework/02-dsaf-25-core.md",
+        "artifact": "docs/framework/dsaf-25.md",
         "started_at": "2026-05-18T00:00:00.000Z",
         "completed_at": "2026-05-18T00:04:42.000Z",
         "elapsed_seconds": 282,
@@ -201,7 +201,7 @@
         "trial_id": "mock-pm-recall-001",
         "participant_role": "product_manager",
         "participant_relationship": "external_mock",
-        "artifact": "docs/framework/02-dsaf-25-core.md",
+        "artifact": "docs/framework/dsaf-25.md",
         "started_at": "2026-05-18T00:00:00.000Z",
         "completed_at": "2026-05-18T00:38:00.000Z",
         "elapsed_seconds": 2280,

@@ -18,20 +18,34 @@ async function generateAIResponse(provider: string, modelName: string, apiKey: s
     });
     return response.choices[0].message.content || '';
   } else if (provider === 'anthropic') {
-    const anthropic = new Anthropic({ apiKey, baseURL: baseUrl });
-    const response = await anthropic.messages.create({
-      model: modelName || 'claude-3-5-sonnet-20241022',
-      max_tokens: 4096,
-      system: systemPrompt,
-      messages: [
-        { role: 'user', content: userPrompt }
-      ],
-      temperature: 0.1,
-    });
+    const defaultUrl = 'https://api.anthropic.com/v1/messages';
+    const finalUrl = baseUrl || defaultUrl;
+    const url = finalUrl.endsWith('/anthropic') ? finalUrl + '/v1/messages' : finalUrl;
     
-    const block = response.content[0];
-    if (block && block.type === 'text') {
-        return block.text;
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': apiKey,
+        'anthropic-version': '2023-06-01'
+      },
+      body: JSON.stringify({
+        model: modelName || 'claude-3-5-sonnet-20241022',
+        max_tokens: 4096,
+        system: systemPrompt,
+        messages: [{ role: 'user', content: userPrompt }]
+      })
+    });
+
+    if (!response.ok) {
+      const err = await response.text();
+      throw new Error(`Anthropic API error: ${response.status} ${err}`);
+    }
+
+    const data = await response.json();
+    const textBlocks = data.content?.filter((b: any) => b.type === 'text') || [];
+    if (textBlocks.length > 0) {
+      return textBlocks[0].text;
     }
     return '';
   } else {
@@ -61,7 +75,7 @@ export async function POST(req: NextRequest) {
     const resolvedBaseUrl = baseUrl || process.env.AI_BASE_URL || undefined;
 
     // Resolve model: client → env
-    const resolvedModel = model || process.env.AI_MODEL || '';
+    const resolvedModel = model || process.env.AI_MODEL_NAME || '';
 
     // Resolve API key: client → generic env → provider-specific env
     let resolvedKey = apiKey || process.env.AI_API_KEY || '';
@@ -105,14 +119,15 @@ export async function POST(req: NextRequest) {
     }
 
     try {
-      await addDoc(collection(db, 'audits'), {
+      // Fire and forget - do not await as Firestore retry loops on mock-project will hang the API
+      addDoc(collection(db, 'audits'), {
         score: result.score,
         summary: result.summary,
         violationCount: result.violations ? result.violations.length : 0,
         timestamp: serverTimestamp(),
-      });
+      }).catch(err => console.warn("Firestore async save failed:", err.message));
     } catch (dbError: any) {
-      console.warn("Failed to save to Firestore (mock setup?): ", dbError.message);
+      console.warn("Failed to initiate save to Firestore: ", dbError.message);
     }
 
     return NextResponse.json(result);
