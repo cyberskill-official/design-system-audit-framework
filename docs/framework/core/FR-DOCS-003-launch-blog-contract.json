@@ -47,13 +47,13 @@
     }
   ],
   "files": {
-    "post_markdown": "docs/internal/landing/blog/launch-2026.md",
-    "blog_index": "docs/internal/landing/blog/index.md",
-    "rendered_html": "docs/internal/landing/blog/launch-2026/index.html",
-    "rendered_flat_html": "docs/internal/landing/blog/launch-2026.html",
+    "post_markdown": "apps/landing/blog/launch-2026.md",
+    "blog_index": "apps/landing/blog/index.md",
+    "rendered_html": "apps/landing/blog/launch-2026/index.html",
+    "rendered_flat_html": "apps/landing/blog/launch-2026.html",
     "og_png": "docs/framework/assets/og/launch-2026-1200x630.png",
     "og_svg": "docs/framework/assets/og/launch-2026-1200x630.svg",
-    "deploy_og_png": "docs/internal/landing/assets/og/launch-2026-1200x630.png"
+    "deploy_og_png": "apps/landing/assets/og/launch-2026-1200x630.png"
   },
   "frontmatter": {
     "title_max_chars": 80,
@@ -122,8 +122,8 @@
     "min_bytes": 5000
   },
   "required_package_scripts": {
-    "contract:launch-blog": "node framework/scripts/checks/check-launch-blog-contract.mjs",
-    "test:launch-blog-contract": "node --test framework/scripts/test/check-launch-blog-contract.test.mjs"
+    "contract:launch-blog": "node scripts/checks/check-launch-blog-contract.mjs",
+    "test:launch-blog-contract": "node --test scripts/test/check-launch-blog-contract.test.mjs"
   },
   "deploy_mock_contract": {
     "endpoint": "POST /mock/launch-blog-deploy-verification",

@@ -66,7 +66,7 @@
     "domain_decision_file": "docs/internal/branding/brand-decoupling-domain-decision.md",
     "redirect_map": "docs/internal/branding/brand-decoupling-domain-decision.md",
     "adr_file": "docs/internal/branding/brand-decoupling-domain-decision.md",
-    "vercel_config": "docs/internal/landing/vercel.json",
+    "vercel_config": "apps/saas-dashboard/vercel.json",
     "codeowners": ".github/CODEOWNERS"
   },
   "required_decision_sections": [
@@ -112,7 +112,7 @@
       ]
     },
     {
-      "path": "docs/internal/landing/index.html",
+      "path": "apps/landing/index.html",
       "required": [
         "<link rel=\"canonical\" href=\"https://audit.cyberskill.world/\">",
         "<meta property=\"og:url\" content=\"https://audit.cyberskill.world/\">",
@@ -120,21 +120,21 @@
       ]
     },
     {
-      "path": "docs/internal/landing/card/index.html",
+      "path": "apps/landing/card/index.html",
       "required": [
         "<link rel=\"canonical\" href=\"https://audit.cyberskill.world/card\">",
         "DSAF-25 Core card"
       ]
     },
     {
-      "path": "docs/internal/landing/benchmark/privacy/index.html",
+      "path": "apps/landing/benchmark/privacy/index.html",
       "required": [
         "<link rel=\"canonical\" href=\"https://audit.cyberskill.world/benchmark/privacy/\">",
         "info@cyberskill.world"
       ]
     },
     {
-      "path": "docs/internal/landing/README.md",
+      "path": "apps/landing/README.md",
       "required": [
         "`https://audit.cyberskill.world`",
         "No paid-service CTA, pricing, or sales form lives here.",
@@ -153,10 +153,10 @@
     ".txt"
   ],
   "landing_public_files": [
-    "docs/internal/landing/index.html",
-    "docs/internal/landing/card/index.html",
-    "docs/internal/landing/benchmark/index.html",
-    "docs/internal/landing/benchmark/results.html"
+    "apps/landing/index.html",
+    "apps/landing/card/index.html",
+    "apps/landing/benchmark/index.html",
+    "apps/landing/benchmark/results.html"
   ],
   "forbidden_landing_patterns": [
     "\\bAudit scoping call\\b",
@@ -172,15 +172,15 @@
     "/internal/branding/brand-decoupling-domain-decision.md @StephenCheng @future-co-maintainer"
   ],
   "required_package_scripts": {
-    "contract:decoupling": "node framework/scripts/checks/",
-    "test:decoupling-contract": "node --test framework/scripts/test/"
+    "contract:decoupling": "node scripts/checks/",
+    "test:decoupling-contract": "node --test scripts/test/"
   },
   "deployment_mock_contract": {
     "endpoint": "POST /mock/canonical-boundary-deployment-check",
     "request": {
       "fr_id": "FR-BRAND-004",
       "canonical_host": "audit.cyberskill.world",
-      "build_root": "docs/internal/landing/",
+      "build_root": "apps/landing/",
       "desired_redirect_rules": [],
       "verification_vectors": [
         "canonical_meta",

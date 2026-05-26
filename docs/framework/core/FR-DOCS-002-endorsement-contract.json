@@ -84,8 +84,8 @@
     "quote-published \\(2026"
   ],
   "required_package_scripts": {
-    "contract:endorsements": "node framework/scripts/checks/check-endorsement-contract.mjs",
-    "test:endorsement-contract": "node --test framework/scripts/test/check-endorsement-contract.test.mjs"
+    "contract:endorsements": "node scripts/checks/check-endorsement-contract.mjs",
+    "test:endorsement-contract": "node --test scripts/test/check-endorsement-contract.test.mjs"
   },
   "quote_approval_mock_contract": {
     "endpoint": "POST /mock/reviewer-quote-consent-approval",

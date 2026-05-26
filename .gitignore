@@ -47,3 +47,12 @@ next-env.d.ts
 docs/outputs/
 outputs/
 patch-contracts.cjs
+
+# Tool-generated directories
+.code-review-graph/
+.playwright-cli/
+
+# Workspace dist folders (build artifacts)
+packages/cli/dist/
+packages/figma-plugin/dist/
+packages/github-action/dist/

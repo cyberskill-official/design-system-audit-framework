@@ -166,8 +166,8 @@
     ]
   },
   "required_package_scripts": {
-    "contract:readme": "node framework/scripts/checks/check-readme-contract.mjs",
-    "test:readme-contract": "node --test framework/scripts/test/check-readme-contract.test.mjs"
+    "contract:readme": "node scripts/checks/check-readme-contract.mjs",
+    "test:readme-contract": "node --test scripts/test/check-readme-contract.test.mjs"
   },
   "skim_mock_contract": {
     "endpoint": "POST /mock/readme-skim-review",

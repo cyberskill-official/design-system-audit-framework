@@ -46,6 +46,7 @@
     "integ:storybook": "node scripts/bin/storybook-addon-runner.mjs",
     "integ:tokens": "node scripts/bin/tokens-studio-validator.mjs",
     "integ:zeroheight": "node scripts/bin/zeroheight-reader.mjs",
-    "verify": "node scripts/bin/dsaf-verify.mjs"
+    "verify": "node scripts/bin/dsaf-verify.mjs",
+    "test:newsletter-contract": "node --test scripts/test/check-newsletter-contract.test.mjs"
   }
 }
