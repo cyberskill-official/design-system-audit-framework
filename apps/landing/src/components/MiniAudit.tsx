@@ -58,7 +58,7 @@ export const MiniAudit = () => {
   }, [scanState, progress, logs.length]);
 
   return (
-    <section style={{ padding: '40px 0 80px', position: 'relative', zIndex: 10 }}>
+    <section id="mini-audit" style={{ padding: '40px 0 80px', position: 'relative', zIndex: 10 }}>
       <div className="container">
         <div className="glass" style={{
           padding: '40px',
@@ -145,7 +145,10 @@ export const MiniAudit = () => {
                   <ShieldAlert size={40} color="#D23B00" />
                   <div style={{ textAlign: 'left' }}>
                     <div style={{ fontSize: '14px', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--text-secondary)', fontWeight: 700 }}>Estimated Score</div>
-                    <div style={{ fontSize: '32px', fontWeight: 900, color: '#D23B00', lineHeight: 1 }}>62<span style={{ fontSize: '18px', color: 'var(--text-secondary)' }}>/100</span></div>
+                    <div style={{ fontSize: '32px', fontWeight: 900, color: '#D23B00', lineHeight: 1, display: 'flex', alignItems: 'center', gap: '12px' }}>
+                      62<span style={{ fontSize: '18px', color: 'var(--text-secondary)' }}>/100</span>
+                      <span className="badge" style={{ fontSize: '12px', background: 'rgba(210, 59, 0, 0.1)', color: '#D23B00', borderColor: 'rgba(210, 59, 0, 0.3)' }}>L2 — Defined</span>
+                    </div>
                   </div>
                 </div>
 
@@ -164,11 +167,14 @@ export const MiniAudit = () => {
                       <CheckCircle size={18} color="#10B981" style={{ flexShrink: 0, marginTop: '2px' }} />
                       <div><strong style={{ color: 'var(--text-primary)' }}>[C-305] Typography:</strong> Fluid type scale detected. Pass.</div>
                     </li>
+                    <li style={{ fontSize: '13px', color: 'var(--text-secondary)', marginTop: '8px', paddingLeft: '30px' }}>
+                      + 22 more findings in the full report
+                    </li>
                   </ul>
                 </div>
 
                 <div style={{ borderTop: '1px dashed var(--border-color)', paddingTop: '32px' }}>
-                  <h4 style={{ marginBottom: '8px', fontSize: '18px' }}>Unlock the Full 25-Point Report</h4>
+                  <h4 style={{ marginBottom: '8px', fontSize: '18px' }}>Unlock the Full Report & Self-Scoring CSV</h4>
                   <p style={{ color: 'var(--text-secondary)', fontSize: '14px', marginBottom: '24px' }}>
                     Enter your email to receive the complete breakdown and the DSAF-25 Self-Scoring CSV.
                   </p>
@@ -204,7 +210,7 @@ export const MiniAudit = () => {
                 <CheckCircle size={48} color="#10B981" style={{ margin: '0 auto 16px' }} />
                 <h3 style={{ marginBottom: '12px', color: '#10B981' }}>Report Dispatched</h3>
                 <p style={{ color: 'var(--text-secondary)' }}>
-                  We've sent the complete DSAF-25 matrix and your partial audit results to <strong>{email}</strong>.
+                  We've sent the complete DSAF-25 matrix, self-scoring CSV, and your partial audit results to <strong>{email}</strong>.
                 </p>
               </div>
             )}

@@ -32,7 +32,7 @@ export const Services = () => {
     <section id="services" style={{ padding: '80px 0' }}>
       <div className="container">
         <div style={{ display: 'flex', alignItems: 'baseline', gap: '24px', marginBottom: '40px', borderBottom: '1px solid var(--border-color)', paddingBottom: '20px' }}>
-          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '13px', fontWeight: 700, letterSpacing: '0.1em', color: 'var(--accent)' }}>02</span>
+          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '13px', fontWeight: 700, letterSpacing: '0.1em', color: 'var(--accent)' }}>03</span>
           <h2>CyberSkill Professional Services</h2>
         </div>
         

@@ -9,7 +9,7 @@ export const BeforeAfter = () => {
     <section id="demo" style={{ padding: '80px 0', position: 'relative' }}>
       <div className="container">
         <div style={{ display: 'flex', alignItems: 'baseline', gap: '24px', marginBottom: '40px', borderBottom: '1px solid var(--border-color)', paddingBottom: '20px' }}>
-          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '13px', fontWeight: 700, letterSpacing: '0.1em', color: 'var(--accent)' }}>03</span>
+          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '13px', fontWeight: 700, letterSpacing: '0.1em', color: 'var(--accent)' }}>02</span>
           <h2>The DSAF Effect</h2>
         </div>
         
@@ -42,7 +42,7 @@ export const BeforeAfter = () => {
         </div>
 
         {/* Component Showcase */}
-        <div className="glass" style={{ padding: '48px', position: 'relative', overflow: 'hidden' }}>
+        <div className="glass" style={{ padding: '48px', position: 'relative', overflow: 'visible' }}>
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
@@ -74,7 +74,7 @@ export const BeforeAfter = () => {
               </div>
               {/* Tooltip */}
               {isAfter && (
-                <div className="criteria-tooltip-react" style={{ position: 'absolute', top: '24px', left: '-8px' }}>
+                <div className="criteria-tooltip-react" style={{ position: 'absolute', top: '24px', left: '16px' }}>
                   <div className="pulse" />
                   <div className="popover">
                     <strong>[C-101] Semantics: L0 → L4</strong>

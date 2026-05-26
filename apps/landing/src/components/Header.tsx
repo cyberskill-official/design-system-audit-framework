@@ -44,6 +44,8 @@ export const Header = () => {
         </a>
         
         <nav style={{ display: 'flex', gap: '32px', alignItems: 'center' }} className="desktop-nav">
+          <a href="https://github.com/cyberskill-official/design-system-audit-framework/tree/main/docs" style={{ fontWeight: 600, fontSize: '14px', color: 'var(--text-secondary)' }}>Docs</a>
+          <a href="/blog" style={{ fontWeight: 600, fontSize: '14px', color: 'var(--text-secondary)' }}>Blog</a>
           <a href="#oss" style={{ fontWeight: 600, fontSize: '14px', color: 'var(--text-secondary)' }}>Open Source</a>
           <a href="#services" style={{ fontWeight: 600, fontSize: '14px', color: 'var(--text-secondary)' }}>Services</a>
           <a href="#benchmark" style={{ fontWeight: 600, fontSize: '14px', color: 'var(--text-secondary)' }}>Benchmark</a>

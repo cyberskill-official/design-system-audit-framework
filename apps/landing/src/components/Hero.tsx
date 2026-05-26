@@ -1,6 +1,8 @@
-import { ArrowRight, FileCheck2, Terminal } from 'lucide-react';
+import { useState } from 'react';
+import { ArrowRight, FileCheck2, Terminal, Copy, Check } from 'lucide-react';
 
 export const Hero = () => {
+  const [copied, setCopied] = useState(false);
   return (
     <section style={{
       padding: '160px 0 100px',
@@ -51,8 +53,8 @@ export const Hero = () => {
         </p>
 
         <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
-          <a href="#services" className="btn btn-primary">
-            Engage CyberSkill <ArrowRight size={18} />
+          <a href="#mini-audit" className="btn btn-primary">
+            Run Your First Audit <ArrowRight size={18} />
           </a>
           <a href="#oss" className="btn btn-secondary">
             <FileCheck2 size={18} /> View DSAF-25 Core
@@ -61,21 +63,49 @@ export const Hero = () => {
 
         <div style={{ marginTop: '48px', display: 'flex', alignItems: 'center', gap: '12px' }}>
           <span style={{ fontSize: '13.5px', color: 'var(--text-secondary)', fontWeight: 600 }}>Quick Start:</span>
-          <code style={{
+          <div style={{
             background: 'var(--bg-elevated)',
             border: '1px solid var(--border-color)',
-            padding: '6px 12px',
+            padding: '6px 6px 6px 12px',
             borderRadius: '8px',
-            fontFamily: 'var(--font-mono)',
-            fontSize: '13px',
-            color: 'var(--text-primary)',
             display: 'flex',
             alignItems: 'center',
-            gap: '8px',
+            gap: '12px',
             boxShadow: 'var(--shadow-sm)'
           }}>
-            <Terminal size={14} color="var(--accent)" /> npx @cyberskill/dsaf audit .
-          </code>
+            <code style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: '13px',
+              color: 'var(--text-primary)',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+            }}>
+              <Terminal size={14} color="var(--accent)" /> npx @cyberskill/dsaf audit .
+            </code>
+            <button 
+              onClick={() => {
+                navigator.clipboard.writeText('npx @cyberskill/dsaf audit .');
+                setCopied(true);
+                setTimeout(() => setCopied(false), 2000);
+              }}
+              style={{
+                background: 'var(--border-color)',
+                border: 'none',
+                cursor: 'pointer',
+                color: copied ? '#10B981' : 'var(--text-primary)',
+                padding: '6px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderRadius: '4px',
+                transition: 'all 0.2s ease'
+              }}
+              title="Copy to clipboard"
+            >
+              {copied ? <Check size={14} /> : <Copy size={14} />}
+            </button>
+          </div>
         </div>
       </div>
     </section>
