@@ -48,21 +48,31 @@ async function generateAIResponse(provider: string, modelName: string, apiKey: s
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { files, apiKey, provider = 'gemini', model, baseUrl } = body;
+    const { files, apiKey, provider, model, baseUrl } = body;
 
     if (!files || !Array.isArray(files) || files.length === 0) {
       return NextResponse.json({ error: 'No files provided for audit.' }, { status: 400 });
     }
 
-    let resolvedKey = apiKey;
+    // Resolve provider: client → env → default
+    const resolvedProvider = provider || process.env.AI_PROVIDER || 'gemini';
+
+    // Resolve base URL: client → env
+    const resolvedBaseUrl = baseUrl || process.env.AI_BASE_URL || undefined;
+
+    // Resolve model: client → env
+    const resolvedModel = model || process.env.AI_MODEL || '';
+
+    // Resolve API key: client → generic env → provider-specific env
+    let resolvedKey = apiKey || process.env.AI_API_KEY || '';
     if (!resolvedKey) {
-      if (provider === 'openai') resolvedKey = process.env.OPENAI_API_KEY || '';
-      else if (provider === 'anthropic') resolvedKey = process.env.ANTHROPIC_API_KEY || '';
+      if (resolvedProvider === 'openai') resolvedKey = process.env.OPENAI_API_KEY || '';
+      else if (resolvedProvider === 'anthropic') resolvedKey = process.env.ANTHROPIC_API_KEY || '';
       else resolvedKey = process.env.GEMINI_API_KEY || '';
     }
 
-    if (!resolvedKey && !baseUrl) {
-      return NextResponse.json({ error: `API key missing for provider: ${provider}` }, { status: 401 });
+    if (!resolvedKey && !resolvedBaseUrl) {
+      return NextResponse.json({ error: `API key missing for provider: ${resolvedProvider}` }, { status: 401 });
     }
 
     let combinedCode = '';
@@ -84,7 +94,7 @@ export async function POST(req: NextRequest) {
     `;
     const userPrompt = `Code to evaluate:\n${combinedCode}`;
 
-    const responseText = await generateAIResponse(provider, model, resolvedKey, baseUrl, systemPrompt, userPrompt);
+    const responseText = await generateAIResponse(resolvedProvider, resolvedModel, resolvedKey, resolvedBaseUrl, systemPrompt, userPrompt);
 
     let result;
     try {
