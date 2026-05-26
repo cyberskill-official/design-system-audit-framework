@@ -8,7 +8,7 @@ It is **vendor-neutral**. It works on a Material-derived system, a Carbon-derive
 
 It is **agent-friendly**. Every section of the audit output is structured so an LLM agent can read, parse, and update it. Sections are stable in order, headings are stable in wording, the YAML frontmatter is machine-readable, and the criteria table is a fixed-column markdown table. DSAF treats the agent as a co-auditor, not as an oracle.
 
-The canonical visuals live in [`assets/dsaf-l0-l5-ladder.svg`](../docs/framework/assets/dsaf-l0-l5-ladder.svg) and [`assets/dsaf-radar.svg`](../docs/framework/assets/dsaf-radar.svg). Use the ladder when explaining DSAF Levels; use the radar when explaining per-category audit shape and enterprise thresholds.
+The canonical visuals live in [`assets/dsaf-l0-l5-ladder.svg`](../framework/assets/dsaf-l0-l5-ladder.svg) and [`assets/dsaf-radar.svg`](../framework/assets/dsaf-radar.svg). Use the ladder when explaining DSAF Levels; use the radar when explaining per-category audit shape and enterprise thresholds.
 
 It is **honest about its limits**. WCAG self-claims cap at 4/5 until you have a vendor letter. Adoption metrics cap at 3/5 until you have production telemetry. SUS scores cap at 3 until you have real participants. These are not DSAF flaws — they are the gates the industry already accepts.
 

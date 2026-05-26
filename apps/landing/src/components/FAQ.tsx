@@ -4,7 +4,7 @@ import { ChevronDown, ChevronUp } from 'lucide-react';
 const faqs = [
   {
     q: "Is DSAF free?",
-    a: "Yes. The entire DSAF methodology (including the 125 criteria) is MIT-licensed and fully open source. You can self-audit your organization at no cost."
+    a: "Yes. The entire DSAF methodology (including all 371 criteria) is MIT-licensed and fully open source. You can self-audit your organization at no cost."
   },
   {
     q: "How is this different from Lighthouse?",

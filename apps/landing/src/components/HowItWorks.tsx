@@ -45,7 +45,7 @@ export const HowItWorks = () => {
             <span className="badge" style={{ marginBottom: '16px' }}>STEP 02</span>
             <h3 style={{ fontSize: '20px', marginBottom: '12px' }}>Get Your Score</h3>
             <p style={{ fontSize: '15px', color: 'var(--text-secondary)' }}>
-              Receive a deterministic maturity score across 125 criteria, mapped to our L0–L5 progression scale.
+              Receive a deterministic maturity score across 371 criteria, mapped to our L0–L5 progression scale.
             </p>
           </div>
 

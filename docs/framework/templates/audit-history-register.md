@@ -4,7 +4,7 @@
 
 | Date | Mode | Agent | Operator | Signer | Part A % | Part B % | Combined % | Interior tier | Cited tier | Enterprise-grade | Report |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| YYYY-MM-DD | S \| P | <model-id> | <name> | <name> | xx.x% | xx.x% | **xx.x%** | Lx | Lx or capped L3 | yes/no | `audit-report-YYYY-MM-DD.md` |
+| YYYY-MM-DD | S \| P | `<model-id>` | `<name>` | `<name>` | xx.x% | xx.x% | **xx.x%** | Lx | Lx or capped L3 | yes/no | `audit-report-YYYY-MM-DD.md` |
 
 ---
 
@@ -14,7 +14,7 @@ Doctrine-evolution checkpoints between formal audit cycles. Logged here so trend
 
 | Date | Phase | Milestone | Key deliverables | Expected lift on next audit |
 |---|---|---|---|---|
-| YYYY-MM-DD | <phase-name> | <one-line> | <comma-separated list> | <+x pp combined> |
+| YYYY-MM-DD | `<phase-name>` | `<one-line>` | `<comma-separated list>` | `<+x pp combined>` |
 
 ---
 

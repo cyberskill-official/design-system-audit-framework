@@ -40,11 +40,11 @@ export const Footer = () => {
           </div>
           
           <div>
-            <h4 style={{ fontSize: '12px', fontWeight: 800, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--text-primary)', marginBottom: '16px' }}>Methodology</h4>
+            <h4 style={{ fontSize: '12px', fontWeight: 800, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--text-primary)', marginBottom: '16px' }}>Framework</h4>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              <li><a href="#benchmark" style={{ fontSize: '14.5px', color: 'var(--text-secondary)' }}>Benchmark</a></li>
-              <li><a href="#oss" style={{ fontSize: '14.5px', color: 'var(--text-secondary)' }}>DSAF-25 Core</a></li>
-              <li><a href="#demo" style={{ fontSize: '14.5px', color: 'var(--text-secondary)' }}>Maturity Levels</a></li>
+              <li><a href="#oss" style={{ fontSize: '14.5px', color: 'var(--text-secondary)' }}>Open Source Core</a></li>
+              <li><a href="#benchmark" style={{ fontSize: '14.5px', color: 'var(--text-secondary)' }}>Maturity Benchmark</a></li>
+              <li><a href="#demo" style={{ fontSize: '14.5px', color: 'var(--text-secondary)' }}>Interactive Demo</a></li>
             </ul>
           </div>
 
@@ -53,7 +53,6 @@ export const Footer = () => {
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '8px' }}>
               <li><a href="#services" style={{ fontSize: '14.5px', color: 'var(--text-secondary)' }}>Pro Services</a></li>
               <li><a href="#services" style={{ fontSize: '14.5px', color: 'var(--text-secondary)' }}>Book an Audit</a></li>
-              <li><a href="#services" style={{ fontSize: '14.5px', color: 'var(--text-secondary)' }}>Certification</a></li>
             </ul>
           </div>
 
@@ -61,7 +60,6 @@ export const Footer = () => {
             <h4 style={{ fontSize: '12px', fontWeight: 800, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--text-primary)', marginBottom: '16px' }}>Connect</h4>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '8px' }}>
               <li><a href="https://github.com/cyberskill-official/design-system-audit-framework" style={{ fontSize: '14.5px', color: 'var(--text-secondary)' }}>GitHub</a></li>
-              <li><a href="/blog" style={{ fontSize: '14.5px', color: 'var(--text-secondary)' }}>Blog</a></li>
               <li><a href="https://cyberskill.world" style={{ fontSize: '14.5px', color: 'var(--text-secondary)' }}>CyberSkill</a></li>
             </ul>
           </div>
@@ -79,10 +77,6 @@ export const Footer = () => {
           color: 'var(--text-secondary)'
         }}>
           <span>&copy; {new Date().getFullYear()} CyberSkill. All rights reserved.</span>
-          <div style={{ display: 'flex', gap: '16px' }}>
-            <a href="#" title="Coming Soon" style={{ color: 'var(--text-secondary)' }}>Privacy</a>
-            <a href="#" title="Coming Soon" style={{ color: 'var(--text-secondary)' }}>Terms</a>
-          </div>
         </div>
       </div>
     </footer>

@@ -84,7 +84,7 @@ The card is meant to tell a DS lead where to look before the full audit begins.
 Use [`assets/dsaf-25-card.svg`](../framework/assets/dsaf-25-card.svg) or the [card representation](#dsaf-25-core-card-representation) below when you need a printable version.
 The public copy lives at `https://audit.cyberskill.world/card`.
 
-For per-category visualisation, feed category percentages into [`assets/dsaf-radar-template.json`](../docs/framework/assets/dsaf-radar-template.json) and render them over [`assets/dsaf-radar.svg`](../docs/framework/assets/dsaf-radar.svg). The radar keeps the 20 DSAF category axes visible and includes the enterprise-floor threshold overlay from the maturity model.
+For per-category visualisation, feed category percentages into [`assets/dsaf-radar-template.json`](./assets/dsaf-radar-template.json) and render them over [`assets/dsaf-radar.svg`](./assets/dsaf-radar.svg). The radar keeps the 20 DSAF category axes visible and includes the enterprise-floor threshold overlay from the maturity model.
 
 ## Relationship to DSAF-125
 

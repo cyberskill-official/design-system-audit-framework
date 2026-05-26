@@ -7,7 +7,7 @@ export const SocialProof = () => {
         
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '32px', fontWeight: 900 }}>
-            125 <CheckCircle2 size={28} />
+            371 <CheckCircle2 size={28} />
           </div>
           <span style={{ fontSize: '14px', fontWeight: 700, letterSpacing: '0.05em', textTransform: 'uppercase', opacity: 0.8 }}>Scored Criteria</span>
         </div>

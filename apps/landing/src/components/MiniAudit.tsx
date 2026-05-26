@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Search, Loader2, AlertTriangle, ShieldAlert, CheckCircle, Mail, ArrowRight } from 'lucide-react';
 
-type ScanState = 'idle' | 'scanning' | 'results' | 'captured';
+type ScanState = 'idle' | 'scanning' | 'results' | 'done';
 
 export const MiniAudit = () => {
   const [scanState, setScanState] = useState<ScanState>('idle');
   const [url, setUrl] = useState('');
   const [email, setEmail] = useState('');
+  const [score, setScore] = useState<number>(62);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [progress, setProgress] = useState(0);
   const [logIndex, setLogIndex] = useState(0);
 
@@ -28,11 +30,40 @@ export const MiniAudit = () => {
     setLogIndex(0);
   };
 
-  const handleCaptureLead = (e: React.FormEvent) => {
+  const handleCaptureLead = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
-      // In the future, this will connect to the backend
-      setScanState('captured');
+    if (!email || !url) return;
+    
+    setIsSubmitting(true);
+    
+    try {
+      const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL || 'http://127.0.0.1:54321';
+      const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
+
+      const res = await fetch(`${SUPABASE_URL}/functions/v1/dsaf-scan`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+        },
+        body: JSON.stringify({ url, email })
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        if (data.score) {
+          setScore(data.score);
+        }
+        setScanState('done');
+      } else {
+        console.error('Failed to trigger scan');
+        setScanState('done');
+      }
+    } catch (err) {
+      console.error(err);
+      setScanState('done');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -146,7 +177,7 @@ export const MiniAudit = () => {
                   <div style={{ textAlign: 'left' }}>
                     <div style={{ fontSize: '14px', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--text-secondary)', fontWeight: 700 }}>Estimated Score</div>
                     <div style={{ fontSize: '32px', fontWeight: 900, color: '#D23B00', lineHeight: 1, display: 'flex', alignItems: 'center', gap: '12px' }}>
-                      62<span style={{ fontSize: '18px', color: 'var(--text-secondary)' }}>/100</span>
+                      {score}<span style={{ fontSize: '18px', color: 'var(--text-secondary)' }}>/100</span>
                       <span className="badge" style={{ fontSize: '12px', background: 'rgba(210, 59, 0, 0.1)', color: '#D23B00', borderColor: 'rgba(210, 59, 0, 0.3)' }}>L2 — Defined</span>
                     </div>
                   </div>
@@ -176,29 +207,33 @@ export const MiniAudit = () => {
                 <div style={{ borderTop: '1px dashed var(--border-color)', paddingTop: '32px' }}>
                   <h4 style={{ marginBottom: '8px', fontSize: '18px' }}>Unlock the Full Report & Self-Scoring CSV</h4>
                   <p style={{ color: 'var(--text-secondary)', fontSize: '14px', marginBottom: '24px' }}>
-                    Enter your email to receive the complete breakdown and the DSAF-25 Self-Scoring CSV.
+                    Enter your email to receive the complete breakdown and the DSAF-371 Self-Scoring CSV.
                   </p>
                   <form onSubmit={handleCaptureLead} style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
                     <div style={{ position: 'relative', flexGrow: 1, maxWidth: '300px' }}>
-                      <Mail size={18} style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-secondary)' }} />
-                      <input 
-                        type="email" 
-                        placeholder="name@company.com" 
-                        required
+                      <input
+                        type="email"
+                        placeholder="you@company.com"
                         value={email}
-                        onChange={e => setEmail(e.target.value)}
+                        onChange={(e) => setEmail(e.target.value)}
+                        disabled={isSubmitting}
                         style={{
-                          width: '100%', height: '48px', padding: '0 16px 0 44px',
-                          borderRadius: '8px', border: '1px solid var(--border-strong)',
-                          background: 'var(--bg-color)', color: 'var(--text-primary)',
-                          fontSize: '15px', fontFamily: 'inherit', outline: 'none'
+                          width: '100%',
+                          padding: '12px 16px',
+                          paddingLeft: '40px',
+                          background: 'rgba(0,0,0,0.2)',
+                          border: '1px solid var(--border-color)',
+                          borderRadius: '8px',
+                          color: 'var(--text-primary)',
+                          outline: 'none',
+                          fontSize: '15px'
                         }}
-                        onFocus={(e) => e.target.style.borderColor = 'var(--accent)'}
-                        onBlur={(e) => e.target.style.borderColor = 'var(--border-strong)'}
+                        required
                       />
+                      <Mail size={18} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-secondary)' }} />
                     </div>
-                    <button type="submit" className="btn btn-primary" style={{ borderRadius: '8px', minHeight: '48px', padding: '0 20px' }}>
-                      Get Full Report <ArrowRight size={16} />
+                    <button type="submit" disabled={isSubmitting} className="btn btn-primary" style={{ whiteSpace: 'nowrap' }}>
+                      {isSubmitting ? 'Dispatching...' : 'Send Full Report'} <ArrowRight size={18} />
                     </button>
                   </form>
                 </div>
@@ -210,7 +245,7 @@ export const MiniAudit = () => {
                 <CheckCircle size={48} color="#10B981" style={{ margin: '0 auto 16px' }} />
                 <h3 style={{ marginBottom: '12px', color: '#10B981' }}>Report Dispatched</h3>
                 <p style={{ color: 'var(--text-secondary)' }}>
-                  We've sent the complete DSAF-25 matrix, self-scoring CSV, and your partial audit results to <strong>{email}</strong>.
+                  We've sent the complete DSAF-371 matrix, self-scoring CSV, and your partial audit results to <strong>{email}</strong>.
                 </p>
               </div>
             )}
