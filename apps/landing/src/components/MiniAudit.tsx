@@ -240,7 +240,7 @@ export const MiniAudit = () => {
               </div>
             )}
 
-            {scanState === 'captured' && (
+            {scanState === 'done' && (
               <div className="animate-fade-in" style={{ padding: '32px 0' }}>
                 <CheckCircle size={48} color="#10B981" style={{ margin: '0 auto 16px' }} />
                 <h3 style={{ marginBottom: '12px', color: '#10B981' }}>Report Dispatched</h3>
