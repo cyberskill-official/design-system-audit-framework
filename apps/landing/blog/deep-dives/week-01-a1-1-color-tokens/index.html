@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A1.1: Color tokens are governance, not naming decoration</title>
+  <meta name="description" content="A1.1 deep-dive with one example, one anti-pattern, and a self-scoring checklist.">
+  <link rel="icon" href="/assets/dsaf-25-card.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://audit.cyberskill.world/blog/deep-dives/week-01-a1-1-color-tokens">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="A1.1: Color tokens are governance, not naming decoration">
+  <meta property="og:description" content="A1.1 deep-dive with one example, one anti-pattern, and a self-scoring checklist.">
+  <meta property="og:url" content="https://audit.cyberskill.world/blog/deep-dives/week-01-a1-1-color-tokens">
+  <meta property="og:image" content="https://audit.cyberskill.world/assets/og/launch-2026-1200x630.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <style>
+    :root { color-scheme: light dark; --bg: #ffffff; --fg: #111827; --muted: #4b5563; --line: #d1d5db; --link: #0a58ca; }
+    @media (prefers-color-scheme: dark) { :root { --bg: #0f172a; --fg: #f8fafc; --muted: #cbd5e1; --line: #334155; --link: #60a5fa; } }
+    body { margin: 0; background: var(--bg); color: var(--fg); font: 18px/1.65 system-ui, -apple-system, Segoe UI, Arial, sans-serif; }
+    main { width: min(760px, calc(100% - 32px)); margin: 0 auto; padding: 56px 0 72px; }
+    a { color: var(--link); }
+    h1 { font-size: clamp(2rem, 5vw, 3.4rem); line-height: 1.05; letter-spacing: 0; margin: 0 0 18px; }
+    h2 { font-size: 1.55rem; line-height: 1.2; margin: 44px 0 12px; }
+    h3 { font-size: 1.15rem; line-height: 1.3; margin: 28px 0 10px; }
+    p, ul { margin: 0 0 18px; }
+    li { margin-bottom: 8px; }
+    code { font: .9em ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: color-mix(in srgb, var(--line) 35%, transparent); padding: .1em .28em; border-radius: 4px; }
+    pre { overflow-x: auto; border: 1px solid var(--line); background: color-mix(in srgb, var(--line) 20%, transparent); padding: 16px; border-radius: 6px; }
+    pre code { display: block; padding: 0; background: transparent; white-space: pre; }
+    blockquote { margin: 22px 0; padding: 14px 18px; border-left: 3px solid var(--link); background: color-mix(in srgb, var(--line) 18%, transparent); }
+    figure { margin: 28px 0; border: 1px solid var(--line); padding: 12px; }
+    img { display: block; max-width: 100%; height: auto; }
+    hr { border: 0; border-top: 1px solid var(--line); margin: 36px 0; }
+    .meta { color: var(--muted); margin-bottom: 34px; }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="meta"><a href="/">DSAF</a> / <a href="/blog">Writing</a></p>
+<h1>A1.1: Color tokens are governance, not naming decoration</h1>
+<p><strong>Canonical URL:</strong> <code>https://audit.cyberskill.world/blog/deep-dives/week-01-a1-1-color-tokens</code></p>
+<p><strong>DSAF criterion:</strong> <code>A1.1</code> — Color tokens with primitive → semantic → component layers</p>
+<p><strong>Tag:</strong> <code>FIXED</code></p>
+<p><strong>Reading time:</strong> ~7 minutes</p>
+<h2>The criterion (quoted verbatim)</h2>
+<pre><code>A1.1 — Color tokens with primitive to semantic to component layers
+
+0 = Absent           No tokens exist; colours are hex codes embedded in stylesheets.
+1 = Mentioned        A &quot;tokens&quot; file exists but it's a flat list of hex values, no layering.
+2 = Defined          A primitive layer is named (e.g. `blue-500`) but no semantic layer above it.
+3 = Built            Primitive + semantic layers exist (e.g. `blue-500` → `color-action-primary`);
+                     consumers reference the semantic name, not the primitive.
+4 = Measured         Three-layer architecture (primitive → semantic → component-scoped); the
+                     component layer is generated, not hand-maintained; coverage is tracked.
+5 = Industry-leading Three-layer + modern colour spaces (OKLCH / P3) + automated contrast math
+                     baked into token generation + multi-mode (light / dark / high-contrast)
+                     compiles from the same primitive set.</code></pre>
+<h2>Why this matters</h2>
+<p>Most design systems treat color tokens as a naming convention. The team renames <code>#0066cc</code> to <code>blue-500</code>, adds it to a <code>tokens.json</code> file, and considers tokens &quot;done.&quot; Six months later the same hex value is referenced inline in fourteen places, three of them with subtly-different shades that nobody can explain.</p>
+<p>The problem isn't the naming. The problem is that flat tokens — primitive-only — push every consumer to make a semantic decision at the point of use. &quot;Should this button be <code>blue-500</code> or <code>blue-600</code>?&quot; is an aesthetic question dressed up as a technical one, and the answer drifts. Each team's interpretation of the system gets a little further from the source until you have de-facto forks that nobody intended.</p>
+<p>The three-layer architecture exists to push semantic decisions back into the system. A primitive (<code>blue-500</code>) is a hex value with a name. A semantic token (<code>color-action-primary</code>) is a *decision* — &quot;the system has decided that primary action elements use this colour, and consumers should not relitigate that decision per-component.&quot; A component-scoped token (<code>button-primary-background</code>) is the last refinement: the system can change the button's specific shade without changing every other action element.</p>
+<p>When a team takes this criterion seriously, three things change. First, design reviews stop arguing about specific hex values — they argue about whether a new use-case needs a new semantic token, which is the right level for the argument. Second, dark mode and high-contrast mode become tractable, because the primitive layer can swap and the semantic layer rebinds automatically. Third, accessibility audits get faster, because contrast guarantees live in the token math (criterion A8.1) rather than per-component.</p>
+<p>The criterion is <code>FIXED</code> because the layering either exists in the codebase or it doesn't — there's no version of the world where &quot;we use primitive → semantic tokens&quot; requires re-scoring quarterly. The standards around colour spaces (OKLCH / P3 at the 5/5 level) are <code>DYNAMIC</code>, but they sit on top of this row in A1.9.</p>
+<h2>What good looks like</h2>
+<p><a href="https://spectrum.adobe.com/page/color-system/">Adobe Spectrum</a> ships the three-layer architecture as a public reference. The primitive layer is the <a href="https://spectrum.adobe.com/page/color-palette/">global colour palette</a> — <code>blue-400</code> through <code>blue-1400</code>, named by lightness. The semantic layer is the <a href="https://spectrum.adobe.com/page/color/">alias system</a> — <code>accent-color-default</code>, <code>informative-color-default</code>, <code>notice-color-default</code>. The component layer is private: each Spectrum component (<code>sp-button</code>, <code>sp-alert</code>) references the semantic alias, never the primitive.</p>
+<p>What's working in this example:</p>
+<ul>
+<li>A designer cannot reach for <code>blue-700</code> directly when designing a new component. The only public surface is the semantic alias, which forces them to either reuse an existing decision or propose a new alias via the system's RFC process (criterion A4.2).</li>
+<li>Dark mode is a primitive-layer swap. The semantic aliases re-resolve to different primitives in dark mode; no per-component overrides are needed.</li>
+<li>High-contrast mode (which Spectrum ships as a third theme) reuses the same alias names with a different primitive map. The component layer is unchanged.</li>
+<li>Modern colour spaces (OKLCH at the primitive level) are present — Spectrum's primitives are authored in a perceptual colour space, which makes contrast math at A8.1 directly computable.</li>
+</ul>
+<p>That last point is what pushes Spectrum to 5/5 on A1.1, not just 4/5. A team can ship a perfectly clean three-layer architecture in plain sRGB and score 4/5; the 5/5 anchor requires the modern colour-space treatment that makes downstream criteria (contrast, theming) easier to satisfy.</p>
+<h2>The anti-pattern</h2>
+<p>A design system at scale, six months into its first version. The <code>tokens.json</code> file looks like this:</p>
+<pre><code>{
+  &quot;color&quot;: {
+    &quot;primary&quot;: { &quot;$value&quot;: &quot;#0066cc&quot; },
+    &quot;primary-dark&quot;: { &quot;$value&quot;: &quot;#004499&quot; },
+    &quot;primary-light&quot;: { &quot;$value&quot;: &quot;#3399ff&quot; },
+    &quot;secondary&quot;: { &quot;$value&quot;: &quot;#ff6600&quot; },
+    &quot;neutral-100&quot;: { &quot;$value&quot;: &quot;#f7f7f7&quot; },
+    &quot;neutral-900&quot;: { &quot;$value&quot;: &quot;#111111&quot; }
+  }
+}</code></pre>
+<p>A component uses the token correctly:</p>
+<pre><code>.Button--primary {
+  background-color: var(--color-primary);
+  color: var(--color-neutral-100);
+}</code></pre>
+<p>This scores 1/5 on A1.1, sometimes 2/5 if the team has been disciplined. Here's why it fails:</p>
+<p>The token names look semantic (<code>primary</code>, <code>secondary</code>) but they're operating as primitives. There's no layer between &quot;this hex value&quot; and &quot;this UI role.&quot; A second team building a <code>Toast</code> component faces the choice: use <code>color-primary</code> (already chosen for buttons; visually wrong for toasts) or hard-code a new hex value (breaks the token discipline) or invent <code>color-toast-background</code> (the right answer — but the system gave them no place to put it).</p>
+<p>What teams typically do in this anti-pattern is invent the missing layer ad-hoc. Buttons stay on <code>color-primary</code>. The <code>Toast</code> team adds <code>--color-toast-background: #fff8e1</code> inline. The <code>Alert</code> team copies that approach with their own hex. Three months later there are forty inline hex values scattered through the components, and the <code>tokens.json</code> file is decorative.</p>
+<p>The recovery path is not &quot;rename everything.&quot; It's &quot;add the missing semantic layer above the existing tokens and treat the existing tokens as the primitive layer going forward.&quot; Rename <code>color-primary</code> to <code>blue-500</code> in the primitives file, add a new <code>color-action-primary</code> semantic alias that points to it, and migrate one component at a time. The system moves from 1/5 to 3/5 the moment any one component switches from the primitive to the semantic alias.</p>
+<h2>Checklist</h2>
+<ul>
+<li>[ ] Every shipped component references a semantic token, never a primitive directly</li>
+<li>[ ] The semantic layer has a documented naming convention (e.g. <code>color-{role}-{intent}-{state}</code>)</li>
+<li>[ ] Dark mode and high-contrast mode are primitive-layer swaps, not per-component overrides</li>
+<li>[ ] At least one component-scoped token exists for a component with mode-specific tuning needs (e.g. <code>button-primary-background-hover</code>)</li>
+<li>[ ] The token files are DTCG-formatted (<code>$value</code>, <code>$type</code>) — required for A1.8 conformance</li>
+<li>[ ] A linter or CI check rejects PRs that introduce inline hex values in component CSS</li>
+<li>[ ] The primitives use a modern colour space (OKLCH / P3) for at least the brand-critical hues — required for the 5/5 anchor</li>
+</ul>
+<p>A team scoring 7/7 on the checklist is at 5/5 on the rubric. A team scoring 3–4 / 7 is at 3/5 (built but not measured). A team scoring 0–2 / 7 is at 0–1 (no real token discipline yet).</p>
+<h2>Where this lands in the rubric</h2>
+<p>A1.1 is part of <strong>DSAF-25 Core</strong> — row 1 of 25. In the full DSAF Criteria it sits at the top of <code>A.1 Foundations &amp; Tokens</code>, which connects to:</p>
+<ul>
+<li><code>A1.8</code> — DTCG conformance. The checklist's &quot;DTCG-formatted&quot; row is the cross-criterion bridge.</li>
+<li><code>A1.9</code> — Modern colour spaces. The 5/5 anchor of A1.1 explicitly references OKLCH/P3 which is the subject of A1.9.</li>
+<li><code>A6.1</code> — Light + dark mode parity. Becomes tractable only when A1.1 is at 3/5+.</li>
+<li><code>A8.1</code> — Contrast guarantees. Bakes into token math only when the primitives are perceptual-colour-space-authored (the 5/5 anchor here).</li>
+</ul>
+<h2>What this post does NOT say</h2>
+<ul>
+<li>This is <strong>not</strong> a token-naming-convention guide. The names matter less than the layering. A team can ship <code>--color-stp-primary-bg-default</code> and score 5/5 if the *layers* are right.</li>
+<li>This is <strong>not</strong> advocacy for a specific token format. DTCG is the format the rubric reaches for (A1.8) but the layering structure is format-agnostic.</li>
+<li>This is <strong>not</strong> Style Dictionary marketing. Style Dictionary is one way to build the three layers; Tokens Studio is another; hand-authored layers are a third. The criterion measures the architecture, not the tooling.</li>
+</ul>
+<hr>
+<p>*Score yourself on this criterion right now: open <a href="https://audit.cyberskill.world/card">DSAF-25 Core</a>. It takes 5 minutes.*</p>
+<p>*Full DSAF rubric + open-source repo: <a href="https://github.com/cyberskill-official/design-system-audit-framework">github.com/cyberskill-official/design-system-audit-framework</a>.*</p>
+<p>*Was this useful? The full series: <a href="https://audit.cyberskill.world/blog">audit.cyberskill.world/blog</a>.*</p>
+  </main>
+</body>
+</html>

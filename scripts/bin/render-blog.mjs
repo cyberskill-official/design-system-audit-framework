@@ -188,7 +188,7 @@ for (const asset of [
   "dsaf-radar-dark.svg",
   "dsaf-25-card.svg"
 ]) {
-  copyFileSync(join(root, "docs/outputs/assets", asset), join(deployAssetsDir, asset));
+  copyFileSync(join(root, "docs/framework/assets", asset), join(deployAssetsDir, asset));
   console.log(`[render-blog] docs/framework/assets/${asset} -> internal/landing/assets/${asset}`);
 }
 
@@ -198,7 +198,7 @@ for (const asset of [
   "launch-2026-1200x630.svg",
   "launch-2026-1200x630.png"
 ]) {
-  const source = join(root, "docs/outputs/assets", "og", asset);
+  const source = join(root, "docs/framework/assets", "og", asset);
   if (existsSync(source)) {
     copyFileSync(source, join(deployOgDir, asset));
     console.log(`[render-blog] docs/framework/assets/og/${asset} -> internal/landing/assets/og/${asset}`);
