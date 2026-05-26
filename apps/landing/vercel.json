@@ -1,6 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "installCommand": "npm install && npm install --no-save @rolldown/binding-linux-x64-gnu@1.0.2 @unrs/resolver-binding-linux-x64-gnu",
+  "installCommand": "npm install && npm install --no-save @rolldown/binding-linux-x64-gnu@1.0.2 lightningcss-linux-x64-gnu@1.32.0",
   "buildCommand": "node ../../scripts/bin/render-blog.mjs && npm run build",
   "cleanUrls": true,
   "trailingSlash": false,
