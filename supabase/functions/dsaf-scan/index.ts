@@ -1,12 +1,21 @@
-import { serve } from 'https://deno.land/std@0.168.0/http/server.ts'
-import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+import { createClient } from 'jsr:@supabase/supabase-js@2'
+
+/** Escape user input for safe interpolation into HTML */
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;')
+}
 
 const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Origin': Deno.env.get('ALLOWED_ORIGIN') || '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 }
 
-serve(async (req) => {
+Deno.serve(async (req) => {
   // Handle CORS
   if (req.method === 'OPTIONS') {
     return new Response('ok', { headers: corsHeaders })
@@ -17,6 +26,16 @@ serve(async (req) => {
     
     if (!url || !email) {
       throw new Error('Missing URL or email')
+    }
+
+    if (typeof url !== 'string' || !/^https?:\/\//i.test(url)) {
+      throw new Error('Invalid URL: must start with http:// or https://')
+    }
+    if (url.length > 2048) {
+      throw new Error('URL too long: max 2048 characters')
+    }
+    if (typeof email !== 'string' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      throw new Error('Invalid email format')
     }
 
     // 1. Perform lightweight scan
@@ -91,9 +110,9 @@ serve(async (req) => {
         body: JSON.stringify({
           from: 'DSAF Audit <audit@cyberskill.world>',
           to: [email],
-          subject: `Your DSAF-371 Scan Results for ${url}`,
+          subject: `Your DSAF-371 Scan Results for ${escapeHtml(url)}`,
           html: `<h1>Your DSAF Scan is Complete</h1>
-                 <p>Target: ${url}</p>
+                 <p>Target: ${escapeHtml(url)}</p>
                  <p>Score: <strong>${finalScore}/100</strong></p>
                  <p>Semantic Tags Detected: ${semanticScore}</p>
                  <p>Aria Labels Detected: ${ariaLabels}</p>

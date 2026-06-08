@@ -47,6 +47,7 @@ export const Header = () => {
           <a href="#oss" style={{ fontWeight: 600, fontSize: '14px', color: 'var(--text-secondary)' }}>Open Source</a>
           <a href="#benchmark" style={{ fontWeight: 600, fontSize: '14px', color: 'var(--text-secondary)' }}>Benchmark</a>
           <a href="#services" style={{ fontWeight: 600, fontSize: '14px', color: 'var(--text-secondary)' }}>Services</a>
+          <a href="https://saas-dashboard.cyberskill.world" target="_blank" rel="noreferrer" style={{ fontWeight: 600, fontSize: '14px', color: 'var(--accent)' }}>Dashboard</a>
           
           <button onClick={toggleTheme} style={{
             background: 'transparent', border: 'none', cursor: 'pointer', color: 'var(--text-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center'

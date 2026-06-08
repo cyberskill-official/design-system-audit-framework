@@ -10,8 +10,6 @@ export const MiniAudit = () => {
   const [score, setScore] = useState<number>(62);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [logIndex, setLogIndex] = useState(0);
-
   const logs = [
     "Initializing DSAF headless scanner...",
     "Fetching DOM and CSSOM...",
@@ -22,12 +20,14 @@ export const MiniAudit = () => {
     "Finalizing maturity score calculation..."
   ];
 
+  const logIndex = Math.min(Math.floor((progress / 100) * logs.length), logs.length - 1);
+
   const handleStartScan = (e: React.FormEvent) => {
     e.preventDefault();
     if (!url) return;
     setScanState('scanning');
     setProgress(0);
-    setLogIndex(0);
+
   };
 
   const handleCaptureLead = async (e: React.FormEvent) => {
@@ -56,7 +56,7 @@ export const MiniAudit = () => {
         }
         setScanState('done');
       } else {
-        console.error('Failed to trigger scan');
+        console.error('DSAF scan failed:', res.status, res.statusText);
         setScanState('done');
       }
     } catch (err) {
@@ -78,15 +78,11 @@ export const MiniAudit = () => {
           }
           return prev + 2;
         });
-        
-        setLogIndex(() => {
-          const nextIdx = Math.floor((progress / 100) * logs.length);
-          return Math.min(nextIdx, logs.length - 1);
-        });
+
       }, 50);
       return () => clearInterval(interval);
     }
-  }, [scanState, progress, logs.length]);
+  }, [scanState]);
 
   return (
     <section id="mini-audit" style={{ padding: '40px 0 80px', position: 'relative', zIndex: 10 }}>

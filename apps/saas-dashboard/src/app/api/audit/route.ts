@@ -27,10 +27,10 @@ async function generateAIResponse(provider: string, modelName: string, apiKey: s
       headers: {
         'Content-Type': 'application/json',
         'x-api-key': apiKey,
-        'anthropic-version': '2023-06-01'
+        'anthropic-version': '2024-10-22'
       },
       body: JSON.stringify({
-        model: modelName || 'claude-3-5-sonnet-20241022',
+        model: modelName || 'claude-sonnet-4-20250514',
         max_tokens: 4096,
         system: systemPrompt,
         messages: [{ role: 'user', content: userPrompt }]

@@ -22,8 +22,8 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '../..');
-const FRAMEWORK_DIR = resolve(ROOT, 'framework');
-const GUIDELINES_DIR = resolve(ROOT, 'guidelines');
+const FRAMEWORK_DIR = resolve(ROOT, 'docs/framework');
+const GUIDELINES_DIR = resolve(ROOT, 'docs/guidelines');
 const RFCS = resolve(ROOT, 'docs/internal/rfcs');
 const OUT_JSON = resolve(ROOT, 'docs/outputs/_audit/doc-freshness.json');
 const OUT_MD = resolve(ROOT, 'docs/outputs/_audit/doc-freshness.md');

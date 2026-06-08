@@ -111,7 +111,7 @@ export default function DashboardPage() {
           </select>
           <input 
             type="text" 
-            placeholder="Custom Base URL (Optional, e.g. https://token-plan-sgp.xiaomimimo.com/v1)" 
+            placeholder="Custom Base URL (Optional, e.g. https://api.example.com/v1)" 
             value={baseUrl}
             onChange={e => setBaseUrl(e.target.value)}
             style={{ width: '100%', padding: '12px 16px', borderRadius: '8px', border: '1px solid var(--border-color)', background: 'var(--bg-color)', color: 'var(--text-primary)' }}

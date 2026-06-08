@@ -46,7 +46,7 @@ export function normalizeRunnerResult(result) {
 }
 
 export function runDsafChecks({ cwd = repoRoot, timeout = 30000, maxBuffer = 1024 * 1024 } = {}) {
-  const runner = resolve(repoRoot, "framework/scripts", "storybook-addon-runner.mjs");
+  const runner = resolve(repoRoot, "scripts/bin", "storybook-addon-runner.mjs");
   const result = spawnSync(process.execPath, [runner], {
     cwd,
     encoding: "utf8",

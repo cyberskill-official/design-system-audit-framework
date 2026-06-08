@@ -117,7 +117,7 @@ test("reports unsupported external refs as unresolved", () => {
   assert.equal(result.checks["A1.8"].score, 0);
 });
 
-test("runCli reports malformed JSON without throwing", () => {
+test("runCli reports malformed JSON without throwing", async () => {
   const root = mkdtempSync(join(tmpdir(), "dsaf-tokens-"));
   const input = join(root, "bad.tokens.json");
   const errors = [];
@@ -126,7 +126,7 @@ test("runCli reports malformed JSON without throwing", () => {
   console.error = (message) => errors.push(message);
 
   try {
-    assert.equal(runCli([input]), 1);
+    assert.equal(await runCli([input]), 1);
   } finally {
     console.error = originalError;
   }
