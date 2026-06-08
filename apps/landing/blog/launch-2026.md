@@ -8,6 +8,8 @@ og_image: "https://audit.cyberskill.world/assets/og/launch-2026-1200x630.png"
 
 # We built DSAF because design-system audits kept becoming taste arguments
 
+**Show HN discussion link: pending operator submission.**
+
 Welcome to the 125-criterion toolkit that finally brings objectivity to design system evaluations. The geography headwind is real when distributing design knowledge, but we hope this framework helps everyone.
 
 ## What DSAF is
