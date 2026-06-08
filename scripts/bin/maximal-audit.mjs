@@ -1,14 +1,61 @@
 #!/usr/bin/env node
+// @ts-check
 import fs, { existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
 import { basename, dirname, extname, join, resolve, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parseArgs } from "node:util";
+import { execSync } from "node:child_process";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const TEXT_EXT = new Set([".md", ".mdx", ".txt", ".json", ".js", ".mjs", ".ts", ".tsx", ".html", ".css", ".yml", ".yaml"]);
 const SKIP_DIRS = new Set([".git", "node_modules", "dist", "coverage", ".next", ".vercel", ".cyberos-memory"]);
 const MAX_TEXT = 180000;
 const CRITERIA_FILES = ["docs/framework/03-full-criteria.md"];
+
+/**
+ * @typedef {Object} DsafCriterion
+ * @property {string} id
+ * @property {string} criterion
+ * @property {string} tag
+ * @property {string} category
+ * @property {string} source
+ * @property {string[]} refs
+ * @property {string} [type]
+ * @property {number} [score]
+ * @property {string} [level]
+ * @property {string} [confidence]
+ * @property {string} [evidence]
+ * @property {string[]} [missing]
+ * @property {string} [missingSignals]
+ * @property {string} [suggestion]
+ * @property {string} [requiredProof]
+ * @property {string} [acceptanceGate]
+ * @property {string} [outputAction]
+ * @property {string[]} [keywords]
+ */
+
+/**
+ * @typedef {Object} SourcePage
+ * @property {string} url
+ * @property {boolean} ok
+ * @property {number} status
+ * @property {string} title
+ * @property {string} html
+ * @property {string} text
+ */
+
+/**
+ * @typedef {Object} AuditSource
+ * @property {"url"|"file"} kind
+ * @property {string} input
+ * @property {string} title
+ * @property {SourcePage[]} pages
+ * @property {string[]} files
+ * @property {string} text
+ * @property {string} fullText
+ * @property {string} [primary]
+ * @property {string} [primaryText]
+ */
 
 const EVIDENCE_SOURCES = [
   ["DSAF-A", "DSAF Part A criteria", "local source", "docs/framework/03-criteria-part-a.md", "2026-05-24", "A"],
@@ -33,8 +80,7 @@ const EVIDENCE_SOURCES = [
   ["WSG", "Web Sustainability Guidelines", "official guideline", "https://w3c.github.io/sustainableweb-wsg/", "2026-05-24", "B"]
 ];
 
-
-
+/** @returns {string} */
 function usage() {
   return [
     "Usage: node scripts/maximal-audit.mjs --input <DESIGN.md|url> --out <dir> [--mode analyze|improve|both] [--model <id>] [--max-pages 8]",
@@ -45,7 +91,9 @@ function usage() {
   ].join("\n");
 }
 
+/** @returns {DsafCriterion[]} */
 function loadDsafCriteria() {
+  /** @type {DsafCriterion[]} */
   const rows = [];
   for (const file of CRITERIA_FILES) {
     const source = safeRead(resolve(ROOT, file));
@@ -53,7 +101,7 @@ function loadDsafCriteria() {
     for (const line of source.split(/\r?\n/)) {
       const categoryMatch = /^##\s+([AB]\.\d+\s+—\s+.+)$/.exec(line);
       if (categoryMatch) category = categoryMatch[1];
-      const cells = line.split("|").map((cell) => cell.trim());
+      const cells = line.split("|").map((/** @type {string} */ cell) => cell.trim());
       const rowMatch = /^([AB]\d+\.\d+)$/.exec(cells[1] ?? "");
       if (!rowMatch) continue;
       rows.push({
@@ -69,14 +117,15 @@ function loadDsafCriteria() {
   return rows;
 }
 
+/**
+ * @param {string} text
+ * @returns {"MANUAL"|"AUTO"}
+ */
 function inferType(text) {
   return /manual|counsel|lawyer|legal review|independent|third-party|external|customer|community|pilot|production|telemetry|sign-off|executive|human|research|interview|workshop|designer workflow|assistive|nvda|jaws|voiceover|talkback|calibration|evaluator/i.test(text)
     ? "MANUAL"
     : "AUTO";
 }
-
-
-
 
 const DSAF_CRITERIA = loadDsafCriteria().map((item) => ({
   ...item,
@@ -85,14 +134,22 @@ const DSAF_CRITERIA = loadDsafCriteria().map((item) => ({
 }));
 const ALL_CRITERIA = [...DSAF_CRITERIA];
 
+/**
+ * @param {string} criterion
+ * @returns {string[]}
+ */
 function keywordsForCriterion(criterion) {
   const text = criterion
     .toLowerCase()
     .replace(/[`*_()[\]/.,:;→+&%"'-]/g, " ")
     .replace(/\b(the|and|or|with|for|per|into|itself|class|style|like|etc|all|one|some|none)\b/g, " ");
-  return [...new Set(text.split(/\s+/).filter((word) => word.length >= 4))].slice(0, 8);
+  return [...new Set(text.split(/\s+/).filter((/** @type {string} */ word) => word.length >= 4))].slice(0, 8);
 }
 
+/**
+ * @param {string} path
+ * @returns {string}
+ */
 function safeRead(path) {
   try {
     return readFileSync(path, "utf8");
@@ -101,6 +158,10 @@ function safeRead(path) {
   }
 }
 
+/**
+ * @param {string} html
+ * @returns {string}
+ */
 function stripHtml(html) {
   return html
     .replace(/<script[\s\S]*?<\/script>/gi, " ")
@@ -116,11 +177,21 @@ function stripHtml(html) {
     .trim();
 }
 
+/**
+ * @param {string} html
+ * @param {string} fallback
+ * @returns {string}
+ */
 function extractTitle(html, fallback) {
   const match = /<title[^>]*>([\s\S]*?)<\/title>/i.exec(html);
   return stripHtml(match?.[1] ?? fallback);
 }
 
+/**
+ * @param {string} html
+ * @param {string} baseUrl
+ * @returns {string[]}
+ */
 function extractLinks(html, baseUrl) {
   const links = [];
   const base = new URL(baseUrl);
@@ -142,6 +213,10 @@ function extractLinks(html, baseUrl) {
   return [...new Set(links)];
 }
 
+/**
+ * @param {string} url
+ * @returns {Promise<SourcePage>}
+ */
 async function fetchPage(url) {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 12000);
@@ -162,8 +237,15 @@ async function fetchPage(url) {
   }
 }
 
+/**
+ * @param {string} root
+ * @param {number} [limit=400]
+ * @returns {string[]}
+ */
 function walkLocalFiles(root, limit = 400) {
+  /** @type {string[]} */
   const files = [];
+  /** @param {string} dir */
   function walk(dir) {
     if (files.length >= limit) return;
     for (const entry of readdirSync(dir)) {
@@ -180,6 +262,12 @@ function walkLocalFiles(root, limit = 400) {
   return files;
 }
 
+/**
+ * @param {string} input
+ * @param {number} maxPages
+ * @param {string} outDir
+ * @returns {Promise<AuditSource>}
+ */
 async function loadInput(input, maxPages, outDir) {
   const fixturesDir = join(outDir, "input-fixtures");
   
@@ -202,6 +290,7 @@ async function loadInput(input, maxPages, outDir) {
     mkdirSync(fixturesDir, { recursive: true });
     const seen = new Set();
     const queue = [input];
+    /** @type {SourcePage[]} */
     const pages = [];
     let pageIndex = 1;
     while (queue.length && pages.length < maxPages) {
@@ -259,18 +348,27 @@ async function loadInput(input, maxPages, outDir) {
   };
 }
 
+/**
+ * @param {string} text
+ * @param {string[]} needles
+ * @returns {number}
+ */
 function countHits(text, needles) {
   const lower = text.toLowerCase();
   return needles.reduce((sum, needle) => sum + (lower.includes(needle.toLowerCase()) ? 1 : 0), 0);
 }
 
+/**
+ * @param {AuditSource} source
+ * @returns {DsafCriterion[]}
+ */
 function scoreCriteria(source) {
   const text = source.text.toLowerCase();
   return ALL_CRITERIA.map((item) => {
     const keywords = item.keywords ?? keywordsForCriterion(`${item.category} ${item.criterion}`);
-    const hits = keywords.filter((keyword) => text.includes(keyword));
+    const hits = keywords.filter((/** @type {string} */ keyword) => text.includes(keyword));
     const score = keywords.length ? Math.round((hits.length / keywords.length) * 100) : 0;
-    const missing = keywords.filter((keyword) => !hits.includes(keyword));
+    const missing = keywords.filter((/** @type {string} */ keyword) => !hits.includes(keyword));
     const sourceScope = source.kind === "url" ? `${source.pages.length} crawled page(s)` : `${source.files.length} scanned file(s)`;
     const type = item.type ?? inferType(`${item.category} ${item.criterion}`);
     const evidence = hits.length
@@ -291,7 +389,7 @@ function scoreCriteria(source) {
       : type === "MANUAL"
         ? "Manual evidence backlog"
         : "Apply to improved doctrine";
-    const confidence = source.kind === "url" && source.pages.some((page) => !page.ok)
+    const confidence = source.kind === "url" && source.pages.some((/** @type {SourcePage} */ page) => !page.ok)
       ? "Medium-Low"
       : score === 0
         ? "Medium"
@@ -314,6 +412,10 @@ function scoreCriteria(source) {
   });
 }
 
+/**
+ * @param {number} scorePct
+ * @returns {string}
+ */
 function level(scorePct) {
   if (scorePct >= 90) return "L5";
   if (scorePct >= 75) return "L4";
@@ -323,10 +425,18 @@ function level(scorePct) {
   return "L0";
 }
 
+/**
+ * @param {string[]} rows
+ * @returns {string}
+ */
 function markdownTable(rows) {
   return rows.join("\n");
 }
 
+/**
+ * @param {any} value
+ * @returns {string}
+ */
 function escapeCell(value) {
   return String(value ?? "")
     .replace(/\r?\n/g, " ")
@@ -335,35 +445,53 @@ function escapeCell(value) {
     .trim();
 }
 
+/**
+ * @param {DsafCriterion[]} criteria
+ * @returns {number}
+ */
 function averageScore(criteria) {
-  return Math.round(criteria.reduce((sum, item) => sum + item.score, 0) / Math.max(1, criteria.length));
+  return Math.round(criteria.reduce((sum, item) => sum + (item.score || 0), 0) / Math.max(1, criteria.length));
 }
 
+/**
+ * @param {DsafCriterion[]} criteria
+ * @returns {string}
+ */
 function renderCriteria(criteria) {
+  /** @type {Map<string, DsafCriterion[]>} */
   const byCategory = new Map();
   for (const item of criteria) {
     if (!byCategory.has(item.category)) byCategory.set(item.category, []);
-    byCategory.get(item.category).push(item);
+    byCategory.get(item.category)?.push(item);
   }
   return [...byCategory.entries()].map(([category, rows]) => `### ${category}
 
 | ID | Type | Category | Criterion | Score | Level | Confidence | Evidence found | Missing signals | Citation refs | Required proof | Suggested improvement | Acceptance gate | Output action |
 |---|---|---|---|---:|---|---|---|---|---|---|---|---|---|
-${rows.map((item) => `| ${item.id} | ${item.type} | ${escapeCell(item.category)} | ${escapeCell(item.criterion)} | ${item.score} / 100 | ${item.level} | ${item.confidence} | ${escapeCell(item.evidence)} | ${escapeCell(item.missingSignals)} | ${item.refs.map((ref) => `[${ref}]`).join(", ")} | ${escapeCell(item.requiredProof)} | ${escapeCell(item.suggestion)} | ${escapeCell(item.acceptanceGate)} | ${escapeCell(item.outputAction)} |`).join("\n")}`).join("\n\n");
+${rows.map((item) => `| ${item.id} | ${item.type} | ${escapeCell(item.category)} | ${escapeCell(item.criterion)} | ${item.score} / 100 | ${item.level} | ${item.confidence} | ${escapeCell(item.evidence)} | ${escapeCell(item.missingSignals)} | ${item.refs.map((/** @type {string} */ ref) => `[${ref}]`).join(", ")} | ${escapeCell(item.requiredProof)} | ${escapeCell(item.suggestion)} | ${escapeCell(item.acceptanceGate)} | ${escapeCell(item.outputAction)} |`).join("\n")}`).join("\n\n");
 }
 
+/**
+ * @returns {string}
+ */
 function renderSourceReferences() {
   return `| Ref | Source | Type | URL/path | Fetched | Confidence |
 |---|---|---|---|---|---|
 ${EVIDENCE_SOURCES.map(([id, label, type, url, fetched, confidence]) => `| [${id}] | ${escapeCell(label)} | ${escapeCell(type)} | ${escapeCell(url)} | ${fetched} | ${confidence} |`).join("\n")}`;
 }
 
+/**
+ * @param {AuditSource} source
+ * @param {DsafCriterion[]} criteria
+ * @param {string} model
+ * @returns {string}
+ */
 function renderReport(source, criteria, model) {
   const autoCriteria = criteria.filter((item) => item.type === "AUTO");
   const manualCriteria = criteria.filter((item) => item.type === "MANUAL");
-  const gaps = criteria.filter((item) => item.score < 100);
-  const autoGaps = autoCriteria.filter((item) => item.score < 100);
-  const manualGaps = manualCriteria.filter((item) => item.score < 100);
+  const gaps = criteria.filter((item) => (item.score || 0) < 100);
+  const autoGaps = autoCriteria.filter((item) => (item.score || 0) < 100);
+  const manualGaps = manualCriteria.filter((item) => (item.score || 0) < 100);
   const combined = averageScore(criteria);
   const autoAverage = averageScore(autoCriteria);
   const manualAverage = averageScore(manualCriteria);
@@ -436,13 +564,22 @@ This run produced:
 `;
 }
 
+/**
+ * @param {DsafCriterion[]} items
+ * @returns {string}
+ */
 function doctrineRequirementRows(items) {
   return items.map((item, index) => `| R${index + 1} | ${item.id} | ${escapeCell(item.category)} | ${escapeCell(item.criterion)} | ${escapeCell(item.suggestion)} | ${escapeCell(item.acceptanceGate)} |`).join("\n");
 }
 
+/**
+ * @param {AuditSource} source
+ * @param {DsafCriterion[]} criteria
+ * @returns {string}
+ */
 function renderImprovedDesign(source, criteria) {
-  const autoFindings = criteria.filter((item) => item.score < 100 && item.type === "AUTO");
-  const manualFindings = criteria.filter((item) => item.score < 100 && item.type === "MANUAL");
+  const autoFindings = criteria.filter((item) => (item.score || 0) < 100 && item.type === "AUTO");
+  const manualFindings = criteria.filter((item) => (item.score || 0) < 100 && item.type === "MANUAL");
   const fullSource = source.kind === "file"
     ? (source.fullText || source.primaryText || source.text)
     : (source.fullText || source.text);
@@ -470,7 +607,7 @@ Every design-system rule must map to a criterion row with a declared \`AUTO\` or
 
 | Row | Criterion ID | Area | Requirement | Doctrine addition | Acceptance gate |
 |---|---|---|---|---|---|
-${doctrineRequirementRows(autoFindings.length ? autoFindings : [{ id: "AUTO-FRESHNESS", category: "Freshness", criterion: "Preserve existing automatable coverage.", suggestion: "Refresh source doctrine and generated artifacts after each material change.", acceptanceGate: "Pass when the report and improved doctrine are regenerated and verified." }])}
+${doctrineRequirementRows(autoFindings.length ? autoFindings : [{ id: "AUTO-FRESHNESS", category: "Freshness", criterion: "Preserve existing automatable coverage.", tag: "", source: "", refs: [], suggestion: "Refresh source doctrine and generated artifacts after each material change.", acceptanceGate: "Pass when the report and improved doctrine are regenerated and verified." }])}
 
 ## Manual Evidence Boundaries
 
@@ -494,6 +631,10 @@ ${fullSource}
 `;
 }
 
+/**
+ * @param {string} md
+ * @returns {string}
+ */
 function mdToHtml(md) {
   let html = md;
   html = html.replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>');
@@ -509,7 +650,7 @@ function mdToHtml(md) {
   html = html.replace(/^\|(.*)\|$/gm, function(match, inner) {
     const isDivider = inner.replace(/\|/g, "").replace(/-/g, "").replace(/:/g, "").trim().length === 0;
     if (isDivider) return '<tr data-divider="true"></tr>';
-    const cells = inner.split(/(?<!\\)\|/).map(s => s.trim().replace(/\\\|/g, '|'));
+    const cells = inner.split(/(?<!\\)\|/).map((/** @type {string} */ s) => s.trim().replace(/\\\|/g, '|'));
     return '<tr><td>' + cells.join('</td><td>') + '</td></tr>';
   });
   html = html.replace(/<tr data-divider="true"><\/tr>\n?/g, '');
@@ -529,12 +670,23 @@ function mdToHtml(md) {
   return html;
 }
 
+/**
+ * @typedef {Object} MaximalAuditOptions
+ * @property {string} input
+ * @property {string} outDir
+ * @property {string} [mode]
+ * @property {string} [model]
+ * @property {number} [maxPages]
+ */
+
+/**
+ * @param {MaximalAuditOptions} param0
+ */
 export async function runMaximalAudit({ input, outDir, mode = "both", model = "auto-detected-current-agent", maxPages = 8 }) {
   const source = await loadInput(input, maxPages, outDir);
   const criteria = scoreCriteria(source);
   mkdirSync(outDir, { recursive: true });
 
-  
   const reportPath = join(outDir, "ANALYZED_DESIGN_REPORT.md");
   const reportHtmlPath = join(outDir, "ANALYZED_DESIGN_REPORT.html");
   const improvedDir = join(outDir, "output-improved");
@@ -544,8 +696,8 @@ export async function runMaximalAudit({ input, outDir, mode = "both", model = "a
   mkdirSync(artifactsDir, { recursive: true });
   mkdirSync(fixturesDir, { recursive: true });
   const improvedPath = join(improvedDir, "IMPROVED_DESIGN.md");
+  
   if (mode === "analyze" || mode === "both") {
-
     const reportMd = renderReport(source, criteria, model);
     writeFileSync(reportPath, reportMd, "utf8");
     
@@ -598,7 +750,6 @@ export async function runMaximalAudit({ input, outDir, mode = "both", model = "a
     writeFileSync(join(artifactsDir, "components-stub.js"), mockJs, "utf8");
   }
 
-
   return {
     input,
     outDir,
@@ -628,21 +779,33 @@ async function main() {
     console.log(usage());
     process.exit(parsed.values.help ? 0 : 2);
   }
-  const mode = parsed.values.mode;
+  const mode = String(parsed.values.mode);
   if (!["analyze", "improve", "both"].includes(mode)) throw new Error(`Invalid --mode: ${mode}`);
   const result = await runMaximalAudit({
-    input: parsed.values.input,
-    outDir: resolve(parsed.values.out),
+    input: String(parsed.values.input),
+    outDir: resolve(String(parsed.values.out)),
     mode,
-    model: parsed.values.model,
+    model: String(parsed.values.model),
     maxPages: Number(parsed.values["max-pages"]) || 8
   });
   console.log(JSON.stringify(result, null, 2));
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
+  // Enhanced error boundary logic
+  process.on('uncaughtException', (/** @type {Error} */ err) => {
+    console.error(`[maximal-audit:CRITICAL] Uncaught Exception:`, err.message);
+    if (err.stack) console.error(err.stack);
+    process.exit(1);
+  });
+
+  process.on('unhandledRejection', (/** @type {any} */ reason) => {
+    console.error(`[maximal-audit:CRITICAL] Unhandled Rejection:`, reason);
+    process.exit(1);
+  });
+
   main().catch((error) => {
-    console.error(`[maximal-audit] ${error instanceof Error ? error.stack || error.message : String(error)}`);
+    console.error(`[maximal-audit:ERROR] ${error instanceof Error ? error.stack || error.message : String(error)}`);
     process.exit(1);
   });
 }
