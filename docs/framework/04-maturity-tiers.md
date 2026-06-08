@@ -3,6 +3,7 @@
 DSAF reports a single **combined score** (Part A and Part B averaged) and maps it to a **DSAF Level** from L0 to L5. The L0–L5 tier names borrow from CMM and ITIL, with criteria specific to design systems.
 
 ![DSAF L0-L5 Maturity Ladder](./assets/dsaf-l0-l5-ladder.svg)
+<!-- Path: docs/framework/assets/dsaf-l0-l5-ladder.svg -->
 
 ---
 
