@@ -48,5 +48,8 @@
     "integ:zeroheight": "node scripts/bin/zeroheight-reader.mjs",
     "verify": "node scripts/bin/dsaf-verify.mjs",
     "test:newsletter-contract": "node --test scripts/test/check-newsletter-contract.test.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.2"
   }
 }

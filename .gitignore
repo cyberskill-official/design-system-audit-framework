@@ -52,6 +52,19 @@ patch-contracts.cjs
 .code-review-graph/
 .playwright-cli/
 
+# AI-generated temporary benchmark scripts and outputs
+benchmark-*.js
+benchmark-*.mjs
+benchmark-*.cjs
+benchmark-*.ts
+*bench*.mjs
+*bench*.cjs
+temp-*.js
+temp-*.mjs
+temp-*.cjs
+temp-*.ts
+scratch/
+
 # Workspace dist folders (build artifacts)
 packages/cli/dist/
 packages/figma-plugin/dist/
