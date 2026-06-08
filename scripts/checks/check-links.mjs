@@ -32,6 +32,7 @@ function walkMarkdown(dir, out = []) {
     const rel = relative(ROOT, p);
     if (stat.isDirectory()) {
       if (rel === "docs/internal/feature-requests") continue;
+      if (rel === "docs/outputs" || rel.startsWith("docs/outputs/")) continue;
       walkMarkdown(p, out);
     }
     else if (entry.endsWith(".md") && entry !== "AGENTS.md") out.push(p);

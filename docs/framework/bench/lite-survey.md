@@ -6,7 +6,7 @@
 ## Purpose
 
 The lite benchmark lets a team compare its DSAF-25 score to anonymous peers without collecting unnecessary personal data.
-The shipped implementation lives at [`landing/benchmark/index.html`](../../internal/landing/benchmark/index.html).
+The shipped implementation lives at [`landing/benchmark/index.html`](../../../apps/landing/benchmark/index.html).
 
 ## Data contract
 

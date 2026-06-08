@@ -109,7 +109,7 @@ A system can have *everything else* at L5 and still cap at ~88% because it lacks
 
 ## §5 DSAF Level transitions and the no-silent-regression rule
 
-DSAF's no-silent-regression rule (per [`02-framework.md`](./02-framework.md) §4) means every regression in a signed audit is surfaced with a cause, tag, and approval path. **The DSAF Level might still change** if you cross a threshold downward via a DYNAMIC rubric tightening.
+DSAF's no-silent-regression rule (per [`02-framework.md`](./01-framework-overview.md) §4) means every regression in a signed audit is surfaced with a cause, tag, and approval path. **The DSAF Level might still change** if you cross a threshold downward via a DYNAMIC rubric tightening.
 
 Example: at audit N, your `A.8` was at 76% (above the enterprise floor of 75%). At audit N+1, the WCAG 3.0 floor moved up and `A8.6` re-scored from 5 to 4; your `A.8` category drops to 74% and the row is tagged `D-RT`. **Combined score may still rise** because other categories improved. **But** you are no longer enterprise-grade because of the threshold breach.
 

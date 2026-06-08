@@ -164,6 +164,6 @@ The public privacy page must state:
 - Deletion contact.
 - No paid-funnel use.
 
-Current implementation: [`landing/benchmark/privacy/index.html`](../../internal/landing/benchmark/privacy/index.html).
+Current implementation: [`landing/benchmark/privacy/index.html`](../../../apps/landing/benchmark/privacy/index.html).
 
 *End of lite benchmark specification.*

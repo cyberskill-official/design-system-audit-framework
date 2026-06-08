@@ -4,7 +4,7 @@
 **FR:** FR-INTEG-001.  
 **Package:** `@dsaf/storybook-addon`
 
-The addon package lives in [`../../packages/storybook-addon`](../packages/storybook-addon). It exposes a runner bridge, scoring model, panel renderer, Storybook preset hooks, tests, and a CI workflow.
+The addon package lives in [`../../../../packages/storybook-addon`](../../../packages/storybook-addon). It exposes a runner bridge, scoring model, panel renderer, Storybook preset hooks, tests, and a CI workflow.
 
 ## Install
 
@@ -23,7 +23,7 @@ export default {
 
 ## What It Runs
 
-The addon uses the CLI runner [`../../scripts/bin/storybook-addon-runner.mjs`](../scripts/bin/storybook-addon-runner.mjs) for standalone mode.
+The addon uses the CLI runner [`../../../../scripts/bin/storybook-addon-runner.mjs`](../../../scripts/bin/storybook-addon-runner.mjs) for standalone mode.
 
 - `check-coverage.mjs`
 - `check-apca.mjs`

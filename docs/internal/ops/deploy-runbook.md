@@ -2,7 +2,7 @@
 
 **Status:** operational.
 **Canonical host:** `https://audit.cyberskill.world/` (Vercel).
-**Source folder:** [`landing/`](../landing).
+**Source folder:** [`landing/`](../../../apps/landing).
 
 ## §1 — What's live
 

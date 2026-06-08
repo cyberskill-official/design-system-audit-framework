@@ -21,7 +21,7 @@
 - **FIXED** — a criterion whose rubric is anchored against an objective state of the world; subject to the no-silent-regression rule (FR-CORE-002). FIXED regressions always require an override or rollback.
 - **DYNAMIC** — a criterion whose rubric is anchored against an evolving industry standard (WCAG version, DTCG schema, MCP spec); rescored quarterly even when the system doesn't change.
 - **Confidence** — `Hi` / `Med` / `Lo` rating on every score. More than 25% `Lo` confidence triggers a refusal to ship the audit.
-- **No-silent-regression rule** — the integrity rule ratified by FR-CORE-002. A FIXED criterion can regress, but only with an explicit override comment naming the cause; silent regression is detected and refused. Long-form: [`docs/regression-policy.md`](../../framework/regression-policy.md).
+- **No-silent-regression rule** — the integrity rule ratified by FR-CORE-002. A FIXED criterion can regress, but only with an explicit override comment naming the cause; silent regression is detected and refused. Long-form: [`docs/regression-policy.md`](../../framework/05-regression-policy.md).
 - **Enterprise-grade** — a system passing every floor in the enterprise-grade-threshold table (combined ≥ 65%, A.8 ≥ 75%, B.5 ≥ 75%, A.1 ≥ 70%, A.4 ≥ 60%, A.3 ≥ 65%, no category < 40%).
 
 ## Actor terms

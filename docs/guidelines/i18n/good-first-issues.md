@@ -9,7 +9,7 @@
 Translate:
 
 1. [`framework/dsaf-25.md`](../../framework/dsaf-25.md)
-2. the first 200 words of [`README.md`](../../README.md)
+2. the first 200 words of [`README.md`](../../../README.md)
 
 Accepted translations will land under:
 

@@ -66,7 +66,7 @@ Each prompt is ~1500–2500 tokens. They fit comfortably in any modern model's c
 
 ### Refusal modes
 
-Each prompt declares hard rules the agent must refuse to violate (per [`02-framework.md`](../framework/02-framework.md) §7). Examples:
+Each prompt declares hard rules the agent must refuse to violate (per [`02-framework.md`](../framework/01-framework-overview.md) §7). Examples:
 
 - The SCAN-mode prompt refuses if > 25% of criteria would score `Lo` confidence.
 - The FIX-mode prompt refuses if §4 approvals are missing.

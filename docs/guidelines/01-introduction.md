@@ -62,12 +62,12 @@ These assume you have an LLM agent helping. Without one: roughly 3× longer.
 
 ## Reading order if you're new
 
-1. [`README.md`](../README.md) — start here: what DSAF is, the visuals, Quick Start, local run, audit, fine-tuning, verification, and deploy strategy.
+1. [`README.md`](../../README.md) — start here: what DSAF is, the visuals, Quick Start, local run, audit, fine-tuning, verification, and deploy strategy.
 2. This file (you're here).
-3. [`02-framework.md`](../framework/02-framework.md) — modes, actors, scoring, no-silent-regression rule.
+3. [`02-framework.md`](../framework/01-framework-overview.md) — modes, actors, scoring, no-silent-regression rule.
 4. [`dsaf-25.md`](../framework/dsaf-25.md) — skim the 25-row Core before reading the full rubric.
 5. [`05-running-an-audit.md`](./05-running-an-audit.md) — step-by-step playbook.
-6. [`07-maturity-tiers.md`](../framework/07-maturity-tiers.md) — what each tier means.
+6. [`07-maturity-tiers.md`](../framework/04-maturity-tiers.md) — what each tier means.
 7. [`prompts/scan-mode.md`](./prompts/scan-mode.md) — paste this into your LLM and run your first SCAN.
 
 For the criteria themselves: [`03-criteria-part-a.md`](../framework/03-criteria-part-a.md) (system) and [`04-criteria-part-b.md`](../framework/04-criteria-part-b.md) (UX).

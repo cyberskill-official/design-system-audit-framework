@@ -70,7 +70,7 @@ The glossary at [`internal/branding/glossary.md`](../internal/branding/glossary.
 DSAF is maintained by Stephen Cheng and CyberSkill as the original authoring practice.
 The co-maintainer role charter lives at [`internal/governance/co-maintainer-charter.md`](../internal/governance/co-maintainer-charter.md).
 Candidates are not publicly attributed before written acceptance and co-signed announcement.
-The public maintainer list in [`README.md`](../README.md) includes the open co-maintainer seat until acceptance.
+The public maintainer list in [`README.md`](../../README.md) includes the open co-maintainer seat until acceptance.
 Post-acceptance, update README, this file, the announcement post, and GitHub access in that order.
 
 ## Governance

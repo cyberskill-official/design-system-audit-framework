@@ -119,7 +119,7 @@ The audit's stability guarantee. Regressions are not forbidden; they are surface
 
 **Statement.** When a criterion's post-audit score is below its pre-audit score, the audit surfaces the regression in §7 Verification with the criterion ID, pre- and post-audit scores, regression magnitude, cause category, and an explicit `@Human[approve]` override comment or a rollback decision. The audit refuses to transition from `RE_AUDIT` to `SIGNED` until the override lands or the regressing fix is rolled back.
 
-**Cause categories.** Every override uses one of: `rubric-tightened` (DYNAMIC only), `fix-side-effect`, `external-dependency-change`, or `deliberate-policy-tradeoff`. See [`regression-policy.md`](./regression-policy.md) for the long-form policy and examples.
+**Cause categories.** Every override uses one of: `rubric-tightened` (DYNAMIC only), `fix-side-effect`, `external-dependency-change`, or `deliberate-policy-tradeoff`. See [`regression-policy.md`](./05-regression-policy.md) for the long-form policy and examples.
 
 **Why it's hard.** Without this rule, a `FIX` cycle that "improves five things and regresses two" can still net positive on combined score, masking the regressions. The no-silent-regression rule preserves the audit trail: every drop has a cause, a tag, and a human decision.
 

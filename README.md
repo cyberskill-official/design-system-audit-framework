@@ -32,10 +32,10 @@ Open [docs/guidelines/prompts/scan-mode.md](docs/guidelines/prompts/scan-mode.md
 | # | Document | Purpose |
 |---|----------|---------|
 | 1 | [Introduction](docs/guidelines/01-introduction.md) | What DSAF is, who it is for, and what you will produce |
-| 2 | [Framework](docs/framework/02-framework.md) | DSAF Modes (SCAN/FIX modes), actors, scoring, the no-silent-regression rule |
+| 2 | [Framework](docs/framework/01-framework-overview.md) | DSAF Modes (SCAN/FIX modes), actors, scoring, the no-silent-regression rule |
 | 3 | [DSAF-25 Core](docs/framework/dsaf-25.md) | The 25-row quick rubric — start here before the full 125 |
 | 4 | [Running an Audit](docs/guidelines/05-running-an-audit.md) | Step-by-step playbook for your first audit |
-| 5 | [Maturity Tiers](docs/framework/07-maturity-tiers.md) | What each DSAF Levels tier means (L0–L5) |
+| 5 | [Maturity Tiers](docs/framework/04-maturity-tiers.md) | What each DSAF Levels tier means (L0–L5) |
 | 6 | [Scan Mode Prompt](docs/guidelines/prompts/scan-mode.md) | Paste this prompt into your LLM agent to run a SCAN |
 | 7 | [Improvement Plan](docs/guidelines/08-improvement-plan.md) | Turn audit findings into a phased improvement roadmap |
 
