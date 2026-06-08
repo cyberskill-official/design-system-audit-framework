@@ -102,15 +102,15 @@
     "expected_rows": 7,
     "required_links": [
       "docs/guidelines/01-introduction.md",
-      "docs/framework/02-framework.md",
+      "docs/framework/01-framework-overview.md",
       "docs/framework/dsaf-25.md",
       "docs/guidelines/05-running-an-audit.md",
-      "docs/framework/07-maturity-tiers.md",
+      "docs/framework/04-maturity-tiers.md",
       "docs/guidelines/prompts/scan-mode.md",
       "docs/guidelines/08-improvement-plan.md"
     ],
     "intro_required": [
-      "[`README.md`](../README.md) — start here",
+      "[`README.md`](../../README.md) — start here",
       "[`dsaf-25.md`](../framework/dsaf-25.md)",
       "[`prompts/scan-mode.md`](./prompts/scan-mode.md)"
     ]
