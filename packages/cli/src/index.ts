@@ -17,7 +17,23 @@ program
   .description('CyberSkill Design System Audit Framework CLI')
   .version('1.0.0');
 
-async function generateAIResponse(provider: string, modelName: string, apiKey: string, baseUrl: string | undefined, systemPrompt: string, userPrompt: string, history: any[] = []): Promise<string> {
+async function withRetry<T>(fn: () => Promise<T>, maxRetries = 3): Promise<T> {
+  let attempt = 0;
+  while (attempt < maxRetries) {
+    try {
+      return await fn();
+    } catch (e: any) {
+      attempt++;
+      if (attempt >= maxRetries) throw e;
+      const waitTime = Math.pow(2, attempt) * 1000;
+      console.log(kleur.yellow(`⚠️ AI Provider API error: ${e.message}. Retrying in ${waitTime}ms (Attempt ${attempt}/${maxRetries})...`));
+      await new Promise(r => setTimeout(r, waitTime));
+    }
+  }
+  throw new Error("Unreachable");
+}
+
+async function generateAIResponseInternal(provider: string, modelName: string, apiKey: string, baseUrl: string | undefined, systemPrompt: string, userPrompt: string, history: any[] = []): Promise<string> {
   if (provider === 'openai') {
     const openai = new OpenAI({ apiKey, baseURL: baseUrl });
     const messages: any[] = [{ role: 'system', content: systemPrompt }];
@@ -73,6 +89,10 @@ async function generateAIResponse(provider: string, modelName: string, apiKey: s
   }
 }
 
+async function generateAIResponse(provider: string, modelName: string, apiKey: string, baseUrl: string | undefined, systemPrompt: string, userPrompt: string, history: any[] = []): Promise<string> {
+  return withRetry(() => generateAIResponseInternal(provider, modelName, apiKey, baseUrl, systemPrompt, userPrompt, history), 3);
+}
+
 function resolveApiKey(provider: string, options: any): string {
   if (options.apiKey) return options.apiKey;
   if (provider === 'openai') return process.env.OPENAI_API_KEY || '';
@@ -119,28 +139,47 @@ program
 
     console.log(kleur.blue(`\n🔍 Scanning ${absoluteTargetDir} for design system violations...`));
 
-    // Gather files
-    const gatherFiles = (dir: string, fileList: { path: string; content: string }[] = []) => {
-      const files = fs.readdirSync(dir);
+    // Gather files asynchronously
+    const gatherFilesAsync = async (dir: string, fileList: { path: string; content: string }[] = []) => {
+      const files = await fs.promises.readdir(dir);
       for (const file of files) {
         const fullPath = path.join(dir, file);
-        if (fs.statSync(fullPath).isDirectory()) {
-          gatherFiles(fullPath, fileList);
+        const stat = await fs.promises.stat(fullPath);
+        if (stat.isDirectory()) {
+          await gatherFilesAsync(fullPath, fileList);
         } else if (/\.(css|scss|tsx|jsx|js|ts)$/i.test(fullPath)) {
           fileList.push({
             path: fullPath,
-            content: fs.readFileSync(fullPath, 'utf8')
+            content: await fs.promises.readFile(fullPath, 'utf8')
           });
         }
       }
       return fileList;
     };
 
-    const uiFiles = gatherFiles(absoluteTargetDir);
-    if (uiFiles.length === 0) {
+    const gatheredFiles = await gatherFilesAsync(absoluteTargetDir);
+    if (gatheredFiles.length === 0) {
       console.log(kleur.yellow('No UI files found to analyze.'));
       return;
     }
+
+    const crypto = require('crypto');
+    const cachePath = path.join(absoluteTargetDir, '.dsaf-cache.json');
+    let cache: Record<string, string> = {};
+    if (fs.existsSync(cachePath)) {
+      try { cache = JSON.parse(await fs.promises.readFile(cachePath, 'utf8')); } catch (e) {}
+    }
+
+    const uiFiles = gatheredFiles.filter((f: any) => {
+      f.hash = crypto.createHash('sha256').update(f.content).digest('hex');
+      return cache[f.path] !== f.hash;
+    });
+
+    if (uiFiles.length === 0) {
+      console.log(kleur.green('✨ All files match cache. No modified UI files to analyze.'));
+      return;
+    }
+    console.log(kleur.blue(`Found ${uiFiles.length} modified/new files out of ${gatheredFiles.length} total.`));
 
     // Prepare payload
     let combinedCode = '';
@@ -209,10 +248,10 @@ program
         if (!patch.file || !patch.find || !patch.replace) continue;
         
         try {
-          const content = fs.readFileSync(patch.file, 'utf8');
+          const content = await fs.promises.readFile(patch.file, 'utf8');
           if (content.includes(patch.find)) {
             const updated = content.replace(patch.find, patch.replace);
-            fs.writeFileSync(patch.file, updated, 'utf8');
+            await fs.promises.writeFile(patch.file, updated, 'utf8');
             console.log(kleur.green(`✅ Fixed: ${patch.reason} (in ${path.basename(patch.file)})`));
             appliedCount++;
           } else {
@@ -234,6 +273,16 @@ program
       }
 
       console.log(kleur.blue(`\n🎉 DSAF Auto-Fix complete. Applied ${appliedCount}/${patches.length} patches.`));
+
+      // Update cache
+      const finalCache = { ...cache };
+      for (const f of gatheredFiles) {
+        try {
+          const content = await fs.promises.readFile(f.path, 'utf8');
+          finalCache[f.path] = crypto.createHash('sha256').update(content).digest('hex');
+        } catch (e) {}
+      }
+      await fs.promises.writeFile(cachePath, JSON.stringify(finalCache), 'utf8');
 
     } catch (e: any) {
       console.error(kleur.red(`\nEngine Error: ${e.message}`));
@@ -262,20 +311,22 @@ program
       process.exit(1);
     }
 
-    const gatherFiles = (dir: string, fileList: { path: string; content: string }[] = []) => {
-      const files = fs.readdirSync(dir);
+    const gatherFilesAsync = async (dir: string, fileList: { path: string; content: string }[] = []) => {
+      const files = await fs.promises.readdir(dir);
       for (const file of files) {
         const fullPath = path.join(dir, file);
-        if (fs.statSync(fullPath).isDirectory()) {
-          gatherFiles(fullPath, fileList);
+        const stat = await fs.promises.stat(fullPath);
+        if (stat.isDirectory()) {
+          await gatherFilesAsync(fullPath, fileList);
         } else if (/\.(css|scss|tsx|jsx|js|ts)$/i.test(fullPath)) {
-          fileList.push({ path: fullPath, content: fs.readFileSync(fullPath, 'utf8') });
+          fileList.push({ path: fullPath, content: await fs.promises.readFile(fullPath, 'utf8') });
         }
       }
       return fileList;
     };
 
-    const uiFiles = gatherFiles(absoluteTargetDir).slice(0, 10);
+    const gathered = await gatherFilesAsync(absoluteTargetDir);
+    const uiFiles = gathered.slice(0, 10);
     let combinedCode = uiFiles.map(f => `\n--- FILE: ${f.path} ---\n${f.content}`).join('');
 
     console.log(kleur.blue(`🤖 Initializing DSAF Chat Mode (${options.provider}) on ${uiFiles.length} files...`));
@@ -365,20 +416,39 @@ program
   .command('parse-storybook')
   .description('Ingest Storybook project.json or stories.json for DSAF auditing')
   .argument('<storybook-json>', 'Path to Storybook output JSON')
-  .action((storybookJson) => {
+  .action(async (storybookJson) => {
     const absolutePath = path.resolve(process.cwd(), storybookJson);
     if (!fs.existsSync(absolutePath)) {
       console.error(kleur.red(`Error: Storybook file not found: ${absolutePath}`));
       process.exit(1);
     }
     
+    let storyCount = 0;
     try {
-      const data = JSON.parse(fs.readFileSync(absolutePath, 'utf8'));
-      const storyCount = data.stories ? Object.keys(data.stories).length : 0;
-      console.log(kleur.green(`✅ Successfully parsed ${storyCount} components from Storybook.`));
-      console.log(kleur.blue(`To audit these components, pass this ingested format to the DSAF engine.`));
+      // Use dynamic imports because type="module"
+      const streamJson = await import('stream-json');
+      const Pick = await import('stream-json/filters/pick.js');
+      const StreamObject = await import('stream-json/streamers/streamObject.js');
+
+      const pipeline = fs.createReadStream(absolutePath)
+        .pipe(streamJson.parser())
+        .pipe(Pick.pick({filter: 'stories'}))
+        .pipe(StreamObject.streamObject());
+
+      pipeline.on('data', () => {
+        storyCount++;
+      });
+
+      pipeline.on('end', () => {
+        console.log(kleur.green(`✅ Successfully parsed ${storyCount} components from Storybook.`));
+        console.log(kleur.blue(`To audit these components, pass this ingested format to the DSAF engine.`));
+      });
+
+      pipeline.on('error', (e: any) => {
+        console.error(kleur.red(`Error streaming Storybook data: ${e.message}`));
+      });
     } catch (e: any) {
-      console.error(kleur.red(`Error parsing Storybook data: ${e.message}`));
+      console.error(kleur.red(`Error initializing stream: ${e.message}`));
     }
   });
 
