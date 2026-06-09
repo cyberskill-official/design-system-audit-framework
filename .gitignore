@@ -64,6 +64,7 @@ temp-*.mjs
 temp-*.cjs
 temp-*.ts
 scratch/
+.dsaf-cache.json
 
 # Workspace dist folders (build artifacts)
 packages/cli/dist/
