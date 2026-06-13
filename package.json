@@ -16,6 +16,8 @@
     "check:doc-freshness": "node scripts/checks/check-doc-freshness.mjs",
     "audit:maximal": "node scripts/bin/maximal-audit.mjs",
     "audit:maximal:cases": "node scripts/bin/self-improving-loop.mjs",
+    "gen:verification-cases": "node scripts/bin/build-verification-cases.mjs",
+    "check:engine-robustness": "node scripts/checks/check-engine-robustness.mjs",
     "check:maximal:cases": "node scripts/checks/check-maximal-cases.mjs",
     "check:apca": "node scripts/checks/check-apca.mjs",
     "contract:brand-taxonomy": "node scripts/checks/check-brand-taxonomy-contract.mjs",

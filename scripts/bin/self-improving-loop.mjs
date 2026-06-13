@@ -17,7 +17,11 @@ import { runMaximalAudit } from "../bin/maximal-audit.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, "../../..");
-const OUTPUT_ROOT = resolve(ROOT, "docs/outputs/generated/maximal-cases");
+// NOTE: This exploratory loop (30 file/url/repo cases, network + git-clone dependent)
+// writes to its OWN directory so it never clobbers the hermetic verification fixture set
+// in docs/outputs/generated/maximal-cases (owned by scripts/bin/build-verification-cases.mjs
+// and validated by scripts/checks/check-maximal-cases.mjs).
+const OUTPUT_ROOT = resolve(ROOT, "docs/outputs/generated/maximal-cases-explore");
 const FIXTURE_ROOT = resolve(ROOT, "docs/outputs/generated/design-md-fixtures");
 const TEMP_ROOT = resolve(ROOT, "docs/outputs/generated/self-improving-temp");
 

@@ -1,0 +1,16 @@
+{
+  "description": "Canonical, self-contained verification fixture set for the DSAF maximal-audit engine. These DESIGN.md files are vendored (committed) so `npm run verify` is hermetic and offline-deterministic: it does not depend on network access, git clones, or machine-specific paths. The generator (scripts/bin/build-verification-cases.mjs) runs the engine on each case; the check (scripts/checks/check-maximal-cases.mjs) validates the produced outputs. Source corpus: VoltAgent/awesome-design-md (vendored snapshot).",
+  "outputRoot": "docs/outputs/generated/verification-cases",
+  "cases": [
+    { "id": "file-airbnb", "fixture": "scripts/test/fixtures/design-md/airbnb/DESIGN.md" },
+    { "id": "file-apple", "fixture": "scripts/test/fixtures/design-md/apple/DESIGN.md" },
+    { "id": "file-figma", "fixture": "scripts/test/fixtures/design-md/figma/DESIGN.md" },
+    { "id": "file-linear", "fixture": "scripts/test/fixtures/design-md/linear.app/DESIGN.md" },
+    { "id": "file-notion", "fixture": "scripts/test/fixtures/design-md/notion/DESIGN.md" },
+    { "id": "file-cursor", "fixture": "scripts/test/fixtures/design-md/cursor/DESIGN.md" },
+    { "id": "file-ibm", "fixture": "scripts/test/fixtures/design-md/ibm/DESIGN.md" },
+    { "id": "file-stripe", "fixture": "scripts/test/fixtures/design-md/stripe/DESIGN.md" },
+    { "id": "file-shopify", "fixture": "scripts/test/fixtures/design-md/shopify/DESIGN.md" },
+    { "id": "file-sanity", "fixture": "scripts/test/fixtures/design-md/sanity/DESIGN.md" }
+  ]
+}

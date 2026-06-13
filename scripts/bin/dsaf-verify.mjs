@@ -15,6 +15,8 @@ const checks = [
   ["coverage", "scripts/checks/check-coverage.mjs"],
   ["bundle-size", "scripts/checks/check-bundle-size.mjs"],
   ["doc-freshness", "scripts/checks/check-doc-freshness.mjs"],
+  ["engine-robustness", "scripts/checks/check-engine-robustness.mjs"],
+  ["maximal-cases:generate", "scripts/bin/build-verification-cases.mjs"],
   ["maximal-cases", "scripts/checks/check-maximal-cases.mjs"],
   ["apca", "scripts/checks/check-apca.mjs"],
   ["criteria-dedup-contract", "scripts/checks/check-criteria-dedup-contract.mjs"],

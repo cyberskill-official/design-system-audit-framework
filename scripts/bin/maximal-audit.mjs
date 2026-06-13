@@ -138,12 +138,33 @@ const ALL_CRITERIA = [...DSAF_CRITERIA];
  * @param {string} criterion
  * @returns {string[]}
  */
-function keywordsForCriterion(criterion) {
+const KEYWORD_STOPWORDS = new Set([
+  // Grammatical / connective filler.
+  "the", "and", "or", "with", "for", "per", "into", "itself", "like", "etc",
+  "all", "one", "some", "none", "that", "this", "are", "via", "from", "each",
+  "must", "should", "across", "where", "when", "your", "they", "them",
+  // Near-universal design-system words that appear in almost every document and
+  // therefore carry no discriminating signal. Leaving these in lets a doc score
+  // highly just by being "about design", and inflates every criterion. The real
+  // signal lives in the specific terms (primitive, semantic, elevation, OKLCH,
+  // container, etc.), so the generic umbrella words are dropped.
+  "design", "designs", "system", "systems", "token", "tokens", "weight",
+  "class", "style", "styles", "component", "components", "support", "supported"
+]);
+
+/**
+ * @param {string} criterion
+ * @returns {string[]}
+ */
+export function keywordsForCriterion(criterion) {
   const text = criterion
     .toLowerCase()
-    .replace(/[`*_()[\]/.,:;→+&%"'-]/g, " ")
-    .replace(/\b(the|and|or|with|for|per|into|itself|class|style|like|etc|all|one|some|none)\b/g, " ");
-  return [...new Set(text.split(/\s+/).filter((/** @type {string} */ word) => word.length >= 4))].slice(0, 8);
+    .replace(/[`*_()[\]/.,:;→+&%"'-]/g, " ");
+  return [...new Set(
+    text
+      .split(/\s+/)
+      .filter((/** @type {string} */ word) => word.length >= 4 && !KEYWORD_STOPWORDS.has(word))
+  )].slice(0, 8);
 }
 
 /**
@@ -248,17 +269,37 @@ function walkLocalFiles(root, limit = 400) {
   /** @param {string} dir */
   function walk(dir) {
     if (files.length >= limit) return;
-    for (const entry of readdirSync(dir)) {
+    /** @type {string[]} */
+    let entries;
+    try {
+      entries = readdirSync(dir);
+    } catch {
+      return; // Unreadable directory (permissions, race): skip rather than crash.
+    }
+    for (const entry of entries) {
       if (entry.startsWith(".") && entry !== ".github") continue;
       if (SKIP_DIRS.has(entry)) continue;
       const path = join(dir, entry);
-      const st = statSync(path);
+      let st;
+      try {
+        // statSync follows symlinks: valid links to real files are included,
+        // but broken/dangling symlinks (and other stat failures) throw.
+        st = statSync(path);
+      } catch {
+        continue; // Broken symlink or unreadable entry: skip, do not crash the audit.
+      }
       if (st.isDirectory()) walk(path);
-      else if (TEXT_EXT.has(extname(path).toLowerCase()) && st.size <= 240000) files.push(path);
+      else if (st.isFile() && TEXT_EXT.has(extname(path).toLowerCase()) && st.size <= 240000) files.push(path);
       if (files.length >= limit) return;
     }
   }
-  if (existsSync(root) && statSync(root).isDirectory()) walk(root);
+  let rootStat;
+  try {
+    rootStat = statSync(root);
+  } catch {
+    return files; // Root missing or unreadable: return empty rather than throwing.
+  }
+  if (rootStat.isDirectory()) walk(root);
   return files;
 }
 
@@ -327,7 +368,20 @@ async function loadInput(input, maxPages, outDir) {
   if (resolvedPath !== fixturesDir) {
     mkdirSync(fixturesDir, { recursive: true });
     if (st.isDirectory()) {
-      try { fs.cpSync(resolvedPath, fixturesDir, { recursive: true }); } catch (e) { console.error(e) }
+      try {
+        fs.cpSync(resolvedPath, fixturesDir, {
+          recursive: true,
+          // Skip dangling symlinks so one broken link cannot abort the whole copy.
+          filter: (/** @type {string} */ src) => {
+            try {
+              fs.statSync(src);
+              return true;
+            } catch {
+              return false;
+            }
+          }
+        });
+      } catch (e) { console.error(e); }
     } else {
       try { fs.copyFileSync(resolvedPath, join(fixturesDir, basename(resolvedPath))); } catch (e) { console.error(e) }
     }
@@ -703,7 +757,7 @@ export async function runMaximalAudit({ input, outDir, mode = "both", model = "a
     
     // Generate HTML
     try {
-      const templatePath = resolve(ROOT, "assets/report-template.html");
+      const templatePath = resolve(ROOT, "docs/framework/assets/report-template.html");
       const templateStr = readFileSync(templatePath, "utf8");
       const reportHtml = templateStr
         .replace("{{REPORT_TITLE}}", "Analyzed Design Report")

@@ -1,82 +1,88 @@
 #!/usr/bin/env node
+/**
+ * Validates the generated maximal-audit verification cases.
+ *
+ * The set of expected cases is driven by the canonical manifest
+ * (scripts/test/fixtures/design-md-manifest.json) — the SAME manifest the generator
+ * (scripts/bin/build-verification-cases.mjs) consumes. This keeps the generator and the
+ * checker in lockstep: there is no longer a hardcoded case count that can drift from the
+ * tool that produces the outputs. The output directory must contain EXACTLY the manifest
+ * cases (no stale/extra directories from an exploratory run).
+ */
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { resolve } from "node:path";
 
-const ROOT = resolve(import.meta.dirname, '../..');
-const OUTPUT_ROOT = resolve(ROOT, "docs/outputs/generated/maximal-cases");
+const ROOT = resolve(import.meta.dirname, "../..");
+const MANIFEST_PATH = resolve(ROOT, "scripts/test/fixtures/design-md-manifest.json");
+const manifest = JSON.parse(readFileSync(MANIFEST_PATH, "utf8"));
+const OUTPUT_ROOT = resolve(ROOT, manifest.outputRoot);
 const required = ["ANALYZED_DESIGN_REPORT.md", "IMPROVED_DESIGN.md"];
+const expectedIds = manifest.cases.map((c) => c.id).sort();
+
+/** @param {string} path @returns {number} */
+function safeLineCount(path) {
+  try {
+    return readFileSync(path, "utf8").split(/\r?\n/).length;
+  } catch {
+    return 0; // e.g. source path is a directory or unreadable
+  }
+}
 
 if (!existsSync(OUTPUT_ROOT)) {
-  console.error(`[maximal-cases:check] missing ${OUTPUT_ROOT}`);
+  console.error(`[maximal-cases:check] missing ${OUTPUT_ROOT} — run \`npm run gen:verification-cases\` first`);
   process.exit(1);
 }
 
-const dirs = readdirSync(OUTPUT_ROOT, { withFileTypes: true }).filter((entry) => entry.isDirectory());
 const failures = [];
-const fileCases = dirs.filter((dir) => dir.name.startsWith("file-"));
-const urlCases = dirs.filter((dir) => dir.name.startsWith("url-"));
 
-for (const dir of dirs) {
+// The engine writes ANALYZED_DESIGN_REPORT.md at the case root and IMPROVED_DESIGN.md
+// inside the output-improved/ subdirectory.
+const relPathFor = (/** @type {string} */ file) =>
+  file === "IMPROVED_DESIGN.md" ? `output-improved/${file}` : file;
+
+for (const c of manifest.cases) {
   for (const file of required) {
-    const path = resolve(OUTPUT_ROOT, dir.name, file);
+    const path = resolve(OUTPUT_ROOT, c.id, relPathFor(file));
     if (!existsSync(path)) {
-      failures.push(`${dir.name}/${file} missing`);
+      failures.push(`${c.id}/${file} missing`);
       continue;
     }
     const text = readFileSync(path, "utf8");
-    if (file === "ANALYZED_DESIGN_REPORT.md" && !text.includes("## Unified Score Summary")) {
-      failures.push(`${dir.name}/${file} missing Unified Score Summary`);
+    if (file === "ANALYZED_DESIGN_REPORT.md") {
+      if (!text.includes("## Unified Score Summary")) failures.push(`${c.id}/${file} missing Unified Score Summary`);
+      if (!text.includes("## Full Enterprise DSAF Criterion Scores And Suggestions")) failures.push(`${c.id}/${file} missing full enterprise DSAF criterion section`);
+      if (!text.includes("| ID | Type | Category | Criterion | Score | Level | Confidence | Evidence found | Missing signals | Citation refs | Required proof | Suggested improvement | Acceptance gate | Output action |")) failures.push(`${c.id}/${file} missing expanded criterion table columns`);
+      if (!text.includes("| AUTO |") || !text.includes("| MANUAL |")) failures.push(`${c.id}/${file} missing AUTO/MANUAL criterion rows`);
+      if (!text.includes("## Source Reference Appendix")) failures.push(`${c.id}/${file} missing source reference appendix`);
+      if (text.includes("## Maximal Scores")) failures.push(`${c.id}/${file} still contains old track score section`);
+      if (text.includes("## Further Recommendations To Monetize")) failures.push(`${c.id}/${file} should not contain monetization recommendations`);
     }
-    if (file === "ANALYZED_DESIGN_REPORT.md" && !text.includes("## Full Enterprise DSAF Criterion Scores And Suggestions")) {
-      failures.push(`${dir.name}/${file} missing full enterprise DSAF criterion section`);
-    }
-    if (file === "ANALYZED_DESIGN_REPORT.md" && !text.includes("| ID | Type | Category | Criterion | Score | Level | Confidence | Evidence found | Missing signals | Citation refs | Required proof | Suggested improvement | Acceptance gate | Output action |")) {
-      failures.push(`${dir.name}/${file} missing expanded criterion table columns`);
-    }
-    if (file === "ANALYZED_DESIGN_REPORT.md" && (!text.includes("| AUTO |") || !text.includes("| MANUAL |"))) {
-      failures.push(`${dir.name}/${file} missing AUTO/MANUAL criterion rows`);
-    }
-    if (file === "ANALYZED_DESIGN_REPORT.md" && !text.includes("## Source Reference Appendix")) {
-      failures.push(`${dir.name}/${file} missing source reference appendix`);
-    }
-    if (file === "ANALYZED_DESIGN_REPORT.md" && text.includes("## Maximal Scores")) {
-      failures.push(`${dir.name}/${file} still contains old track score section`);
-    }
-    if (file === "ANALYZED_DESIGN_REPORT.md" && text.includes("## Further Recommendations To Monetize")) {
-      failures.push(`${dir.name}/${file} should not contain monetization recommendations`);
-    }
-    if (file === "IMPROVED_DESIGN.md" && !text.includes("## Applied Automatable Requirements")) {
-      failures.push(`${dir.name}/${file} missing doctrine requirements`);
-    }
-    if (file === "IMPROVED_DESIGN.md" && !text.includes("## Unified Criterion Operating Rule")) {
-      failures.push(`${dir.name}/${file} missing unified criterion operating rule`);
-    }
-    if (file === "IMPROVED_DESIGN.md" && text.includes("## Further Recommendations To Monetize")) {
-      failures.push(`${dir.name}/${file} should not contain report-only monetization section`);
-    }
-    if (file === "IMPROVED_DESIGN.md" && text.includes("## Three-Track Operating Rule")) {
-      failures.push(`${dir.name}/${file} still contains old three-track operating rule`);
-    }
-    if (file === "IMPROVED_DESIGN.md" && text.includes("### Source Excerpt")) {
-      failures.push(`${dir.name}/${file} still uses excerpt mode`);
-    }
-    if (file === "IMPROVED_DESIGN.md" && dir.name.startsWith("file-")) {
+    if (file === "IMPROVED_DESIGN.md") {
+      if (!text.includes("## Applied Automatable Requirements")) failures.push(`${c.id}/${file} missing doctrine requirements`);
+      if (!text.includes("## Unified Criterion Operating Rule")) failures.push(`${c.id}/${file} missing unified criterion operating rule`);
+      if (text.includes("## Further Recommendations To Monetize")) failures.push(`${c.id}/${file} should not contain report-only monetization section`);
+      if (text.includes("## Three-Track Operating Rule")) failures.push(`${c.id}/${file} still contains old three-track operating rule`);
+      if (text.includes("### Source Excerpt")) failures.push(`${c.id}/${file} still uses excerpt mode`);
+      // File cases must preserve the full source plus an improvement layer.
       const sourcePath = /^\- \*\*Source:\*\* (.+)$/m.exec(text)?.[1]?.trim();
-      const sourceLines = sourcePath && existsSync(sourcePath)
-        ? readFileSync(sourcePath, "utf8").split(/\r?\n/).length
-        : 0;
+      const sourceLines = sourcePath && existsSync(sourcePath) ? safeLineCount(sourcePath) : 0;
       const improvedLines = text.split(/\r?\n/).length;
       if (!sourceLines || improvedLines <= sourceLines) {
-        failures.push(`${dir.name}/${file} does not preserve full source plus improvement layer`);
+        failures.push(`${c.id}/${file} does not preserve full source plus improvement layer`);
       }
     }
   }
 }
 
-if (dirs.length !== 10) failures.push(`expected 10 case directories, found ${dirs.length}`);
-if (fileCases.length !== 10) failures.push(`expected 10 file cases, found ${fileCases.length}`);
-if (urlCases.length !== 0) failures.push(`expected 0 URL cases, found ${urlCases.length}`);
-if (dirs.length * required.length !== 20) failures.push(`expected 20 output files, found ${dirs.length * required.length}`);
+// The output directory must contain EXACTLY the manifest cases — no stale/extra dirs.
+const actualDirs = readdirSync(OUTPUT_ROOT, { withFileTypes: true })
+  .filter((e) => e.isDirectory())
+  .map((e) => e.name)
+  .sort();
+const extra = actualDirs.filter((d) => !expectedIds.includes(d));
+const absent = expectedIds.filter((d) => !actualDirs.includes(d));
+if (extra.length) failures.push(`unexpected case directories present: ${extra.join(", ")} (run gen:verification-cases to regenerate cleanly)`);
+if (absent.length) failures.push(`expected case directories missing: ${absent.join(", ")}`);
 
 if (failures.length) {
   console.error("[maximal-cases:check] failures:");
@@ -84,4 +90,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log(`[maximal-cases:check] ${dirs.length} cases and ${dirs.length * required.length} outputs verified`);
+console.log(`[maximal-cases:check] ${manifest.cases.length} cases and ${manifest.cases.length * required.length} outputs verified`);
