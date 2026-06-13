@@ -93,7 +93,7 @@
     "required_strings": [
       "git clone https://github.com/cyberskill-official/design-system-audit-framework.git",
       "npm run verify",
-      "node framework/scripts/bin/audit-init.mjs",
+      "node scripts/bin/audit-init.mjs",
       "docs/guidelines/prompts/scan-mode.md"
     ]
   },

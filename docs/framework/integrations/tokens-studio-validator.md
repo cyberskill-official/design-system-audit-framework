@@ -9,7 +9,7 @@ Validate a Tokens Studio or DTCG token export against the DSAF A.1 Foundations &
 ## CLI
 
 ```bash
-node scripts/tokens-studio-validator.mjs path/to/tokens.json
+node scripts/bin/tokens-studio-validator.mjs path/to/tokens.json
 npm run integ:tokens -- path/to/tokens.json
 ```
 

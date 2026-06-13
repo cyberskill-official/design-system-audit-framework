@@ -8,7 +8,7 @@ You are running a **SCAN-mode design system audit** using the Design System Audi
 
 ## What I'm giving you
 
-- **Framework rules:** the file at `<framework-path>/framework/02-framework.md`
+- **Framework rules:** the file at `<framework-path>/framework/01-framework-overview.md`
 - **Optional maximal enterprise overlay:** `<framework-path>/framework/bench/maximal-enterprise-benchmark.md` when the user requests the strict unified AUTO/MANUAL criterion loop
 - **Criteria Part A:** `<framework-path>/framework/03-criteria-part-a.md` (10 categories, 63 criteria)
 - **Criteria Part B:** `<framework-path>/framework/04-criteria-part-b.md` (10 categories, 62 criteria)

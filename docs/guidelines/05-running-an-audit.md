@@ -1,6 +1,6 @@
 # 05 — Running an audit
 
-Step-by-step playbook for running a complete audit cycle on a design system. Both modes (`SCAN` and `FIX`) are covered. Read [`02-framework.md`](../framework/01-framework-overview.md) first if you haven't.
+Step-by-step playbook for running a complete audit cycle on a design system. Both modes (`SCAN` and `FIX`) are covered. Read [`01-framework-overview.md`](../framework/01-framework-overview.md) first if you haven't.
 
 ---
 
@@ -23,7 +23,7 @@ Before invoking the agent:
 From any directory:
 
 ```bash
-node /path/to/design-system-audit-framework/scripts/audit-init.mjs /path/to/your/design-system
+node /path/to/design-system-audit-framework/scripts/bin/audit-init.mjs /path/to/your/design-system
 ```
 
 This creates (idempotently — never overwrites existing files):
@@ -113,8 +113,8 @@ Between formal audits, the framework expects:
 
 | Cadence | Activity | Reference |
 |---|---|---|
-| Quarterly (Q1, Q3) | DYNAMIC criterion re-score | [`02-framework.md`](../framework/01-framework-overview.md) §5 |
-| Per release | Doc freshness check; DESIGN.md regen | `scripts/check-doc-freshness.mjs`, `scripts/build-design-md.mjs --check` |
+| Quarterly (Q1, Q3) | DYNAMIC criterion re-score | [`01-framework-overview.md`](../framework/01-framework-overview.md) §5 |
+| Per release | Doc freshness check; DESIGN.md regen | `scripts/checks/check-doc-freshness.mjs`, `scripts/bin/build-design-md.mjs --check` |
 | Annually | Full Mode S audit with human Co-Auditor calibration | This file, end-to-end |
 | Ad-hoc | Industry research (between cycles) | [`prompts/research-mode.md`](./prompts/research-mode.md) |
 | Ad-hoc | Maximal enterprise overlay, file/URL audit runner, and artifact re-creation loop | [`framework/bench/maximal-enterprise-benchmark.md`](../framework/bench/maximal-enterprise-benchmark.md) |
@@ -158,8 +158,8 @@ This is what to do for a first-time baseline; you can build on it next quarter.
 5. Sign off at §9; append register row.
 6. Generate / update the improvement plan with the planning prompt.
 
-This is what to do once per quarter. Annual full audits add a human Co-Auditor pairing per [`02-framework.md`](../framework/01-framework-overview.md) §9.
+This is what to do once per quarter. Annual full audits add a human Co-Auditor pairing per [`01-framework-overview.md`](../framework/01-framework-overview.md) §9.
 
 ---
 
-*Continue to [`06-fix-cycle.md`](./06-fix-cycle.md) for FIX-cycle internals, or [`07-maturity-tiers.md`](../framework/04-maturity-tiers.md) for what each L0–L5 tier means.*
+*Continue to [`06-fix-cycle.md`](./06-fix-cycle.md) for FIX-cycle internals, or [`04-maturity-tiers.md`](../framework/04-maturity-tiers.md) for what each L0–L5 tier means.*

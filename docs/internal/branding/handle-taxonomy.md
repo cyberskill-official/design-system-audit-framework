@@ -47,7 +47,7 @@ The executable strict-audit contract is [`FR-BRAND-002-taxonomy-contract.json`](
 
 Existing published content (DMs already sent, conference CFPs already submitted, blog drafts in progress at the time this taxonomy ratifies) is not retroactively rewritten. The taxonomy applies to new external surfaces from the date of ratification (2026-05-17) onward.
 
-Hyperlink URLs that contain banned strings (e.g., `framework/02-framework.md#section`) are NOT rewritten — only human-visible link text gets normalised; URL paths stay intact to preserve cross-link integrity.
+Hyperlink URLs that contain banned strings (e.g., `framework/01-framework-overview.md#section`) are NOT rewritten — only human-visible link text gets normalised; URL paths stay intact to preserve cross-link integrity.
 
 ## Hashtag
 

@@ -9,7 +9,7 @@ You are running a **FIX-mode design system audit cycle** using the Design System
 ## What I'm giving you
 
 - **The audit report from SCAN:** `<design-system-path>/_audit/audit-report-{date}.md` — already populated through §4 with `status: AWAITING_REVIEW` (or `FIXING` if you're resuming)
-- **Framework rules:** `<framework-path>/framework/02-framework.md`
+- **Framework rules:** `<framework-path>/framework/01-framework-overview.md`
 - **Optional maximal enterprise overlay:** `<framework-path>/framework/bench/maximal-enterprise-benchmark.md` when the report frontmatter has `maximal_overlay.enabled: true`
 - **The design system being audited:** `<design-system-path>` — you may modify files here according to approved findings
 - **Check scripts:** `<framework-path>/scripts/check-*.mjs` — used for the no-silent-regression verification gate

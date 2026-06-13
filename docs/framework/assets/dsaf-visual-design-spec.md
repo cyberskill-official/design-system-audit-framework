@@ -86,11 +86,11 @@ Canonical assets are SVG only. Raster (PNG/JPG) is a *consumption* pattern: a `m
 
 ## Transition gates on the ladder
 
-The L0-L5 ladder visually communicates the *climb path* documented in `framework/07-maturity-tiers.md` §3 — not just the tier names. The shipped ladder uses tier panels, score ranges, and per-tier gate callouts as `<text>` elements. The footer explicitly references the L3 self-audit publication cap.
+The L0-L5 ladder visually communicates the *climb path* documented in `framework/04-maturity-tiers.md` §3 — not just the tier names. The shipped ladder uses tier panels, score ranges, and per-tier gate callouts as `<text>` elements. The footer explicitly references the L3 self-audit publication cap.
 
 ## Enterprise-grade boundary on the radar
 
-The DSAF radar overlays a "minimum enterprise" boundary as a dashed `enterprise_floor` polygon per the floors in `framework/07-maturity-tiers.md` §2 (combined ≥ 65%, A.8 ≥ 75%, B.5 ≥ 75%, A.1 ≥ 70%, A.4 ≥ 60%, A.3 ≥ 65%, any category ≥ 40%). The example polygon is visual guidance; audit-specific renderers replace it from `dsaf-radar-template.json`.
+The DSAF radar overlays a "minimum enterprise" boundary as a dashed `enterprise_floor` polygon per the floors in `framework/04-maturity-tiers.md` §2 (combined ≥ 65%, A.8 ≥ 75%, B.5 ≥ 75%, A.1 ≥ 70%, A.4 ≥ 60%, A.3 ≥ 65%, any category ≥ 40%). The example polygon is visual guidance; audit-specific renderers replace it from `dsaf-radar-template.json`.
 
 ## Embedding patterns
 

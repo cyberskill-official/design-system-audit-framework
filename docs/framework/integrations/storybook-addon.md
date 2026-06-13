@@ -66,6 +66,6 @@ The panel model includes:
 | Coverage is `not-applicable` | Run inside a target design-system repository with a `src/` directory. |
 | APCA is `not-applicable` | Add `tokens/colour.tokens.json` to the target repository. |
 | Bundle-size is `not-applicable` | Add packages under `packages/` with package manifests. |
-| Deep-dive links 404 locally | Run `node scripts/render-blog.mjs` before serving `landing/`. |
+| Deep-dive links 404 locally | Run `node scripts/bin/render-blog.mjs` before serving `landing/`. |
 
 *End of Storybook integration doc.*

@@ -83,7 +83,7 @@ const EVIDENCE_SOURCES = [
 /** @returns {string} */
 function usage() {
   return [
-    "Usage: node scripts/maximal-audit.mjs --input <DESIGN.md|url> --out <dir> [--mode analyze|improve|both] [--model <id>] [--max-pages 8]",
+    "Usage: node scripts/bin/maximal-audit.mjs --input <DESIGN.md|url> --out <dir> [--mode analyze|improve|both] [--model <id>] [--max-pages 8]",
     "",
     "Outputs:",
     "  ANALYZED_DESIGN_REPORT.md",
@@ -134,10 +134,7 @@ const DSAF_CRITERIA = loadDsafCriteria().map((item) => ({
 }));
 const ALL_CRITERIA = [...DSAF_CRITERIA];
 
-/**
- * @param {string} criterion
- * @returns {string[]}
- */
+/** Words excluded from criterion keyword extraction (see keywordsForCriterion). */
 const KEYWORD_STOPWORDS = new Set([
   // Grammatical / connective filler.
   "the", "and", "or", "with", "for", "per", "into", "itself", "like", "etc",

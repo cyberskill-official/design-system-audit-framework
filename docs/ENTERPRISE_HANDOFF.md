@@ -16,10 +16,10 @@ This report outlines the autonomous architectural evolution of the CyberSkill De
 ## 3. 📈 The Expanding Benchmark Matrix (Full Evolution)
 | Metric Discovered | Loop Introduced | Baseline (First Measurement) | Final State (Loop X) | Net Delta | SOTA Target | Verification CLI | Status |
 |---|---|---|---|---|---|---|---|
-| CLI Sync I/O Blocking | Loop 1 | High (Blocking) | 0ms | 100% | 0ms | `node packages/cli/dist/index.js fix ./packages` | ✅ |
-| Large JSON Parsing OOM Risk | Loop 1 | 100% (JSON.parse buffer) | 0% (Streams) | 100% | 0% | `node packages/cli/dist/index.js parse-storybook ./test.json` | ✅ |
+| CLI Sync I/O Blocking | Loop 1 | High (Blocking) | 0ms | 100% | 0ms | `node packages/cli/dist/cli.js fix ./packages` | ✅ |
+| Large JSON Parsing OOM Risk | Loop 1 | 100% (JSON.parse buffer) | 0% (Streams) | 100% | 0% | `node packages/cli/dist/cli.js parse-storybook ./test.json` | ✅ |
 | AI API Resilience | Loop 1 | None (Fails instantly) | High (Exp Backoff) | Infinite | High | N/A | ✅ |
-| AI Payload Caching | Loop 1 | 0% cached | Content Hash Cached | ~50% savings | High | `node packages/cli/dist/index.js fix ./packages` | ✅ |
+| AI Payload Caching | Loop 1 | 0% cached | Content Hash Cached | ~50% savings | High | `node packages/cli/dist/cli.js fix ./packages` | ✅ |
 | File Write Locking | Loop 1 | Sync blocking | Async concurrent-ready | Faster I/O | Async | N/A | ✅ |
 
 ## 4. 🔄 Generational Progress (By Loop)

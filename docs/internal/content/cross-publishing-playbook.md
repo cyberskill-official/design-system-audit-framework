@@ -17,7 +17,7 @@ Canonical Week 1 article: `https://audit.cyberskill.world/blog/deep-dives/week-0
 | Medium | Thursday, 2026-06-18, 08:00 PT | Thursday, 2026-06-18, 22:00 ICT | `internal/content/deep-dives/cross-publishing/week-01-a1-1-color-tokens.medium.md` |
 | LinkedIn long-form | Friday, 2026-06-19, 08:00 PT | Friday, 2026-06-19, 22:00 ICT | `internal/content/deep-dives/cross-publishing/week-01-a1-1-color-tokens.linkedin.md` |
 
-Run `node scripts/render-cross-publishing-drafts.mjs` after each new canonical deep-dive to create the next set of ready manual-post drafts.
+Run `node scripts/bin/render-cross-publishing-drafts.mjs` after each new canonical deep-dive to create the next set of ready manual-post drafts.
 
 ## Platform Procedures
 

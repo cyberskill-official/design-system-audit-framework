@@ -36,7 +36,7 @@ The maximal runner scores one unified table:
 | Enterprise expansion criteria | 296 | Additional large-enterprise coverage across governance, tokens, Figma parity, components, accessibility, localization, privacy, AI, security, sustainability, support, procurement, vertical packs, migration, docs, and URL audits. |
 | Total | 451 | Full maximal enterprise table produced in every `ANALYZED_DESIGN_REPORT.md`. |
 
-The exact expansion lives in `scripts/maximal-audit.mjs` so generated cases are reproducible.
+The exact expansion lives in `scripts/bin/maximal-audit.mjs` so generated cases are reproducible.
 
 ---
 

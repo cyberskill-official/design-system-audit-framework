@@ -22,7 +22,7 @@ DSAF is an open-source, agent-native, 125-criterion audit toolkit that scores an
 git clone https://github.com/cyberskill-official/design-system-audit-framework.git
 cd design-system-audit-framework
 npm run verify
-node framework/scripts/bin/audit-init.mjs
+node scripts/bin/audit-init.mjs <your-design-system-path>
 ```
 
 Open [docs/guidelines/prompts/scan-mode.md](docs/guidelines/prompts/scan-mode.md) in your LLM and run your first SCAN.

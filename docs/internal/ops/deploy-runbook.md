@@ -74,10 +74,10 @@ These are tasks any AI agent with repo access can pick up. Each has a deliverabl
 
 | ID | Gap | Deliverable | Status |
 |---|---|---|---|
-| OPS-001 | No CI runs link-check / Lighthouse on PR | `.github/workflows/landing-ci.yml` (link check via `scripts/check-links.mjs`; Lighthouse against the Vercel preview URL; fail PR if < 95 on any pillar) | todo |
+| OPS-001 | No CI runs link-check / Lighthouse on PR | `.github/workflows/landing-ci.yml` (link check via `scripts/checks/check-links.mjs`; Lighthouse against the Vercel preview URL; fail PR if < 95 on any pillar) | todo |
 | OPS-002 | No analytics decision logged | `internal/ops/analytics-decision.md` — choose Plausible self-hosted on a Cloudflare Worker OR document "no analytics in P0" deferral until FR-BENCH-001 P4 | todo |
 | OPS-003 | No OG image | `landing/og-image.png` 1200×630, no CyberSkill marks; wire into `<meta property="og:image">` in both HTMLs | todo |
-| OPS-004 | Blog posts render as raw markdown on Vercel | `scripts/render-blog.mjs` that turns `landing/blog/*.md` into `landing/blog/*.html` at build time; wire into Vercel build command | todo |
+| OPS-004 | Blog posts render as raw markdown on Vercel | `scripts/bin/render-blog.mjs` that turns `landing/blog/*.md` into `landing/blog/*.html` at build time; wire into Vercel build command | todo |
 | OPS-005 | No favicon | `landing/favicon.svg` (single-file, currentColor for dark/light); `<link rel="icon" type="image/svg+xml" href="/favicon.svg">` in both HTMLs | todo |
 | OPS-006 | HSTS preload submission not done | Submit `audit.cyberskill.world` at `hstspreload.org`; log accepted date in this runbook §5 | todo (operator) |
 | OPS-007 | No `info@cyberskill.world` smoke-test in repo | Append a `## §5 — Activation log` block to this runbook with the date the contact-form smoke-test passed | todo (operator) |

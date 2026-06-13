@@ -50,7 +50,7 @@ Why I'm emailing you specifically: EightShapes' governance writing was one of th
 
 - 25-row Core: https://audit.cyberskill.world/card
 - Repo: https://github.com/cyberskill-official/design-system-audit-framework
-- Governance criteria (A.4 section): https://github.com/cyberskill-official/design-system-audit-framework/blob/main/framework/03-criteria-part-a.md
+- Governance criteria (A.4 section): https://github.com/cyberskill-official/design-system-audit-framework/blob/main/docs/framework/03-criteria-part-a.md
 - Origin story: https://audit.cyberskill.world/blog/launch-2026
 
 I'm also recruiting a co-maintainer over the next few months. No ask to promote, upvote, share, comment, or amplify it; that's a separate conversation if it ever becomes interesting. If a 15-minute call is easier than email, happy to do that; same scope, no pitch.
@@ -153,7 +153,7 @@ I'd value your critique on whether the framework's L4 / L5 entry-gate stack (mul
 
 - 25-row Core: https://audit.cyberskill.world/card
 - Repo: https://github.com/cyberskill-official/design-system-audit-framework
-- L0–L5 ladder + entry-gate criteria: https://github.com/cyberskill-official/design-system-audit-framework/blob/main/framework/07-maturity-tiers.md
+- L0–L5 ladder + entry-gate criteria: https://github.com/cyberskill-official/design-system-audit-framework/blob/main/docs/framework/04-maturity-tiers.md
 - Origin story: https://audit.cyberskill.world/blog/launch-2026
 
 Aware I'm asking for a few minutes of a busy person's time. No ask to promote, upvote, share, comment, or amplify it. If a 15-minute call is easier than email, happy to do that; same scope, no pitch.
@@ -179,7 +179,7 @@ Why I'm emailing you: the accessibility criteria (A.8 system-side and B.5 produc
 
 - 25-row Core: https://audit.cyberskill.world/card
 - Repo: https://github.com/cyberskill-official/design-system-audit-framework
-- Accessibility criteria (Part A §8 + Part B §5): https://github.com/cyberskill-official/design-system-audit-framework/blob/main/framework/03-criteria-part-a.md
+- Accessibility criteria (Part A §8 + Part B §5): https://github.com/cyberskill-official/design-system-audit-framework/blob/main/docs/framework/03-criteria-part-a.md
 - Origin story: https://audit.cyberskill.world/blog/launch-2026
 
 No ask to promote, upvote, share, comment, or amplify it — just the accessibility-criteria read if you have 10 minutes. If a 15-minute call is easier than email, happy to do that; same scope, no pitch.
@@ -203,11 +203,11 @@ I'm launching DSAF (Design System Audit Framework) next week — an open criteri
 
 Why I'm emailing you: zeroheight is the docs platform DSAF is most likely to be cited from. The framework's Part A §3 (Documentation) criteria — usage guidelines, do's/don'ts, accessibility notes, RFC discoverability — explicitly map to what teams using zeroheight ship. I would value your read on whether the criteria assume too much (or too little) of what a real zeroheight-hosted DS docs site contains.
 
-There's also a `scripts/zeroheight-reader.mjs` (FR-INTEG-003) that reads a zeroheight HTML export and scores it against the A.3 + A.5 subset. Happy for any feedback on what that read should and shouldn't do.
+There's also a `scripts/bin/zeroheight-reader.mjs` (FR-INTEG-003) that reads a zeroheight HTML export and scores it against the A.3 + A.5 subset. Happy for any feedback on what that read should and shouldn't do.
 
 - 25-row Core: https://audit.cyberskill.world/card
 - Repo: https://github.com/cyberskill-official/design-system-audit-framework
-- Documentation criteria: https://github.com/cyberskill-official/design-system-audit-framework/blob/main/framework/03-criteria-part-a.md
+- Documentation criteria: https://github.com/cyberskill-official/design-system-audit-framework/blob/main/docs/framework/03-criteria-part-a.md
 - Origin story: https://audit.cyberskill.world/blog/launch-2026
 
 No ask to promote, upvote, share, comment, or amplify it; just the zeroheight/docs-platform read if it is useful. If a 15-minute call is easier than email, happy to do that; same scope, no pitch.
@@ -234,7 +234,7 @@ Why I'm emailing you: your writing about how design systems get adopted (not jus
 If you have 5 minutes for the A.7 criteria specifically:
 
 - 25-row Core (A7.1 is in the Core): https://audit.cyberskill.world/card
-- A.7 Adoption & Metrics: https://github.com/cyberskill-official/design-system-audit-framework/blob/main/framework/03-criteria-part-a.md
+- A.7 Adoption & Metrics: https://github.com/cyberskill-official/design-system-audit-framework/blob/main/docs/framework/03-criteria-part-a.md
 - Repo: https://github.com/cyberskill-official/design-system-audit-framework
 - Origin story: https://audit.cyberskill.world/blog/launch-2026
 
@@ -261,10 +261,10 @@ Why I'm emailing you: design tokens are A.1 in the framework — five of the 25 
 
 - 25-row Core: https://audit.cyberskill.world/card
 - Repo: https://github.com/cyberskill-official/design-system-audit-framework
-- A.1 Foundations & Tokens: https://github.com/cyberskill-official/design-system-audit-framework/blob/main/framework/03-criteria-part-a.md
+- A.1 Foundations & Tokens: https://github.com/cyberskill-official/design-system-audit-framework/blob/main/docs/framework/03-criteria-part-a.md
 - Origin story: https://audit.cyberskill.world/blog/launch-2026
 
-Tangentially: there's a `scripts/tokens-studio-validator.mjs` (FR-INTEG-002) that reads a Tokens Studio export and scores it against the A.1 subset. Open to any feedback on what that reader should and shouldn't catch. No ask to promote, upvote, share, comment, or amplify it. If a 15-minute call is easier than email, happy to do that; same scope, no pitch.
+Tangentially: there's a `scripts/bin/tokens-studio-validator.mjs` (FR-INTEG-002) that reads a Tokens Studio export and scores it against the A.1 subset. Open to any feedback on what that reader should and shouldn't catch. No ask to promote, upvote, share, comment, or amplify it. If a 15-minute call is easier than email, happy to do that; same scope, no pitch.
 
 Stephen Cheng
 CyberSkill, Ho Chi Minh City

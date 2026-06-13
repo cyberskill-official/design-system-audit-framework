@@ -6,7 +6,7 @@ agent: <model-id>
 operator: <name>
 signer: <name>
 parent_audit: YYYY-MM-DD | null
-framework: framework/02-framework.md
+framework: framework/01-framework-overview.md
 dsaf_25_score: 0.0
 no_silent_regression: true
 override_count: 0

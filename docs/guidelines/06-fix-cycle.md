@@ -204,4 +204,4 @@ Things outside the FIX cycle's authority — they require their own audit cycle 
 
 ---
 
-*Continue to [`07-maturity-tiers.md`](../framework/04-maturity-tiers.md) for what each L0–L5 tier means and the enterprise-grade thresholds.*
+*Continue to [`04-maturity-tiers.md`](../framework/04-maturity-tiers.md) for what each L0–L5 tier means and the enterprise-grade thresholds.*

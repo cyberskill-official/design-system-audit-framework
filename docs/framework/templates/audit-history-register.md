@@ -1,6 +1,6 @@
 # Audit History Register
 
-> Running log of every audit run against this design system. Append a row whenever an audit is signed (per the framework's `02-framework.md` §9). Do not delete rows; corrections are added as new dated rows.
+> Running log of every audit run against this design system. Append a row whenever an audit is signed (per the framework's `01-framework-overview.md` §9). Do not delete rows; corrections are added as new dated rows.
 
 | Date | Mode | Agent | Operator | Signer | Part A % | Part B % | Combined % | Interior tier | Cited tier | Enterprise-grade | Report |
 |---|---|---|---|---|---|---|---|---|---|---|---|

@@ -7,8 +7,8 @@
 ### 📊 Expanding Empirical Benchmarks
 | Metric | SOTA Target | Current Value | CLI Command / Tool Used for Verification |
 |---|---|---|---|
-| CLI Sync I/O Blocking | 0ms | High (Blocking) | `node packages/cli/dist/index.js fix ./packages` |
-| Large JSON Parsing OOM Risk | 0% (Streams) | 100% (JSON.parse buffer) | `node packages/cli/dist/index.js parse-storybook ./test.json` |
+| CLI Sync I/O Blocking | 0ms | High (Blocking) | `node packages/cli/dist/cli.js fix ./packages` |
+| Large JSON Parsing OOM Risk | 0% (Streams) | 100% (JSON.parse buffer) | `node packages/cli/dist/cli.js parse-storybook ./test.json` |
 
 ### 📋 Actionable Tasks
 | ID | Priority | Status | Vector | Deep Technical Task Description & Expected Metric Delta |

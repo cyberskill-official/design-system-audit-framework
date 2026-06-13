@@ -26,7 +26,7 @@ DSAF is opening three translation issues as good-first-issue contributions:
 
 Scope is intentionally small: DSAF-25 Core plus the first-read landing copy. Native-speaker review is required before merge, and translator/reviewer recognition is opt-in.
 
-Guidelines: https://github.com/cyberskill-official/design-system-audit-framework/blob/main/guidelines/i18n/translation-guidelines.md
+Guidelines: https://github.com/cyberskill-official/design-system-audit-framework/blob/main/docs/guidelines/i18n/translation-guidelines.md
 
 If you work in one of these languages and want a concrete OSS contribution that helps design-system teams read the rubric in their own language, the issue links are here:
 
@@ -59,7 +59,7 @@ DSAF is looking for community translators/reviewers for Japanese, Spanish, and G
 
 The scope is DSAF-25 Core plus first-read landing copy, not the full 125 criteria. Native-speaker review is required before merge, and recognition is opt-in.
 
-Guidelines: https://github.com/cyberskill-official/design-system-audit-framework/blob/main/guidelines/i18n/translation-guidelines.md
+Guidelines: https://github.com/cyberskill-official/design-system-audit-framework/blob/main/docs/guidelines/i18n/translation-guidelines.md
 
 Issues:
 JA: <JA_ISSUE_URL>
