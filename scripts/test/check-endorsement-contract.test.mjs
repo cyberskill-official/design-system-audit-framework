@@ -24,7 +24,7 @@ function fixtureRepo() {
   mkdirSync(join(root, "docs/internal/branding"), { recursive: true });
   writeFileSync(join(root, payload.files.readme), [
     "Named outside-reviewer quotes are not published until explicit written consent is logged.",
-    "See internal/branding/reviewer-consent-log.md.",
+    "See docs/internal/branding/reviewer-consent-log.md.",
     "> \"<endorsement quote, <= 280 chars>\" — <Reviewer Name>, <Affiliation>",
     "",
     "> \"<endorsement quote, <= 280 chars>\" — <Reviewer Name>, <Affiliation>",

@@ -1,8 +1,15 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
-import { join } from "node:path";
+import { dirname, join } from "node:path";
 import { tmpdir } from "node:os";
+
+/** Write a fixture file, creating its parent directory tree first (robust to any layout). */
+function writeFixture(root, rel, content) {
+  const target = join(root, rel);
+  mkdirSync(dirname(target), { recursive: true });
+  writeFileSync(target, content);
+}
 
 import {
   countMatches,
@@ -22,13 +29,9 @@ function svg(asset) {
 
 function fixtureRepo() {
   const root = mkdtempSync(join(tmpdir(), "dsaf-visuals-"));
-  mkdirSync(join(root, "docs"), { recursive: true });
-  mkdirSync(join(root, "framework"), { recursive: true });
-  mkdirSync(join(root, "guidelines"), { recursive: true });
-  mkdirSync(join(root, "docs/outputs/assets"), { recursive: true });
-  for (const asset of payload.svg_assets) writeFileSync(join(root, asset.path), svg(asset));
-  for (const pdf of payload.pdf_assets) writeFileSync(join(root, pdf), `%PDF-${"x".repeat(1500)}`);
-  writeFileSync(join(root, payload.radar_template.path), JSON.stringify({
+  for (const asset of payload.svg_assets) writeFixture(root, asset.path, svg(asset));
+  for (const pdf of payload.pdf_assets) writeFixture(root, pdf, `%PDF-${"x".repeat(1500)}`);
+  writeFixture(root, payload.radar_template.path, JSON.stringify({
     axes: Array.from({ length: 20 }, (_, index) => ({
       id: index < 10 ? `A.${index + 1}` : `B.${index - 9}`,
       name: `Axis ${index}`,
@@ -38,12 +41,15 @@ function fixtureRepo() {
       enterprise_floor_pct: 40,
     })),
   }));
-  writeFileSync(join(root, "docs/framework/assets/dsaf-visual-design-spec.md"), Object.values(payload.required_strings["docs/framework/assets/dsaf-visual-design-spec.md"]).join("\n"));
-  writeFileSync(join(root, "README.md"), payload.required_strings["README.md"].join("\n"));
-  writeFileSync(join(root, "docs/guidelines/01-introduction.md"), payload.required_strings["docs/guidelines/01-introduction.md"].join("\n"));
-  writeFileSync(join(root, "docs/framework/07-maturity-tiers.md"), payload.required_strings["docs/framework/07-maturity-tiers.md"].join("\n"));
-  writeFileSync(join(root, "docs/framework/dsaf-25.md"), payload.required_strings["docs/framework/dsaf-25.md"].join("\n"));
-  writeFileSync(join(root, "package.json"), JSON.stringify({ scripts: { "contract:visual-assets": "node x", "test:visual-assets-contract": "node --test x" } }));
+  // Payload-driven: write exactly the files the contract payload requires, so this
+  // fixture cannot drift from the canonical paths/strings (e.g. doc renames).
+  for (const [rel, value] of Object.entries(payload.required_strings)) {
+    const text = Array.isArray(value) ? value.join("\n") : Object.values(value).join("\n");
+    writeFixture(root, rel, text);
+  }
+  const scripts = {};
+  for (const name of payload.required_package_scripts ?? []) scripts[name] = "node x";
+  writeFixture(root, "package.json", JSON.stringify({ scripts }));
   return root;
 }
 

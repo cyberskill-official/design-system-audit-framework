@@ -80,7 +80,7 @@ export const Footer = () => {
                   });
                   btn.textContent = 'Subscribed!';
                   form.reset();
-                } catch (err) {
+                } catch {
                   btn.textContent = 'Error';
                   btn.disabled = false;
                 }

@@ -1,8 +1,14 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
-import { join } from "node:path";
+import { dirname, join } from "node:path";
 import { tmpdir } from "node:os";
+
+/** Write a fixture file, creating its parent directory tree first (robust to any layout). */
+function w(absPath, content) {
+  mkdirSync(dirname(absPath), { recursive: true });
+  writeFileSync(absPath, content);
+}
 
 import {
   commandLines,
@@ -46,31 +52,22 @@ This launch pitch stays concrete for skeptical readers. It names the audit outpu
 ## Quick Start
 
 \`\`\`bash
-git clone https://github.com/cyberskill-official/design-system-audit-framework.git
-cd design-system-audit-framework
-npm run verify
-node scripts/bin/audit-init.mjs /tmp/system
+${payload.quick_start.required_strings.filter((s) => !s.endsWith(".md")).join("\n")}
 \`\`\`
 
-Then open [guidelines/prompts/scan-mode.md](./guidelines/prompts/scan-mode.md).
+Then open [${payload.quick_start.required_strings.find((s) => s.endsWith(".md"))}](./${payload.quick_start.required_strings.find((s) => s.endsWith(".md"))}).
 
 ## Reading Order
 
 | # | File | Purpose |
 |---|---|---|
-| 1 | [guidelines/01-introduction.md](./guidelines/01-introduction.md) | Extended introduction |
-| 2 | [docs/framework/02-framework.md](./docs/framework/02-framework.md) | Modes |
-| 3 | [docs/framework/dsaf-25.md](./docs/framework/dsaf-25.md) | DSAF-25 Core |
-| 4 | [guidelines/05-running-an-audit.md](./guidelines/05-running-an-audit.md) | Workflow |
-| 5 | [docs/framework/07-maturity-tiers.md](./docs/framework/07-maturity-tiers.md) | DSAF Levels |
-| 6 | [guidelines/prompts/scan-mode.md](./guidelines/prompts/scan-mode.md) | SCAN |
-| 7 | [guidelines/08-improvement-plan.md](./guidelines/08-improvement-plan.md) | Plan |
+${payload.reading_order.required_links.map((link, index) => `| ${index + 1} | [${link}](./${link}) | Step ${index + 1} |`).join("\n")}
 
 ## External Review Status
 
 | Quote |
 |---|
-| Named outside-reviewer quotes are not published until explicit written consent is logged. See internal/branding/reviewer-consent-log.md. |
+| Named outside-reviewer quotes are not published until explicit written consent is logged. See docs/internal/branding/reviewer-consent-log.md. |
 
 > "<endorsement quote, <= 280 chars>" — <Reviewer Name>, <Affiliation>
 
@@ -80,7 +77,7 @@ These slots are placeholders for FR-DOCS-002. Do not replace them with invented 
 
 ## Governance
 
-DSAF Modes, Complete L3 self-audit example, self-audit publication policy, internal/SERVICES.md, methodology surface stays neutral.
+DSAF Modes, Complete L3 self-audit example, self-audit publication policy, docs/internal/SERVICES.md, docs/internal/strategy/framework-monetization-plan.md, methodology surface stays neutral.
 `;
 }
 
@@ -88,9 +85,9 @@ function fixtureRepo() {
   const root = mkdtempSync(join(tmpdir(), "dsaf-readme-"));
   mkdirSync(join(root, "docs"), { recursive: true });
   mkdirSync(join(root, "guidelines"), { recursive: true });
-  writeFileSync(join(root, "README.md"), fixtureReadme());
-  writeFileSync(join(root, "docs/guidelines/01-introduction.md"), payload.reading_order.intro_required.join("\n"));
-  writeFileSync(join(root, "package.json"), JSON.stringify({ scripts: payload.required_package_scripts }));
+  w(join(root, "README.md"), fixtureReadme());
+  w(join(root, "docs/guidelines/01-introduction.md"), payload.reading_order.intro_required.join("\n"));
+  w(join(root, "package.json"), JSON.stringify({ scripts: payload.required_package_scripts }));
   return root;
 }
 
@@ -114,7 +111,7 @@ test("safeRead and readJson expose missing and malformed states", () => {
   try {
     assert.equal(safeRead(root, "missing.md"), null);
     assert.deepEqual(readJson(root, "missing.json"), { ok: false, value: null, error: "missing" });
-    writeFileSync(join(root, "bad.json"), "{not-json");
+    w(join(root, "bad.json"), "{not-json");
     assert.equal(readJson(root, "bad.json").ok, false);
   }
   finally {
@@ -137,7 +134,7 @@ test("evaluateReadmeContract passes a clean fixture with mocked skim", () => {
 test("evaluateReadmeContract catches missing pitch beats and misplaced visuals", () => {
   const root = fixtureRepo();
   try {
-    writeFileSync(join(root, "README.md"), "# DSAF — Design System Audit Framework\n\nGeneric intro.\n".repeat(40));
+    w(join(root, "README.md"), "# DSAF — Design System Audit Framework\n\nGeneric intro.\n".repeat(40));
     const failures = evaluateReadmeContract(payload, root).results.filter((item) => item.status === "fail");
     assert.ok(failures.some((item) => item.rule_id.startsWith("first-200-")));
     assert.ok(failures.some((item) => item.rule_id === "visual-above-fold"));
@@ -150,7 +147,7 @@ test("evaluateReadmeContract catches missing pitch beats and misplaced visuals",
 test("evaluateReadmeContract catches funnel copy and wrong clone URL", () => {
   const root = fixtureRepo();
   try {
-    writeFileSync(join(root, "README.md"), fixtureReadme().replace("cyberskill-official", "cyberskill") + "\nBook a call\n");
+    w(join(root, "README.md"), fixtureReadme().replace("cyberskill-official", "cyberskill") + "\nBook a call\n");
     const failures = evaluateReadmeContract(payload, root).results.filter((item) => item.status === "fail");
     assert.ok(failures.some((item) => item.rule_id === "quick-start-required-string"));
     assert.ok(failures.some((item) => item.rule_id === "forbidden-readme-pattern"));
@@ -163,9 +160,11 @@ test("evaluateReadmeContract catches funnel copy and wrong clone URL", () => {
 test("evaluateReadmeContract catches reading order and endorsement regressions", () => {
   const root = fixtureRepo();
   try {
-    const broken = fixtureReadme().replace("| 7 | [guidelines/08-improvement-plan.md](./guidelines/08-improvement-plan.md) | Plan |\n", "").replace(/> "<endorsement quote[^\n]+\n/g, "");
-    writeFileSync(join(root, "README.md"), broken);
-    writeFileSync(join(root, "docs/guidelines/01-introduction.md"), "missing intro rows");
+    const lastLink = payload.reading_order.required_links[payload.reading_order.required_links.length - 1];
+    const lastRow = `| ${payload.reading_order.required_links.length} | [${lastLink}](./${lastLink}) | Step ${payload.reading_order.required_links.length} |\n`;
+    const broken = fixtureReadme().replace(lastRow, "").replace(/> "<endorsement quote[^\n]+\n/g, "");
+    w(join(root, "README.md"), broken);
+    w(join(root, "docs/guidelines/01-introduction.md"), "missing intro rows");
     const failures = evaluateReadmeContract(payload, root).results.filter((item) => item.status === "fail");
     assert.ok(failures.some((item) => item.rule_id === "reading-order-row-count"));
     assert.ok(failures.some((item) => item.rule_id === "endorsement-slot-count"));
@@ -179,7 +178,7 @@ test("evaluateReadmeContract catches reading order and endorsement regressions",
 test("evaluateReadmeContract catches missing files and package script regressions", () => {
   const root = mkdtempSync(join(tmpdir(), "dsaf-readme-empty-"));
   try {
-    writeFileSync(join(root, "package.json"), JSON.stringify({ scripts: {} }));
+    w(join(root, "package.json"), JSON.stringify({ scripts: {} }));
     const failures = evaluateReadmeContract(payload, root).results.filter((item) => item.status === "fail");
     assert.ok(failures.some((item) => item.rule_id === "readme-exists"));
     assert.ok(failures.some((item) => item.rule_id === "intro-exists"));

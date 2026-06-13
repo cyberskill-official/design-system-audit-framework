@@ -1,8 +1,14 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
-import { join } from "node:path";
+import { dirname, join } from "node:path";
 import { tmpdir } from "node:os";
+
+/** Write a fixture file, creating its parent directory tree first (robust to any layout). */
+function w(absPath, content) {
+  mkdirSync(dirname(absPath), { recursive: true });
+  writeFileSync(absPath, content);
+}
 
 import {
   countMatches,
@@ -22,12 +28,12 @@ function fixtureRepo() {
   mkdirSync(join(root, "guidelines"), { recursive: true });
   mkdirSync(join(root, "apps/landing"), { recursive: true });
   mkdirSync(join(root, "docs/internal/branding"), { recursive: true });
-  writeFileSync(join(root, "README.md"), "# DSAF — Design System Audit Framework\n\nDSAF DSAF DSAF DSAF DSAF\n");
-  writeFileSync(join(root, "docs/guidelines/CONTRIBUTING.md"), "Use DSAF Criteria and DSAF Levels.\n");
-  writeFileSync(join(root, "docs/internal/SERVICES.md"), "Commercial work is separate from DSAF.\n");
-  writeFileSync(join(root, "apps/landing/index.html"), "<title>DSAF — Design System Audit Framework</title>\n");
-  writeFileSync(join(root, "docs/internal/branding/handle-taxonomy.md"), "DSAF Design System Audit Framework DSAF Criteria DSAF-25 Core DSAF Levels DSAF Modes SCAN mode FIX mode W mode DSAF DSAF DSAF DSAF\n");
-  writeFileSync(join(root, "docs/internal/branding/glossary.md"), "DSAF Design System Audit Framework DSAF Criteria DSAF-25 Core DSAF Levels DSAF Modes SCAN mode FIX mode W mode DSAF DSAF DSAF DSAF\n");
+  w(join(root, "README.md"), "# DSAF — Design System Audit Framework\n\nDSAF DSAF DSAF DSAF DSAF\n");
+  w(join(root, "docs/guidelines/CONTRIBUTING.md"), "Use DSAF Criteria and DSAF Levels.\n");
+  w(join(root, "docs/internal/SERVICES.md"), "Commercial work is separate from DSAF.\n");
+  w(join(root, "docs/internal/landing/index.html"), "<title>DSAF — Design System Audit Framework</title>\n");
+  w(join(root, "docs/internal/branding/handle-taxonomy.md"), "DSAF Design System Audit Framework DSAF Criteria DSAF-25 Core DSAF Levels DSAF Modes SCAN mode FIX mode W mode DSAF DSAF DSAF DSAF\n");
+  w(join(root, "docs/internal/branding/glossary.md"), "DSAF Design System Audit Framework DSAF Criteria DSAF-25 Core DSAF Levels DSAF Modes SCAN mode FIX mode W mode DSAF DSAF DSAF DSAF\n");
   return root;
 }
 
@@ -39,7 +45,7 @@ test("walkFiles honors extensions and exclusions", () => {
   const root = fixtureRepo();
   try {
     mkdirSync(join(root, "docs/internal/feature-requests"), { recursive: true });
-    writeFileSync(join(root, "docs/internal/feature-requests/example.md"), "DSAF Framework example");
+    w(join(root, "docs/internal/feature-requests/example.md"), "DSAF Framework example");
     const files = walkFiles(root, payload).map((file) => file.replace(root + "/", ""));
     assert.ok(files.includes("README.md"));
     assert.ok(!files.includes("docs/internal/feature-requests/example.md"));
@@ -63,10 +69,10 @@ test("evaluateTaxonomy passes a clean fixture", () => {
 test("evaluateTaxonomy catches banned noun handles", () => {
   const root = fixtureRepo();
   try {
-    writeFileSync(join(root, "apps/landing/index.html"), "The DSAF Framework should fail.\n");
+    w(join(root, "docs/internal/landing/index.html"), "The DSAF Framework should fail.\n");
     const evaluation = evaluateTaxonomy(payload, root);
     const failures = evaluation.results.filter((item) => item.status === "fail");
-    assert.ok(failures.some((item) => item.file === "apps/landing/index.html"));
+    assert.ok(failures.some((item) => item.file === "docs/internal/landing/index.html"));
   }
   finally {
     rmSync(root, { recursive: true, force: true });

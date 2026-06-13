@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { GoogleGenAI } from '@google/genai';
 import OpenAI from 'openai';
-import Anthropic from '@anthropic-ai/sdk';
 import { db } from '@/lib/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
@@ -43,7 +42,7 @@ async function generateAIResponse(provider: string, modelName: string, apiKey: s
     }
 
     const data = await response.json();
-    const textBlocks = data.content?.filter((b: any) => b.type === 'text') || [];
+    const textBlocks = data.content?.filter((b: { type: string; text?: string }) => b.type === 'text') || [];
     if (textBlocks.length > 0) {
       return textBlocks[0].text;
     }
@@ -114,7 +113,7 @@ export async function POST(req: NextRequest) {
     try {
       const jsonStr = responseText.replace(/```json/g, '').replace(/```/g, '').trim();
       result = JSON.parse(jsonStr);
-    } catch (e) {
+    } catch {
       return NextResponse.json({ error: 'Failed to parse AI response', raw: responseText }, { status: 500 });
     }
 
@@ -125,14 +124,14 @@ export async function POST(req: NextRequest) {
         summary: result.summary,
         violationCount: result.violations ? result.violations.length : 0,
         timestamp: serverTimestamp(),
-      }).catch(err => console.warn("Firestore async save failed:", err.message));
-    } catch (dbError: any) {
-      console.warn("Failed to initiate save to Firestore: ", dbError.message);
+      }).catch((err: unknown) => console.warn("Firestore async save failed:", err instanceof Error ? err.message : String(err)));
+    } catch (dbError: unknown) {
+      console.warn("Failed to initiate save to Firestore: ", dbError instanceof Error ? dbError.message : String(dbError));
     }
 
     return NextResponse.json(result);
 
-  } catch (error: any) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+  } catch (error: unknown) {
+    return NextResponse.json({ error: error instanceof Error ? error.message : String(error) }, { status: 500 });
   }
 }

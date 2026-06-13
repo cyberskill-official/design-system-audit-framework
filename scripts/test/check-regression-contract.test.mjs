@@ -1,8 +1,15 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
-import { join } from "node:path";
+import { dirname, join } from "node:path";
 import { tmpdir } from "node:os";
+
+/** Write a fixture file, creating its parent directory tree first (robust to any layout). */
+function writeFixture(root, rel, content) {
+  const target = join(root, rel);
+  mkdirSync(dirname(target), { recursive: true });
+  writeFileSync(target, content);
+}
 
 import {
   countPattern,
@@ -19,22 +26,16 @@ const payload = loadRegressionPayload();
 
 function fixtureRepo() {
   const root = mkdtempSync(join(tmpdir(), "dsaf-regression-"));
-  mkdirSync(join(root, "docs"), { recursive: true });
-  mkdirSync(join(root, "framework"), { recursive: true });
-  mkdirSync(join(root, "guidelines"), { recursive: true });
-  mkdirSync(join(root, "docs/guidelines/prompts"), { recursive: true });
-  mkdirSync(join(root, "docs/framework/templates"), { recursive: true });
-  mkdirSync(join(root, "docs/internal/feature-requests"), { recursive: true });
-  const common = "No-silent-regression gate override_log RE_AUDIT (awaiting override) D-RT rollback no_silent_regression: true override_count regression_count regression_tag UNRESOLVED @Human[rollback]";
-  writeFileSync(join(root, "docs/framework/regression-policy.md"), "Regressions are allowed only when they are visible, attributed, and signed.\n`rubric-tightened` `fix-side-effect` `external-dependency-change` `deliberate-policy-tradeoff` `D-RT` `OVRD-FSE` `OVRD-EDC` `OVRD-DPT` `UNRESOLVED`\nOlder audits with `no_downgrade: true` remain valid\n");
-  writeFileSync(join(root, "docs/framework/02-framework.md"), `## §4 No-silent-regression rule\n${common}\nAlways honour the no-silent-regression rule\n`);
-  writeFileSync(join(root, "docs/guidelines/06-fix-cycle.md"), common);
-  writeFileSync(join(root, "docs/framework/07-maturity-tiers.md"), "DSAF Level transitions and the no-silent-regression rule\nevery regression in a signed audit is surfaced with a cause, tag, and approval path\nD-RT\n");
-  writeFileSync(join(root, "docs/framework/templates/audit-report-template.md"), common);
-  writeFileSync(join(root, "docs/guidelines/prompts/fix-mode.md"), "No-silent-regression gate override_log Do not auto-revert. Rollback is a human decision. RE_AUDIT (awaiting override)\n");
-  writeFileSync(join(root, "README.md"), "npm run test:regression-contract\nnpm run contract:regression\n");
-  writeFileSync(join(root, "package.json"), JSON.stringify({ scripts: { "contract:regression": "node x", "test:regression-contract": "node --test x" } }));
-  writeFileSync(join(root, "docs/internal/feature-requests/old.md"), "no-downgrade rule is allowed here by exclusion");
+  // Payload-driven: write each required artifact containing all its required strings, so
+  // the fixture cannot drift from the canonical file paths or required content.
+  for (const [rel, strings] of Object.entries(payload.required_strings)) {
+    writeFixture(root, rel, strings.join("\n") + "\n");
+  }
+  const scripts = {};
+  for (const name of payload.required_package_scripts) scripts[name] = "node x";
+  writeFixture(root, payload.files.package_json, JSON.stringify({ scripts }));
+  // A legacy term inside an excluded path must NOT be flagged (exercised by walk tests).
+  writeFixture(root, "docs/internal/feature-requests/old.md", "no-downgrade rule is allowed here by exclusion");
   return root;
 }
 

@@ -1,8 +1,14 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
-import { join } from "node:path";
+import { dirname, join } from "node:path";
 import { tmpdir } from "node:os";
+
+/** Write a fixture file, creating its parent directory tree first (robust to any layout). */
+function w(absPath, content) {
+  mkdirSync(dirname(absPath), { recursive: true });
+  writeFileSync(absPath, content);
+}
 
 import {
   countMatches,
@@ -32,9 +38,10 @@ function fixtureRepo() {
   mkdirSync(join(root, "apps/landing/benchmark"), { recursive: true });
   mkdirSync(join(root, "apps/landing/benchmark/privacy"), { recursive: true });
 
-  writeFileSync(join(root, "docs/internal/branding/brand-decoupling-domain-decision.md"), [
+  w(join(root, "docs/internal/branding/brand-decoupling-domain-decision.md"), [
     "# DSAF / CyberSkill decoupling decision",
     "## Decision",
+    "**Status:** ratified — FR-BRAND-004.",
     "Brand decoupling is achieved **at the content layer**, not the URL layer.",
     "The framework runs at `https://audit.cyberskill.world/` and Brand decoupling is achieved **at the content layer**, not the URL layer.",
     "## Why we're keeping the URL on CyberSkill infra",
@@ -68,17 +75,19 @@ function fixtureRepo() {
     "| 10 | `/about` | keep-on-cyberskill | no migration |",
   ].join("\n"));
 
-  writeFileSync(join(root, "docs/internal/ADR-FR-BRAND-004.md"), "FR-BRAND-004\n\n**Status:** accepted\n\n```mermaid\nflowchart TD\nA-->B\n```\n");
-  writeFileSync(join(root, ".github/CODEOWNERS"), payload.required_codeowners.join("\n"));
-  writeFileSync(join(root, "apps/landing/vercel.json"), JSON.stringify({ headers: [{ headers: [{ key: "Strict-Transport-Security" }, { key: "Content-Security-Policy" }] }] }));
-  writeFileSync(join(root, "README.md"), "https://audit.cyberskill.world\ninternal/SERVICES.md\nmethodology surface stays neutral\n");
-  writeFileSync(join(root, "apps/landing/index.html"), "<link rel=\"canonical\" href=\"https://audit.cyberskill.world/\"><meta property=\"og:url\" content=\"https://audit.cyberskill.world/\">DSAF — Design System Audit Framework");
-  writeFileSync(join(root, "apps/landing/card/index.html"), "<link rel=\"canonical\" href=\"https://audit.cyberskill.world/card\">DSAF-25 Core card");
-  writeFileSync(join(root, "apps/landing/benchmark/index.html"), "<link rel=\"canonical\" href=\"https://audit.cyberskill.world/benchmark/\">Benchmark");
-  writeFileSync(join(root, "apps/landing/benchmark/results.html"), "<link rel=\"canonical\" href=\"https://audit.cyberskill.world/benchmark/results.html\">Results");
-  writeFileSync(join(root, "apps/landing/benchmark/privacy/index.html"), "<link rel=\"canonical\" href=\"https://audit.cyberskill.world/benchmark/privacy/\">info@cyberskill.world");
-  writeFileSync(join(root, "apps/landing/README.md"), "`https://audit.cyberskill.world`\nNo paid-service CTA, pricing, or sales form lives here.\nNo redirect rules ship from here\n");
-  writeFileSync(join(root, "package.json"), JSON.stringify({ scripts: payload.required_package_scripts }));
+  w(join(root, "docs/internal/ADR-FR-BRAND-004.md"), "FR-BRAND-004\n\n**Status:** accepted\n\n```mermaid\nflowchart TD\nA-->B\n```\n");
+  w(join(root, ".github/CODEOWNERS"), payload.required_codeowners.join("\n"));
+  w(join(root, "apps/saas-dashboard/vercel.json"), JSON.stringify({ headers: [{ headers: [{ key: "Strict-Transport-Security" }, { key: "Content-Security-Policy" }] }] }));
+  w(join(root, "README.md"), "https://audit.cyberskill.world\ndocs/internal/SERVICES.md\ndocs/internal/strategy/framework-monetization-plan.md\nmethodology surface stays neutral\n");
+  // Active-surface scan mirror (the canonical scanned landing location). Clean content.
+  w(join(root, "docs/internal/landing/index.html"), "<link rel=\"canonical\" href=\"https://audit.cyberskill.world/\"><meta property=\"og:url\" content=\"https://audit.cyberskill.world/\">DSAF — Design System Audit Framework");
+  w(join(root, "apps/landing/index.html"), "<link rel=\"canonical\" href=\"https://audit.cyberskill.world/\"><meta property=\"og:url\" content=\"https://audit.cyberskill.world/\">DSAF — Design System Audit Framework");
+  w(join(root, "apps/landing/card/index.html"), "<link rel=\"canonical\" href=\"https://audit.cyberskill.world/card\">DSAF-25 Core card");
+  w(join(root, "apps/landing/benchmark/index.html"), "<link rel=\"canonical\" href=\"https://audit.cyberskill.world/benchmark/\">Benchmark");
+  w(join(root, "apps/landing/benchmark/results.html"), "<link rel=\"canonical\" href=\"https://audit.cyberskill.world/benchmark/results.html\">Results");
+  w(join(root, "apps/landing/benchmark/privacy/index.html"), "<link rel=\"canonical\" href=\"https://audit.cyberskill.world/benchmark/privacy/\">info@cyberskill.world");
+  w(join(root, "apps/landing/README.md"), "`https://audit.cyberskill.world`\nNo paid-service CTA, pricing, or sales form lives here.\nNo redirect rules ship from here\n");
+  w(join(root, "package.json"), JSON.stringify({ scripts: payload.required_package_scripts }));
   return root;
 }
 
@@ -96,17 +105,17 @@ test("vercelHasRedirects catches redirect and rewrite keys", () => {
 test("walkActiveSurfaces includes active internal/landing files", () => {
   const root = fixtureRepo();
   try {
-    mkdirSync(join(root, "apps/landing", "dist"), { recursive: true });
-    mkdirSync(join(root, "apps/landing", ".cache"), { recursive: true });
-    writeFileSync(join(root, "apps/landing", "dist", "ignored.html"), "https://dsaf.dev");
-    writeFileSync(join(root, "apps/landing", ".cache", "ignored.html"), "https://dsaf.dev");
-    writeFileSync(join(root, "apps/landing", "ignored.json"), "{\"url\":\"https://dsaf.dev\"}");
+    // Active surfaces are scanned under docs/internal/landing (the canonical mirror),
+    // not apps/landing (the built app). dist/.cache/non-matching extensions are skipped.
+    w(join(root, "docs/internal/landing", "dist", "ignored.html"), "https://dsaf.dev");
+    w(join(root, "docs/internal/landing", ".cache", "ignored.html"), "https://dsaf.dev");
+    w(join(root, "docs/internal/landing", "ignored.json"), "{\"url\":\"https://dsaf.dev\"}");
     const files = walkActiveSurfaces(root, payload).map((file) => file.replace(root + "/", ""));
     assert.ok(files.includes("README.md"));
-    assert.ok(files.includes("apps/landing/index.html"));
-    assert.ok(!files.includes("apps/landing/dist/ignored.html"));
-    assert.ok(!files.includes("apps/landing/.cache/ignored.html"));
-    assert.ok(!files.includes("apps/landing/ignored.json"));
+    assert.ok(files.includes("docs/internal/landing/index.html"));
+    assert.ok(!files.includes("docs/internal/landing/dist/ignored.html"));
+    assert.ok(!files.includes("docs/internal/landing/.cache/ignored.html"));
+    assert.ok(!files.includes("docs/internal/landing/ignored.json"));
   }
   finally {
     rmSync(root, { recursive: true, force: true });
@@ -118,7 +127,7 @@ test("safeRead and readJson expose missing and malformed file states", () => {
   try {
     assert.equal(safeRead(root, "missing.md"), null);
     assert.deepEqual(readJson(root, "missing.json"), { ok: false, value: null, error: "missing" });
-    writeFileSync(join(root, "bad.json"), "{not-json");
+    w(join(root, "bad.json"), "{not-json");
     assert.equal(readJson(root, "bad.json").ok, false);
   }
   finally {
@@ -142,7 +151,10 @@ test("evaluateDecouplingContract passes a clean fixture with mocked deployment c
 test("evaluateDecouplingContract catches stale neutral-domain links and sales copy", () => {
   const root = fixtureRepo();
   try {
-    writeFileSync(join(root, "apps/landing/benchmark/results.html"), "See https://dsaf.dev and book a paid audit.");
+    // Sales copy on a landing_public_file (apps/landing/*) triggers landing-forbidden-sales-copy;
+    // the neutral domain must appear on a scanned active surface (docs/internal/landing/*).
+    w(join(root, "apps/landing/benchmark/results.html"), "book a paid audit.");
+    w(join(root, "docs/internal/landing/index.html"), "See https://dsaf.dev for more.");
     const failures = evaluateDecouplingContract(payload, root).results.filter((item) => item.status === "fail");
     assert.ok(failures.some((item) => item.rule_id === "active-surface-no-neutral-domain"));
     assert.ok(failures.some((item) => item.rule_id === "landing-forbidden-sales-copy"));
@@ -155,8 +167,8 @@ test("evaluateDecouplingContract catches stale neutral-domain links and sales co
 test("evaluateDecouplingContract catches redirect config and malformed inventory", () => {
   const root = fixtureRepo();
   try {
-    writeFileSync(join(root, "apps/landing/vercel.json"), JSON.stringify({ redirects: [{ source: "/x", destination: "/y" }], headers: [] }));
-    writeFileSync(join(root, "docs/internal/branding/brand-decoupling-domain-decision.md"), "no rows");
+    w(join(root, "apps/saas-dashboard/vercel.json"), JSON.stringify({ redirects: [{ source: "/x", destination: "/y" }], headers: [] }));
+    w(join(root, "docs/internal/branding/brand-decoupling-domain-decision.md"), "no rows");
     const failures = evaluateDecouplingContract(payload, root).results.filter((item) => item.status === "fail");
     assert.ok(failures.some((item) => item.rule_id === "vercel-no-redirects"));
     assert.ok(failures.some((item) => item.rule_id === "redirect-map-inventory-count"));
@@ -170,7 +182,7 @@ test("evaluateDecouplingContract catches missing required files and malformed pa
   const root = mkdtempSync(join(tmpdir(), "dsaf-decoupling-empty-"));
   try {
     mkdirSync(join(root, "apps/landing"), { recursive: true });
-    writeFileSync(join(root, "package.json"), "{not-json");
+    w(join(root, "package.json"), "{not-json");
     const failures = evaluateDecouplingContract(payload, root).results.filter((item) => item.status === "fail");
     assert.ok(failures.some((item) => item.rule_id === "decision-file-exists"));
     assert.ok(failures.some((item) => item.rule_id === "domain-decision-file-exists"));
@@ -189,8 +201,8 @@ test("evaluateDecouplingContract catches missing required files and malformed pa
 test("evaluateDecouplingContract catches missing governance and package docs/framework/scripts", () => {
   const root = fixtureRepo();
   try {
-    writeFileSync(join(root, ".github/CODEOWNERS"), "");
-    writeFileSync(join(root, "package.json"), JSON.stringify({ scripts: {} }));
+    w(join(root, ".github/CODEOWNERS"), "");
+    w(join(root, "package.json"), JSON.stringify({ scripts: {} }));
     const failures = evaluateDecouplingContract(payload, root).results.filter((item) => item.status === "fail");
     assert.ok(failures.some((item) => item.rule_id === "codeowners-boundary-gate"));
     assert.ok(failures.some((item) => item.rule_id === "package-script"));

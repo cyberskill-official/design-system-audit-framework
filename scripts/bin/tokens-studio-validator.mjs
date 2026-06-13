@@ -7,6 +7,6 @@
  * stable npm run target.
  */
 
-import { runCli } from "../packages/tokens-validator/src/cli.js";
+import { runCli } from "../../packages/tokens-validator/src/cli.js";
 
-process.exit(runCli(process.argv.slice(2)));
+process.exit(await runCli(process.argv.slice(2)));

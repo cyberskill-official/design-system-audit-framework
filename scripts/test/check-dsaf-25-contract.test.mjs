@@ -1,8 +1,14 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
-import { join } from "node:path";
+import { dirname, join } from "node:path";
 import { tmpdir } from "node:os";
+
+/** Write a fixture file, creating its parent directory tree first (robust to any layout). */
+function w(absPath, content) {
+  mkdirSync(dirname(absPath), { recursive: true });
+  writeFileSync(absPath, content);
+}
 
 import {
   evaluateDsaf25Contract,
@@ -44,15 +50,16 @@ function fixtureRepo() {
   const partA = rows.filter((row) => row.id.startsWith("A"));
   const partB = rows.filter((row) => row.id.startsWith("B"));
 
-  writeFileSync(join(root, "docs/framework/03-criteria-part-a.md"), `| # | Criterion | Tag | 0 | 3 | 5 |\n|---|---|---|---|---|---|\n${tableRows(partA)}\n`);
-  writeFileSync(join(root, "docs/framework/04-criteria-part-b.md"), `| # | Criterion | Tag | 0 | 3 | 5 |\n|---|---|---|---|---|---|\n${tableRows(partB)}\n`);
-  writeFileSync(join(root, "docs/framework/dsaf-25.md"), `---\ndsaf_125_version: "test"\n---\nIt is not DSAF Lite.\ndsaf_25_score%\nfull DSAF Criteria\nPublication cap\nDSAF-25 Core is the shareable entry point\nUse the full DSAF Criteria for signed audits.\n${rows.map((row) => `${row.id} ${row.name}`).join("\n")}\n| # | Source | Category | Criterion | Tag |\n|---:|---|---|---|---|\n${coreRows(rows)}\n`);
-  writeFileSync(join(root, "docs/framework/assets/dsaf-25-card.svg"), `<svg width="210mm" height="297mm" viewBox="0 0 210 297" role="img"><title>DSAF-25</title><desc>${rows.map((row) => `${row.id} ${row.name}`).join("; ")}</desc>${rows.map((row) => `<text>${row.id}</text>`).join("")}</svg>`);
-  writeFileSync(join(root, "docs/framework/assets/dsaf-25-card-print.pdf"), "x".repeat(1200));
-  writeFileSync(join(root, "apps/landing/card/index.html"), `<svg aria-labelledby="t d"><title id="t">DSAF-25 Core</title><desc id="d">DSAF-25 Core</desc>${rows.map((row) => `<text>${row.id}</text>`).join("")}</svg>`);
-  writeFileSync(join(root, "docs/framework/templates/audit-report-template.md"), "dsaf_25_score: 0\n");
-  writeFileSync(join(root, "README.md"), "npm run test:dsaf-25-contract\nnpm run contract:dsaf-25\n");
-  writeFileSync(join(root, "package.json"), JSON.stringify({ scripts: { "contract:dsaf-25": "node x", "test:dsaf-25-contract": "node --test x" } }));
+  // The payload now resolves both part_a and part_b to the unified 03-full-criteria.md,
+  // so write the full criteria table (parts A and B together) to that single file.
+  w(join(root, "docs/framework/03-full-criteria.md"), `| # | Criterion | Tag | 0 | 3 | 5 |\n|---|---|---|---|---|---|\n${tableRows([...partA, ...partB])}\n`);
+  w(join(root, "docs/framework/dsaf-25.md"), `---\ndsaf_125_version: "test"\n---\nIt is not DSAF Lite.\ndsaf_25_score%\nfull DSAF Criteria\nPublication cap\nDSAF-25 Core is the shareable entry point\nUse the full DSAF Criteria for signed audits.\n${rows.map((row) => `${row.id} ${row.name}`).join("\n")}\n| # | Source | Category | Criterion | Tag |\n|---:|---|---|---|---|\n${coreRows(rows)}\n`);
+  w(join(root, "docs/framework/assets/dsaf-25-card.svg"), `<svg width="210mm" height="297mm" viewBox="0 0 210 297" role="img"><title>DSAF-25</title><desc>${rows.map((row) => `${row.id} ${row.name}`).join("; ")}</desc>${rows.map((row) => `<text>${row.id}</text>`).join("")}</svg>`);
+  w(join(root, "docs/framework/assets/dsaf-25-card-print.pdf"), "x".repeat(1200));
+  w(join(root, "apps/landing/card/index.html"), `<svg aria-labelledby="t d"><title id="t">DSAF-25 Core</title><desc id="d">DSAF-25 Core</desc>${rows.map((row) => `<text>${row.id}</text>`).join("")}</svg>`);
+  w(join(root, "docs/framework/templates/audit-report-template.md"), "dsaf_25_score: 0\n");
+  w(join(root, "README.md"), "npm run test:dsaf-25-contract\nnpm run contract:dsaf-25\n");
+  w(join(root, "package.json"), JSON.stringify({ scripts: { "contract:dsaf-25": "node x", "test:dsaf-25-contract": "node --test x" } }));
   return root;
 }
 
@@ -84,7 +91,7 @@ test("evaluateDsaf25Contract catches verbatim criterion drift", () => {
   const root = fixtureRepo();
   try {
     const text = readFileSync(join(root, "docs/framework/dsaf-25.md"), "utf8").replace(/Canonical A1.1/g, "Reworded A1.1");
-    writeFileSync(join(root, "docs/framework/dsaf-25.md"), text);
+    w(join(root, "docs/framework/dsaf-25.md"), text);
     const failures = evaluateDsaf25Contract(payload, root).results.filter((item) => item.status === "fail");
     assert.ok(failures.some((item) => item.rule_id === "core-name-verbatim"));
   }
@@ -97,7 +104,7 @@ test("evaluateDsaf25Contract catches missing category coverage", () => {
   const root = fixtureRepo();
   try {
     const text = readFileSync(join(root, "docs/framework/dsaf-25.md"), "utf8").replace("| 25 | B10.1 | Category B10.1 | Canonical B10.1 | FIXED |", "| 25 | B9.1 | Category B9.1 | Canonical B9.1 | FIXED |");
-    writeFileSync(join(root, "docs/framework/dsaf-25.md"), text);
+    w(join(root, "docs/framework/dsaf-25.md"), text);
     const failures = evaluateDsaf25Contract(payload, root).results.filter((item) => item.status === "fail");
     assert.ok(failures.some((item) => item.rule_id === "core-unique-ids"));
     assert.ok(failures.some((item) => item.rule_id === "category-covered" && item.observed === "B10"));

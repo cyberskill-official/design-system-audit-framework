@@ -1,10 +1,4 @@
-/** @type {import('ts-jest').JestConfigWithTsJest} */
-module.exports = {
-  preset: 'ts-jest',
-  testEnvironment: 'node',
-  testMatch: ['**/__tests__/**/*.test.ts'],
-  moduleFileExtensions: ['ts', 'js'],
-  transform: {
-    '^.+\\.ts$': 'ts-jest',
-  },
-};
+// OBSOLETE — jest was removed in favor of node:test. Tests live in test/cli.test.mjs
+// and run via `npm test` (node --test). This file is retained only because the sandbox
+// could not unlink it; it is safe to delete.
+module.exports = {};

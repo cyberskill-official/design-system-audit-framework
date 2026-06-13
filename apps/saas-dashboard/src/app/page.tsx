@@ -63,7 +63,7 @@ export default function DashboardPage() {
 
     try {
       // Only send non-empty overrides so server env vars take effect
-      const payload: Record<string, any> = { files };
+      const payload: Record<string, unknown> = { files };
       if (provider) payload.provider = provider;
       if (model) payload.model = model;
       if (baseUrl) payload.baseUrl = baseUrl;
@@ -81,8 +81,8 @@ export default function DashboardPage() {
       }
 
       setResult(data);
-    } catch (e: any) {
-      setError(e.message);
+    } catch (e: unknown) {
+      setError(e instanceof Error ? e.message : String(e));
     } finally {
       setIsAuditing(false);
     }

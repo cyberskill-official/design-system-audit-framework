@@ -1,14 +1,20 @@
 import { useState, useEffect } from 'react';
 import { Moon, Sun } from 'lucide-react';
 
+const prefersDark = () =>
+  typeof window !== 'undefined' &&
+  !!window.matchMedia &&
+  window.matchMedia('(prefers-color-scheme: dark)').matches;
+
 export const Header = () => {
-  const [isDark, setIsDark] = useState(false);
+  // Initialise from the system preference via a lazy initializer so we never call
+  // setState synchronously inside an effect (which triggers cascading renders).
+  const [isDark, setIsDark] = useState(prefersDark);
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    // Check initial system preference
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      setIsDark(true);
+    // Apply the initial theme class once on mount (DOM sync, not React state).
+    if (prefersDark()) {
       document.documentElement.classList.add('dark');
     }
 

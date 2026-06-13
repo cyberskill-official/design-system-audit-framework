@@ -9,7 +9,7 @@
   "scripts": {
     "build": "esbuild src/index.ts --bundle --platform=node --target=node20 --outfile=dist/cli.js",
     "prepublishOnly": "npm run build",
-    "test": "jest"
+    "test": "node --test test/cli.test.mjs"
   },
   "keywords": [
     "design-system",
@@ -31,11 +31,8 @@
     "stream-json": "^3.4.0"
   },
   "devDependencies": {
-    "@types/jest": "^30.0.0",
     "@types/node": "^25.9.1",
     "esbuild": "^0.28.0",
-    "jest": "^30.4.2",
-    "ts-jest": "^29.4.11",
     "typescript": "^6.0.3"
   }
 }

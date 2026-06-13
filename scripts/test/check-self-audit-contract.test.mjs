@@ -26,7 +26,7 @@ function fixtureRepo() {
   const files = [
     "docs/internal/branding",
     "docs",
-    "apps/landing",
+    "docs/internal/landing",
     "docs/guidelines/prompts",
     "docs/framework/templates",
     "docs/framework/examples/cyberskill-design-system",
@@ -74,9 +74,9 @@ test("evaluateSelfAuditContract passes a clean fixture", () => {
 test("evaluateSelfAuditContract catches public CyberSkill L5 claims", () => {
   const root = fixtureRepo();
   try {
-    writeFileSync(join(root, "apps/landing/index.html"), "CyberSkill reached L5 Optimised.");
+    writeFileSync(join(root, "docs/internal/landing/index.html"), "CyberSkill reached L5 Optimised.");
     const evaluation = evaluateSelfAuditContract(payload, root);
-    assert.ok(evaluation.results.some((item) => item.status === "fail" && item.file === "apps/landing/index.html"));
+    assert.ok(evaluation.results.some((item) => item.status === "fail" && item.file === "docs/internal/landing/index.html"));
   }
   finally {
     rmSync(root, { recursive: true, force: true });

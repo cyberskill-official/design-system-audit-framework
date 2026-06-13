@@ -171,8 +171,8 @@
   "scan": {
     "roots": [
       "README.md",
-      "framework",
-      "guidelines"
+      "docs/framework",
+      "docs/guidelines"
     ],
     "extensions": [
       ".md"
