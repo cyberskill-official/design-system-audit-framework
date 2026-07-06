@@ -16,7 +16,9 @@ import { fileURLToPath } from "node:url";
 import { runMaximalAudit } from "../bin/maximal-audit.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const ROOT = resolve(__dirname, "../../..");
+// Repo root: scripts/bin/ is two levels below it. (Was "../../.." — a path bug
+// that silently wrote loop outputs OUTSIDE the repository.)
+const ROOT = resolve(__dirname, "../..");
 // NOTE: This exploratory loop (30 file/url/repo cases, network + git-clone dependent)
 // writes to its OWN directory so it never clobbers the hermetic verification fixture set
 // in docs/outputs/generated/maximal-cases (owned by scripts/bin/build-verification-cases.mjs
@@ -70,20 +72,33 @@ async function main() {
     }
   }
 
-    const requestedCases = [
-    // 10 LOCAL FILES
-    { id: "file-cyberskill-design-system", input: "/Users/stephencheng/Projects/CyberSkill/design-system/DESIGN.md", kind: "file" },
-    { id: "file-gstack-design", input: "/Users/stephencheng/Projects/CyberSkill/cyberos/playground/gstack/DESIGN.md", kind: "file" },
-    { id: "file-stitch-design", input: "/Users/stephencheng/.gemini/antigravity-ide/skills/stitch-design-taste/DESIGN.md", kind: "file" },
-    { id: "file-awesome-airbnb", input: resolve(FIXTURE_ROOT, "awesome-airbnb/DESIGN.md"), kind: "file" },
-    { id: "file-awesome-apple", input: resolve(FIXTURE_ROOT, "awesome-apple/DESIGN.md"), kind: "file" },
-    { id: "file-awesome-figma", input: resolve(FIXTURE_ROOT, "awesome-figma/DESIGN.md"), kind: "file" },
-    { id: "file-awesome-linear", input: resolve(FIXTURE_ROOT, "awesome-linear/DESIGN.md"), kind: "file" },
-    { id: "file-awesome-notion", input: resolve(FIXTURE_ROOT, "awesome-notion/DESIGN.md"), kind: "file" },
-    { id: "file-awesome-cursor", input: resolve(FIXTURE_ROOT, "awesome-cursor/DESIGN.md"), kind: "file" },
-    { id: "file-awesome-ibm", input: resolve(FIXTURE_ROOT, "awesome-ibm/DESIGN.md"), kind: "file" },
+  // Optional machine-local cases live in scripts/test/fixtures/local-cases.json
+  // ({ "cases": [{ "id": "...", "input": "/abs/or/relative/path" }] }) or in the
+  // file named by DSAF_LOCAL_CASES. Local paths are OPTIONAL by design: the loop
+  // must run on any machine (CI included) without hard-coded home directories.
+  /** @type {{id: string, input: string, kind: "file"}[]} */
+  const localCases = [];
+  const localCasesPath = process.env.DSAF_LOCAL_CASES || resolve(ROOT, "scripts/test/fixtures/local-cases.json");
+  try {
+    const parsed = JSON.parse(readFileSync(localCasesPath, "utf8"));
+    for (const item of parsed.cases ?? []) {
+      // Relative inputs resolve against the framework repo root, so sibling
+      // checkouts ("../design-system") work on any machine.
+      const input = resolve(ROOT, String(item.input));
+      if (existsSync(input)) localCases.push({ id: String(item.id), input, kind: "file" });
+      else console.warn(`[self-improving-loop] skipping missing local case ${item.id}: ${input}`);
+    }
+  } catch {
+    console.warn(`[self-improving-loop] no local-cases file at ${localCasesPath} (optional).`);
+  }
 
-    // 10 URLS
+  const requestedCases = [
+    ...localCases,
+
+    // DOWNLOADED DESIGN.md FIXTURES
+    ...downloaded.map(([id, path]) => ({ id: `file-${id}`, input: path, kind: "file" })),
+
+    // PUBLIC URLS
     { id: "url-atlassian", input: "https://atlassian.design", kind: "url" },
     { id: "url-polaris", input: "https://polaris.shopify.com", kind: "url" },
     { id: "url-material3", input: "https://m3.material.io", kind: "url" },
@@ -95,7 +110,7 @@ async function main() {
     { id: "url-ant", input: "https://ant.design", kind: "url" },
     { id: "url-govuk", input: "https://design-system.service.gov.uk", kind: "url" },
 
-    // 10 REPOSITORIES
+    // PUBLIC REPOSITORIES (cloned shallow; artifact + verification bands light up here)
     { id: "repo-ant-design", input: "https://github.com/ant-design/ant-design", kind: "repo" },
     { id: "repo-mui", input: "https://github.com/mui/material-ui", kind: "repo" },
     { id: "repo-chakra-ui", input: "https://github.com/chakra-ui/chakra-ui", kind: "repo" },
@@ -109,15 +124,11 @@ async function main() {
   ];
 
   const cases = requestedCases.filter((item) => item.kind !== "file" || existsSync(item.input));
-  if (cases.length !== 30) {
-    console.error(`[self-improving-loop] Expected 30 cases, found ${cases.length}`);
-    for (const item of requestedCases) {
-      if (item.kind === "file" && !existsSync(item.input)) {
-        console.error(`  missing case input: ${item.input}`);
-      }
-    }
+  if (!cases.length) {
+    console.error("[self-improving-loop] no runnable cases found.");
     process.exit(1);
   }
+  console.log(`[self-improving-loop] ${cases.length} runnable case(s) (${localCases.length} machine-local).`);
 
   console.log(`[self-improving-loop] Starting loop execution for ${cases.length} cases...`);
   const summaries = [];
@@ -147,33 +158,26 @@ async function main() {
       });
 
       const currentScore = iterResult.unifiedAverage;
-      console.log(`  Score: ${currentScore}%`);
+      console.log(`  Score: ${currentScore}% (weighted ${iterResult.weightedCombined}%, tier ${iterResult.tier}, enterprise floors ${iterResult.enterpriseGrade ? "PASS" : "not yet"})`);
 
       if (iteration > 1) {
         const delta = currentScore - previousScore;
         console.log(`  Score Delta: ${delta > 0 ? '+' : ''}${delta}%`);
-        
+
         if (delta <= 0) {
           console.log(`[self-improving-loop] Stable score reached at iteration ${iteration}. Stopping loop for ${item.id}.`);
           break;
         }
       }
 
-
-      // Dynamic Criteria Expansion: Suggest new criteria based on current iteration gaps
-      const pendingCriteriaPath = resolve(ROOT, "docs/framework/pending_criteria.md");
-      const suggestedCriterion = `| PEND-${Date.now().toString().slice(-4)} | **${item.id} Specific Needs**: Enhance coverage for ${item.id} specific scenarios | DYNAMIC | Unmet | Partial | Fully compliant. Refs: [DSAF-B] |\n`;
-      
-      let pendingContent = "";
-      try {
-        pendingContent = readFileSync(pendingCriteriaPath, "utf8");
-      } catch (e) {
-        pendingContent = "# Pending Criteria for Approval\n\n| # | Criterion | Tag | 0 | 3 | 5 |\n|---|---|---|---|---|---|\n";
-      }
-      if (!pendingContent.includes(item.id)) {
-        writeFileSync(pendingCriteriaPath, pendingContent + suggestedCriterion);
-        console.log(`  [self-improving-loop] Suggested new criteria appended to pending_criteria.md`);
-      }
+      // NOTE — honesty guard. The engine's three-band model means re-feeding
+      // IMPROVED_DESIGN.md can only ever recover the prose band (max 40/100):
+      // artifacts and verification require real files, CI, and tests in the
+      // target. The loop therefore converges quickly and cannot inflate scores
+      // by keyword echo. Criteria/keyword/probe proposals are NOT generated
+      // here any more — run `npm run evolve:mine` after the loop; it aggregates
+      // scores.json across all cases and writes human-gated proposals to
+      // docs/outputs/generated/evolution/ (never mutating the rubric).
 
       // Prepare for next iteration
       const nextInput = resolve(caseDir, "output-improved", "IMPROVED_DESIGN.md");

@@ -50,6 +50,8 @@ for (const c of manifest.cases) {
     const text = readFileSync(path, "utf8");
     if (file === "ANALYZED_DESIGN_REPORT.md") {
       if (!text.includes("## Unified Score Summary")) failures.push(`${c.id}/${file} missing Unified Score Summary`);
+      if (!text.includes("## Category Roll-up & Enterprise Floors")) failures.push(`${c.id}/${file} missing category roll-up / enterprise floors section`);
+      if (!text.includes("Enterprise-grade verdict")) failures.push(`${c.id}/${file} missing enterprise-grade verdict`);
       if (!text.includes("## Full Enterprise DSAF Criterion Scores And Suggestions")) failures.push(`${c.id}/${file} missing full enterprise DSAF criterion section`);
       if (!text.includes("| ID | Type | Category | Criterion | Score | Level | Confidence | Evidence found | Missing signals | Citation refs | Required proof | Suggested improvement | Acceptance gate | Output action |")) failures.push(`${c.id}/${file} missing expanded criterion table columns`);
       if (!text.includes("| AUTO |") || !text.includes("| MANUAL |")) failures.push(`${c.id}/${file} missing AUTO/MANUAL criterion rows`);
@@ -71,6 +73,25 @@ for (const c of manifest.cases) {
         failures.push(`${c.id}/${file} does not preserve full source plus improvement layer`);
       }
     }
+  }
+}
+
+// Every case must also emit a machine-readable scores.json (dsaf-scores/1) —
+// the substrate for audit-diff regression gating and evolution mining.
+for (const c of manifest.cases) {
+  const scoresPath = resolve(OUTPUT_ROOT, c.id, "scores.json");
+  if (!existsSync(scoresPath)) {
+    failures.push(`${c.id}/scores.json missing`);
+    continue;
+  }
+  try {
+    const scores = JSON.parse(readFileSync(scoresPath, "utf8"));
+    if (scores.schema !== "dsaf-scores/1") failures.push(`${c.id}/scores.json wrong schema: ${scores.schema}`);
+    if (!Array.isArray(scores.criteria) || scores.criteria.length !== 125) failures.push(`${c.id}/scores.json expected 125 criteria, got ${scores.criteria?.length}`);
+    if (typeof scores.unified_average !== "number" || scores.unified_average < 0 || scores.unified_average > 100) failures.push(`${c.id}/scores.json unified_average out of range`);
+    if (!scores.engine_version) failures.push(`${c.id}/scores.json missing engine_version`);
+  } catch (err) {
+    failures.push(`${c.id}/scores.json unparseable: ${err instanceof Error ? err.message : String(err)}`);
   }
 }
 

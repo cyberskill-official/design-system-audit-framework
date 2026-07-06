@@ -1,0 +1,6 @@
+{
+  "description": "Optional machine-local cases for the exploratory self-improving loop (scripts/bin/self-improving-loop.mjs). Relative inputs resolve against the framework repo root; missing paths are skipped with a warning so the loop stays portable. Override the file location with DSAF_LOCAL_CASES.",
+  "cases": [
+    { "id": "local-cyberskill-design-system", "input": "../design-system" }
+  ]
+}

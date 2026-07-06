@@ -1,13 +1,24 @@
 name: DSAF Conformance Agent
 
+# Path filters previously watched "framework/**" and "internal/**", which do not
+# exist (the repo uses docs/framework and docs/internal) — the verify gate never
+# fired on PRs. Filters now match the real tree, plus push-to-main and manual runs.
+
 on:
+  push:
+    branches: [main]
   pull_request:
     paths:
-      - "framework/**"
-      - "internal/**"
+      - "docs/framework/**"
+      - "docs/guidelines/**"
+      - "docs/internal/**"
+      - "scripts/**"
+      - "packages/**"
       - "package.json"
       - "README.md"
+      - "CONTRIBUTING.md"
       - ".github/workflows/conformance-agent.yml"
+  workflow_dispatch:
 
 jobs:
   verify:

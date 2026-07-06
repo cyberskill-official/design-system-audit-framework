@@ -1,0 +1,33 @@
+name: DSAF Self-Evolution
+
+# The framework half of the auto-evolution loop: on a weekly cadence, re-run the
+# full verify suite (hermetic calibration corpus) and mine evolution proposals
+# from the regenerated scores. Proposals are uploaded as artifacts for HUMAN
+# review — this workflow never mutates the rubric, keywords, or probes itself.
+
+on:
+  schedule:
+    - cron: "0 2 * * 1" # Mondays 02:00 UTC
+  workflow_dispatch:
+
+jobs:
+  evolve:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install
+      - name: Verify (regenerates the calibration corpus + scores.json fixtures)
+        run: npm run verify
+      - name: Mine evolution proposals (human-gated output)
+        run: npm run evolve:mine
+      - name: Upload proposals for review
+        uses: actions/upload-artifact@v4
+        with:
+          name: dsaf-evolution-proposals
+          path: |
+            docs/outputs/generated/evolution/gap-report.json
+            docs/outputs/generated/evolution/proposals.md
+          retention-days: 90

@@ -16,6 +16,8 @@
     "check:doc-freshness": "node scripts/checks/check-doc-freshness.mjs",
     "audit:maximal": "node scripts/bin/maximal-audit.mjs",
     "audit:maximal:cases": "node scripts/bin/self-improving-loop.mjs",
+    "audit:diff": "node scripts/bin/audit-diff.mjs",
+    "evolve:mine": "node scripts/bin/evolution-mine.mjs",
     "gen:verification-cases": "node scripts/bin/build-verification-cases.mjs",
     "check:engine-robustness": "node scripts/checks/check-engine-robustness.mjs",
     "check:maximal:cases": "node scripts/checks/check-maximal-cases.mjs",

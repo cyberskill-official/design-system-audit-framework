@@ -75,6 +75,10 @@ Run `npm run verify` to execute all contracts. Individual contracts:
 - `npm run contract:readme` / `npm run test:readme-contract`
 - `npm run contract:reviewers` / `npm run test:reviewer-contract`
 
+## Auto-Evolution
+
+The deterministic engine scores every criterion in three evidence bands — prose mentions (max 40), structural artifacts (max 40), verification signals (max 20) — so a document can read as "Defined" but never fake "Built". Every run emits machine-readable `scores.json`; `npm run audit:diff` gates score drops per the [no-silent-regression policy](docs/framework/05-regression-policy.md), and `npm run evolve:mine` turns calibration runs into human-gated rubric/vocabulary/probe proposals under `docs/outputs/generated/evolution/`. A weekly workflow re-verifies the corpus and uploads proposals for review — the loop proposes, a person disposes. See [self-improving-loop-guidelines](docs/guidelines/self-improving-loop-guidelines.md).
+
 ## Canonical Surface
 
 The public-facing instance is deployed at https://audit.cyberskill.world.
