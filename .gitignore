@@ -43,7 +43,6 @@ yarn-error.log*
 next-env.d.ts
 
 # Project specific
-.cyberos-memory
 docs/outputs/
 outputs/
 patch-contracts.cjs
@@ -82,3 +81,6 @@ apps/landing/blog/**/*.html
 # here so a stray `git add -A` never commits them). Safe to `rm -rf` locally.
 __rmtest__*
 __rmtestdir__/
+
+# CyberOS vendored machine + local BRAIN at .cyberos/memory/store (regenerable via init; tenant data). Do not commit.
+.cyberos/
