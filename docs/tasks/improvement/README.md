@@ -1,6 +1,6 @@
 # Improvement backlog — CSAF ↔ CDS evolution loop
 
-This directory is the executable follow-up to the [2026-07-06 strengthening review](../internal/audits/2026-07-06-csaf-strengthening.md) (37 recommendations; R1–R22, R24–R30 landed on branches `auto/csaf-evolution` + `auto/audit-loop`). Everything still open lives here as detailed, agent-executable tasks with human review gates.
+This directory is the executable follow-up to the [2026-07-06 strengthening review](../../internal/audits/2026-07-06-csaf-strengthening.md) (37 recommendations; R1–R22, R24–R30 landed on branches `auto/csaf-evolution` + `auto/audit-loop`). Everything still open lives here as detailed, agent-executable tasks with human review gates.
 
 ## Files
 
@@ -24,11 +24,11 @@ This directory is the executable follow-up to the [2026-07-06 strengthening revi
 
 ## Conventions
 
-- Owner tags reuse the framework actor model ([framework overview §2](../framework/01-framework-overview.md)): `@Agent[fix]` — agent implements end-to-end; `@Human[manual]` — only a person can do it (push, procurement, research, counsel); `@Human[decide]` — agent prepares options, human chooses; hybrid tasks name both.
+- Owner tags reuse the framework actor model ([framework overview §2](../../framework/01-framework-overview.md)): `@Agent[fix]` — agent implements end-to-end; `@Human[manual]` — only a person can do it (push, procurement, research, counsel); `@Human[decide]` — agent prepares options, human chooses; hybrid tasks name both.
 - Priorities: `P0` unblocks the live loop · `P1` this cycle · `P2` next cycle · `P3` opportunistic.
 - Effort: `S` ≤ half a day · `M` 1–2 days · `L` needs slicing before execution.
 - Statuses: `todo → in-progress → in-review → done` (plus `blocked`, with the blocker named).
-- Two invariants no task may violate: **no silent regressions** ([policy](../framework/05-regression-policy.md) — score drops require a signed row in [overrides.md](overrides.md)) and **the loop proposes, a human disposes** (rubric/keyword/probe changes land only through reviewed PRs with a `dsaf_125_version` bump when criteria rows change).
+- Two invariants no task may violate: **no silent regressions** ([policy](../../framework/05-regression-policy.md) — score drops require a signed row in [overrides.md](overrides.md)) and **the loop proposes, a human disposes** (rubric/keyword/probe changes land only through reviewed PRs with a `dsaf_125_version` bump when criteria rows change).
 - Cross-repo tasks (E6) execute in the sibling `design-system` checkout but are tracked here, in one backlog, so the loop has one queue.
 
 ## Status snapshot

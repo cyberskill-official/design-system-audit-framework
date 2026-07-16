@@ -1,6 +1,6 @@
 # Backlog — master index
 
-Derived from the [2026-07-06 strengthening review](../internal/audits/2026-07-06-csaf-strengthening.md) §E (open recommendations R23, R31–R37), the first `evolve:mine` run (2026-07-06: 8 dead criteria, 118 vocabulary-gap rows, keyword-extraction flaw, zero repo-mode calibration cases), and loop go-live actions. Detail lives in the epic files; this table is the queue.
+Derived from the [2026-07-06 strengthening review](../../internal/audits/2026-07-06-csaf-strengthening.md) §E (open recommendations R23, R31–R37), the first `evolve:mine` run (2026-07-06: 8 dead criteria, 118 vocabulary-gap rows, keyword-extraction flaw, zero repo-mode calibration cases), and loop go-live actions. Detail lives in the epic files; this table is the queue.
 
 Update rules: change `Status` here AND in the task's own file in the same commit. A task is `done` only when its acceptance criteria are checked off with evidence and a human has signed the Review block.
 
