@@ -1,5 +1,5 @@
 # DSAF governance boundary files.
-# Replace @future-co-maintainer after FR-GOV-002 acceptance.
+# Replace @future-co-maintainer after TASK-GOV-002 acceptance.
 /internal/branding/brand-decoupling-domain-decision.md @StephenCheng @future-co-maintainer
 /internal/branding/handle-taxonomy.md @StephenCheng @future-co-maintainer
 /framework/assets/dsaf-*.svg @StephenCheng @future-co-maintainer

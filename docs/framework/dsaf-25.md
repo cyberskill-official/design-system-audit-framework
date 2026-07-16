@@ -2,7 +2,7 @@
 title: "DSAF-25 Core"
 status: normative
 dsaf_125_version: "2026-05-17"
-fr: FR-CORE-001
+task: TASK-CORE-001
 ---
 
 # DSAF-25 Core

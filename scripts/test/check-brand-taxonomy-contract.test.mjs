@@ -44,11 +44,11 @@ test("countMatches follows the contract pattern casing", () => {
 test("walkFiles honors extensions and exclusions", () => {
   const root = fixtureRepo();
   try {
-    mkdirSync(join(root, "docs/internal/feature-requests"), { recursive: true });
-    w(join(root, "docs/internal/feature-requests/example.md"), "DSAF Framework example");
+    mkdirSync(join(root, "docs/internal/tasks"), { recursive: true });
+    w(join(root, "docs/internal/tasks/example.md"), "DSAF Framework example");
     const files = walkFiles(root, payload).map((file) => file.replace(root + "/", ""));
     assert.ok(files.includes("README.md"));
-    assert.ok(!files.includes("docs/internal/feature-requests/example.md"));
+    assert.ok(!files.includes("docs/internal/tasks/example.md"));
   }
   finally {
     rmSync(root, { recursive: true, force: true });
@@ -87,7 +87,7 @@ test("writeTaxonomyAudit writes evidence", () => {
     const output = join(out, "audit.json");
     const audit = writeTaxonomyAudit(payload, evaluation, output);
     const written = JSON.parse(readFileSync(output, "utf8"));
-    assert.equal(audit.fr_id, "FR-BRAND-002");
+    assert.equal(audit.task_id, "TASK-BRAND-002");
     assert.equal(written.summary.fail, 0);
   }
   finally {

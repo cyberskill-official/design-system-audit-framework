@@ -1,6 +1,6 @@
 ---
 title: "Product Hunt launch - DSAF"
-fr: FR-LAUNCH-003
+task: TASK-LAUNCH-003
 status: repo-ready
 external_blocker: "Requires hunter confirmation or explicit self-submit decision, plus production blog/OG deploy."
 preferred_launch: "2026-05-20 00:01 PDT / 2026-05-20 14:01 ICT if Show HN posts 2026-05-19"
@@ -119,6 +119,6 @@ Happy to answer questions here.
 - Do not submit before the production site serves `/blog/launch-2026` and the gallery/OG assets.
 - Do not submit if Show HN has been flagged or paused by kill-switch.
 - Do not use paid launch services or coordinated voting.
-- Do not mention any named endorsement quote until FR-DOCS-002 is unblocked.
+- Do not mention any named endorsement quote until TASK-DOCS-002 is unblocked.
 
 *End of Product Hunt launch pack.*

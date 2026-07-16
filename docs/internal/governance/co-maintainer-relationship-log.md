@@ -1,10 +1,10 @@
 # DSAF co-maintainer relationship log
 
 **Status:** operator tracker.
-**FR:** FR-GOV-002.
+**task:** TASK-GOV-002.
 **Last updated:** 2026-05-18.
 
-This file stands in for the repository-local relationship memory for FR-GOV-002.
+This file stands in for the repository-local relationship memory for TASK-GOV-002.
 No candidate is publicly attributed as co-maintainer until written acceptance and co-signed announcement.
 
 ## Current state

@@ -7,7 +7,7 @@ This document is a consolidation of the DSAF Reviewer Outreach Playbook (origina
 ## 1. Reviewer Outreach Playbook
 
 **Status:** launch-ready.  
-**FR:** FR-GOV-001.
+**task:** TASK-GOV-001.
 
 ### Ask
 
@@ -185,7 +185,7 @@ If anything in the text or attribution needs to change, reply with the corrected
 Stephen
 ```
 
-When the reply lands, paste the exact text + the reply timestamp + the reviewer email into `internal/governance/reviewer-consent-log.md` per FR-GOV-001 §1.
+When the reply lands, paste the exact text + the reply timestamp + the reviewer email into `internal/governance/reviewer-consent-log.md` per TASK-GOV-001 §1.
 
 ### Send protocol
 

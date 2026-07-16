@@ -1,7 +1,7 @@
 # DSAF lite benchmark survey
 
 **Status:** superseded summary; canonical spec is [`framework/bench/lite-benchmark-spec.md`](../bench/lite-benchmark-spec.md).
-**FR:** FR-BENCH-001.
+**task:** TASK-BENCH-001.
 
 ## Purpose
 

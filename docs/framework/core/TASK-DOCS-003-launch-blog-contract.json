@@ -1,6 +1,6 @@
 {
   "schema_version": "2026-05-18",
-  "fr_id": "FR-DOCS-003",
+  "fr_id": "TASK-DOCS-003",
   "status": "strict-audit-contract-mocked-dependency",
   "observability": {
     "audit_output": "outputs/_audit/launch-blog-contract.json",
@@ -128,7 +128,7 @@
   "deploy_mock_contract": {
     "endpoint": "POST /mock/launch-blog-deploy-verification",
     "request": {
-      "fr_id": "FR-DOCS-003",
+      "fr_id": "TASK-DOCS-003",
       "canonical_url": "https://audit.cyberskill.world/blog/launch-2026",
       "requires_production_deploy": true,
       "approved_quote_count": 0,
@@ -138,11 +138,11 @@
       "status_code": 202,
       "body": {
         "accepted": true,
-        "fr_id": "FR-DOCS-003",
+        "fr_id": "TASK-DOCS-003",
         "production_deploy": "mocked",
         "approved_quote_count": 0,
         "publication_state": "repo-rendered",
-        "observability_key": "FR-DOCS-003:launch-blog:mock-deploy"
+        "observability_key": "TASK-DOCS-003:launch-blog:mock-deploy"
       }
     }
   }

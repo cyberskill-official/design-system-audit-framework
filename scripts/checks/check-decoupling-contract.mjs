@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * FR-BRAND-004 content-layer decoupling strict contract.
+ * TASK-BRAND-004 content-layer decoupling strict contract.
  */
 
 import {

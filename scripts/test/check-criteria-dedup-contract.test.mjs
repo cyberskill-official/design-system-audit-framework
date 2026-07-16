@@ -62,7 +62,7 @@ function fixtureRepo() {
   writeFileSync(join(root, "docs/framework/criteria-dedup-methodology.md"), "Dedup passes consolidate true duplicates without renumbering surviving IDs.\nCompare pairs within the same Part only.\nDo not merge FIXED with DYNAMIC.\nDo not merge across Part A and Part B.\nDo not leave any category empty.\nThis is the stable DSAF-125 baseline.\n");
   writeFileSync(join(root, "docs/framework/dsaf-25.md"), `| # | Source | Category | Criterion | Tag |\n|---:|---|---|---|---|\n${[...partAIds, ...partBIds].slice(0, 25).map((id, index) => `| ${index + 1} | ${id} | Cat | Name ${id} | FIXED |`).join("\n")}\n`);
   writeFileSync(join(root, "docs/framework/examples/cyberskill-design-system/improvement-plan.md"), "No alias references here.\n");
-  writeFileSync(join(root, "docs/framework/examples/cyberskill-design-system/_history.md"), "P0 FR-CORE-003 Criterion rows reduced from 138 to exactly 125 13 merged-away IDs preserved\n");
+  writeFileSync(join(root, "docs/framework/examples/cyberskill-design-system/_history.md"), "P0 TASK-CORE-003 Criterion rows reduced from 138 to exactly 125 13 merged-away IDs preserved\n");
   writeFileSync(join(root, "README.md"), "npm run test:criteria-dedup-contract\nnpm run contract:criteria-dedup\n");
   writeFileSync(join(root, "package.json"), JSON.stringify({ scripts: { "contract:criteria-dedup": "node x", "test:criteria-dedup-contract": "node --test x" } }));
   return root;
@@ -160,7 +160,7 @@ test("writeCriteriaDedupEvidence writes structured output", () => {
     const output = join(out, "audit.json");
     const audit = writeCriteriaDedupEvidence(payload, evaluateCriteriaDedupContract(payload, root), output);
     const written = JSON.parse(readFileSync(output, "utf8"));
-    assert.equal(audit.fr_id, "FR-CORE-003");
+    assert.equal(audit.task_id, "TASK-CORE-003");
     assert.equal(written.criteria_count, 125);
   }
   finally {

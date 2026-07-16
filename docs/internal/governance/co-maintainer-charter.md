@@ -1,7 +1,7 @@
 # DSAF co-maintainer charter
 
 **Status:** normative role charter; active for outreach, pending first written acceptance.
-**FR:** FR-GOV-002.
+**task:** TASK-GOV-002.
 
 ## Role overview
 
@@ -29,7 +29,7 @@ The role exists to:
 ## Responsibilities
 
 1. Review RFCs within 14 days when assigned.
-   Expected governance load: 1-3h per month on average once FR-GOV-003 RFC cycles begin.
+   Expected governance load: 1-3h per month on average once TASK-GOV-003 RFC cycles begin.
 2. Review external-contributor PRs in area of expertise.
    Expected review load: 1-2h per month on average when external PR volume exists.
 3. Share selected weekly deep-dive authorship when expertise matches.

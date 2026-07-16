@@ -91,7 +91,7 @@ test("writeSelfAuditEvidence writes structured output", () => {
     const output = join(out, "audit.json");
     const audit = writeSelfAuditEvidence(payload, evaluation, output);
     const written = JSON.parse(readFileSync(output, "utf8"));
-    assert.equal(audit.fr_id, "FR-CORE-004");
+    assert.equal(audit.task_id, "TASK-CORE-004");
     assert.equal(written.summary.fail, 0);
   }
   finally {

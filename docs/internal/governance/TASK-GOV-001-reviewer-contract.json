@@ -1,6 +1,6 @@
 {
   "schema_version": "2026-05-18",
-  "fr_id": "FR-GOV-001",
+  "fr_id": "TASK-GOV-001",
   "status": "strict-audit-contract-mocked-dependency",
   "observability": {
     "audit_output": "outputs/_audit/reviewer-contract.json",
@@ -28,7 +28,7 @@
     {
       "case": "Quote before consent",
       "failure_vector": "README publishes a named endorsement while the consent log is empty.",
-      "expected_handling": "Fail consent guard; keep placeholders until FR-DOCS-002."
+      "expected_handling": "Fail consent guard; keep placeholders until TASK-DOCS-002."
     },
     {
       "case": "Paid or amplification ask",
@@ -119,7 +119,7 @@
   "outreach_mock_contract": {
     "endpoint": "POST /mock/reviewer-outreach-send",
     "request": {
-      "fr_id": "FR-GOV-001",
+      "fr_id": "TASK-GOV-001",
       "ask_type": "review-not-endorsement",
       "compensation": "none",
       "materials": [
@@ -151,11 +151,11 @@
       "status_code": 202,
       "body": {
         "accepted": true,
-        "fr_id": "FR-GOV-001",
+        "fr_id": "TASK-GOV-001",
         "sent_count": 0,
         "mocked_recipient_count": 3,
         "consent_approvals": 0,
-        "observability_key": "FR-GOV-001:reviewer-outreach:mock-send"
+        "observability_key": "TASK-GOV-001:reviewer-outreach:mock-send"
       }
     }
   }

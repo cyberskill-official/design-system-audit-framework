@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * FR-CORE-004 self-audit publication cap contract.
+ * TASK-CORE-004 self-audit publication cap contract.
  */
 
 import {

@@ -1,6 +1,6 @@
 # T-7 Personal Heads-Up Outreach
 
-**FR:** FR-LAUNCH-004  
+**task:** TASK-LAUNCH-004  
 **Status:** repo-ready; manual sending pending founder email access and final launch date.
 
 This is informational outreach only. It is not a request for votes, reposts, comments, or public praise.

@@ -1,4 +1,4 @@
-# FR-CONTENT-003 - Co-Author Piece Brief
+# TASK-CONTENT-003 - Co-Author Piece Brief
 
 **Target partners:** Nathan Curtis first; Chris Strahl second; EightShapes or Knapsack blog depending on partner fit.
 **Repo-verifiable state:** pitch and outline ready; external co-author acceptance pending.

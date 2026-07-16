@@ -1,4 +1,4 @@
-# FR-FUNNEL-004 - EU/US Audit Lead Partner Playbook
+# TASK-FUNNEL-004 - EU/US Audit Lead Partner Playbook
 
 **Repo-verifiable state:** partner profile, screening script, and operating model ready; hiring/partnering is external.
 

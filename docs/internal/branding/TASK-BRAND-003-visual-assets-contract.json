@@ -1,6 +1,6 @@
 {
   "schema_version": "2026-05-18",
-  "fr_id": "FR-BRAND-003",
+  "fr_id": "TASK-BRAND-003",
   "status": "strict-audit-contract",
   "observability": {
     "audit_output": "outputs/_audit/visual-assets-contract.json",
@@ -152,7 +152,7 @@
     "allowed_results": ["pass", "partial-pass"],
     "mock_requests": [
       {
-        "fr_id": "FR-BRAND-003",
+        "fr_id": "TASK-BRAND-003",
         "trial_id": "mock-ladder-designer",
         "reviewer_role": "designer",
         "asset": "docs/framework/assets/dsaf-l0-l5-ladder.svg",
@@ -161,7 +161,7 @@
         "result": "pass"
       },
       {
-        "fr_id": "FR-BRAND-003",
+        "fr_id": "TASK-BRAND-003",
         "trial_id": "mock-radar-engineering-lead",
         "reviewer_role": "engineering_lead",
         "asset": "docs/framework/assets/dsaf-radar.svg",
@@ -170,7 +170,7 @@
         "result": "pass"
       },
       {
-        "fr_id": "FR-BRAND-003",
+        "fr_id": "TASK-BRAND-003",
         "trial_id": "mock-ladder-pm",
         "reviewer_role": "product_manager",
         "asset": "docs/framework/assets/dsaf-l0-l5-ladder.svg",

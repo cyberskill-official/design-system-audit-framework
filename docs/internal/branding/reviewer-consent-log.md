@@ -1,7 +1,7 @@
 # Reviewer consent log
 
 **Status:** empty until written consent arrives.
-**FRs:** FR-GOV-001, FR-DOCS-002.
+**tasks:** TASK-GOV-001, TASK-DOCS-002.
 
 | Reviewer | Affiliation | Quote | Approved surfaces | Approved at | Status |
 |---|---|---|---|---|---|

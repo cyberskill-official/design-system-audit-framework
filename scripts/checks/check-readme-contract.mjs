@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * FR-DOCS-001 README launch-copy strict contract.
+ * TASK-DOCS-001 README launch-copy strict contract.
  */
 
 import {

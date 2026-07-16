@@ -1,7 +1,7 @@
 # DSAF co-maintainer shortlist
 
 **Status:** private working tracker, committed without implying acceptance.
-**FR:** FR-GOV-002.
+**task:** TASK-GOV-002.
 **Last updated:** 2026-05-18.
 
 ## Sequential outreach

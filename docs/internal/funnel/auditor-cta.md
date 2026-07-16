@@ -1,4 +1,4 @@
-# FR-FUNNEL-001 - Certified Auditor CTA
+# TASK-FUNNEL-001 - Certified Auditor CTA
 
 **Surface:** `https://audit.cyberskill.world/audits/`
 **Rule:** no paid CTA in the GitHub README.

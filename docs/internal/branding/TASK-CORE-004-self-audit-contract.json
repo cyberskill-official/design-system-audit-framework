@@ -1,6 +1,6 @@
 {
   "schema_version": "2026-05-18",
-  "fr_id": "FR-CORE-004",
+  "fr_id": "TASK-CORE-004",
   "status": "strict-audit-contract",
   "observability": {
     "audit_output": "outputs/_audit/self-audit-cap-contract.json",
@@ -25,9 +25,9 @@
     "roots": ["README.md", "docs/internal/SERVICES.md", "docs", "docs/internal/landing", "docs/guidelines/prompts", "docs/framework/templates", "docs/framework/examples/cyberskill-design-system"],
     "extensions": [".md", ".html"],
     "exclude_path_contains": [
-      "docs/internal/feature-requests/",
+      "docs/internal/tasks/",
       "docs/Design System Audit Framework",
-      "docs/internal/branding/FR-CORE-004-self-audit-contract.json",
+      "docs/internal/branding/TASK-CORE-004-self-audit-contract.json",
       "outputs/_audit/",
       "docs/framework/examples/cyberskill-design-system/audit-report-2026-04-27.md"
     ]

@@ -4,7 +4,7 @@
  * audit-diff.mjs — no-silent-regression gate over two scores.json files
  * ─────────────────────────────────────────────────────────────────────
  *
- * Implements the enforcement half of the FR-CORE-002 no-silent-regression
+ * Implements the enforcement half of the TASK-CORE-002 no-silent-regression
  * policy (docs/framework/05-regression-policy.md) at engine level:
  *
  *   - compares a baseline scores.json against a current scores.json
@@ -110,7 +110,7 @@ function main() {
   }
 
   if (regressions.length) {
-    lines.push(`## Regressions (FR-CORE-002 override log — human signature required)`);
+    lines.push(`## Regressions (TASK-CORE-002 override log — human signature required)`);
     lines.push("");
     lines.push(`| Criterion | Pre | Post | Delta | Cause | Approver | Date | Tag | Notes |`);
     lines.push(`|---|---:|---:|---:|---|---|---|---|---|`);
@@ -125,7 +125,7 @@ function main() {
   console.log(report);
 
   if (regressions.length && !values["allow-regressions"]) {
-    console.error(`[audit-diff] ${regressions.length} unapproved regression(s). Sign an override (rerun with --allow-regressions after recording the FR-CORE-002 row) or fix the target.`);
+    console.error(`[audit-diff] ${regressions.length} unapproved regression(s). Sign an override (rerun with --allow-regressions after recording the TASK-CORE-002 row) or fix the target.`);
     process.exit(1);
   }
   console.log(`[audit-diff] ${regressions.length ? "regressions explicitly allowed by flag (record the override rows!)" : "no regressions"}; ${improvements.length} improvement(s).`);

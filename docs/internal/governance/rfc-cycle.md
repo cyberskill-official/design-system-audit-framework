@@ -1,4 +1,4 @@
-# FR-GOV-003 - Quarterly RFC Cycle
+# TASK-GOV-003 - Quarterly RFC Cycle
 
 **Repo-verifiable state:** RFC cadence and template ready.
 

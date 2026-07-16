@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 export const ROOT = resolve(__dirname, '../..');
-export const PAYLOAD_PATH = resolve(ROOT, "docs/internal/branding/FR-BRAND-004-decoupling-contract.json");
+export const PAYLOAD_PATH = resolve(ROOT, "docs/internal/branding/TASK-BRAND-004-decoupling-contract.json");
 export const AUDIT_OUTPUT = resolve(ROOT, "docs/outputs/_audit/decoupling-contract.json");
 
 export function loadDecouplingPayload(path = PAYLOAD_PATH) {
@@ -50,7 +50,7 @@ export function walkActiveSurfaces(root, payload) {
     if (!existsSync(abs)) return;
     const stat = statSync(abs);
     const rel = relative(root, abs);
-    if (rel.includes("node_modules") || rel.includes("docs/internal/feature-requests/")) return;
+    if (rel.includes("node_modules") || rel.includes("docs/internal/tasks/")) return;
     if (stat.isDirectory()) {
       for (const entry of readdirSync(abs)) {
         if (entry.startsWith(".") || entry === "dist") continue;
@@ -90,7 +90,7 @@ export function evaluateMockContract(payload) {
   const body = response.body || {};
   return [
     makeResult(contract.endpoint === "POST /mock/canonical-boundary-deployment-check", "mock-endpoint", "mock://deployment-control", contract.endpoint, "POST /mock/canonical-boundary-deployment-check", "mocked"),
-    makeResult(request.fr_id === payload.fr_id && request.canonical_host === payload.canonical_host, "mock-request-identity", "mock://deployment-control", { fr_id: request.fr_id, canonical_host: request.canonical_host }, { fr_id: payload.fr_id, canonical_host: payload.canonical_host }, "mocked"),
+    makeResult(request.task_id === payload.task_id && request.canonical_host === payload.canonical_host, "mock-request-identity", "mock://deployment-control", { task_id: request.task_id, canonical_host: request.canonical_host }, { task_id: payload.task_id, canonical_host: payload.canonical_host }, "mocked"),
     makeResult(Array.isArray(request.desired_redirect_rules) && request.desired_redirect_rules.length === 0, "mock-request-no-redirects", "mock://deployment-control", request.desired_redirect_rules, [], "mocked"),
     makeResult(response.status_code === 202 && body.accepted === true, "mock-response-accepted", "mock://deployment-control", { status_code: response.status_code, accepted: body.accepted }, { status_code: 202, accepted: true }, "mocked"),
     makeResult(body.redirect_rules_count === 0 && body.external_control_plane === "mocked" && typeof body.observability_key === "string", "mock-response-shape", "mock://deployment-control", body, "redirect_rules_count=0 and mocked control plane", "mocked"),
@@ -143,8 +143,8 @@ export function evaluateDecouplingContract(payload, root = ROOT) {
   if (adr !== null) {
     const isConsolidated = payload.files.adr_file.includes("brand-decoupling-domain-decision.md");
     const shapeOk = isConsolidated
-      ? (adr.includes("FR-BRAND-004") && (adr.includes("Status:** accepted") || adr.includes("Status:** ratified")))
-      : (adr.includes("FR-BRAND-004") && adr.includes("Status:** accepted") && adr.includes("```mermaid"));
+      ? (adr.includes("TASK-BRAND-004") && (adr.includes("Status:** accepted") || adr.includes("Status:** ratified")))
+      : (adr.includes("TASK-BRAND-004") && adr.includes("Status:** accepted") && adr.includes("```mermaid"));
     results.push(makeResult(shapeOk, "adr-decision-shape", payload.files.adr_file, isConsolidated ? "ratified decision" : "accepted ADR with Mermaid", "present"));
   }
 
@@ -232,7 +232,7 @@ export function summarize(results) {
 export function writeDecouplingEvidence(payload, evaluation, outputPath = AUDIT_OUTPUT) {
   const audit = {
     generated: new Date().toISOString(),
-    fr_id: payload.fr_id,
+    task_id: payload.task_id,
     canonical_host: payload.canonical_host,
     decision_mode: payload.decision_mode,
     observability: payload.observability,

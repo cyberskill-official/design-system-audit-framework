@@ -1,10 +1,10 @@
 # Reviewer quotes pending
 
 **Status:** no public quotes approved.
-**FR:** FR-DOCS-002.
+**task:** TASK-DOCS-002.
 
 This file intentionally contains no illustrative quotes.
-FR-DOCS-002 remains externally gated until at least two reviewers approve exact quote text and attribution strings.
+TASK-DOCS-002 remains externally gated until at least two reviewers approve exact quote text and attribution strings.
 
 | Reviewer | Approved quote | Attribution | Status |
 |---|---|---|---|

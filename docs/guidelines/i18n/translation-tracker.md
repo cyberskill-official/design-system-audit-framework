@@ -1,7 +1,7 @@
 # DSAF Translation Tracker
 
 **Status:** operator tracker.
-**FR:** FR-I18N-001.
+**task:** TASK-I18N-001.
 **Last updated:** 2026-05-18.
 
 | Language | Issue URL | Translator | Native reviewer | PR URL | Status | Notes |

@@ -1,6 +1,6 @@
 # DSAF — Visual design spec
 
-**Status:** normative; ratified by FR-BRAND-003 (2026-05-18).
+**Status:** normative; ratified by TASK-BRAND-003 (2026-05-18).
 **Purpose:** the design intent that every DSAF visual is authored against. New visuals (post-launch) MUST conform to this spec; the canonical visuals — the L0-L5 level ladder, the DSAF radar chart, and the DSAF-25 Core card — are the reference implementations.
 
 ## Canonical visuals
@@ -78,7 +78,7 @@ Each canonical SVG MUST carry a `<metadata>` block recording the DSAF rubric ver
 </metadata>
 ```
 
-When FR-CORE-003 dedup changes category counts or DSAF-25 selections shift, the relevant visual MUST be regenerated in the same PR.
+When TASK-CORE-003 dedup changes category counts or DSAF-25 selections shift, the relevant visual MUST be regenerated in the same PR.
 
 ## Raster fallbacks
 
@@ -94,6 +94,6 @@ The DSAF radar overlays a "minimum enterprise" boundary as a dashed `enterprise_
 
 ## Embedding patterns
 
-Both inline-SVG (`<svg>...</svg>` in the page source) and referenced-SVG (`<img src="./assets/dsaf-25-card.svg" alt="...">`) embeds are supported. The canonical `landing/` site (deployed at `audit.cyberskill.world`) uses inline-embed so the text content stays in page source (per FR-BRAND-001 + FR-CORE-001 accessibility patterns). README and blog posts use referenced-embed (simpler authoring).
+Both inline-SVG (`<svg>...</svg>` in the page source) and referenced-SVG (`<img src="./assets/dsaf-25-card.svg" alt="...">`) embeds are supported. The canonical `landing/` site (deployed at `audit.cyberskill.world`) uses inline-embed so the text content stays in page source (per TASK-BRAND-001 + TASK-CORE-001 accessibility patterns). README and blog posts use referenced-embed (simpler authoring).
 
 *End of visual design spec.*

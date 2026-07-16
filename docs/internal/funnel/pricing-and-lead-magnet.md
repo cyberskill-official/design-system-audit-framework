@@ -1,4 +1,4 @@
-# FR-FUNNEL-003 - Pricing and Lead Magnet
+# TASK-FUNNEL-003 - Pricing and Lead Magnet
 
 **Repo-verifiable state:** pricing policy and self-score CSV ready.
 

@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="240" height="240" viewBox="0 0 240 240" role="img" aria-labelledby="title desc">
   <title id="title">DSAF square logo</title>
   <desc id="desc">Square Product Hunt logo image for DSAF, using the DSAF wordmark and a compact L0 to L5 ladder motif.</desc>
-  <metadata>{"asset":"product-hunt-logo","size":"240x240","source":"FR-LAUNCH-003","date":"2026-05-18"}</metadata>
+  <metadata>{"asset":"product-hunt-logo","size":"240x240","source":"TASK-LAUNCH-003","date":"2026-05-18"}</metadata>
   <rect width="240" height="240" rx="28" fill="#111827"/>
   <rect x="22" y="22" width="196" height="196" rx="22" fill="#f8fafc"/>
   <text x="42" y="92" font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Arial" font-size="38" font-weight="800" fill="#111827">DSAF</text>

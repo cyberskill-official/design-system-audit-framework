@@ -713,7 +713,7 @@ Same scoring scale as Part A (0–5; 0 absent, 3 built and shipped, 5 industry-l
 | ENT-24.3 | Docs outputs/examples run against current framework/packages or are clearly marked illustrative until framework/packages exist. | DYNAMIC | Unmet | Partial | Fully compliant |
 | ENT-24.4 | Search, navigation, related links, version switcher, status badges, and source links help readers find trustworthy guidance quickly. | DYNAMIC | Unmet | Partial | Fully compliant |
 | ENT-24.5 | Contribution docs explain issue templates, proposal path, review criteria, acceptance gates, and code of conduct. | DYNAMIC | Unmet | Partial | Fully compliant |
-| ENT-24.6 | Community and customer feedback is triaged into bugs, gaps, feature requests, research needs, legal questions, and roadmap candidates. | DYNAMIC | Unmet | Partial | Fully compliant |
+| ENT-24.6 | Community and customer feedback is triaged into bugs, gaps, tasks, research needs, legal questions, and roadmap candidates. | DYNAMIC | Unmet | Partial | Fully compliant |
 | ENT-24.7 | Education material includes onboarding, workshops, migration guides, office hours, examples, and release briefings. | DYNAMIC | Unmet | Partial | Fully compliant |
 | ENT-24.8 | Docs quality is measured through task success, time to first contribution, search success, support tickets, and reader feedback. | DYNAMIC | Unmet | Partial | Fully compliant |
 

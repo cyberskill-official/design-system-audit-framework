@@ -1,7 +1,7 @@
 # Post-HN feedback tracker
 
 **Status:** empty until launch.
-**FRs:** FR-LAUNCH-001, FR-LAUNCH-002.
+**tasks:** TASK-LAUNCH-001, TASK-LAUNCH-002.
 
 ## Show HN
 

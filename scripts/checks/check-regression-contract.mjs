@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * FR-CORE-002 no-silent-regression strict contract.
+ * TASK-CORE-002 no-silent-regression strict contract.
  */
 
 import {

@@ -1,7 +1,7 @@
 # Newsletter submissions
 
 **Status:** repo-ready with mocked dependency contract; manual submission pending.
-**FR:** FR-LAUNCH-006.
+**task:** TASK-LAUNCH-006.
 **Source check:** 2026-05-18.
 
 This runbook submits each DSAF weekly deep-dive to four curated design/front-end newsletters.
@@ -15,7 +15,7 @@ Do not follow up unless an editor explicitly asks for clarification.
 |---|---|---|---|
 | Canonical URL is null or not live | malformed input / deploy lag | Do not submit; keep tracking row at `ready` until the URL returns 200 | Tracking row + `submission_blocked` event |
 | Newsletter destination is unverified | external service discovery | Mark the newsletter blocked, preserve exact copy, and retry only after operator verifies the route | Pattern Pulse row + payload artifact |
-| Account login, 2FA, or CAPTCHA appears | physical blocker | Do not bypass; use the mock contract and manual handoff | `internal/social/FR-LAUNCH-006-social-payload.json` |
+| Account login, 2FA, or CAPTCHA appears | physical blocker | Do not bypass; use the mock contract and manual handoff | `internal/social/TASK-LAUNCH-006-social-payload.json` |
 | Duplicate send attempt | concurrent operator action | One canonical submission per newsletter per post; second attempt is blocked | Tracking row is the compare-and-set record |
 | Editor asks for clarification | manual reply path | Reply once with clarification; do not follow up unprompted | Tracking note |
 | Newsletter publishes modified wording | external editorial control | Accept the newsletter wording; canonical corrections stay on the DSAF URL | Four-week review |
@@ -24,7 +24,7 @@ Do not follow up unless an editor explicitly asks for clarification.
 
 ## Contract + mock service
 
-The missing-service contract lives in [`../social/FR-LAUNCH-006-social-payload.json`](../social/FR-LAUNCH-006-social-payload.json). It defines the exact request body, expected `202` mock response, blocker, copy, and schedule for each newsletter.
+The missing-service contract lives in [`../social/TASK-LAUNCH-006-social-payload.json`](../social/TASK-LAUNCH-006-social-payload.json). It defines the exact request body, expected `202` mock response, blocker, copy, and schedule for each newsletter.
 
 Run the contract test:
 
@@ -41,7 +41,7 @@ The contract is also part of `npm run verify`.
 | Into Design Systems Weekly | <https://www.intodesignsystems.com/about> | Manual relationship/email or community contact; no stable public submit form verified | IDS is the design-systems community target; verify preferred channel before first send. |
 | Pattern Pulse | `<verify current URL before sending>` | Manual verification required | Public search did not confirm a stable design-systems Pattern Pulse submission page on 2026-05-18. Treat as external/manual until verified. |
 | Sidebar.io | <https://sidebar.io/submit> | Login/sign-up required before submission | Sidebar has a public submit route and guidelines; submit new, high-effort content only. |
-| Smashing Newsletter | <https://www.smashingmagazine.com/the-smashing-newsletter/> and <https://www.smashingmagazine.com/contact/> | Contact form category `Link suggestion` or editorial contact; avoid sponsored placement | Smashing Newsletter is weekly; paid placements are separate and forbidden for this FR. |
+| Smashing Newsletter | <https://www.smashingmagazine.com/the-smashing-newsletter/> and <https://www.smashingmagazine.com/contact/> | Contact form category `Link suggestion` or editorial contact; avoid sponsored placement | Smashing Newsletter is weekly; paid placements are separate and forbidden for this task. |
 
 ## Week 1 Submission Schedule
 
@@ -107,6 +107,6 @@ Feed high-resonance topics back to the weekly deep-dive plan.
 7. No non-canonical URLs.
 8. No request that editors change published wording after inclusion.
 
-Post-FR-GOV-002, co-maintainer-authored posts use the same submission flow and attribution.
+Post-TASK-GOV-002, co-maintainer-authored posts use the same submission flow and attribution.
 
 *End of newsletter submissions runbook.*

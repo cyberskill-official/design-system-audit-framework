@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 export const ROOT = resolve(__dirname, '../..');
-export const PAYLOAD_PATH = resolve(ROOT, "docs/framework/core/FR-DOCS-002-endorsement-contract.json");
+export const PAYLOAD_PATH = resolve(ROOT, "docs/framework/core/TASK-DOCS-002-endorsement-contract.json");
 export const AUDIT_OUTPUT = resolve(ROOT, "docs/outputs/_audit/endorsement-contract.json");
 
 export function loadEndorsementPayload(path = PAYLOAD_PATH) {
@@ -56,7 +56,7 @@ export function evaluateQuoteApprovalMock(payload) {
   const body = response.body || {};
   return [
     makeResult(contract.endpoint === "POST /mock/reviewer-quote-consent-approval", "mock-endpoint", "mock://reviewer-quote-consent-approval", contract.endpoint, "POST /mock/reviewer-quote-consent-approval", "mocked"),
-    makeResult(request.fr_id === payload.fr_id && request.minimum_required_approvals === 2, "mock-request-threshold", "mock://reviewer-quote-consent-approval", { fr_id: request.fr_id, minimum_required_approvals: request.minimum_required_approvals }, { fr_id: payload.fr_id, minimum_required_approvals: 2 }, "mocked"),
+    makeResult(request.task_id === payload.task_id && request.minimum_required_approvals === 2, "mock-request-threshold", "mock://reviewer-quote-consent-approval", { task_id: request.task_id, minimum_required_approvals: request.minimum_required_approvals }, { task_id: payload.task_id, minimum_required_approvals: 2 }, "mocked"),
     makeResult(Array.isArray(request.approved_quotes) && request.approved_quotes.length === 0, "mock-request-zero-approvals", "mock://reviewer-quote-consent-approval", request.approved_quotes, [], "mocked"),
     makeResult(response.status_code === 202 && body.accepted === true, "mock-response-accepted", "mock://reviewer-quote-consent-approval", { status_code: response.status_code, accepted: body.accepted }, { status_code: 202, accepted: true }, "mocked"),
     makeResult(body.approved_count === 0 && body.publication_action === "keep_placeholders" && body.mocked_dependency === true && typeof body.observability_key === "string", "mock-response-shape", "mock://reviewer-quote-consent-approval", body, "zero approvals and keep placeholders", "mocked"),
@@ -150,7 +150,7 @@ export function summarize(results) {
 export function writeEndorsementEvidence(payload, evaluation, outputPath = AUDIT_OUTPUT) {
   const audit = {
     generated: new Date().toISOString(),
-    fr_id: payload.fr_id,
+    task_id: payload.task_id,
     observability: payload.observability,
     edge_case_matrix: payload.edge_case_matrix,
     scanned_files: evaluation.files,

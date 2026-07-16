@@ -1,7 +1,7 @@
 # DSAF criterion aliases
 
-**Status:** normative; ratified by FR-CORE-003.
-**FR:** FR-CORE-003.
+**Status:** normative; ratified by TASK-CORE-003.
+**task:** TASK-CORE-003.
 
 The first dedup pass stabilised criterion IDs before launch.
 The live rubric now contains exactly 125 criteria.
@@ -48,7 +48,7 @@ Alias IDs are never reused.
 # DSAF criteria dedup methodology
 
 **Status:** normative.
-**FR:** FR-CORE-003.
+**task:** TASK-CORE-003.
 
 ## Purpose
 

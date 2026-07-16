@@ -35,7 +35,7 @@ function fixtureRepo() {
   for (const name of payload.required_package_scripts) scripts[name] = "node x";
   writeFixture(root, payload.files.package_json, JSON.stringify({ scripts }));
   // A legacy term inside an excluded path must NOT be flagged (exercised by walk tests).
-  writeFixture(root, "docs/internal/feature-requests/old.md", "no-downgrade rule is allowed here by exclusion");
+  writeFixture(root, "docs/internal/tasks/old.md", "no-downgrade rule is allowed here by exclusion");
   return root;
 }
 
@@ -72,7 +72,7 @@ test("walkPolicyFiles honors exclusions", () => {
   try {
     const files = walkPolicyFiles(root, payload).map((file) => file.replace(`${root}/`, ""));
     assert.ok(files.includes("README.md"));
-    assert.ok(!files.includes("docs/internal/feature-requests/old.md"));
+    assert.ok(!files.includes("docs/internal/tasks/old.md"));
   }
   finally {
     rmSync(root, { recursive: true, force: true });
@@ -121,7 +121,7 @@ test("writeRegressionEvidence writes structured output", () => {
     const output = join(out, "audit.json");
     const audit = writeRegressionEvidence(payload, evaluateRegressionContract(payload, root), output);
     const written = JSON.parse(readFileSync(output, "utf8"));
-    assert.equal(audit.fr_id, "FR-CORE-002");
+    assert.equal(audit.task_id, "TASK-CORE-002");
     assert.equal(written.summary.fail, 0);
   }
   finally {

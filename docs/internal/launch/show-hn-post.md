@@ -6,12 +6,12 @@ scheduled_window: "Tuesday or Wednesday, 08:00-10:00 Pacific Time"
 earliest_candidate_slot: "2026-05-19 08:30 PDT / 2026-05-19 22:30 ICT"
 fallback_candidate_slot: "2026-05-20 08:30 PDT / 2026-05-20 22:30 ICT"
 status: repo-ready
-external_blocker: "FR-DOCS-002 must land at least two consented named quotes before posting, or the operator must explicitly waive that dependency in a launch exception."
+external_blocker: "TASK-DOCS-002 must land at least two consented named quotes before posting, or the operator must explicitly waive that dependency in a launch exception."
 ---
 
 # Show HN post payload
 
-Use this file as the manual posting source for FR-LAUNCH-001. Do not post while the external blocker above is still open.
+Use this file as the manual posting source for TASK-LAUNCH-001. Do not post while the external blocker above is still open.
 
 ## Operator schedule
 
@@ -19,7 +19,7 @@ Preferred slot: Tuesday, 2026-05-19, 08:30 Pacific Time / Tuesday, 2026-05-19, 2
 
 Fallback slot: Wednesday, 2026-05-20, 08:30 Pacific Time / Wednesday, 2026-05-20, 22:30 Asia/Ho_Chi_Minh.
 
-If FR-DOCS-002 is still blocked at T-24h, roll to the next normal Tuesday or Wednesday slot and keep the same local-time conversion rule. In May 2026, Pacific Time is PDT (UTC-7), so Vietnam time is Pacific Time + 14 hours.
+If TASK-DOCS-002 is still blocked at T-24h, roll to the next normal Tuesday or Wednesday slot and keep the same local-time conversion rule. In May 2026, Pacific Time is PDT (UTC-7), so Vietnam time is Pacific Time + 14 hours.
 
 ## HN title
 

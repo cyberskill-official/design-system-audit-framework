@@ -1,7 +1,7 @@
 # Weekly DSAF criterion deep-dives
 
 **Status:** cadence-ready.
-**FR:** FR-CONTENT-001.
+**task:** TASK-CONTENT-001.
 
 ## Cadence
 

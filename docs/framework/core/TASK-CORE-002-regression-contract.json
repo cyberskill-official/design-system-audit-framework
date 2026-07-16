@@ -1,6 +1,6 @@
 {
   "schema_version": "2026-05-18",
-  "fr_id": "FR-CORE-002",
+  "fr_id": "TASK-CORE-002",
   "status": "strict-audit-contract",
   "observability": {
     "audit_output": "outputs/_audit/no-silent-regression-contract.json",
@@ -178,7 +178,7 @@
       ".md"
     ],
     "exclude_path_contains": [
-      "docs/internal/feature-requests/",
+      "docs/internal/tasks/",
       "docs/Design System Audit Framework",
       "outputs/_audit/",
       "docs/framework/examples/"

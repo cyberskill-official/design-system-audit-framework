@@ -1,6 +1,6 @@
 # DSAF Cross-Publishing Playbook
 
-**FR:** FR-CONTENT-002  
+**task:** TASK-CONTENT-002  
 **Status:** repo-ready; manual posting pending platform account access.  
 **Scope:** dev.to, Medium, and LinkedIn long-form only.
 
@@ -88,7 +88,7 @@ Every four posts, review:
 
 - which platform produced the highest substantive-comment count
 - which criterion category produced the most saves/bookmarks/claps/reactions
-- which comment questions should become future FR-CONTENT-001 topics
+- which comment questions should become future TASK-CONTENT-001 topics
 - whether any platform is underperforming enough to drop after Week 12
 
 Record any schedule changes in `internal/content/deep-dive-schedule.md`.

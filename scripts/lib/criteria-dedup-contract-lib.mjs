@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 export const ROOT = resolve(__dirname, '../..');
-export const PAYLOAD_PATH = resolve(ROOT, "docs/framework/core/FR-CORE-003-dedup-contract.json");
+export const PAYLOAD_PATH = resolve(ROOT, "docs/framework/core/TASK-CORE-003-dedup-contract.json");
 export const AUDIT_OUTPUT = resolve(ROOT, "docs/outputs/_audit/criteria-dedup-contract.json");
 
 export function loadCriteriaDedupPayload(path = PAYLOAD_PATH) {
@@ -174,7 +174,7 @@ export function evaluateCriteriaDedupContract(payload, root = ROOT) {
 export function writeCriteriaDedupEvidence(payload, evaluation, outputPath = AUDIT_OUTPUT) {
   const audit = {
     generated: new Date().toISOString(),
-    fr_id: payload.fr_id,
+    task_id: payload.task_id,
     criteria_count: evaluation.criteria.length,
     aliases: evaluation.aliases,
     summary: summarize(evaluation.results),

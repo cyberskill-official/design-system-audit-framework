@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 export const ROOT = resolve(__dirname, '../..');
-export const PAYLOAD_PATH = resolve(ROOT, "docs/framework/core/FR-CORE-002-regression-contract.json");
+export const PAYLOAD_PATH = resolve(ROOT, "docs/framework/core/TASK-CORE-002-regression-contract.json");
 export const AUDIT_OUTPUT = resolve(ROOT, "docs/outputs/_audit/no-silent-regression-contract.json");
 
 export function loadRegressionPayload(path = PAYLOAD_PATH) {
@@ -133,7 +133,7 @@ export function evaluateRegressionContract(payload, root = ROOT) {
 export function writeRegressionEvidence(payload, evaluation, outputPath = AUDIT_OUTPUT) {
   const audit = {
     generated: new Date().toISOString(),
-    fr_id: payload.fr_id,
+    task_id: payload.task_id,
     scanned_files: evaluation.files,
     summary: summarize(evaluation.results),
     results: evaluation.results,

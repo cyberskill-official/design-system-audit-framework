@@ -1,7 +1,7 @@
 # Cross-posts for DSAF launch
 
 **Status:** launch-ready runbook.
-**FR:** FR-LAUNCH-002.
+**task:** TASK-LAUNCH-002.
 
 ## Sequencing
 

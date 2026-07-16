@@ -1,6 +1,6 @@
 # DSAF — Handle taxonomy
 
-**Status:** normative; ratified by FR-BRAND-002 (2026-05-17).
+**Status:** normative; ratified by TASK-BRAND-002 (2026-05-17).
 **Scope:** every external-facing surface that mentions the framework's name.
 **Source of truth:** this file. Conflicts with other docs are resolved by amending the other docs.
 
@@ -41,7 +41,7 @@ The `Framework` ban exists because "the Framework" as a sentence subject is a ja
 
 This taxonomy is enforced at PR review on external-facing surfaces (README, `docs/`, `audit.cyberskill.world/`, blog posts in `audit.cyberskill.world/blog/`). PRs that introduce text on these surfaces are reviewed against this file. PRs that touch only internal artefacts (templates, scripts, audit reports) are NOT subject to the taxonomy.
 
-The executable strict-audit contract is [`FR-BRAND-002-taxonomy-contract.json`](./FR-BRAND-002-taxonomy-contract.json) plus `npm run contract:brand-taxonomy`. It scans the forward-facing surfaces where the taxonomy is expected to hold and writes structured evidence to `outputs/_audit/brand-taxonomy-contract.json`.
+The executable strict-audit contract is [`TASK-BRAND-002-taxonomy-contract.json`](./TASK-BRAND-002-taxonomy-contract.json) plus `npm run contract:brand-taxonomy`. It scans the forward-facing surfaces where the taxonomy is expected to hold and writes structured evidence to `outputs/_audit/brand-taxonomy-contract.json`.
 
 ## Forward-only
 
@@ -57,7 +57,7 @@ Banned: `#dsafFramework`, `#DesignSystemAuditFramework`, `#dsaf25`, `#dsafCore`.
 
 ## DSAF Modes — canonical written forms
 
-The audit-flow modes are written as `SCAN mode`, `FIX mode`, and (post-FR-CORE-005, P5) `W mode` in body prose. The handles themselves are `SCAN`, `FIX`, `W` (all-caps, no period). In code identifiers and tables, the handle alone is acceptable.
+The audit-flow modes are written as `SCAN mode`, `FIX mode`, and (post-TASK-CORE-005, P5) `W mode` in body prose. The handles themselves are `SCAN`, `FIX`, `W` (all-caps, no period). In code identifiers and tables, the handle alone is acceptable.
 
 The aggregate is `the DSAF Modes` (Title Case as a proper noun).
 

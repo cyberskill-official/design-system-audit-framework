@@ -1,7 +1,7 @@
 # Tokens Studio Validator
 
 **Status:** package-ready local implementation.  
-**FR:** FR-INTEG-002.  
+**task:** TASK-INTEG-002.  
 **Package:** `@dsaf/tokens-validator`
 
 Validate a Tokens Studio or DTCG token export against the DSAF A.1 Foundations & Tokens subset.

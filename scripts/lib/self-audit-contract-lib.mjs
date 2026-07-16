@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 export const ROOT = resolve(__dirname, '../..');
-export const PAYLOAD_PATH = resolve(ROOT, "docs/internal/branding/FR-CORE-004-self-audit-contract.json");
+export const PAYLOAD_PATH = resolve(ROOT, "docs/internal/branding/TASK-CORE-004-self-audit-contract.json");
 export const AUDIT_OUTPUT = resolve(ROOT, "docs/outputs/_audit/self-audit-cap-contract.json");
 
 export function loadSelfAuditPayload(path = PAYLOAD_PATH) {
@@ -94,7 +94,7 @@ export function summarize(results) {
 export function writeSelfAuditEvidence(payload, evaluation, outputPath = AUDIT_OUTPUT) {
   const audit = {
     generated: new Date().toISOString(),
-    fr_id: payload.fr_id,
+    task_id: payload.task_id,
     scanned_files: evaluation.files,
     summary: summarize(evaluation.results),
     results: evaluation.results,

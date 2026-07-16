@@ -40,7 +40,7 @@ R3 Human gates are hard stops. Rubric rows, keywords/synonyms, probes, band
    weights, and anything marked @Human[decide] in the task: prepare the
    proposal + evidence, set status=in-review, and STOP. Do not self-approve.
 R4 No silent regressions. If any criterion score drops in scores.json, either
-   fix it or add the FR-CORE-002 row to docs/improvement/overrides.md marked
+   fix it or add the TASK-CORE-002 row to docs/improvement/overrides.md marked
    UNRESOLVED for the reviewer — the task then CANNOT be marked done by you.
 R5 Rubric edits bump dsaf_125_version (docs/framework/dsaf-25.md frontmatter)
    and regenerate the calibration corpus in the same commit. Scoring-behaviour

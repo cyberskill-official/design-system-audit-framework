@@ -1,4 +1,4 @@
-# FR-LAUNCH-009 - Into Design Systems Track Sponsorship
+# TASK-LAUNCH-009 - Into Design Systems Track Sponsorship
 
 **Repo-verifiable state:** sponsorship/co-hosting brief ready; commercial agreement is external.
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * FR-DOCS-003 launch blog strict contract.
+ * TASK-DOCS-003 launch blog strict contract.
  */
 
 import {

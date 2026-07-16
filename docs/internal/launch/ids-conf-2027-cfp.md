@@ -1,4 +1,4 @@
-# FR-LAUNCH-007 - Into Design Systems Conf 2027 CFP
+# TASK-LAUNCH-007 - Into Design Systems Conf 2027 CFP
 
 **Talk title:** Agent-native design system audits: what 50 audits taught us about MCP-readiness
 **Format:** 30-minute conference talk or 45-minute workshop.

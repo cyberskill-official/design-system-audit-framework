@@ -27,7 +27,7 @@ After week 12: a Week-13 retrospective post reviews traffic, inclusion rate, rec
 
 1. Read `_template.md` in this folder.
 2. Read the criterion's source rubric anchors from `framework/03-criteria-part-a.md` or `framework/04-criteria-part-b.md`.
-3. Author the post per the CEA structure. **Quote the criterion verbatim** — re-coining the rubric is forbidden by FR-CORE-001 §1 #1.
+3. Author the post per the CEA structure. **Quote the criterion verbatim** — re-coining the rubric is forbidden by TASK-CORE-001 §1 #1.
 4. Save as `week-XX-<criterion-id>-<short-title>.md`. Slug example: `week-02-a2-4-variant-matrices`.
 5. Update this README's roadmap table — flip the row from `template ready` to `Shipped at <filename>`.
 6. Update `internal/content/weekly-deep-dives.md` "First 12 topics" table.
@@ -40,7 +40,7 @@ After week 12: a Week-13 retrospective post reviews traffic, inclusion rate, rec
 - **Anchored examples.** Each "what good looks like" example references a real, public, non-fabricated design system. Material, Polaris, Carbon, Spectrum, Primer, USWDS, GOV.UK, Workday Canvas, Atlassian Design System are the safe references. If you can't cite a real one, the example doesn't ship.
 - **One anti-pattern.** Specific, named, with a hypothetical-but-plausible code or screenshot example.
 - **One checklist.** 5–8 rows max. Each row is a Yes/No question, not an aspiration.
-- **No paid CTA.** Per FR-BRAND-002 / FR-BRAND-004.
+- **No paid CTA.** Per TASK-BRAND-002 / TASK-BRAND-004.
 - **No "we" first person about teams the author isn't on.** Use "your team" or "a team" — never "we" if referring to a generic team.
 - **DSAF Levels mentioned at the end.** Each post closes with "Where this lands in the rubric: this criterion is part of the DSAF-25 Core; in the full rubric it's also tied to ..." — pointing at the related rows.
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * FR-BRAND-001 live domain + private-operation mock contract.
+ * TASK-BRAND-001 live domain + private-operation mock contract.
  */
 
 import {

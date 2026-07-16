@@ -20,7 +20,7 @@ File an issue first using the template `Substantive proposal`. Discuss for at le
 - An update to the relevant criterion rubric anchors (0 / 3 / 5).
 
 **Approval window:** 14 days. Two maintainer approvals required.
-Until the FR-GOV-002 co-maintainer seat is accepted, this means founder approval after the public 14-day discussion window.
+Until the TASK-GOV-002 co-maintainer seat is accepted, this means founder approval after the public 14-day discussion window.
 After a co-maintainer is active, it means approval from both current maintainers unless an RFC explicitly defines a broader rule.
 
 ### 3. Architectural — modes, actors, scoring algorithm, the no-silent-regression rule

@@ -1,6 +1,6 @@
 {
   "schema_version": "2026-05-18",
-  "fr_id": "FR-DOCS-001",
+  "fr_id": "TASK-DOCS-001",
   "status": "strict-audit-contract-mocked-dependency",
   "readme_file": "README.md",
   "intro_file": "docs/guidelines/01-introduction.md",
@@ -41,12 +41,12 @@
     {
       "case": "Placeholder quotes become fake praise",
       "failure_vector": "Endorsement placeholders are replaced without consent log evidence.",
-      "expected_handling": "Fail consent-guard rule until FR-DOCS-002 provides approved quote rows."
+      "expected_handling": "Fail consent-guard rule until TASK-DOCS-002 provides approved quote rows."
     },
     {
       "case": "Manual colleague skim unavailable",
       "failure_vector": "A named colleague cannot be recruited inside unattended execution.",
-      "expected_handling": "Use the mocked skim-review request/response contract and mark the FR mocked-dependency."
+      "expected_handling": "Use the mocked skim-review request/response contract and mark the task mocked-dependency."
     }
   ],
   "first_200": {
@@ -172,7 +172,7 @@
   "skim_mock_contract": {
     "endpoint": "POST /mock/readme-skim-review",
     "request": {
-      "fr_id": "FR-DOCS-001",
+      "fr_id": "TASK-DOCS-001",
       "surface": "README.md",
       "duration_seconds": 60,
       "reviewer_role": "external_colleague_mock",
@@ -186,10 +186,10 @@
       "status_code": 202,
       "body": {
         "accepted": true,
-        "fr_id": "FR-DOCS-001",
+        "fr_id": "TASK-DOCS-001",
         "surface": "README.md",
         "skim_result": "pass",
-        "observability_key": "FR-DOCS-001:README.md:skim-review"
+        "observability_key": "TASK-DOCS-001:README.md:skim-review"
       }
     }
   }

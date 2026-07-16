@@ -1,6 +1,6 @@
 # Guest-Post Pitch Runbook
 
-**FR:** FR-LAUNCH-005  
+**task:** TASK-LAUNCH-005  
 **Status:** repo-ready; manual pitch submission pending founder email access and a viable launch/editorial window.  
 **Canonical pitch drafts:** [`../social/guest-post-pitches.md`](../social/guest-post-pitches.md)
 
@@ -19,7 +19,7 @@ If Show HN launches on Tuesday, 2026-05-19 at 08:30 PDT / 22:30 ICT:
 | Show HN target | Tuesday, 2026-05-19, 08:30 PDT | Tuesday, 2026-05-19, 22:30 ICT | pending |
 | "Within two weeks of launch" latest publication goal | Tuesday, 2026-06-02, 08:30 PDT | Tuesday, 2026-06-02, 22:30 ICT | not realistically reachable from 2026-05-18 |
 
-The May 19 guest-post timing goal is therefore blocked by missed editorial lead time. If the Show HN date rolls forward, recompute from the new date and send at T-8 to T-6. If the launch does not roll forward, use these pitches as post-launch long-tail editorial outreach and do not claim the FR-LAUNCH-005 timing goal was met.
+The May 19 guest-post timing goal is therefore blocked by missed editorial lead time. If the Show HN date rolls forward, recompute from the new date and send at T-8 to T-6. If the launch does not roll forward, use these pitches as post-launch long-tail editorial outreach and do not claim the TASK-LAUNCH-005 timing goal was met.
 
 ## Publication Research
 
@@ -68,7 +68,7 @@ Do not pitch the launch blog post itself. The launch post is already published a
 | Response mode | Action | Follow-up artifact |
 |---|---|---|
 | Accepted | Confirm timeline, draft against the publication's guidelines, and preserve first-publication rights for that article. | Add article draft status and eventual URL to this file. |
-| Revision requested | Respond within 48 hours with the revised angle or politely decline if outside Stephen's expertise. | Capture the editor's preferred angle for future FR-CONTENT-001 topic prioritisation. |
+| Revision requested | Respond within 48 hours with the revised angle or politely decline if outside Stephen's expertise. | Capture the editor's preferred angle for future TASK-CONTENT-001 topic prioritisation. |
 | Rejected with feedback | Thank the editor, log the reason, and revisit in 3-6 months with a different topic. | Add rejection reason below. |
 | No reply | Send one polite follow-up after seven business days, then stop. | Mark `no-reply` and do not chase. |
 
@@ -98,10 +98,10 @@ Stephen
 
 ## Manual Blocker Payload
 
-To unblock the original FR timing goal, Stephen must choose one of these:
+To unblock the original task timing goal, Stephen must choose one of these:
 
 1. Roll the Show HN launch date forward by at least six weeks and send these pitches at T-8 to T-6.
 2. Keep the May 19 launch and treat these as post-launch long-tail pitches, accepting that they cannot land within two weeks of launch.
-3. Skip this launch-cycle guest-post goal and recycle the topics into FR-CONTENT-001 weekly deep dives.
+3. Skip this launch-cycle guest-post goal and recycle the topics into TASK-CONTENT-001 weekly deep dives.
 
 *End of guest-post pitch runbook.*

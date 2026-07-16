@@ -1,4 +1,4 @@
-# FR-CORE-005 - Mode W
+# TASK-CORE-005 - Mode W
 
 **Mode name:** W mode
 **Purpose:** reverse-engineer a website that does not yet have a design system.

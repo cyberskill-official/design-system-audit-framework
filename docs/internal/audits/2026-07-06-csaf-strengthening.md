@@ -11,7 +11,7 @@ Verification baseline before any change: `npm run verify` GREEN (18/18 checks) i
 3. Blind scanning. Global `MAX_TEXT` 180k chars and the 240k per-file size filter meant CDS's 1.3 MB `DESIGN.md` was mostly (repo mode: entirely) unscanned.
 4. Fake evidence. `mode=improve` synthesised mock artifacts (`design-tokens.json` with `#0055FF`, `theme.css`, `components-stub.js`) into `output-artifacts/` — fabricated files that look like evidence.
 5. CI never fired. `conformance-agent.yml` watches `framework/**` and `internal/**`, but the repo paths are `docs/framework/**` and `docs/internal/**`, so the verify workflow effectively never ran on PRs; no push or scheduled trigger existed.
-6. No machine-readable output, no history. The engine emitted only Markdown/HTML; nothing downstream could diff two runs, so the no-silent-regression policy (FR-CORE-002) had no enforcement path at engine level.
+6. No machine-readable output, no history. The engine emitted only Markdown/HTML; nothing downstream could diff two runs, so the no-silent-regression policy (TASK-CORE-002) had no enforcement path at engine level.
 7. Doc drift. `self-improving-loop-guidelines.md` claims "371+ criteria" (engine loads 125); root `CLAUDE.md`/`AGENTS.md` carry only the CyberOS memory protocol, with zero project onboarding for agents; category headings `B.4`-`B.8` appear twice with different names (canonical UX categories vs absorbed ENT overlay sections).
 
 ## Recommendations
@@ -37,7 +37,7 @@ Legend: [DONE] applied this pass · [PART] partially applied · [OPEN] recommend
 
 | # | Recommendation | Status |
 |---|---|---|
-| R11 | `audit-diff.mjs`: compare two `scores.json` files, print the regression table in the FR-CORE-002 shape, exit non-zero on unapproved per-criterion drops. This is the enforcement half of the no-silent-regression policy. | DONE |
+| R11 | `audit-diff.mjs`: compare two `scores.json` files, print the regression table in the TASK-CORE-002 shape, exit non-zero on unapproved per-criterion drops. This is the enforcement half of the no-silent-regression policy. | DONE |
 | R12 | Make the self-improving loop honest: bands break the keyword-echo feedback (embedding words caps at 40); loop logs band breakdowns per iteration. | DONE |
 | R13 | Replace junk `pending_criteria.md` appends with evidence-driven gap mining: `evolution-mine.mjs` scans verification-case `scores.json` files and writes `gap-report.json` + human-gated proposals (never mutates the rubric). | DONE |
 | R14 | Dead-criterion mining: flag criteria that score 0 across the whole calibration corpus for human rubric review. | DONE (part of R13 output) |
@@ -87,7 +87,7 @@ CDS (target)                              CSAF (framework)
 ────────────                              ────────────────
 npm run audit ──────────────────────────▶ engine scores repo (bands, floors)
   meta/audits/<date>/scores.json          scores.json schema vX + rubric vY
-npm run audit:diff ◀───────────────────── audit-diff.mjs (FR-CORE-002 gate)
+npm run audit:diff ◀───────────────────── audit-diff.mjs (TASK-CORE-002 gate)
   fails on unapproved regression
   baseline update = human sign-off
 CI weekly cron re-audits                  CI weekly cron: verify + evolve:mine

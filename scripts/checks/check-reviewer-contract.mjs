@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * FR-GOV-001 reviewer shortlist and outreach strict contract.
+ * TASK-GOV-001 reviewer shortlist and outreach strict contract.
  */
 
 import {

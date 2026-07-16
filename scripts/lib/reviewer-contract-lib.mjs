@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 export const ROOT = resolve(__dirname, '../..');
-export const PAYLOAD_PATH = resolve(ROOT, "docs/internal/governance/FR-GOV-001-reviewer-contract.json");
+export const PAYLOAD_PATH = resolve(ROOT, "docs/internal/governance/TASK-GOV-001-reviewer-contract.json");
 export const AUDIT_OUTPUT = resolve(ROOT, "docs/outputs/_audit/reviewer-contract.json");
 
 export function loadReviewerPayload(path = PAYLOAD_PATH) {
@@ -73,7 +73,7 @@ export function evaluateOutreachMock(payload) {
   const recipients = request.recipients || [];
   return [
     makeResult(contract.endpoint === "POST /mock/reviewer-outreach-send", "mock-endpoint", "mock://reviewer-outreach-send", contract.endpoint, "POST /mock/reviewer-outreach-send", "mocked"),
-    makeResult(request.fr_id === payload.fr_id && request.ask_type === "review-not-endorsement" && request.compensation === "none", "mock-request-ask-shape", "mock://reviewer-outreach-send", { fr_id: request.fr_id, ask_type: request.ask_type, compensation: request.compensation }, "review-not-endorsement unpaid ask", "mocked"),
+    makeResult(request.task_id === payload.task_id && request.ask_type === "review-not-endorsement" && request.compensation === "none", "mock-request-ask-shape", "mock://reviewer-outreach-send", { task_id: request.task_id, ask_type: request.ask_type, compensation: request.compensation }, "review-not-endorsement unpaid ask", "mocked"),
     makeResult(Array.isArray(request.materials) && request.materials.length >= 4, "mock-request-materials", "mock://reviewer-outreach-send", request.materials, ">= 4 materials", "mocked"),
     makeResult(Array.isArray(recipients) && recipients.length === 3 && recipients.every((item) => item.name && item.status === "not-contacted"), "mock-request-recipients", "mock://reviewer-outreach-send", recipients, "3 not-contacted recipients", "mocked"),
     makeResult(response.status_code === 202 && body.accepted === true && body.sent_count === 0 && body.mocked_recipient_count === 3 && body.consent_approvals === 0, "mock-response-shape", "mock://reviewer-outreach-send", { status_code: response.status_code, body }, "202 accepted, zero sent, three mocked, zero consent", "mocked"),
@@ -173,7 +173,7 @@ export function summarize(results) {
 export function writeReviewerEvidence(payload, evaluation, outputPath = AUDIT_OUTPUT) {
   const audit = {
     generated: new Date().toISOString(),
-    fr_id: payload.fr_id,
+    task_id: payload.task_id,
     observability: payload.observability,
     edge_case_matrix: payload.edge_case_matrix,
     scanned_files: evaluation.files,

@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 export const ROOT = resolve(__dirname, '../..');
-export const PAYLOAD_PATH = resolve(ROOT, "docs/internal/branding/FR-BRAND-003-visual-assets-contract.json");
+export const PAYLOAD_PATH = resolve(ROOT, "docs/internal/branding/TASK-BRAND-003-visual-assets-contract.json");
 export const AUDIT_OUTPUT = resolve(ROOT, "docs/outputs/_audit/visual-assets-contract.json");
 
 export function loadVisualAssetsPayload(path = PAYLOAD_PATH) {
@@ -136,7 +136,7 @@ export function summarize(results) {
 export function writeVisualAssetsEvidence(payload, evaluation, outputPath = AUDIT_OUTPUT) {
   const audit = {
     generated: new Date().toISOString(),
-    fr_id: payload.fr_id,
+    task_id: payload.task_id,
     summary: summarize(evaluation.results),
     results: evaluation.results,
   };

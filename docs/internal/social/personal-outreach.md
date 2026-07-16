@@ -203,7 +203,7 @@ I'm launching DSAF (Design System Audit Framework) next week — an open criteri
 
 Why I'm emailing you: zeroheight is the docs platform DSAF is most likely to be cited from. The framework's Part A §3 (Documentation) criteria — usage guidelines, do's/don'ts, accessibility notes, RFC discoverability — explicitly map to what teams using zeroheight ship. I would value your read on whether the criteria assume too much (or too little) of what a real zeroheight-hosted DS docs site contains.
 
-There's also a `scripts/bin/zeroheight-reader.mjs` (FR-INTEG-003) that reads a zeroheight HTML export and scores it against the A.3 + A.5 subset. Happy for any feedback on what that read should and shouldn't do.
+There's also a `scripts/bin/zeroheight-reader.mjs` (TASK-INTEG-003) that reads a zeroheight HTML export and scores it against the A.3 + A.5 subset. Happy for any feedback on what that read should and shouldn't do.
 
 - 25-row Core: https://audit.cyberskill.world/card
 - Repo: https://github.com/cyberskill-official/design-system-audit-framework
@@ -264,7 +264,7 @@ Why I'm emailing you: design tokens are A.1 in the framework — five of the 25 
 - A.1 Foundations & Tokens: https://github.com/cyberskill-official/design-system-audit-framework/blob/main/docs/framework/03-criteria-part-a.md
 - Origin story: https://audit.cyberskill.world/blog/launch-2026
 
-Tangentially: there's a `scripts/bin/tokens-studio-validator.mjs` (FR-INTEG-002) that reads a Tokens Studio export and scores it against the A.1 subset. Open to any feedback on what that reader should and shouldn't catch. No ask to promote, upvote, share, comment, or amplify it. If a 15-minute call is easier than email, happy to do that; same scope, no pitch.
+Tangentially: there's a `scripts/bin/tokens-studio-validator.mjs` (TASK-INTEG-002) that reads a Tokens Studio export and scores it against the A.1 subset. Open to any feedback on what that reader should and shouldn't catch. No ask to promote, upvote, share, comment, or amplify it. If a 15-minute call is easier than email, happy to do that; same scope, no pitch.
 
 Stephen Cheng
 CyberSkill, Ho Chi Minh City
@@ -275,7 +275,7 @@ CyberSkill, Ho Chi Minh City
 ## Send protocol
 
 1. **One per day.** Don't batch-send. Each email needs the relevant link verified the day you send.
-2. **From the founder's personal email**, not a CyberSkill-branded address. Per the FR-BRAND framework, this is a personal "would you look at this" ask, not a company outreach.
+2. **From the founder's personal email**, not a CyberSkill-branded address. Per the TASK-BRAND framework, this is a personal "would you look at this" ask, not a company outreach.
 3. **No bcc to anyone.** Each recipient is treated as a private conversation.
 4. **One follow-up after 5 business days only if no reply.** Use the original thread. Subject prefix `Re:` only. **No second follow-up.**
 

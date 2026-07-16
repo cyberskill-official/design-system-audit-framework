@@ -140,7 +140,7 @@ test("writeAudit writes structured evidence", () => {
     const written = JSON.parse(readFileSync(outputPath, "utf8"));
 
     assert.equal(audit.summary.live.fail, 0);
-    assert.equal(written.fr_id, "FR-BRAND-001");
+    assert.equal(written.task_id, "TASK-BRAND-001");
     assert.equal(written.mock_service, "POST /mock/domain-operations");
   }
   finally {

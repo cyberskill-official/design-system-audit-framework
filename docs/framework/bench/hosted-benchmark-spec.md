@@ -1,4 +1,4 @@
-# FR-BENCH-002 - Hosted Benchmark
+# TASK-BENCH-002 - Hosted Benchmark
 
 **Canonical URL:** `https://benchmark.audit.cyberskill.world`
 **Repo-verifiable state:** hosted benchmark specification ready; production subdomain and storage require operator deployment.
@@ -10,7 +10,7 @@ The hosted benchmark extends the lite static benchmark with:
 - Addressable result URLs.
 - Organization-private history.
 - Low-N-safe peer comparisons.
-- Annual-report export pipeline for FR-REPORT-001.
+- Annual-report export pipeline for TASK-REPORT-001.
 - Optional Pro workspace for teams that want repeat scoring.
 
 ## Privacy Contract

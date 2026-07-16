@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Verify the FR-LAUNCH-006 newsletter payload and mock-service contract.
+ * Verify the TASK-LAUNCH-006 newsletter payload and mock-service contract.
  *
  * This is intentionally dependency-free: the real newsletter submissions are
  * manual/authenticated, so this contract makes the missing service shape
@@ -13,10 +13,10 @@ import { fileURLToPath } from "node:url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '../..');
-const PAYLOAD = resolve(ROOT, "docs/internal/social/FR-LAUNCH-006-social-payload.json");
+const PAYLOAD = resolve(ROOT, "docs/internal/social/TASK-LAUNCH-006-social-payload.json");
 const expectedNewsletters = new Set(["ids-weekly", "pattern-pulse", "sidebar", "smashing"]);
 const requiredRequestFields = [
-  "fr_id",
+  "task_id",
   "newsletter_id",
   "canonical_url",
   "title",
@@ -78,7 +78,7 @@ function mockSubmit(request, expectedResponse) {
 
 const payload = JSON.parse(readFileSync(PAYLOAD, "utf8"));
 
-assert(payload.fr_id === "FR-LAUNCH-006", "payload fr_id must be FR-LAUNCH-006");
+assert(payload.task_id === "TASK-LAUNCH-006", "payload task_id must be TASK-LAUNCH-006");
 assert(payload.status.includes("mocked-dependency"), "payload status must record mocked-dependency");
 assert(payload.canonical_post?.url?.startsWith("https://audit.cyberskill.world/blog/deep-dives/"), "canonical post must use the audit.cyberskill.world deep-dive URL");
 assert(payload.observability?.tracking_file === "docs/internal/launch/newsletter-submissions.md", "observability tracking file must point to newsletter runbook");
@@ -100,7 +100,7 @@ for (const submission of payload.submissions) {
     assert(Object.hasOwn(request.body, field), `${id} request body missing ${field}`);
   }
 
-  assert(request.body.fr_id === payload.fr_id, `${id} request fr_id mismatch`);
+  assert(request.body.task_id === payload.task_id, `${id} request task_id mismatch`);
   assert(request.body.newsletter_id === id, `${id} request newsletter_id mismatch`);
   assert(request.body.canonical_url === payload.canonical_post.url, `${id} canonical_url mismatch`);
   assert(request.body.no_follow_up === true, `${id} must set no_follow_up=true`);
@@ -112,7 +112,7 @@ for (const submission of payload.submissions) {
   for (const field of requiredResponseFields) {
     assert(Object.hasOwn(expectedResponse.body, field), `${id} expected response missing ${field}`);
   }
-  assert(expectedResponse.body.submission_id === `mock-FR-LAUNCH-006-${id}-week-01`, `${id} submission_id must be deterministic`);
+  assert(expectedResponse.body.submission_id === `mock-TASK-LAUNCH-006-${id}-week-01`, `${id} submission_id must be deterministic`);
   assert(/^\d{4}-\d{2}-\d{2}$/.test(expectedResponse.body.next_check_date), `${id} next_check_date must be YYYY-MM-DD`);
 
   const strings = collectStrings(submission);

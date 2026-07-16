@@ -1,7 +1,7 @@
 # DSAF Lite Benchmark Specification
 
 **Status:** repo-shipped static benchmark pack; production collection waits on external form-vendor setup.
-**FR:** FR-BENCH-001.
+**task:** TASK-BENCH-001.
 **Canonical route:** `https://audit.cyberskill.world/benchmark/` under the current domain decision.
 
 The lite benchmark is a voluntary, anonymous self-scoring survey for DSAF-25 Core.

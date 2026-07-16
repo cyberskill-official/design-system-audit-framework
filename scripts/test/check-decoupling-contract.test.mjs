@@ -41,7 +41,7 @@ function fixtureRepo() {
   w(join(root, "docs/internal/branding/brand-decoupling-domain-decision.md"), [
     "# DSAF / CyberSkill decoupling decision",
     "## Decision",
-    "**Status:** ratified — FR-BRAND-004.",
+    "**Status:** ratified — TASK-BRAND-004.",
     "Brand decoupling is achieved **at the content layer**, not the URL layer.",
     "The framework runs at `https://audit.cyberskill.world/` and Brand decoupling is achieved **at the content layer**, not the URL layer.",
     "## Why we're keeping the URL on CyberSkill infra",
@@ -60,7 +60,7 @@ function fixtureRepo() {
     "**No redirects are installed.**",
     "**Current canonical URL:** `https://audit.cyberskill.world/`",
     "`audit.cyberskill.world` IS the canonical URL",
-    "The file is retained because the FR specs",
+    "The file is retained because the task specs",
     "| # | Old URL (audit.cyberskill.world) | Action | New URL (neutral domain) |",
     "|---:|---|---|---|",
     "| 1 | `/` | migrate-and-rewrite | apex |",
@@ -75,7 +75,7 @@ function fixtureRepo() {
     "| 10 | `/about` | keep-on-cyberskill | no migration |",
   ].join("\n"));
 
-  w(join(root, "docs/internal/ADR-FR-BRAND-004.md"), "FR-BRAND-004\n\n**Status:** accepted\n\n```mermaid\nflowchart TD\nA-->B\n```\n");
+  w(join(root, "docs/internal/ADR-TASK-BRAND-004.md"), "TASK-BRAND-004\n\n**Status:** accepted\n\n```mermaid\nflowchart TD\nA-->B\n```\n");
   w(join(root, ".github/CODEOWNERS"), payload.required_codeowners.join("\n"));
   w(join(root, "apps/saas-dashboard/vercel.json"), JSON.stringify({ headers: [{ headers: [{ key: "Strict-Transport-Security" }, { key: "Content-Security-Policy" }] }] }));
   w(join(root, "README.md"), "https://audit.cyberskill.world\ndocs/internal/SERVICES.md\ndocs/internal/strategy/framework-monetization-plan.md\nmethodology surface stays neutral\n");
@@ -242,7 +242,7 @@ test("writeDecouplingEvidence writes structured output", () => {
     const output = join(out, "audit.json");
     const audit = writeDecouplingEvidence(payload, evaluateDecouplingContract(payload, root), output);
     const written = JSON.parse(readFileSync(output, "utf8"));
-    assert.equal(audit.fr_id, "FR-BRAND-004");
+    assert.equal(audit.task_id, "TASK-BRAND-004");
     assert.equal(written.summary.fail, 0);
     assert.equal(written.canonical_host, "audit.cyberskill.world");
   }

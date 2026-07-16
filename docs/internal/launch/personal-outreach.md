@@ -1,7 +1,7 @@
 # Personal heads-up outreach
 
 **Status:** launch-ready.
-**FR:** FR-LAUNCH-004.
+**task:** TASK-LAUNCH-004.
 **Canonical tracker:** [`headsup-outreach.md`](./headsup-outreach.md). Full copy-paste drafts: [`../social/personal-outreach.md`](../social/personal-outreach.md).
 
 ## Rule

@@ -1,7 +1,7 @@
 # DSAF no-silent-regression policy
 
 **Status:** normative.
-**FR:** FR-CORE-002.
+**task:** TASK-CORE-002.
 
 ## Rule
 

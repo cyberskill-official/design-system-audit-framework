@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 297 210" role="img" aria-labelledby="radar-title radar-desc">
   <title id="radar-title">DSAF Radar Template</title>
   <desc id="radar-desc">A dark-mode 20-axis DSAF radar with Part A and Part B categories, 0 to 100 percent rings, and enterprise threshold overlay.</desc>
-  <metadata>{"dsaf_125_version":"2026-05-18","dsaf_25_version":"2026-05-18","fr":"FR-BRAND-003","source":"https://audit.cyberskill.world/assets/dsaf-radar-dark.svg"}</metadata>
+  <metadata>{"dsaf_125_version":"2026-05-18","dsaf_25_version":"2026-05-18","task":"TASK-BRAND-003","source":"https://audit.cyberskill.world/assets/dsaf-radar-dark.svg"}</metadata>
   <rect width="297" height="210" fill="#0f172a"/>
   <text x="14" y="17" font-family="system-ui,-apple-system,Segoe UI,Arial,sans-serif" font-size="8.5" font-weight="700" fill="#f8fafc">DSAF Radar</text>
   <text x="14" y="25" font-family="system-ui,-apple-system,Segoe UI,Arial,sans-serif" font-size="4.1" fill="#cbd5e1">20 category axes: Part A design-system quality and Part B produced-UX quality.</text>

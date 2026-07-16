@@ -1,8 +1,8 @@
 ---
 title: "Show HN response playbook"
-fr: FR-LAUNCH-001
+task: TASK-LAUNCH-001
 status: repo-ready
-external_blocker: "Do not start while FR-DOCS-002 is blocked unless Stephen logs an explicit launch exception."
+external_blocker: "Do not start while TASK-DOCS-002 is blocked unless Stephen logs an explicit launch exception."
 ---
 
 # Show HN response playbook
@@ -117,6 +117,6 @@ At T+24h:
 
 - Update `landing/blog/launch-2026.md` with the HN discussion URL.
 - Summarize the top three critique patterns in `internal/launch/post-hn-feedback.md`.
-- Decide whether FR-LAUNCH-002 cross-posting should continue, pause, or change copy based on the thread.
+- Decide whether TASK-LAUNCH-002 cross-posting should continue, pause, or change copy based on the thread.
 
 *End of Show HN response playbook.*

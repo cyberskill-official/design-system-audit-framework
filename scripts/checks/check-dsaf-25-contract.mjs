@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * FR-CORE-001 DSAF-25 Core strict contract.
+ * TASK-CORE-001 DSAF-25 Core strict contract.
  */
 
 import {

@@ -1,4 +1,4 @@
-# FR-CERT-001 - DSAF Certification
+# TASK-CERT-001 - DSAF Certification
 
 **Repo-verifiable state:** certification tiers and badge rules ready; issuance requires live governance and reviewer capacity.
 

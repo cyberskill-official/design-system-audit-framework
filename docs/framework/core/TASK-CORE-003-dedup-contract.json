@@ -1,6 +1,6 @@
 {
   "schema_version": "2026-05-18",
-  "fr_id": "FR-CORE-003",
+  "fr_id": "TASK-CORE-003",
   "status": "strict-audit-contract",
   "observability": {
     "audit_output": "outputs/_audit/criteria-dedup-contract.json",
@@ -129,7 +129,7 @@
       "This is the stable DSAF-125 baseline."
     ],
     "docs/framework/examples/cyberskill-design-system/_history.md": [
-      "P0 FR-CORE-003",
+      "P0 TASK-CORE-003",
       "Criterion rows reduced from 138 to exactly 125",
       "13 merged-away IDs preserved"
     ],

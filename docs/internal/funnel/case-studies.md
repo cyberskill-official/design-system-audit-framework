@@ -1,4 +1,4 @@
-# FR-FUNNEL-002 - Tiered Case Studies
+# TASK-FUNNEL-002 - Tiered Case Studies
 
 **Repo-verifiable state:** case-study structure ready; client-anonymized examples require operator review.
 
@@ -8,7 +8,7 @@
 |---|---|---|
 | CyberSkill self-audit summary | Existing example audit | Publicly capped at L3 without third-party verification. |
 | Anonymous client audit | Paid/private work | Publish only with written client approval or fully anonymized composite. |
-| Marquee OSS audit | FR-AUDIT-001 | Publish only after maintainers approve the public audit. |
+| Marquee OSS audit | TASK-AUDIT-001 | Publish only after maintainers approve the public audit. |
 
 ## Template
 

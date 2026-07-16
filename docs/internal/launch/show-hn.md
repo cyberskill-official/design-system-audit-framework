@@ -1,7 +1,7 @@
 # Show HN launch runbook
 
-**FR:** FR-LAUNCH-001  
-**Status:** repo-ready; externally blocked by FR-DOCS-002 until at least two named outside-reviewer quotes have written consent, or Stephen logs a launch exception.
+**task:** TASK-LAUNCH-001  
+**Status:** repo-ready; externally blocked by TASK-DOCS-002 until at least two named outside-reviewer quotes have written consent, or Stephen logs a launch exception.
 
 ## Canonical operator files
 
@@ -18,12 +18,12 @@ Earliest candidate if consent lands in time:
 | Preferred | Tuesday, 2026-05-19, 08:30 PDT | Tuesday, 2026-05-19, 22:30 ICT |
 | Fallback | Wednesday, 2026-05-20, 08:30 PDT | Wednesday, 2026-05-20, 22:30 ICT |
 
-If FR-DOCS-002 is still blocked at T-24h, roll forward to the next Tuesday or Wednesday 08:00-10:00 Pacific slot.
+If TASK-DOCS-002 is still blocked at T-24h, roll forward to the next Tuesday or Wednesday 08:00-10:00 Pacific slot.
 
 ## Manual posting checklist
 
-1. Confirm FR-DOCS-001 and FR-DOCS-003 remain verified.
-2. Confirm FR-DOCS-002 is either shipped or explicitly waived for launch.
+1. Confirm TASK-DOCS-001 and TASK-DOCS-003 remain verified.
+2. Confirm TASK-DOCS-002 is either shipped or explicitly waived for launch.
 3. Run the T-15 minute URL checks in `show-hn-post.md`.
 4. Submit the URL field, title, and body from `show-hn-post.md`.
 5. Post the founder first comment within five minutes.

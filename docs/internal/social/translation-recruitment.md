@@ -1,7 +1,7 @@
 # Translation Recruitment Copy
 
 **Status:** ready for manual posting.
-**FR:** FR-I18N-001.
+**task:** TASK-I18N-001.
 
 Do not auto-post.
 Use these only after the GitHub issues are created.

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * FR-BRAND-003 canonical visual outputs/assets strict contract.
+ * TASK-BRAND-003 canonical visual outputs/assets strict contract.
  */
 
 import {

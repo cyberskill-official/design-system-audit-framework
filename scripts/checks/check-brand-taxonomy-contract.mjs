@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * FR-BRAND-002 handle taxonomy contract.
+ * TASK-BRAND-002 handle taxonomy contract.
  */
 
 import {

@@ -1,4 +1,4 @@
-# FR-AUDIT-001 - Public Marquee Design System Audit Pack
+# TASK-AUDIT-001 - Public Marquee Design System Audit Pack
 
 **Target:** GitHub Primer first, with Carbon and Shopify Polaris as fallback candidates.
 **Publication rule:** no public score, quote, or logo use before written team consent.

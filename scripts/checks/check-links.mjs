@@ -31,7 +31,7 @@ function walkMarkdown(dir, out = []) {
     const stat = statSync(p);
     const rel = relative(ROOT, p);
     if (stat.isDirectory()) {
-      if (rel === "docs/internal/feature-requests") continue;
+      if (rel === "docs/internal/tasks") continue;
       if (rel === "docs/outputs" || rel.startsWith("docs/outputs/")) continue;
       walkMarkdown(p, out);
     }

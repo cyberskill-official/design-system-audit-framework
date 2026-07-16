@@ -5,11 +5,11 @@ import { resolve as dnsResolve } from "node:dns/promises";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 export const ROOT = resolve(__dirname, '../..');
-export const PAYLOAD_PATH = resolve(ROOT, "docs/internal/branding/FR-BRAND-001-domain-contract.json");
+export const PAYLOAD_PATH = resolve(ROOT, "docs/internal/branding/TASK-BRAND-001-domain-contract.json");
 export const AUDIT_OUTPUT = resolve(ROOT, "docs/outputs/_audit/domain-contract.json");
 
 export const canonical = {
-  frId: "FR-BRAND-001",
+  taskId: "TASK-BRAND-001",
   host: "audit.cyberskill.world",
   url: "https://audit.cyberskill.world/",
 };
@@ -60,7 +60,7 @@ export function evaluatePrivateOperationContract(payload) {
   const operations = payload.private_operations || [];
   const seen = new Set();
 
-  results.push(check(payload.fr_id === canonical.frId, "payload fr_id", payload.fr_id, canonical.frId));
+  results.push(check(payload.task_id === canonical.taskId, "payload task_id", payload.task_id, canonical.taskId));
   results.push(check(payload.canonical_host === canonical.host, "payload canonical host", payload.canonical_host, canonical.host));
   results.push(check(Array.isArray(operations) && operations.length >= 4, "private operations count", operations.length, ">= 4"));
 
@@ -82,7 +82,7 @@ export function evaluatePrivateOperationContract(payload) {
     }
 
     const body = operation.request?.body || {};
-    results.push(check(body.fr_id === canonical.frId, `operation ${id} fr_id`, body.fr_id, canonical.frId));
+    results.push(check(body.task_id === canonical.taskId, `operation ${id} task_id`, body.task_id, canonical.taskId));
     results.push(check(body.canonical_host === canonical.host, `operation ${id} canonical host`, body.canonical_host, canonical.host));
     results.push(check(Array.isArray(body.evidence_required) && body.evidence_required.length > 0, `operation ${id} evidence`, body.evidence_required, ">= 1 evidence item"));
     results.push(check(operation.expected_response?.status === 202, `operation ${id} expected status`, operation.expected_response?.status, 202));
@@ -213,7 +213,7 @@ export async function collectLiveSnapshot({
 export function writeAudit(payload, snapshot, liveResults, privateResults, outputPath = AUDIT_OUTPUT) {
   const result = {
     generated: new Date().toISOString(),
-    fr_id: canonical.frId,
+    task_id: canonical.taskId,
     canonical_host: canonical.host,
     canonical_url: canonical.url,
     summary: {

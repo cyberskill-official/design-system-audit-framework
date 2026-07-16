@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 export const ROOT = resolve(__dirname, '../..');
-export const PAYLOAD_PATH = resolve(ROOT, "docs/framework/core/FR-DOCS-001-readme-contract.json");
+export const PAYLOAD_PATH = resolve(ROOT, "docs/framework/core/TASK-DOCS-001-readme-contract.json");
 export const AUDIT_OUTPUT = resolve(ROOT, "docs/outputs/_audit/readme-contract.json");
 
 export function loadReadmePayload(path = PAYLOAD_PATH) {
@@ -97,7 +97,7 @@ export function evaluateSkimMock(payload) {
   const body = response.body || {};
   return [
     makeResult(contract.endpoint === "POST /mock/readme-skim-review", "mock-endpoint", "mock://readme-skim-review", contract.endpoint, "POST /mock/readme-skim-review", "mocked"),
-    makeResult(request.fr_id === payload.fr_id && request.surface === payload.readme_file, "mock-request-identity", "mock://readme-skim-review", { fr_id: request.fr_id, surface: request.surface }, { fr_id: payload.fr_id, surface: payload.readme_file }, "mocked"),
+    makeResult(request.task_id === payload.task_id && request.surface === payload.readme_file, "mock-request-identity", "mock://readme-skim-review", { task_id: request.task_id, surface: request.surface }, { task_id: payload.task_id, surface: payload.readme_file }, "mocked"),
     makeResult(request.duration_seconds === 60 && request.participant_relationship === "external_mock", "mock-request-participant", "mock://readme-skim-review", { duration_seconds: request.duration_seconds, participant_relationship: request.participant_relationship }, "60s external mock", "mocked"),
     makeResult(Array.isArray(request.summary_sentences) && request.summary_sentences.length === 2, "mock-request-summary-shape", "mock://readme-skim-review", request.summary_sentences, "two summary sentences", "mocked"),
     makeResult(response.status_code === 202 && body.accepted === true && body.skim_result === "pass" && typeof body.observability_key === "string", "mock-response-shape", "mock://readme-skim-review", { status_code: response.status_code, body }, "202 accepted pass with observability key", "mocked"),
@@ -210,7 +210,7 @@ export function summarize(results) {
 export function writeReadmeEvidence(payload, evaluation, outputPath = AUDIT_OUTPUT) {
   const audit = {
     generated: new Date().toISOString(),
-    fr_id: payload.fr_id,
+    task_id: payload.task_id,
     observability: payload.observability,
     edge_case_matrix: payload.edge_case_matrix,
     scanned_files: evaluation.files,

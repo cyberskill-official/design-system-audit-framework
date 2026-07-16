@@ -1,4 +1,4 @@
-# FR-I18N-002 - Translation Programme Expansion
+# TASK-I18N-002 - Translation Programme Expansion
 
 **Repo-verifiable state:** expansion plan ready; translation PRs require community contributors and native review.
 

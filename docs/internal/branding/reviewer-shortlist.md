@@ -1,19 +1,19 @@
 # DSAF reviewer shortlist
 
 **Status:** working tracker.
-**FR:** FR-GOV-001.
+**task:** TASK-GOV-001.
 
 ## Outreach status legend
 
 `not-contacted` · `contacted` · `replied-positive` · `feedback-no-quote` · `quote-approved` · `quote-published` · `declined` · `no-response`
 
-Heads-up status values for FR-LAUNCH-004:
+Heads-up status values for TASK-LAUNCH-004:
 
 `not-contacted` · `scheduled` · `sent` · `replied-will-look` · `replied-substantive` · `declined` · `no-response`
 
 ## Shortlist
 
-| Rank | Name | Role / affiliation | Why DSAF-relevant | Warmth | Review status (FR-GOV-001) | Heads-up status (FR-LAUNCH-004) |
+| Rank | Name | Role / affiliation | Why DSAF-relevant | Warmth | Review status (TASK-GOV-001) | Heads-up status (TASK-LAUNCH-004) |
 |---:|---|---|---|---:|---|---|
 | 1 | Nathan Curtis | Independent design-systems consultant | Governance, maturity models, enterprise DS practice | 4 | not-contacted | not-contacted |
 | 2 | Sil Bormüller | Into Design Systems | Community credibility and conference audience fit | 4 | not-contacted | not-contacted |

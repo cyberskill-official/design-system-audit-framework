@@ -135,7 +135,7 @@ test("writeDsaf25Evidence writes structured output", () => {
     const evaluation = evaluateDsaf25Contract(payload, root);
     const audit = writeDsaf25Evidence(payload, evaluation, output);
     const written = JSON.parse(readFileSync(output, "utf8"));
-    assert.equal(audit.fr_id, "FR-CORE-001");
+    assert.equal(audit.task_id, "TASK-CORE-001");
     assert.equal(written.summary.fail, 0);
   }
   finally {

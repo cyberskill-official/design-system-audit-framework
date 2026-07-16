@@ -1,4 +1,4 @@
-# FR-VERT-001 - Govtech Vertical Pack
+# TASK-VERT-001 - Govtech Vertical Pack
 
 **Repo-verifiable state:** Govtech addendum ready; named EU public-sector buyer remains external.
 

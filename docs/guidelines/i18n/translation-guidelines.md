@@ -1,13 +1,13 @@
 # DSAF Translation Guidelines
 
 **Status:** repo-shipped translation program guide.
-**FR:** FR-I18N-001.
+**task:** TASK-I18N-001.
 
 These guidelines are for community translators and native-speaker reviewers contributing Japanese, Spanish, and German translations of DSAF-25 Core plus the first-read landing copy.
 
 ## Scope
 
-In scope for FR-I18N-001:
+In scope for TASK-I18N-001:
 
 - DSAF-25 Core criterion names and score-anchor copy.
 - README first-read equivalent: what DSAF is, why it exists, how to start, and the self-audit cap.
@@ -66,7 +66,7 @@ If a translator proposes a better phrase, record the change in the PR and update
 ## Hreflang Template
 
 Add only the languages that have shipped.
-Example after all three FR-I18N-001 translations are accepted:
+Example after all three TASK-I18N-001 translations are accepted:
 
 ```html
 <link rel="alternate" hreflang="en" href="https://audit.cyberskill.world/card" />

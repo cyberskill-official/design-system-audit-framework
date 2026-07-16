@@ -55,7 +55,7 @@ git push origin v1.5.0 || true
 - Priority P0 · Owner @Agent[fix] · Effort S · Depends on —
 - Status: todo
 
-**Why.** `audit-diff --allow-regressions` is the designed escape hatch, but the signed override rows (FR-CORE-002) currently have no canonical home in either repo. Without a register, the flag is a bypass; with one, it is a signature.
+**Why.** `audit-diff --allow-regressions` is the designed escape hatch, but the signed override rows (TASK-CORE-002) currently have no canonical home in either repo. Without a register, the flag is a bypass; with one, it is a signature.
 
 **Scope.**
 1. Seed [overrides.md](overrides.md) in this directory (done at backlog creation — verify its table shape matches the policy's override-log columns).

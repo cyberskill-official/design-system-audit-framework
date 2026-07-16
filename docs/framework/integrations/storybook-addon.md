@@ -1,7 +1,7 @@
 # DSAF Storybook Addon
 
 **Status:** package-ready local implementation.  
-**FR:** FR-INTEG-001.  
+**task:** TASK-INTEG-001.  
 **Package:** `@dsaf/storybook-addon`
 
 The addon package lives in [`../../../../packages/storybook-addon`](../../../packages/storybook-addon). It exposes a runner bridge, scoring model, panel renderer, Storybook preset hooks, tests, and a CI workflow.

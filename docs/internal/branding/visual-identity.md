@@ -1,7 +1,7 @@
 # DSAF visual identity assets
 
 **Status:** shipped.
-**FR:** FR-BRAND-003.
+**task:** TASK-BRAND-003.
 
 ## Assets
 

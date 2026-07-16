@@ -1,6 +1,6 @@
 {
   "schema_version": "2026-05-18",
-  "fr_id": "FR-LAUNCH-006",
+  "fr_id": "TASK-LAUNCH-006",
   "status": "repo-shipped + mocked-dependency",
   "reason": "Newsletter submissions require human-owned accounts, login sessions, editor relationships, or a currently unverified destination. This artifact preserves the exact request and response contract for the missing submission services without pretending to publish.",
   "canonical_post": {
@@ -60,7 +60,7 @@
           "content-type": "application/json"
         },
         "body": {
-          "fr_id": "FR-LAUNCH-006",
+          "fr_id": "TASK-LAUNCH-006",
           "newsletter_id": "ids-weekly",
           "canonical_url": "https://audit.cyberskill.world/blog/deep-dives/week-01-a1-1-color-tokens/",
           "title": "A1.1: Color tokens are governance, not naming decoration",
@@ -77,7 +77,7 @@
         "status": 202,
         "body": {
           "accepted": true,
-          "submission_id": "mock-FR-LAUNCH-006-ids-weekly-week-01",
+          "submission_id": "mock-TASK-LAUNCH-006-ids-weekly-week-01",
           "manual_review": true,
           "next_check_date": "2026-06-24"
         }
@@ -96,7 +96,7 @@
           "content-type": "application/json"
         },
         "body": {
-          "fr_id": "FR-LAUNCH-006",
+          "fr_id": "TASK-LAUNCH-006",
           "newsletter_id": "pattern-pulse",
           "canonical_url": "https://audit.cyberskill.world/blog/deep-dives/week-01-a1-1-color-tokens/",
           "title": "A1.1: Color tokens are governance, not naming decoration",
@@ -113,7 +113,7 @@
         "status": 202,
         "body": {
           "accepted": false,
-          "submission_id": "mock-FR-LAUNCH-006-pattern-pulse-week-01",
+          "submission_id": "mock-TASK-LAUNCH-006-pattern-pulse-week-01",
           "manual_review": true,
           "next_check_date": "2026-06-24"
         }
@@ -132,7 +132,7 @@
           "content-type": "application/json"
         },
         "body": {
-          "fr_id": "FR-LAUNCH-006",
+          "fr_id": "TASK-LAUNCH-006",
           "newsletter_id": "sidebar",
           "canonical_url": "https://audit.cyberskill.world/blog/deep-dives/week-01-a1-1-color-tokens/",
           "title": "A1.1: Color tokens are governance, not naming decoration",
@@ -149,7 +149,7 @@
         "status": 202,
         "body": {
           "accepted": true,
-          "submission_id": "mock-FR-LAUNCH-006-sidebar-week-01",
+          "submission_id": "mock-TASK-LAUNCH-006-sidebar-week-01",
           "manual_review": true,
           "next_check_date": "2026-06-24"
         }
@@ -168,7 +168,7 @@
           "content-type": "application/json"
         },
         "body": {
-          "fr_id": "FR-LAUNCH-006",
+          "fr_id": "TASK-LAUNCH-006",
           "newsletter_id": "smashing",
           "canonical_url": "https://audit.cyberskill.world/blog/deep-dives/week-01-a1-1-color-tokens/",
           "title": "A1.1: Color tokens are governance, not naming decoration",
@@ -185,7 +185,7 @@
         "status": 202,
         "body": {
           "accepted": true,
-          "submission_id": "mock-FR-LAUNCH-006-smashing-week-01",
+          "submission_id": "mock-TASK-LAUNCH-006-smashing-week-01",
           "manual_review": true,
           "next_check_date": "2026-06-24"
         }

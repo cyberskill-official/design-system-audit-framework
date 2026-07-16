@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * FR-CORE-003 criteria dedup strict contract.
+ * TASK-CORE-003 criteria dedup strict contract.
  */
 
 import {

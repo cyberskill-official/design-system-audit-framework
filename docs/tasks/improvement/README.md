@@ -14,7 +14,7 @@ This directory is the executable follow-up to the [2026-07-06 strengthening revi
 | [E5-integrations.md](E5-integrations.md) | Storybook addon, Figma plugin, hosted benchmark ingest |
 | [E6-loop-operations.md](E6-loop-operations.md) | Loop go-live, override register, CDS-side human evidence |
 | [PROMPT.md](PROMPT.md) | The trigger: paste-ready agent implementation prompt + human review protocol |
-| [overrides.md](overrides.md) | Signed no-silent-regression override register (FR-CORE-002) |
+| [overrides.md](overrides.md) | Signed no-silent-regression override register (TASK-CORE-002) |
 
 ## How the backlog works
 

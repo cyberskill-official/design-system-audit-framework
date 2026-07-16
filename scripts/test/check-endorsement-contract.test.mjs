@@ -147,7 +147,7 @@ test("writeEndorsementEvidence writes structured output and summarizes", () => {
     const output = join(out, "audit.json");
     const audit = writeEndorsementEvidence(payload, evaluateEndorsementContract(payload, root), output);
     const written = JSON.parse(readFileSync(output, "utf8"));
-    assert.equal(audit.fr_id, "FR-DOCS-002");
+    assert.equal(audit.task_id, "TASK-DOCS-002");
     assert.equal(written.summary.fail, 0);
     assert.deepEqual(summarize([makeResult(true, "x", "file", 1, 1, "mocked"), makeResult(false, "y", "file", 1, 2)]), { pass: 0, mocked: 1, fail: 1, ok: false });
   }

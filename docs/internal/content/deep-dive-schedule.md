@@ -1,11 +1,11 @@
 # DSAF Deep-Dive Schedule
 
-**FR:** FR-CONTENT-001  
+**task:** TASK-CONTENT-001  
 **Cadence:** Tuesday 08:00 PT / Tuesday 22:00 ICT  
 **Initial commitment:** 12 weeks, starting four weeks after the May 19, 2026 launch slot.  
 **Status:** cadence-ready; Week 1 source draft exists.
 
-Topic order is allowed to change after launch if FR-LAUNCH-001/002/003 feedback shows stronger demand. Changes must keep a 12-week forward-looking queue and must not silently skip a week.
+Topic order is allowed to change after launch if TASK-LAUNCH-001/002/003 feedback shows stronger demand. Changes must keep a 12-week forward-looking queue and must not silently skip a week.
 
 ## 12-Week Initial Schedule
 
@@ -52,8 +52,8 @@ Topic order is allowed to change after launch if FR-LAUNCH-001/002/003 feedback 
 Every four posts, review:
 
 - traffic and referral sources for canonical posts
-- dev.to, Medium, and LinkedIn discussion patterns from FR-CONTENT-002
-- newsletter inclusions from FR-LAUNCH-006
+- dev.to, Medium, and LinkedIn discussion patterns from TASK-CONTENT-002
+- newsletter inclusions from TASK-LAUNCH-006
 - repeated objections from issues, HN, Reddit, Product Hunt, and direct replies
 
 If a topic appears on two or more surfaces, move it into the next four-week window and push the lowest-priority planned topic into the backlog.

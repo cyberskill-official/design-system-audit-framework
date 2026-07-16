@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * FR-DOCS-002 endorsement consent-gate strict contract.
+ * TASK-DOCS-002 endorsement consent-gate strict contract.
  */
 
 import {

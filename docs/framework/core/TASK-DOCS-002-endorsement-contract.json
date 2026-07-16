@@ -1,6 +1,6 @@
 {
   "schema_version": "2026-05-18",
-  "fr_id": "FR-DOCS-002",
+  "fr_id": "TASK-DOCS-002",
   "status": "strict-audit-contract-mocked-dependency",
   "observability": {
     "audit_output": "outputs/_audit/endorsement-contract.json",
@@ -70,7 +70,7 @@
   "pending_quotes_requirements": [
     "**Status:** no public quotes approved.",
     "This file intentionally contains no illustrative quotes.",
-    "FR-DOCS-002 remains externally gated until at least two reviewers approve exact quote text and attribution strings.",
+    "TASK-DOCS-002 remains externally gated until at least two reviewers approve exact quote text and attribution strings.",
     "| _none_ | _none_ | _none_ | pending outreach |"
   ],
   "shortlist_requirements": [
@@ -90,7 +90,7 @@
   "quote_approval_mock_contract": {
     "endpoint": "POST /mock/reviewer-quote-consent-approval",
     "request": {
-      "fr_id": "FR-DOCS-002",
+      "fr_id": "TASK-DOCS-002",
       "minimum_required_approvals": 2,
       "approved_quotes": [],
       "blocked_reason": "Named reviewer quote approval requires written consent from external people through Stephen/operator accounts."
@@ -99,11 +99,11 @@
       "status_code": 202,
       "body": {
         "accepted": true,
-        "fr_id": "FR-DOCS-002",
+        "fr_id": "TASK-DOCS-002",
         "approved_count": 0,
         "publication_action": "keep_placeholders",
         "mocked_dependency": true,
-        "observability_key": "FR-DOCS-002:reviewer-quotes:mock-consent"
+        "observability_key": "TASK-DOCS-002:reviewer-quotes:mock-consent"
       }
     }
   }

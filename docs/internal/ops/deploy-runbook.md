@@ -14,8 +14,8 @@ The `landing/` folder is deployed via Vercel and serves at `https://audit.cybers
 |---|---|---|
 | `/` | `landing/index.html` | Hero, tiles, DSAF-25 SVG, L0–L5 ladder, cap table |
 | `/card` | `landing/card/index.html` | Standalone DSAF-25 Core card |
-| `/blog/launch-2026` | `landing/blog/launch-2026.md` | FR-DOCS-003 launch post (rendered post-build — see OPS-004) |
-| `/blog/co-maintainer-announcement` | `landing/blog/co-maintainer-announcement.md` | FR-GOV-002 template |
+| `/blog/launch-2026` | `landing/blog/launch-2026.md` | TASK-DOCS-003 launch post (rendered post-build — see OPS-004) |
+| `/blog/co-maintainer-announcement` | `landing/blog/co-maintainer-announcement.md` | TASK-GOV-002 template |
 | `/.well-known/security.txt` | `landing/.well-known/security.txt` | RFC 9116 |
 | `/robots.txt`, `/sitemap.xml` | `landing/robots.txt`, `landing/sitemap.xml` | SEO |
 
@@ -75,7 +75,7 @@ These are tasks any AI agent with repo access can pick up. Each has a deliverabl
 | ID | Gap | Deliverable | Status |
 |---|---|---|---|
 | OPS-001 | No CI runs link-check / Lighthouse on PR | `.github/workflows/landing-ci.yml` (link check via `scripts/checks/check-links.mjs`; Lighthouse against the Vercel preview URL; fail PR if < 95 on any pillar) | todo |
-| OPS-002 | No analytics decision logged | `internal/ops/analytics-decision.md` — choose Plausible self-hosted on a Cloudflare Worker OR document "no analytics in P0" deferral until FR-BENCH-001 P4 | todo |
+| OPS-002 | No analytics decision logged | `internal/ops/analytics-decision.md` — choose Plausible self-hosted on a Cloudflare Worker OR document "no analytics in P0" deferral until TASK-BENCH-001 P4 | todo |
 | OPS-003 | No OG image | `landing/og-image.png` 1200×630, no CyberSkill marks; wire into `<meta property="og:image">` in both HTMLs | todo |
 | OPS-004 | Blog posts render as raw markdown on Vercel | `scripts/bin/render-blog.mjs` that turns `landing/blog/*.md` into `landing/blog/*.html` at build time; wire into Vercel build command | todo |
 | OPS-005 | No favicon | `landing/favicon.svg` (single-file, currentColor for dark/light); `<link rel="icon" type="image/svg+xml" href="/favicon.svg">` in both HTMLs | todo |

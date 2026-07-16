@@ -1,7 +1,7 @@
 # DSAF self-audit publication policy
 
 **Status:** normative.
-**FR:** FR-CORE-004.
+**task:** TASK-CORE-004.
 **Scope:** every published self-audit citing a DSAF Level on an external-facing surface.
 
 ## The cap rule
@@ -62,6 +62,6 @@ Until then, all published self-audits follow the cap table above.
 
 ## Strict-audit contract
 
-The executable guard for this policy is [`FR-CORE-004-self-audit-contract.json`](./FR-CORE-004-self-audit-contract.json) plus `npm run contract:self-audit`. It checks that CyberSkill public surfaces use L3 framing, that old percentage and L5 headlines do not leak onto public marketing surfaces, and that the interior worked audit still preserves its original calibration data.
+The executable guard for this policy is [`TASK-CORE-004-self-audit-contract.json`](./TASK-CORE-004-self-audit-contract.json) plus `npm run contract:self-audit`. It checks that CyberSkill public surfaces use L3 framing, that old percentage and L5 headlines do not leak onto public marketing surfaces, and that the interior worked audit still preserves its original calibration data.
 
 *End of self-audit policy.*

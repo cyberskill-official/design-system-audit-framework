@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
   <title id="title">DSAF launch social card</title>
   <desc id="desc">A 1200 by 630 social preview for the DSAF launch blog post, showing the L0 to L5 maturity ladder and the launch title.</desc>
-  <metadata>{"asset":"launch-2026-og","size":"1200x630","source":"FR-DOCS-003","date":"2026-05-18"}</metadata>
+  <metadata>{"asset":"launch-2026-og","size":"1200x630","source":"TASK-DOCS-003","date":"2026-05-18"}</metadata>
   <rect width="1200" height="630" fill="#f8fafc"/>
   <rect x="40" y="40" width="1120" height="550" rx="28" fill="#ffffff" stroke="#d8dee9" stroke-width="2"/>
   <text x="86" y="112" font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Arial" font-size="30" font-weight="700" fill="#0f172a">DSAF</text>

@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 export const ROOT = resolve(__dirname, '../..');
-export const PAYLOAD_PATH = resolve(ROOT, "docs/framework/core/FR-CORE-001-dsaf-25-contract.json");
+export const PAYLOAD_PATH = resolve(ROOT, "docs/framework/core/TASK-CORE-001-dsaf-25-contract.json");
 export const AUDIT_OUTPUT = resolve(ROOT, "docs/outputs/_audit/dsaf-25-contract.json");
 
 export function loadDsaf25Payload(path = PAYLOAD_PATH) {
@@ -206,7 +206,7 @@ export function evaluateDsaf25Contract(payload, root = ROOT) {
 export function writeDsaf25Evidence(payload, evaluation, outputPath = AUDIT_OUTPUT) {
   const audit = {
     generated: new Date().toISOString(),
-    fr_id: payload.fr_id,
+    task_id: payload.task_id,
     core_rows: evaluation.core_rows.map((row) => ({ id: row.id, category: row.category, tag: row.tag })),
     summary: summarize(evaluation.results),
     results: evaluation.results,

@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 export const ROOT = resolve(__dirname, '../..');
-export const PAYLOAD_PATH = resolve(ROOT, "docs/framework/core/FR-DOCS-003-launch-blog-contract.json");
+export const PAYLOAD_PATH = resolve(ROOT, "docs/framework/core/TASK-DOCS-003-launch-blog-contract.json");
 export const AUDIT_OUTPUT = resolve(ROOT, "docs/outputs/_audit/launch-blog-contract.json");
 
 export function loadLaunchBlogPayload(path = PAYLOAD_PATH) {
@@ -85,7 +85,7 @@ export function evaluateDeployMock(payload) {
   const body = response.body || {};
   return [
     makeResult(contract.endpoint === "POST /mock/launch-blog-deploy-verification", "mock-endpoint", "mock://launch-blog-deploy", contract.endpoint, "POST /mock/launch-blog-deploy-verification", "mocked"),
-    makeResult(request.fr_id === payload.fr_id && request.canonical_url === payload.frontmatter.required.canonical, "mock-request-identity", "mock://launch-blog-deploy", { fr_id: request.fr_id, canonical_url: request.canonical_url }, { fr_id: payload.fr_id, canonical_url: payload.frontmatter.required.canonical }, "mocked"),
+    makeResult(request.task_id === payload.task_id && request.canonical_url === payload.frontmatter.required.canonical, "mock-request-identity", "mock://launch-blog-deploy", { task_id: request.task_id, canonical_url: request.canonical_url }, { task_id: payload.task_id, canonical_url: payload.frontmatter.required.canonical }, "mocked"),
     makeResult(request.requires_production_deploy === true && request.approved_quote_count === 0, "mock-request-blockers", "mock://launch-blog-deploy", { requires_production_deploy: request.requires_production_deploy, approved_quote_count: request.approved_quote_count }, "production deploy required and zero approved quotes", "mocked"),
     makeResult(response.status_code === 202 && body.accepted === true, "mock-response-accepted", "mock://launch-blog-deploy", { status_code: response.status_code, accepted: body.accepted }, { status_code: 202, accepted: true }, "mocked"),
     makeResult(body.production_deploy === "mocked" && body.publication_state === "repo-rendered" && body.approved_quote_count === 0 && typeof body.observability_key === "string", "mock-response-shape", "mock://launch-blog-deploy", body, "mocked deploy, repo-rendered, zero quotes", "mocked"),
@@ -186,7 +186,7 @@ export function summarize(results) {
 export function writeLaunchBlogEvidence(payload, evaluation, outputPath = AUDIT_OUTPUT) {
   const audit = {
     generated: new Date().toISOString(),
-    fr_id: payload.fr_id,
+    task_id: payload.task_id,
     observability: payload.observability,
     edge_case_matrix: payload.edge_case_matrix,
     scanned_files: evaluation.files,

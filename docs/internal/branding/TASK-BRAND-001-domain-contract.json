@@ -1,6 +1,6 @@
 {
   "schema_version": "2026-05-18",
-  "fr_id": "FR-BRAND-001",
+  "fr_id": "TASK-BRAND-001",
   "status": "shipped + mocked-dependency",
   "canonical_host": "audit.cyberskill.world",
   "canonical_url": "https://audit.cyberskill.world/",
@@ -72,7 +72,7 @@
           "content-type": "application/json"
         },
         "body": {
-          "fr_id": "FR-BRAND-001",
+          "fr_id": "TASK-BRAND-001",
           "operation_id": "dns-caa-records",
           "provider": "cloudflare-dns",
           "canonical_host": "audit.cyberskill.world",
@@ -106,7 +106,7 @@
           "content-type": "application/json"
         },
         "body": {
-          "fr_id": "FR-BRAND-001",
+          "fr_id": "TASK-BRAND-001",
           "operation_id": "registrar-2fa-vault",
           "provider": "domain-registrar-password-vault",
           "canonical_host": "audit.cyberskill.world",
@@ -141,7 +141,7 @@
           "content-type": "application/json"
         },
         "body": {
-          "fr_id": "FR-BRAND-001",
+          "fr_id": "TASK-BRAND-001",
           "operation_id": "mail-forwarding",
           "provider": "cyberskill-mail",
           "canonical_host": "audit.cyberskill.world",
@@ -176,7 +176,7 @@
           "content-type": "application/json"
         },
         "body": {
-          "fr_id": "FR-BRAND-001",
+          "fr_id": "TASK-BRAND-001",
           "operation_id": "hsts-preload-submit",
           "provider": "hstspreload.org",
           "canonical_host": "audit.cyberskill.world",

@@ -1,7 +1,7 @@
 # Cross-publishing discipline
 
 **Status:** cadence-ready.
-**FR:** FR-CONTENT-002.
+**task:** TASK-CONTENT-002.
 **Canonical playbook:** [`cross-publishing-playbook.md`](./cross-publishing-playbook.md)
 **Week 1 ready drafts:** [`deep-dives/cross-publishing/`](./deep-dives/cross-publishing)
 

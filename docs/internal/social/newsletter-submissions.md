@@ -2,7 +2,7 @@
 
 **Use for:** EXECUTION_PLAN.md task O11. Submit each newly-published deep-dive to all four newsletters at T+24h after the canonical post goes live.
 
-Newsletters in scope (per FR-LAUNCH-006).
+Newsletters in scope (per TASK-LAUNCH-006).
 Do not auto-submit; copy/paste manually after verifying the live URL.
 
 | Newsletter | URL | Submission form |
@@ -96,7 +96,7 @@ CyberSkill
 
 ## Rules
 
-1. **No paid promotion.** Per FR-LAUNCH-006 §rules; never offer payment for inclusion.
+1. **No paid promotion.** Per TASK-LAUNCH-006 §rules; never offer payment for inclusion.
 2. **No duplicate submission to the same newsletter for the same post.** One submission per newsletter per post; if not picked up, that's the editorial signal.
 3. **No follow-up** unless the editor explicitly asks for clarification or amendment.
 4. **No old-post resubmission.** Each submission is for a freshly-published deep-dive (≤ 7 days old).

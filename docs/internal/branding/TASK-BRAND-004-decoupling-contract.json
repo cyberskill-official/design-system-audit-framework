@@ -1,12 +1,12 @@
 {
   "schema_version": "2026-05-18",
-  "fr_id": "FR-BRAND-004",
+  "fr_id": "TASK-BRAND-004",
   "status": "strict-audit-contract-mocked-dependency",
   "decision_mode": "content_layer_canonical_host_override",
   "canonical_host": "audit.cyberskill.world",
   "canonical_url": "https://audit.cyberskill.world/",
   "architectural_deviation": {
-    "adr": "docs/internal/ADR-FR-BRAND-004.md",
+    "adr": "docs/internal/ADR-TASK-BRAND-004.md",
     "original_plan": "Migrate framework marketing to dsaf.dev and install 12-month path-preserving redirects.",
     "accepted_plan": "Keep audit.cyberskill.world as canonical and enforce DSAF/CyberSkill separation at the content, routing, and governance layers.",
     "self_approved": true,
@@ -43,7 +43,7 @@
     {
       "case": "Redirect-to-nowhere",
       "failure_vector": "Historical map is revived without checking destination routes.",
-      "expected_handling": "Keep the map historical until a new FR re-batches neutral-domain migration and verifies destinations."
+      "expected_handling": "Keep the map historical until a new task re-batches neutral-domain migration and verifies destinations."
     },
     {
       "case": "Sales copy leakage",
@@ -92,7 +92,7 @@
     "**No redirects are installed.**",
     "**Current canonical URL:** `https://audit.cyberskill.world/`",
     "`audit.cyberskill.world` IS the canonical URL",
-    "The file is retained because the FR specs"
+    "The file is retained because the task specs"
   ],
   "historical_redirect_inventory": {
     "minimum_rows": 10,
@@ -178,7 +178,7 @@
   "deployment_mock_contract": {
     "endpoint": "POST /mock/canonical-boundary-deployment-check",
     "request": {
-      "fr_id": "FR-BRAND-004",
+      "fr_id": "TASK-BRAND-004",
       "canonical_host": "audit.cyberskill.world",
       "build_root": "apps/landing/",
       "desired_redirect_rules": [],
@@ -194,11 +194,11 @@
       "status_code": 202,
       "body": {
         "accepted": true,
-        "fr_id": "FR-BRAND-004",
+        "fr_id": "TASK-BRAND-004",
         "canonical_host": "audit.cyberskill.world",
         "redirect_rules_count": 0,
         "external_control_plane": "mocked",
-        "observability_key": "FR-BRAND-004:audit.cyberskill.world:deployment-boundary"
+        "observability_key": "TASK-BRAND-004:audit.cyberskill.world:deployment-boundary"
       }
     }
   }

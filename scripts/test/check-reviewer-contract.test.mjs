@@ -23,7 +23,7 @@ const payload = loadReviewerPayload();
 function shortlistText() {
   return `# DSAF reviewer shortlist
 
-| Rank | Name | Role / affiliation | Why DSAF-relevant | Warmth | Review status (FR-GOV-001) | Heads-up status (FR-LAUNCH-004) |
+| Rank | Name | Role / affiliation | Why DSAF-relevant | Warmth | Review status (TASK-GOV-001) | Heads-up status (TASK-LAUNCH-004) |
 |---:|---|---|---|---:|---|---|
 ${payload.expected_reviewers.map((name, index) => `| ${index + 1} | ${name} | Role | Relevant | ${index < 2 ? 4 : 3} | not-contacted | not-contacted |`).join("\n")}
 `;
@@ -170,7 +170,7 @@ test("writeReviewerEvidence writes structured output and summarizes", () => {
     const output = join(out, "audit.json");
     const audit = writeReviewerEvidence(payload, evaluateReviewerContract(payload, root), output);
     const written = JSON.parse(readFileSync(output, "utf8"));
-    assert.equal(audit.fr_id, "FR-GOV-001");
+    assert.equal(audit.task_id, "TASK-GOV-001");
     assert.equal(written.summary.fail, 0);
     assert.deepEqual(summarize([makeResult(true, "x", "file", 1, 1, "mocked"), makeResult(false, "y", "file", 1, 2)]), { pass: 0, mocked: 1, fail: 1, ok: false });
   }

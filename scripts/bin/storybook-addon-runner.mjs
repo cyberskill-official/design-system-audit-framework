@@ -2,7 +2,7 @@
 /**
  * Storybook integration runner for DSAF.
  *
- * FR-INTEG-001: provides the command surface a Storybook addon can call.
+ * TASK-INTEG-001: provides the command surface a Storybook addon can call.
  * It runs the DSAF check docs/framework/scripts and returns a compact JSON summary.
  */
 

@@ -155,7 +155,7 @@ test("writeVisualAssetsEvidence writes structured output", () => {
     const output = join(out, "audit.json");
     const audit = writeVisualAssetsEvidence(payload, evaluateVisualAssetsContract(payload, root), output);
     const written = JSON.parse(readFileSync(output, "utf8"));
-    assert.equal(audit.fr_id, "FR-BRAND-003");
+    assert.equal(audit.task_id, "TASK-BRAND-003");
     assert.equal(written.summary.fail, 0);
   }
   finally {
