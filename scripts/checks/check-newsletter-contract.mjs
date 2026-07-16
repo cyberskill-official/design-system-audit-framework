@@ -15,8 +15,8 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '../..');
 const PAYLOAD = resolve(ROOT, "docs/internal/social/TASK-LAUNCH-006-social-payload.json");
 const expectedNewsletters = new Set(["ids-weekly", "pattern-pulse", "sidebar", "smashing"]);
+// Payload uses fr_id (CyberOS TASK id); accept task_id as legacy alias.
 const requiredRequestFields = [
-  "task_id",
   "newsletter_id",
   "canonical_url",
   "title",
@@ -34,6 +34,14 @@ const requiredResponseFields = [
   "manual_review",
   "next_check_date",
 ];
+
+function payloadTaskId(payload) {
+  return payload.task_id || payload.fr_id;
+}
+
+function requestTaskId(body) {
+  return body.task_id || body.fr_id;
+}
 const forbiddenText = [
   /84\.6/i,
   /industry[- ]?leading/i,
@@ -77,8 +85,9 @@ function mockSubmit(request, expectedResponse) {
 }
 
 const payload = JSON.parse(readFileSync(PAYLOAD, "utf8"));
+const taskId = payloadTaskId(payload);
 
-assert(payload.task_id === "TASK-LAUNCH-006", "payload task_id must be TASK-LAUNCH-006");
+assert(taskId === "TASK-LAUNCH-006", "payload task_id must be TASK-LAUNCH-006");
 assert(payload.status.includes("mocked-dependency"), "payload status must record mocked-dependency");
 assert(payload.canonical_post?.url?.startsWith("https://audit.cyberskill.world/blog/deep-dives/"), "canonical post must use the audit.cyberskill.world deep-dive URL");
 assert(payload.observability?.tracking_file === "docs/internal/launch/newsletter-submissions.md", "observability tracking file must point to newsletter runbook");
@@ -99,8 +108,12 @@ for (const submission of payload.submissions) {
   for (const field of requiredRequestFields) {
     assert(Object.hasOwn(request.body, field), `${id} request body missing ${field}`);
   }
+  assert(
+    Object.hasOwn(request.body, "task_id") || Object.hasOwn(request.body, "fr_id"),
+    `${id} request body missing task_id/fr_id`,
+  );
 
-  assert(request.body.task_id === payload.task_id, `${id} request task_id mismatch`);
+  assert(requestTaskId(request.body) === taskId, `${id} request task_id mismatch`);
   assert(request.body.newsletter_id === id, `${id} request newsletter_id mismatch`);
   assert(request.body.canonical_url === payload.canonical_post.url, `${id} canonical_url mismatch`);
   assert(request.body.no_follow_up === true, `${id} must set no_follow_up=true`);

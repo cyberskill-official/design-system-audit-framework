@@ -11,6 +11,8 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '../..');
 
 const checks = [
+  // Blog HTML is gitignored (built artifact); regenerate before launch-blog contract.
+  ["render-blog", "scripts/bin/render-blog.mjs"],
   ["links", "scripts/checks/check-links.mjs"],
   ["coverage", "scripts/checks/check-coverage.mjs"],
   ["bundle-size", "scripts/checks/check-bundle-size.mjs"],
