@@ -17,14 +17,14 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24.18.0
       - run: npm install
       - name: Verify (regenerates the calibration corpus + scores.json fixtures)
         run: npm run verify
       - name: Mine evolution proposals (human-gated output)
         run: npm run evolve:mine
       - name: Upload proposals for review
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: dsaf-evolution-proposals
           path: |
