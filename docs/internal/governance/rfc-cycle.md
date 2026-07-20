@@ -27,4 +27,3 @@ Quarterly cycles are for criteria evolution, scoring changes, translations, cert
 - superseded
 
 Every decision gets a dated note in the RFC file and a link from the next release notes.
-

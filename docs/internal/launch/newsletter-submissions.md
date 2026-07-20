@@ -1,13 +1,8 @@
 # Newsletter submissions
 
-**Status:** repo-ready with mocked dependency contract; manual submission pending.
-**task:** TASK-LAUNCH-006.
-**Source check:** 2026-05-18.
+**Status:** repo-ready with mocked dependency contract; manual submission pending. **task:** TASK-LAUNCH-006. **Source check:** 2026-05-18.
 
-This runbook submits each DSAF weekly deep-dive to four curated design/front-end newsletters.
-Do not auto-submit.
-Do not pay for placement.
-Do not follow up unless an editor explicitly asks for clarification.
+This runbook submits each DSAF weekly deep-dive to four curated design/front-end newsletters. Do not auto-submit. Do not pay for placement. Do not follow up unless an editor explicitly asks for clarification.
 
 ## Edge-case matrix
 
@@ -58,23 +53,19 @@ Canonical post: `https://audit.cyberskill.world/blog/deep-dives/week-01-a1-1-col
 
 ### Into Design Systems Weekly
 
-Manual submission copy lives in [`../social/newsletter-submissions.md`](../social/newsletter-submissions.md#1-into-design-systems-weekly).
-Use the relationship/email path only after verifying the current preferred channel.
+Manual submission copy lives in [`../social/newsletter-submissions.md`](../social/newsletter-submissions.md#1-into-design-systems-weekly). Use the relationship/email path only after verifying the current preferred channel.
 
 ### Pattern Pulse
 
-Manual submission copy lives in [`../social/newsletter-submissions.md`](../social/newsletter-submissions.md#2-pattern-pulse).
-Do not submit until the current Pattern Pulse destination is verified.
+Manual submission copy lives in [`../social/newsletter-submissions.md`](../social/newsletter-submissions.md#2-pattern-pulse). Do not submit until the current Pattern Pulse destination is verified.
 
 ### Sidebar.io
 
-Submit through <https://sidebar.io/submit> after logging in or signing up.
-Manual submission copy lives in [`../social/newsletter-submissions.md`](../social/newsletter-submissions.md#3-sidebario).
+Submit through <https://sidebar.io/submit> after logging in or signing up. Manual submission copy lives in [`../social/newsletter-submissions.md`](../social/newsletter-submissions.md#3-sidebario).
 
 ### Smashing Newsletter
 
-Submit through Smashing's contact flow as a link suggestion, not a sponsored placement.
-Manual submission copy lives in [`../social/newsletter-submissions.md`](../social/newsletter-submissions.md#4-smashing-newsletter).
+Submit through Smashing's contact flow as a link suggestion, not a sponsored placement. Manual submission copy lives in [`../social/newsletter-submissions.md`](../social/newsletter-submissions.md#4-smashing-newsletter).
 
 ## Tracking
 

@@ -1,24 +1,18 @@
 # DSAF co-maintainer shortlist
 
-**Status:** private working tracker, committed without implying acceptance.
-**task:** TASK-GOV-002.
-**Last updated:** 2026-05-18.
+**Status:** private working tracker, committed without implying acceptance. **task:** TASK-GOV-002. **Last updated:** 2026-05-18.
 
 ## Sequential outreach
 
-Contact one candidate at a time.
-Do not run parallel asks that imply the role is generic.
-If a candidate declines, preserve the relationship and move to the next candidate.
+Contact one candidate at a time. Do not run parallel asks that imply the role is generic. If a candidate declines, preserve the relationship and move to the next candidate.
 
 ## Privacy
 
-Candidates are not publicly named as co-maintainer before written acceptance.
-This file is a planning artifact; the announcement post is the first public attribution surface.
+Candidates are not publicly named as co-maintainer before written acceptance. This file is a planning artifact; the announcement post is the first public attribution surface.
 
 ## Candidate tracker
 
-Before sending, verify the candidate's current role and preferred contact route manually.
-Affiliations below are planning shorthand, not public announcement copy.
+Before sending, verify the candidate's current role and preferred contact route manually. Affiliations below are planning shorthand, not public announcement copy.
 
 | Rank | Candidate | Role / Affiliation to verify before outreach | Why DSAF-relevant | Warmth | Cultural fit notes | Outreach status |
 |---:|---|---|---|---:|---|---|
@@ -30,9 +24,7 @@ Affiliations below are planning shorthand, not public announcement copy.
 
 ## Sequential outreach rule
 
-Only one candidate is in active discussion at a time.
-If the active candidate declines, wait one business day, update this tracker, and then move to the next ranked candidate.
-Do not imply that multiple candidates are competing for one seat.
+Only one candidate is in active discussion at a time. If the active candidate declines, wait one business day, update this tracker, and then move to the next ranked candidate. Do not imply that multiple candidates are competing for one seat.
 
 ## Acceptance checklist
 

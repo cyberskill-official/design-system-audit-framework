@@ -16,7 +16,4 @@
 
 ## Decision
 
-Status: draft
-Decision date:
-Maintainers:
-
+Status: draft Decision date: Maintainers:

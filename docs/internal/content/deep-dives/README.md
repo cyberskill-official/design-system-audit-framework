@@ -1,8 +1,6 @@
 # DSAF — Weekly criterion deep-dives
 
-**Cadence:** one post per Tuesday at 08:00 PT / 22:00 ICT for 12 weeks starting four weeks after launch.
-**Format:** CEA (Context → Example → Anti-pattern), 1,400–2,000 words per post, one criterion per post.
-**Canonical home:** `https://audit.cyberskill.world/blog/<slug>`.
+**Cadence:** one post per Tuesday at 08:00 PT / 22:00 ICT for 12 weeks starting four weeks after launch. **Format:** CEA (Context → Example → Anti-pattern), 1,400–2,000 words per post, one criterion per post. **Canonical home:** `https://audit.cyberskill.world/blog/<slug>`.
 
 ## 12-week roadmap
 

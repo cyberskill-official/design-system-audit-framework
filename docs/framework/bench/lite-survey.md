@@ -1,12 +1,10 @@
 # DSAF lite benchmark survey
 
-**Status:** superseded summary; canonical spec is [`framework/bench/lite-benchmark-spec.md`](../bench/lite-benchmark-spec.md).
-**task:** TASK-BENCH-001.
+**Status:** superseded summary; canonical spec is [`framework/bench/lite-benchmark-spec.md`](../bench/lite-benchmark-spec.md). **task:** TASK-BENCH-001.
 
 ## Purpose
 
-The lite benchmark lets a team compare its DSAF-25 score to anonymous peers without collecting unnecessary personal data.
-The shipped implementation lives at [`landing/benchmark/index.html`](../../../apps/landing/benchmark/index.html).
+The lite benchmark lets a team compare its DSAF-25 score to anonymous peers without collecting unnecessary personal data. The shipped implementation lives at [`landing/benchmark/index.html`](../../../apps/landing/benchmark/index.html).
 
 ## Data contract
 

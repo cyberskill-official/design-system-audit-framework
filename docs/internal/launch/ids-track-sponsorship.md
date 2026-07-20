@@ -19,4 +19,3 @@ Sponsor or co-host one Into Design Systems track annually around design-system m
 - Sponsorship must not imply conference endorsement of DSAF scores.
 - Any paid relationship is disclosed in DSAF launch and report materials.
 - Speaker slots should include non-CyberSkill practitioners.
-

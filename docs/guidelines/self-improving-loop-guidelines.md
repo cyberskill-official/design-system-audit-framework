@@ -25,12 +25,12 @@ flowchart LR
 For any target design system:
 
 1. **Iteration 1 (Scan & Improve)**:
-   - The engine parses the input (a `DESIGN.md` file, a repository tree, or a public URL crawl).
-   - It scores the canonical **125 DSAF criteria** with the three-band evidence model and produces `ANALYZED_DESIGN_REPORT.md` plus machine-readable `scores.json`.
-   - It generates a restructured `IMPROVED_DESIGN.md` embedding the automatable doctrine requirements for missing criteria.
+- The engine parses the input (a `DESIGN.md` file, a repository tree, or a public URL crawl).
+- It scores the canonical **125 DSAF criteria** with the three-band evidence model and produces `ANALYZED_DESIGN_REPORT.md` plus machine-readable `scores.json`.
+- It generates a restructured `IMPROVED_DESIGN.md` embedding the automatable doctrine requirements for missing criteria.
 2. **Iteration 2 (Verify & Calibrate)**:
-   - `IMPROVED_DESIGN.md` from Iteration 1 is fed back as the next input.
-   - The engine re-audits and logs the score delta, verifying the improved doctrine is structurally sound.
+- `IMPROVED_DESIGN.md` from Iteration 1 is fed back as the next input.
+- The engine re-audits and logs the score delta, verifying the improved doctrine is structurally sound.
 
 ### Honesty guards (why the loop cannot game itself)
 

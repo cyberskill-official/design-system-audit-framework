@@ -19,4 +19,3 @@
 ## Anti-Abuse
 
 If a team misuses a badge, maintainers can revoke listing from any public registry. The team may still self-publish its own claim, but DSAF will not amplify it.
-

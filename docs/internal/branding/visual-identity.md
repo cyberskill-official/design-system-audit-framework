@@ -1,7 +1,6 @@
 # DSAF visual identity assets
 
-**Status:** shipped.
-**task:** TASK-BRAND-003.
+**Status:** shipped. **task:** TASK-BRAND-003.
 
 ## Assets
 
@@ -14,14 +13,11 @@
 
 ## Usage
 
-Use the DSAF-25 card when introducing the method.
-Use the ladder when explaining DSAF Levels.
-Use the radar when explaining that a score has shape, not just magnitude.
+Use the DSAF-25 card when introducing the method. Use the ladder when explaining DSAF Levels. Use the radar when explaining that a score has shape, not just magnitude.
 
 ## Accessibility
 
-The SVGs include `<title>` and `<desc>` where they are intended for direct embedding.
-When used as external images, provide alt text matching the purpose above.
+The SVGs include `<title>` and `<desc>` where they are intended for direct embedding. When used as external images, provide alt text matching the purpose above.
 
 ## Copy pairing
 

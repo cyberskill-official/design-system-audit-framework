@@ -1,8 +1,6 @@
 # TASK-CORE-005 - Mode W
 
-**Mode name:** W mode
-**Purpose:** reverse-engineer a website that does not yet have a design system.
-**Repo-verifiable state:** v0.2 Mode W doctrine and starter outputs ready.
+**Mode name:** W mode **Purpose:** reverse-engineer a website that does not yet have a design system. **Repo-verifiable state:** v0.2 Mode W doctrine and starter outputs ready.
 
 ## Output Bundle
 
@@ -43,4 +41,3 @@
 - Page 3: component candidates.
 - Page 4: DSAF-25 gap summary.
 - Page 5: governance starter.
-

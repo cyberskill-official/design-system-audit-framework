@@ -19,15 +19,11 @@ File an issue first using the template `Substantive proposal`. Discuss for at le
 - An impact statement (which categories shift, which numbers move).
 - An update to the relevant criterion rubric anchors (0 / 3 / 5).
 
-**Approval window:** 14 days. Two maintainer approvals required.
-Until the TASK-GOV-002 co-maintainer seat is accepted, this means founder approval after the public 14-day discussion window.
-After a co-maintainer is active, it means approval from both current maintainers unless an RFC explicitly defines a broader rule.
+**Approval window:** 14 days. Two maintainer approvals required. Until the TASK-GOV-002 co-maintainer seat is accepted, this means founder approval after the public 14-day discussion window. After a co-maintainer is active, it means approval from both current maintainers unless an RFC explicitly defines a broader rule.
 
 ### 3. Architectural — modes, actors, scoring algorithm, the no-silent-regression rule
 
-These are the framework's invariants. Changes require a full RFC. See `docs/rfc-template.md` (coming in v0.2). RFC discussion is at minimum 30 days and triggers a major version bump.
-Before the maintainer group reaches three people, RFC approval requires all active maintainers plus a public decision note.
-After the group reaches three people, RFC approval requires three maintainer approvals.
+These are the framework's invariants. Changes require a full RFC. See `docs/rfc-template.md` (coming in v0.2). RFC discussion is at minimum 30 days and triggers a major version bump. Before the maintainer group reaches three people, RFC approval requires all active maintainers plus a public decision note. After the group reaches three people, RFC approval requires three maintainer approvals.
 
 ## Adding your own audit as a case study
 
@@ -67,17 +63,11 @@ The glossary at [`internal/branding/glossary.md`](../internal/branding/glossary.
 
 ## Maintainers
 
-DSAF is maintained by Stephen Cheng and CyberSkill as the original authoring practice.
-The co-maintainer role charter lives at [`internal/governance/co-maintainer-charter.md`](../internal/governance/co-maintainer-charter.md).
-Candidates are not publicly attributed before written acceptance and co-signed announcement.
-The public maintainer list in [`README.md`](../../README.md) includes the open co-maintainer seat until acceptance.
-Post-acceptance, update README, this file, the announcement post, and GitHub access in that order.
+DSAF is maintained by Stephen Cheng and CyberSkill as the original authoring practice. The co-maintainer role charter lives at [`internal/governance/co-maintainer-charter.md`](../internal/governance/co-maintainer-charter.md). Candidates are not publicly attributed before written acceptance and co-signed announcement. The public maintainer list in [`README.md`](../../README.md) includes the open co-maintainer seat until acceptance. Post-acceptance, update README, this file, the announcement post, and GitHub access in that order.
 
 ## Governance
 
-Editorial fixes can merge after maintainer review.
-Substantive rubric changes require a proposal issue and 14-day discussion window.
-Architecture changes use the future RFC cycle and require maintainer consensus.
+Editorial fixes can merge after maintainer review. Substantive rubric changes require a proposal issue and 14-day discussion window. Architecture changes use the future RFC cycle and require maintainer consensus.
 
 For commercial audits, custom criterion sets, or vertical-pack adaptations, contact CyberSkill directly.
 

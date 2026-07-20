@@ -41,13 +41,9 @@ DSAF's job is to tell you what you actually have. What you do with that result i
 
 ## The self-audit publication cap
 
-DSAF's worked example self-audit, in [`examples/cyberskill-design-system/`](../framework/examples/cyberskill-design-system), is published as an L3 (Managed) self-audit.
-It is not a claim that CyberSkill's design system is externally verified.
-The cap from interior score to published Level is set by the [self-audit publication policy](../internal/branding/self-audit-policy.md): without third-party verification, the publicly cited Level caps at L3.
-CyberSkill's interior calculation remains useful calibration data; the cited tier stays L3 until third-party verification is in place.
+DSAF's worked example self-audit, in [`examples/cyberskill-design-system/`](../framework/examples/cyberskill-design-system), is published as an L3 (Managed) self-audit. It is not a claim that CyberSkill's design system is externally verified. The cap from interior score to published Level is set by the [self-audit publication policy](../internal/branding/self-audit-policy.md): without third-party verification, the publicly cited Level caps at L3. CyberSkill's interior calculation remains useful calibration data; the cited tier stays L3 until third-party verification is in place.
 
-If you publish a DSAF self-audit, the same cap applies to your published Level.
-Internal scores can use the full 0-5 scale per criterion; public headlines cap at L3 unverified, L4 verified, and L5 verified plus the L5 entry-gate stack.
+If you publish a DSAF self-audit, the same cap applies to your published Level. Internal scores can use the full 0-5 scale per criterion; public headlines cap at L3 unverified, L4 verified, and L5 verified plus the L5 entry-gate stack.
 
 ## How long an audit takes
 

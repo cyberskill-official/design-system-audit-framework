@@ -1,9 +1,6 @@
 # A1.1: Color tokens are governance, not naming decoration
 
-**Canonical URL:** `https://audit.cyberskill.world/blog/deep-dives/week-01-a1-1-color-tokens`
-**DSAF criterion:** `A1.1` — Color tokens with primitive → semantic → component layers
-**Tag:** `FIXED`
-**Reading time:** ~7 minutes
+**Canonical URL:** `https://audit.cyberskill.world/blog/deep-dives/week-01-a1-1-color-tokens` **DSAF criterion:** `A1.1` — Color tokens with primitive → semantic → component layers **Tag:** `FIXED` **Reading time:** ~7 minutes
 
 ## The criterion (quoted verbatim)
 

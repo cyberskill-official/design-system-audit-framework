@@ -1,8 +1,6 @@
 # DSAF Brand Audit — 2026-05-18
 
-**task:** TASK-BRAND-002
-**Scope:** handle taxonomy on repo external surfaces and live deploy.
-**Result:** PASS for banned noun-handle checks.
+**task:** TASK-BRAND-002 **Scope:** handle taxonomy on repo external surfaces and live deploy. **Result:** PASS for banned noun-handle checks.
 
 ## Repo Checks
 

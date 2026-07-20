@@ -115,5 +115,4 @@ A1.1 is part of **DSAF-25 Core** — row 1 of 25. In the full DSAF Criteria it s
 
 ---
 
-Canonical version: https://audit.cyberskill.world/blog/deep-dives/week-01-a1-1-color-tokens
-Full DSAF Criteria: https://github.com/cyberskill-official/design-system-audit-framework
+Canonical version: https://audit.cyberskill.world/blog/deep-dives/week-01-a1-1-color-tokens Full DSAF Criteria: https://github.com/cyberskill-official/design-system-audit-framework

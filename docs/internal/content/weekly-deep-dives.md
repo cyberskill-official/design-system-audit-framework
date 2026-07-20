@@ -1,13 +1,10 @@
 # Weekly DSAF criterion deep-dives
 
-**Status:** cadence-ready.
-**task:** TASK-CONTENT-001.
+**Status:** cadence-ready. **task:** TASK-CONTENT-001.
 
 ## Cadence
 
-Publish one criterion deep-dive per week on `audit.cyberskill.world`.
-The initial 12-week cadence publishes every Tuesday at 08:00 PT / 22:00 ICT, starting Tuesday, 2026-06-16.
-Each post covers:
+Publish one criterion deep-dive per week on `audit.cyberskill.world`. The initial 12-week cadence publishes every Tuesday at 08:00 PT / 22:00 ICT, starting Tuesday, 2026-06-16. Each post covers:
 
 1. one DSAF criterion
 2. one concrete example
@@ -64,7 +61,6 @@ Each post covers:
 
 ## Review loop
 
-Every four posts, review traffic, comments, newsletter inclusion, and recurring objections.
-Convert recurring objections into revised criteria or future posts.
+Every four posts, review traffic, comments, newsletter inclusion, and recurring objections. Convert recurring objections into revised criteria or future posts.
 
 *End of weekly deep-dives plan.*

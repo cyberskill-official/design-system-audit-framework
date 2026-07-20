@@ -22,4 +22,3 @@
 ## Cadence
 
 Publish one case-study candidate per quarter. If no client approval exists, publish an anonymized learning note instead of inventing specificity.
-

@@ -1,3 +1,1 @@
-P0 TASK-CORE-003
-Criterion rows reduced from 138 to exactly 125
-13 merged-away IDs preserved
+P0 TASK-CORE-003 Criterion rows reduced from 138 to exactly 125 13 merged-away IDs preserved

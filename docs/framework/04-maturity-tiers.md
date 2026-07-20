@@ -57,15 +57,13 @@ A system can score **90% combined** and still fail enterprise-grade if `A.8` Acc
 
 ## §2.5 Self-audit cap rule
 
-Every published self-audit cites a DSAF Level capped per the [self-audit publication policy](../internal/branding/self-audit-policy.md).
-The cap is:
+Every published self-audit cites a DSAF Level capped per the [self-audit publication policy](../internal/branding/self-audit-policy.md). The cap is:
 
 - L3 (Managed) maximum without third-party verification.
 - L4 (Managed advanced, verified) maximum with third-party verification.
 - L5 (Optimised, verified) maximum with third-party verification plus the L5 entry-gate stack.
 
-The cap applies to publication framing, not interior calibration scores.
-CyberSkill's worked example cites L3 under this rule while preserving its interior audit data for learning.
+The cap applies to publication framing, not interior calibration scores. CyberSkill's worked example cites L3 under this rule while preserving its interior audit data for learning.
 
 ---
 

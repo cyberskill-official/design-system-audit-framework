@@ -15,6 +15,4 @@
 | B7.10 | B3.3 | 2026-05 | dedup |
 | B7.12 | B7.1 | 2026-05 | dedup |
 
-Alias IDs are never reused.
-A8 Accessibility vs B5 Accessibility & Inclusive
-A1 Tokens vs A8 accessibility tokens
+Alias IDs are never reused. A8 Accessibility vs B5 Accessibility & Inclusive A1 Tokens vs A8 accessibility tokens

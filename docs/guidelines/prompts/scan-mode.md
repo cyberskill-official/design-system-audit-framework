@@ -69,9 +69,9 @@ Enumerate every gap that affects the score. For each:
 - Cite the criterion it relates to.
 - Note current vs target score and the gap.
 - Route to the right owner using these tags:
-  - `@Agent[fix]` — agent fixes autonomously (token edits, doc patches, lint runs, CI config changes)
-  - `@Human[decide]` — human chooses among options
-  - `@Human[manual]` — work the agent cannot do (deploys, vendor procurement, user studies, conference talks, contracts)
+- `@Agent[fix]` — agent fixes autonomously (token edits, doc patches, lint runs, CI config changes)
+- `@Human[decide]` — human chooses among options
+- `@Human[manual]` — work the agent cannot do (deploys, vendor procurement, user studies, conference talks, contracts)
 - Estimate effort (S / M / L / XL).
 - Declare rollback safety (yes / no / n/a). For `@Agent[fix]` rows, the revert command must be specified.
 

@@ -1,8 +1,6 @@
 # Personal heads-up emails — 10 named people
 
-**Use for:** EXECUTION_PLAN.md task O2.
-**Timing:** send T-7d before Show HN. **One per recipient.** Personal email (not LinkedIn DM unless that's the only address you have).
-**Ask:** informational heads-up only. Never request votes, reposts, or amplification.
+**Use for:** EXECUTION_PLAN.md task O2. **Timing:** send T-7d before Show HN. **One per recipient.** Personal email (not LinkedIn DM unless that's the only address you have). **Ask:** informational heads-up only. Never request votes, reposts, or amplification.
 
 The list is fixed by the source plan ("Phase 1 — Launch" action 4). All 10 are public design-systems voices whose roast on day 1 would be useful before HN. Each email references one piece of their public work specifically — verify the reference is current before you send.
 

@@ -1,9 +1,6 @@
 # Product Hunt — DSAF launch
 
-**Use for:** EXECUTION_PLAN.md task O6.
-**When:** within 24h of the Show HN submission. Vote velocity matters in the first 4 hours.
-**Account requirement:** PH submissions benefit from a warm hunter. Reach out to Chris Messina (maker/PH co-founder, hunts DS-adjacent tools) **T-7d** with a one-line ask. Fallback: self-submit on launch day.
-**Canonical operator file:** [`../launch/product-hunt-launch.md`](../launch/product-hunt-launch.md).
+**Use for:** EXECUTION_PLAN.md task O6. **When:** within 24h of the Show HN submission. Vote velocity matters in the first 4 hours. **Account requirement:** PH submissions benefit from a warm hunter. Reach out to Chris Messina (maker/PH co-founder, hunts DS-adjacent tools) **T-7d** with a one-line ask. Fallback: self-submit on launch day. **Canonical operator file:** [`../launch/product-hunt-launch.md`](../launch/product-hunt-launch.md).
 
 ---
 

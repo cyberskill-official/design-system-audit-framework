@@ -63,9 +63,9 @@ For each item:
 3. Summarise in one sentence.
 4. Compare to the design system's current handling of the area.
 5. Decide:
-   - **adopt** — concrete change to make in the next FIX cycle.
-   - **note** — track but no action this cycle.
-   - **defer** — revisit next quarterly research pass.
+- **adopt** — concrete change to make in the next FIX cycle.
+- **note** — track but no action this cycle.
+- **defer** — revisit next quarterly research pass.
 6. Justify the decision in one sentence.
 
 ## Output

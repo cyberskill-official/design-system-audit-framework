@@ -21,4 +21,3 @@
 - Audit lead owns buyer trust, kickoff, executive readout, and final sign-off.
 - CyberSkill owns evidence processing, analysis support, and remediation delivery where separately scoped.
 - Revenue share is negotiated per engagement; no hidden reseller markup in the methodology docs.
-

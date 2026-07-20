@@ -1,9 +1,6 @@
 # <Criterion ID>: <one-line title>
 
-**Canonical URL:** `https://audit.cyberskill.world/blog/deep-dives/<slug>`
-**DSAF criterion:** `<criterion ID>` — quoted verbatim from <`framework/03-criteria-part-a.md` or `framework/04-criteria-part-b.md`>
-**Tag:** `<FIXED | DYNAMIC>`
-**Reading time:** ~7 minutes
+**Canonical URL:** `https://audit.cyberskill.world/blog/deep-dives/<slug>` **DSAF criterion:** `<criterion ID>` — quoted verbatim from <`framework/03-criteria-part-a.md` or `framework/04-criteria-part-b.md`> **Tag:** `<FIXED | DYNAMIC>` **Reading time:** ~7 minutes
 
 > Replace every `<…>` placeholder. Delete this blockquote before publishing. Body should land at 1,400–2,000 words.
 

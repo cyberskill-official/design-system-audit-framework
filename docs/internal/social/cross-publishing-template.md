@@ -1,7 +1,6 @@
 # Cross-publishing template
 
-**Use for:** EXECUTION_PLAN.md task O10. Per deep-dive published on `audit.cyberskill.world/blog/deep-dives/<slug>`, syndicate at T+24h to dev.to, T+48h to Medium, T+72h to LinkedIn long-form.
-**Discipline:** the canonical URL stays `https://audit.cyberskill.world/blog/deep-dives/<slug>`. Every syndication copy carries the canonical link visibly and uses platform-native canonical tags where supported.
+**Use for:** EXECUTION_PLAN.md task O10. Per deep-dive published on `audit.cyberskill.world/blog/deep-dives/<slug>`, syndicate at T+24h to dev.to, T+48h to Medium, T+72h to LinkedIn long-form. **Discipline:** the canonical URL stays `https://audit.cyberskill.world/blog/deep-dives/<slug>`. Every syndication copy carries the canonical link visibly and uses platform-native canonical tags where supported.
 
 ## Why the stagger
 
@@ -38,9 +37,7 @@ cover_image: https://audit.cyberskill.world/assets/og/launch-2026-1200x630.png
 
 ## Medium template (T+48h)
 
-**Title:** same as canonical.
-**Subtitle:** same as canonical meta description.
-**First line (must be the very first paragraph):**
+**Title:** same as canonical. **Subtitle:** same as canonical meta description. **First line (must be the very first paragraph):**
 
 ```
 This piece was originally published at audit.cyberskill.world/blog/deep-dives/<slug>. The canonical version is there; this is a syndication copy.
@@ -60,8 +57,7 @@ Medium SEO note: also add `<link rel="canonical">` via Medium's "Settings" → "
 
 ## LinkedIn long-form template (T+72h)
 
-**Title:** same as canonical.
-**Body opening (first 2 paragraphs — these are what shows in the feed-preview):**
+**Title:** same as canonical. **Body opening (first 2 paragraphs — these are what shows in the feed-preview):**
 
 ```
 This is a syndication of a piece I published this week at audit.cyberskill.world/blog/deep-dives/<slug>. Sharing the LinkedIn version because the conversation here is different from the dev/design crowd that reads the canonical.

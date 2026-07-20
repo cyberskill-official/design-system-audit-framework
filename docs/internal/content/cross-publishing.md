@@ -1,14 +1,10 @@
 # Cross-publishing discipline
 
-**Status:** cadence-ready.
-**task:** TASK-CONTENT-002.
-**Canonical playbook:** [`cross-publishing-playbook.md`](./cross-publishing-playbook.md)
-**Week 1 ready drafts:** [`deep-dives/cross-publishing/`](./deep-dives/cross-publishing)
+**Status:** cadence-ready. **task:** TASK-CONTENT-002. **Canonical playbook:** [`cross-publishing-playbook.md`](./cross-publishing-playbook.md) **Week 1 ready drafts:** [`deep-dives/cross-publishing/`](./deep-dives/cross-publishing)
 
 ## Rule
 
-`audit.cyberskill.world` is canonical.
-Every syndication copy links back to the canonical post and carries an explicit canonical URL line.
+`audit.cyberskill.world` is canonical. Every syndication copy links back to the canonical post and carries an explicit canonical URL line.
 
 ## Channels
 

@@ -1,11 +1,8 @@
 # DSAF Lite Benchmark Specification
 
-**Status:** repo-shipped static benchmark pack; production collection waits on external form-vendor setup.
-**task:** TASK-BENCH-001.
-**Canonical route:** `https://audit.cyberskill.world/benchmark/` under the current domain decision.
+**Status:** repo-shipped static benchmark pack; production collection waits on external form-vendor setup. **task:** TASK-BENCH-001. **Canonical route:** `https://audit.cyberskill.world/benchmark/` under the current domain decision.
 
-The lite benchmark is a voluntary, anonymous self-scoring survey for DSAF-25 Core.
-It is designed to collect aggregate peer-comparison data without required personal data, paid-funnel copy, or a custom backend.
+The lite benchmark is a voluntary, anonymous self-scoring survey for DSAF-25 Core. It is designed to collect aggregate peer-comparison data without required personal data, paid-funnel copy, or a custom backend.
 
 The lite benchmark is intentionally not the maximal enterprise benchmark. Teams that need strict AUTO/MANUAL proof use [`maximal-enterprise-benchmark.md`](./maximal-enterprise-benchmark.md), which adds the expanded criterion table and requires artifact re-creation after approved fixes.
 
@@ -87,8 +84,7 @@ Consent field: `consent_to_anonymous_benchmark`, required boolean.
 }
 ```
 
-No name, email, company, team, website, phone number, or required free-text identifier is collected.
-The production form vendor may log IP address and browser metadata for abuse prevention; that is covered by the vendor DPA and privacy policy.
+No name, email, company, team, website, phone number, or required free-text identifier is collected. The production form vendor may log IP address and browser metadata for abuse prevention; that is covered by the vendor DPA and privacy policy.
 
 ## Anonymisation Contract
 
@@ -102,9 +98,7 @@ The production form vendor may log IP address and browser metadata for abuse pre
 
 ## Results Page
 
-The repo version includes a sandbox result mode so the interaction can be tested without a third-party form account.
-The sandbox comparison uses synthetic aggregate rows and is labelled as such.
-Production results must switch to vendor-export aggregates only after at least 30 real responses exist.
+The repo version includes a sandbox result mode so the interaction can be tested without a third-party form account. The sandbox comparison uses synthetic aggregate rows and is labelled as such. Production results must switch to vendor-export aggregates only after at least 30 real responses exist.
 
 The result view shows:
 

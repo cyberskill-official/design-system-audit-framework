@@ -1,7 +1,6 @@
 # DSAF reviewer shortlist
 
-**Status:** working tracker.
-**task:** TASK-GOV-001.
+**Status:** working tracker. **task:** TASK-GOV-001.
 
 ## Outreach status legend
 
@@ -28,12 +27,10 @@ Heads-up status values for TASK-LAUNCH-004:
 
 ## Quote policy
 
-No quote is published until the reviewer approves the exact quote text, attribution string, surfaces, and retraction window in writing.
-Published quote text must be byte-identical to the consent log.
+No quote is published until the reviewer approves the exact quote text, attribution string, surfaces, and retraction window in writing. Published quote text must be byte-identical to the consent log.
 
 ## Current quote inventory
 
-No public quote is approved yet.
-README therefore states the review status instead of fabricating endorsements.
+No public quote is approved yet. README therefore states the review status instead of fabricating endorsements.
 
 *End of reviewer shortlist.*

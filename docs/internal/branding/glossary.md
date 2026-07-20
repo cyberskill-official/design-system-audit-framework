@@ -1,8 +1,6 @@
 # DSAF — Glossary
 
-**Status:** normative; aligned with TASK-BRAND-002 handle taxonomy.
-**task:** TASK-BRAND-002.
-**Scope:** the canonical terms used throughout DSAF doctrine. New terms get added here on coining; deprecated terms are kept with a `[deprecated]` tag and the replacement.
+**Status:** normative; aligned with TASK-BRAND-002 handle taxonomy. **task:** TASK-BRAND-002. **Scope:** the canonical terms used throughout DSAF doctrine. New terms get added here on coining; deprecated terms are kept with a `[deprecated]` tag and the replacement.
 
 ## Brand terms (see [`handle-taxonomy.md`](./handle-taxonomy.md) for usage rules)
 

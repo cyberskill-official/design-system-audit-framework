@@ -49,9 +49,9 @@ For each phase, write:
 2. **Audit lift** — estimated combined-score impact in pp (e.g., `+5 to +7 pp combined (68% → ~73–75%)`).
 3. **Dependencies** — what must complete before this phase starts.
 4. **Wave 1, 2, …** — each with a numbered step list. Each step:
-   - **Bold action** — what to do.
-   - **One-paragraph description** — concrete enough that a senior IC can execute without further context.
-   - **"Done when:"** line — the observable condition (URL serving, command returns 200, dashboard shows data, etc.).
+- **Bold action** — what to do.
+- **One-paragraph description** — concrete enough that a senior IC can execute without further context.
+- **"Done when:"** line — the observable condition (URL serving, command returns 200, dashboard shows data, etc.).
 5. **Audit lift after wave** — category-level estimate.
 6. **Risk** — one paragraph: what to watch for, with a mitigation.
 
@@ -85,10 +85,10 @@ End with a short section explaining:
 
 1. Each step has a "done when" — track these in `_history.md` under "Phase milestones".
 2. Priority order when deciding what's next:
-   - `@Human[manual]` items blocking the next audit
-   - Anything that unlocks measurement
-   - Anything that compounds (case study leads to next case study)
-   - Doctrine improvements (1–2 pp moves)
+- `@Human[manual]` items blocking the next audit
+- Anything that unlocks measurement
+- Anything that compounds (case study leads to next case study)
+- Doctrine improvements (1–2 pp moves)
 
 ## Hard rules
 

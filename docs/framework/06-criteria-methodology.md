@@ -1,11 +1,8 @@
 # DSAF criterion aliases
 
-**Status:** normative; ratified by TASK-CORE-003.
-**task:** TASK-CORE-003.
+**Status:** normative; ratified by TASK-CORE-003. **task:** TASK-CORE-003.
 
-The first dedup pass stabilised criterion IDs before launch.
-The live rubric now contains exactly 125 criteria.
-Merged-away IDs remain permanent aliases and are never reused.
+The first dedup pass stabilised criterion IDs before launch. The live rubric now contains exactly 125 criteria. Merged-away IDs remain permanent aliases and are never reused.
 
 ## Aliases
 
@@ -27,8 +24,7 @@ Merged-away IDs remain permanent aliases and are never reused.
 
 ## Interpretation rule
 
-Tools reading older audits must resolve any future alias through this table before comparing score rows.
-Alias IDs are never reused.
+Tools reading older audits must resolve any future alias through this table before comparing score rows. Alias IDs are never reused.
 
 ## Boundary decisions
 
@@ -47,14 +43,11 @@ Alias IDs are never reused.
 
 # DSAF criteria dedup methodology
 
-**Status:** normative.
-**task:** TASK-CORE-003.
+**Status:** normative. **task:** TASK-CORE-003.
 
 ## Purpose
 
-The DSAF Criteria must stay citeable.
-Dedup passes consolidate true duplicates without renumbering surviving IDs.
-When an ID is merged away, it becomes an alias in [`criteria-aliases.md`](./criteria-aliases.md).
+The DSAF Criteria must stay citeable. Dedup passes consolidate true duplicates without renumbering surviving IDs. When an ID is merged away, it becomes an alias in [`criteria-aliases.md`](./criteria-aliases.md).
 
 ## When to run
 
@@ -77,13 +70,8 @@ When an ID is merged away, it becomes an alias in [`criteria-aliases.md`](./crit
 
 ## Initial 2026-05-18 pass
 
-The initial implementation pass reduced the live rubric from 138 rows to 125 criteria.
-It merged two Part A AI/MCP overlaps and eleven Part B heuristic-overlap rows into primary criteria.
-The pass also identified recurring ambiguity zones and documented them in [`criteria-aliases.md`](./criteria-aliases.md) as boundary decisions.
+The initial implementation pass reduced the live rubric from 138 rows to 125 criteria. It merged two Part A AI/MCP overlaps and eleven Part B heuristic-overlap rows into primary criteria. The pass also identified recurring ambiguity zones and documented them in [`criteria-aliases.md`](./criteria-aliases.md) as boundary decisions.
 
-This is the stable DSAF-125 baseline.
-The framework now has a populated alias table and deterministic method for future passes.
+This is the stable DSAF-125 baseline. The framework now has a populated alias table and deterministic method for future passes.
 
 *End of dedup methodology.*
-
-

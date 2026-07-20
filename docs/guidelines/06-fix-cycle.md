@@ -65,8 +65,7 @@ The order matters: the agent applies `Rollback safe? = yes` rows first (low-risk
 
 **What happens:** the agent re-scores every criterion (not just the affected ones) using the §1 procedure, refreshes §10 in full, recomputes category roll-ups + Part A% / Part B% / combined%, and updates the frontmatter `post_audit_score` block.
 
-If `post_audit_score.combined < pre_audit_score.combined`, the agent records a batch-level regression in §7.
-The human reviewer chooses whether to approve the trade-off with notes or roll back the batch.
+If `post_audit_score.combined < pre_audit_score.combined`, the agent records a batch-level regression in §7. The human reviewer chooses whether to approve the trade-off with notes or roll back the batch.
 
 This is the second backstop. Even if individual criterion scores look reasonable, a perverse interaction between fixes can lower the combined score. The whole-batch check catches this and makes the decision explicit.
 

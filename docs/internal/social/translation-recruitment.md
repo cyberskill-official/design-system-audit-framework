@@ -1,10 +1,8 @@
 # Translation Recruitment Copy
 
-**Status:** ready for manual posting.
-**task:** TASK-I18N-001.
+**Status:** ready for manual posting. **task:** TASK-I18N-001.
 
-Do not auto-post.
-Use these only after the GitHub issues are created.
+Do not auto-post. Use these only after the GitHub issues are created.
 
 ## Recommended Schedule
 

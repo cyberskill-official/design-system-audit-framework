@@ -1,13 +1,10 @@
 # Personal heads-up outreach
 
-**Status:** launch-ready.
-**task:** TASK-LAUNCH-004.
-**Canonical tracker:** [`headsup-outreach.md`](./headsup-outreach.md). Full copy-paste drafts: [`../social/personal-outreach.md`](../social/personal-outreach.md).
+**Status:** launch-ready. **task:** TASK-LAUNCH-004. **Canonical tracker:** [`headsup-outreach.md`](./headsup-outreach.md). Full copy-paste drafts: [`../social/personal-outreach.md`](../social/personal-outreach.md).
 
 ## Rule
 
-This is informational outreach, not a request for amplification.
-Never ask for votes, reposts, or public praise.
+This is informational outreach, not a request for amplification. Never ask for votes, reposts, or public praise.
 
 ## Named list
 

@@ -30,8 +30,7 @@ Do not translate the full 125 DSAF Criteria in this issue.
 
 ## Native-Speaker Review
 
-This issue requires one native-fluent reviewer before merge.
-The reviewer should comment:
+This issue requires one native-fluent reviewer before merge. The reviewer should comment:
 
 ```text
 native-speaker review complete

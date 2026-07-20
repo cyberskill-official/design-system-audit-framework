@@ -1,8 +1,6 @@
 # TASK-LAUNCH-007 - Into Design Systems Conf 2027 CFP
 
-**Talk title:** Agent-native design system audits: what 50 audits taught us about MCP-readiness
-**Format:** 30-minute conference talk or 45-minute workshop.
-**Repo-verifiable state:** submission packet ready; CFP portal submission is external.
+**Talk title:** Agent-native design system audits: what 50 audits taught us about MCP-readiness **Format:** 30-minute conference talk or 45-minute workshop. **Repo-verifiable state:** submission packet ready; CFP portal submission is external.
 
 ## Abstract
 
@@ -27,4 +25,3 @@ Attendees leave with a 25-row audit card they can run in five minutes and a map 
 - Links: `https://audit.cyberskill.world/`, repo, launch note, DSAF-25 card.
 - Conflict disclosure: CyberSkill offers paid audits separately; the repo remains open source.
 - External gate: submit through the official CFP portal when it opens.
-

@@ -7,12 +7,9 @@ task: TASK-CORE-001
 
 # DSAF-25 Core
 
-DSAF-25 Core is the 25-row entry point to the full DSAF Criteria.
-It is not DSAF Lite.
-It is the share-handle: the one-page card you can read in five minutes, quote in a meeting, and use for a first-pass score before running the complete 125-criterion audit.
+DSAF-25 Core is the 25-row entry point to the full DSAF Criteria. It is not DSAF Lite. It is the share-handle: the one-page card you can read in five minutes, quote in a meeting, and use for a first-pass score before running the complete 125-criterion audit.
 
-Every Core row maps to an existing DSAF criterion.
-The 0-5 scale, confidence ratings, FIXED/DYNAMIC tags, and self-audit cap rule are the same as the full rubric.
+Every Core row maps to an existing DSAF criterion. The 0-5 scale, confidence ratings, FIXED/DYNAMIC tags, and self-audit cap rule are the same as the full rubric.
 
 ## Scoring
 
@@ -20,9 +17,7 @@ The 0-5 scale, confidence ratings, FIXED/DYNAMIC tags, and self-audit cap rule a
 dsaf_25_score% = (sum of 25 criterion scores / 125) * 100
 ```
 
-The score is reported beside the full DSAF combined score, never in place of it.
-A team that has already scored the full 125 criteria can derive DSAF-25 by selecting these 25 rows.
-A team that has only scored DSAF-25 has completed a first-pass audit, not a signed audit.
+The score is reported beside the full DSAF combined score, never in place of it. A team that has already scored the full 125 criteria can derive DSAF-25 by selecting these 25 rows. A team that has only scored DSAF-25 has completed a first-pass audit, not a signed audit.
 
 ## Score anchors
 
@@ -69,20 +64,15 @@ A team that has only scored DSAF-25 has completed a first-pass audit, not a sign
 
 ### 60-second self-score
 
-Read each row and give it a fast 0, 3, or 5.
-Use 1, 2, or 4 only when the evidence is clearly between anchors.
-Sum the 25 scores and divide by 125.
+Read each row and give it a fast 0, 3, or 5. Use 1, 2, or 4 only when the evidence is clearly between anchors. Sum the 25 scores and divide by 125.
 
 ### Five-minute read
 
-Read the criterion names first.
-Ignore rubric details until the second pass.
-The card is meant to tell a DS lead where to look before the full audit begins.
+Read the criterion names first. Ignore rubric details until the second pass. The card is meant to tell a DS lead where to look before the full audit begins.
 
 ### Meeting reference
 
-Use [`assets/dsaf-25-card.svg`](../framework/assets/dsaf-25-card.svg) or the [card representation](#dsaf-25-core-card-representation) below when you need a printable version.
-The public copy lives at `https://audit.cyberskill.world/card`.
+Use [`assets/dsaf-25-card.svg`](../framework/assets/dsaf-25-card.svg) or the [card representation](#dsaf-25-core-card-representation) below when you need a printable version. The public copy lives at `https://audit.cyberskill.world/card`.
 
 For per-category visualisation, feed category percentages into `docs/framework/assets/dsaf-radar-template.json` ([link](./assets/dsaf-radar-template.json)) and render them over `docs/framework/assets/dsaf-radar.svg` ([link](./assets/dsaf-radar.svg)). The radar keeps the 20 DSAF category axes visible and includes the enterprise-floor threshold overlay from the maturity model.
 

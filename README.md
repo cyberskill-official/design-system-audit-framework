@@ -59,9 +59,7 @@ DSAF is open-source. The methodology surface stays neutral and free. Commercial 
 
 > "<endorsement quote — slot reserved for outside reviewer #2>"
 
-Named outside-reviewer quotes are not published until explicit written consent is logged.
-Do not replace them with invented praise.
-See [`docs/internal/branding/reviewer-shortlist.md`](docs/internal/branding/reviewer-shortlist.md) and [`docs/internal/branding/reviewer-consent-log.md`](docs/internal/branding/reviewer-consent-log.md) for the consent registry.
+Named outside-reviewer quotes are not published until explicit written consent is logged. Do not replace them with invented praise. See [`docs/internal/branding/reviewer-shortlist.md`](docs/internal/branding/reviewer-shortlist.md) and [`docs/internal/branding/reviewer-consent-log.md`](docs/internal/branding/reviewer-consent-log.md) for the consent registry.
 
 
 ## Contract Checks

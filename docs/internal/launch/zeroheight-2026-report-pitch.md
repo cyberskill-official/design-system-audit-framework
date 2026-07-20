@@ -1,7 +1,6 @@
 # TASK-LAUNCH-008 - zeroheight 2026 Design Systems Report Pitch
 
-**Target section:** tooling, measurement, or governance.
-**Repo-verifiable state:** pitch ready; inclusion decision external.
+**Target section:** tooling, measurement, or governance. **Repo-verifiable state:** pitch ready; inclusion decision external.
 
 ## Pitch
 
@@ -25,4 +24,3 @@ Happy to share anonymized benchmark patterns once `benchmark.audit.cyberskill.wo
 - DSAF-25 card: `https://audit.cyberskill.world/card`
 - Repo: `https://github.com/cyberskill-official/design-system-audit-framework`
 - zeroheight reader package: `packages/zeroheight-reader/README.md`
-

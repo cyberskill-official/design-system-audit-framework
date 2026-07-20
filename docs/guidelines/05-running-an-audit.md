@@ -11,11 +11,11 @@ Before invoking the agent:
 1. **Pick a mode + scope.** Self-audit (`Mode S`) reads the doctrine. Live-product audit (`Mode P`) reads a target product's repo.
 2. **Pick the date.** Use ISO 8601 — the audit file will be `audit-report-{YYYY-MM-DD}.md`.
 3. **Confirm prerequisites:**
-   - The framework folder is accessible (you can read this file).
-   - The target design system folder is accessible (the agent can read its docs / tokens / source).
-   - The previous audit report (if any) is accessible (used for delta + no-silent-regression gate).
-   - The output folder exists and is writable.
-   - For maximal enterprise audits, the target's artifact re-creation commands are known or explicitly marked `missing-generator`, and manual-only evidence is routed to `MANUAL` criterion rows.
+- The framework folder is accessible (you can read this file).
+- The target design system folder is accessible (the agent can read its docs / tokens / source).
+- The previous audit report (if any) is accessible (used for delta + no-silent-regression gate).
+- The output folder exists and is writable.
+- For maximal enterprise audits, the target's artifact re-creation commands are known or explicitly marked `missing-generator`, and manual-only evidence is routed to `MANUAL` criterion rows.
 4. **Pick a Co-Auditor.** A human who will independently re-score 5+ random criteria. Calibration may be waived for the very first audit; from the second onward it's not waivable.
 
 ## Step 1 — Initialise the audit folder
@@ -58,9 +58,9 @@ You are now `@Human[approve]`. Read §1, §2, §3 of the draft report and:
 
 1. **Spot-check 5+ criterion scores** (§9 calibration). Pick at random across Parts A and B. Score independently. If your score differs from the agent's by ≥ 2 points on any row, log a calibration note and resolve before continuing.
 2. **For each finding in §3**, write one of these in the §4 `approvals:` block:
-   - `approve` — agent will fix in the FIX cycle.
-   - `defer` — out of scope this cycle (typically `@Human[manual]` items: deploys, vendor procurement, conferences).
-   - `reject` — disagree; agent will not act and won't re-raise next cycle.
+- `approve` — agent will fix in the FIX cycle.
+- `defer` — out of scope this cycle (typically `@Human[manual]` items: deploys, vendor procurement, conferences).
+- `reject` — disagree; agent will not act and won't re-raise next cycle.
 3. **Update the frontmatter:**
    ```yaml
    mode: FIX

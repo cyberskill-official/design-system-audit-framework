@@ -1,7 +1,6 @@
 # Cross-posts for DSAF launch
 
-**Status:** launch-ready runbook.
-**task:** TASK-LAUNCH-002.
+**Status:** launch-ready runbook. **task:** TASK-LAUNCH-002.
 
 ## Sequencing
 
@@ -40,10 +39,7 @@ If Show HN slips to the Wednesday fallback, keep the same offsets and move each 
 
 ## SLA
 
-Reddit: respond within 2 hours for the first 4 hours, then 4 hours through hour 24.
-Lobste.rs: respond within 4 hours for the first 12 hours.
-daily.dev and Designer News: respond as available.
-Use the response patterns in [`show-hn.md`](./show-hn.md).
+Reddit: respond within 2 hours for the first 4 hours, then 4 hours through hour 24. Lobste.rs: respond within 4 hours for the first 12 hours. daily.dev and Designer News: respond as available. Use the response patterns in [`show-hn.md`](./show-hn.md).
 
 ## Platform bodies
 

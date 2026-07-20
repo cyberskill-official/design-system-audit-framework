@@ -1,8 +1,6 @@
 # DSAF Deploy Smoke — 2026-05-18
 
-**Target:** `https://audit.cyberskill.world/`
-**Run scope:** every verification command in `internal/ops/deploy-runbook.md` §3, plus the HTTP→HTTPS redirect check.
-**Result:** PASS for the deploy-runbook route set.
+**Target:** `https://audit.cyberskill.world/` **Run scope:** every verification command in `internal/ops/deploy-runbook.md` §3, plus the HTTP→HTTPS redirect check. **Result:** PASS for the deploy-runbook route set.
 
 ## Command Output
 
@@ -103,4 +101,3 @@ Verified in the returned HTML:
 
 - Pretty blog URLs `/blog/launch-2026` and `/blog/co-maintainer-announcement` returned `404` during this smoke. They are outside deploy-runbook §3 and are tracked under TASK-DOCS-003 / execution task A5 because Vercel does not render markdown by default.
 - Chrome visual verification was attempted after opening the target in Google Chrome, but local Computer Use permissions were still pending for Accessibility / Screen Recording after three attempts. HTTP smoke evidence is complete; browser visual evidence remains blocked by local permissions.
-

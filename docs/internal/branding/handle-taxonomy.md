@@ -1,8 +1,6 @@
 # DSAF — Handle taxonomy
 
-**Status:** normative; ratified by TASK-BRAND-002 (2026-05-17).
-**Scope:** every external-facing surface that mentions the framework's name.
-**Source of truth:** this file. Conflicts with other docs are resolved by amending the other docs.
+**Status:** normative; ratified by TASK-BRAND-002 (2026-05-17). **Scope:** every external-facing surface that mentions the framework's name. **Source of truth:** this file. Conflicts with other docs are resolved by amending the other docs.
 
 ## The three handles
 

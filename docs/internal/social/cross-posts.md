@@ -1,8 +1,6 @@
 # Cross-posts — 6 platforms
 
-**Use for:** EXECUTION_PLAN.md task O5.
-**Sequence:** post in this exact order, with the offsets shown, after the Show HN submission. Never post any of these BEFORE the HN submission goes live — the HN URL is the anchor.
-**Concrete preferred slot:** if Show HN posts Tuesday, 2026-05-19 at 08:30 PDT / 22:30 ICT, cross-post from Tuesday 12:30-20:30 PDT / Wednesday 02:30-10:30 ICT. The exact per-platform clock table is in [`../launch/cross-posts.md`](../launch/cross-posts.md).
+**Use for:** EXECUTION_PLAN.md task O5. **Sequence:** post in this exact order, with the offsets shown, after the Show HN submission. Never post any of these BEFORE the HN submission goes live — the HN URL is the anchor. **Concrete preferred slot:** if Show HN posts Tuesday, 2026-05-19 at 08:30 PDT / 22:30 ICT, cross-post from Tuesday 12:30-20:30 PDT / Wednesday 02:30-10:30 ICT. The exact per-platform clock table is in [`../launch/cross-posts.md`](../launch/cross-posts.md).
 
 | # | Platform | Offset from Show HN | Post when HN is at |
 |---:|---|---:|---|

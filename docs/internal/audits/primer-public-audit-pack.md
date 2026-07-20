@@ -1,8 +1,6 @@
 # TASK-AUDIT-001 - Public Marquee Design System Audit Pack
 
-**Target:** GitHub Primer first, with Carbon and Shopify Polaris as fallback candidates.
-**Publication rule:** no public score, quote, or logo use before written team consent.
-**Repo-verifiable state:** operator pack ready; external consent pending.
+**Target:** GitHub Primer first, with Carbon and Shopify Polaris as fallback candidates. **Publication rule:** no public score, quote, or logo use before written team consent. **Repo-verifiable state:** operator pack ready; external consent pending.
 
 ## Consent Letter
 
@@ -42,4 +40,3 @@ Decision needed: approve, decline, or ask us to use a different public system.
 - Report skeleton maps to the existing audit template.
 - Publication guard explicitly blocks unapproved quote/logo/score use.
 - Downstream launch surfaces must cite this file before any public audit announcement.
-

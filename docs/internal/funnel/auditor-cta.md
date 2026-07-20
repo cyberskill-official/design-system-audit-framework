@@ -1,8 +1,6 @@
 # TASK-FUNNEL-001 - Certified Auditor CTA
 
-**Surface:** `https://audit.cyberskill.world/audits/`
-**Rule:** no paid CTA in the GitHub README.
-**Repo-verifiable state:** static CTA page ready; Cal.com booking URL is an operator-owned external setting.
+**Surface:** `https://audit.cyberskill.world/audits/` **Rule:** no paid CTA in the GitHub README. **Repo-verifiable state:** static CTA page ready; Cal.com booking URL is an operator-owned external setting.
 
 ## CTA Copy
 
@@ -20,4 +18,3 @@ Use this when you need a signed third-party audit, not a self-score. The first c
 ## OSS Boundary
 
 README, DSAF-25, and core docs stay methodology-first. Paid audit links live on the canonical site footer and `/audits/` page only.
-

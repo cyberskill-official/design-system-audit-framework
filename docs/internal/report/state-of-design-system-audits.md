@@ -25,4 +25,3 @@
 ## Privacy Guard
 
 No chart ships if a segment has fewer than 30 responses. Free-text quotes require explicit written consent and may be paraphrased instead of quoted.
-

@@ -24,4 +24,3 @@ Every published translation needs:
 - Maintainer approval.
 - Terminology consistency pass.
 - Hreflang and canonical URL discipline.
-

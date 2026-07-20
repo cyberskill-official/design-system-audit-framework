@@ -1,7 +1,6 @@
 # Post-HN feedback tracker
 
-**Status:** empty until launch.
-**tasks:** TASK-LAUNCH-001, TASK-LAUNCH-002.
+**Status:** empty until launch. **tasks:** TASK-LAUNCH-001, TASK-LAUNCH-002.
 
 ## Show HN
 

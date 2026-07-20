@@ -1,7 +1,6 @@
 # Guest-post pitches — Smashing / CSS-Tricks / A List Apart
 
-**Use for:** EXECUTION_PLAN.md task O7.
-**Timing:** send **T-6 to T-8 weeks** before Show HN. Editorial lead times for these publications are 6–8 weeks, so a pitch sent at launch-eve won't run before P1 ends. Send earlier than the rest of the launch outreach.
+**Use for:** EXECUTION_PLAN.md task O7. **Timing:** send **T-6 to T-8 weeks** before Show HN. Editorial lead times for these publications are 6–8 weeks, so a pitch sent at launch-eve won't run before P1 ends. Send earlier than the rest of the launch outreach.
 
 **Goal:** one published article in one of these three within 2 weeks of Show HN. **Not** all three. Three pitches because acceptance rates are low; expect 0–1 accepts.
 

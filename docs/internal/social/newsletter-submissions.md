@@ -2,8 +2,7 @@
 
 **Use for:** EXECUTION_PLAN.md task O11. Submit each newly-published deep-dive to all four newsletters at T+24h after the canonical post goes live.
 
-Newsletters in scope (per TASK-LAUNCH-006).
-Do not auto-submit; copy/paste manually after verifying the live URL.
+Newsletters in scope (per TASK-LAUNCH-006). Do not auto-submit; copy/paste manually after verifying the live URL.
 
 | Newsletter | URL | Submission form |
 |---|---|---|

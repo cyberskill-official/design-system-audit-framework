@@ -13,13 +13,13 @@ Goal: the 40/40/20 band splits, the MANUAL cap, and the verification scaling wer
 
 **Scope.**
 1. Vendor two SYNTHETIC mini-repos under `scripts/test/fixtures/repo-mode/` (hand-written, ~30 files each, no external code):
-   - `prototype-ds/`: DESIGN.md + tokens.json (DTCG) + 2 components + package.json with version — artifacts present, no CI, no tests, no check outputs.
-   - `measured-ds/`: everything in prototype plus `.github/workflows/ci.yml`, `"test"` script, test files, a `_audit/*.json` check output, CHANGELOG, CODEOWNERS — the "measured" shape.
+- `prototype-ds/`: DESIGN.md + tokens.json (DTCG) + 2 components + package.json with version — artifacts present, no CI, no tests, no check outputs.
+- `measured-ds/`: everything in prototype plus `.github/workflows/ci.yml`, `"test"` script, test files, a `_audit/*.json` check output, CHANGELOG, CODEOWNERS — the "measured" shape.
 2. Add both to `design-md-manifest.json`; regenerate the corpus.
 3. New assertions in `check-maximal-cases.mjs` (the ordering invariant that makes band semantics falsifiable):
-   - `measured-ds` combined > `prototype-ds` combined > best prose-only fixture combined;
-   - `prototype-ds` has ≥ 1 criterion with artifacts > 0 and all verification == 0 for AUTO rows whose category probe depends on CI;
-   - `measured-ds` has ≥ 1 criterion with verification > 0.
+- `measured-ds` combined > `prototype-ds` combined > best prose-only fixture combined;
+- `prototype-ds` has ≥ 1 criterion with artifacts > 0 and all verification == 0 for AUTO rows whose category probe depends on CI;
+- `measured-ds` has ≥ 1 criterion with verification > 0.
 4. Re-run `evolve:mine`: `repo_mode_cases` must now be ≥ 2 and probe-gap mining active.
 
 **Acceptance criteria.**

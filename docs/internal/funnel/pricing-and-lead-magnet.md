@@ -23,4 +23,3 @@ CSV columns:
 ## Sales Boundary
 
 The free self-score produces education and fit, not a hidden sales form. If the respondent wants a signed score, route them to `/audits/`.
-

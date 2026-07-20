@@ -4,8 +4,7 @@
 
 **Current state:** Combined `xx.x%` (Part A `xx.x%` / Part B `xx.x%`) → Tier `Lx`.
 
-**Target ceiling within the next audit cycle:** `~yy%`.
-**Practical ceiling within 3 cycles:** `~zz%`.
+**Target ceiling within the next audit cycle:** `~yy%`. **Practical ceiling within 3 cycles:** `~zz%`.
 
 ---
 
@@ -24,16 +23,14 @@ Phases run mostly sequentially but waves within a phase can overlap. The plan do
 
 ## Phase N — `<phase name>`
 
-**Goal:** `<one sentence>`
-**Audit lift:** `+x to +y pp combined (`current% → ~target%`)`
-**Dependencies:** `<previous phase, or "none">`
+**Goal:** `<one sentence>` **Audit lift:** `+x to +y pp combined (`current% → ~target%`)` **Dependencies:** `<previous phase, or "none">`
 
 ### Wave 1 — `<wave name>`
 
 1. **`<Step name>`** — `<one paragraph>`.
-   - Done when: `<observable condition>`.
+- Done when: `<observable condition>`.
 2. **`<Step name>`** — `<one paragraph>`.
-   - Done when: `<observable condition>`.
+- Done when: `<observable condition>`.
 3. (...)
 
 **Audit lift after Wave 1:** `<category-level estimate>`.
@@ -41,7 +38,7 @@ Phases run mostly sequentially but waves within a phase can overlap. The plan do
 ### Wave 2 — `<wave name>`
 
 1. **`<Step name>`** — `<paragraph>`.
-   - Done when: `<condition>`.
+- Done when: `<condition>`.
 2. (...)
 
 **Risk:** `<what to watch for>`.

@@ -1,7 +1,6 @@
 # DSAF — Visual design spec
 
-**Status:** normative; ratified by TASK-BRAND-003 (2026-05-18).
-**Purpose:** the design intent that every DSAF visual is authored against. New visuals (post-launch) MUST conform to this spec; the canonical visuals — the L0-L5 level ladder, the DSAF radar chart, and the DSAF-25 Core card — are the reference implementations.
+**Status:** normative; ratified by TASK-BRAND-003 (2026-05-18). **Purpose:** the design intent that every DSAF visual is authored against. New visuals (post-launch) MUST conform to this spec; the canonical visuals — the L0-L5 level ladder, the DSAF radar chart, and the DSAF-25 Core card — are the reference implementations.
 
 ## Canonical visuals
 

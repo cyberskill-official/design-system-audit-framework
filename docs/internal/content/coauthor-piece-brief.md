@@ -1,7 +1,6 @@
 # TASK-CONTENT-003 - Co-Author Piece Brief
 
-**Target partners:** Nathan Curtis first; Chris Strahl second; EightShapes or Knapsack blog depending on partner fit.
-**Repo-verifiable state:** pitch and outline ready; external co-author acceptance pending.
+**Target partners:** Nathan Curtis first; Chris Strahl second; EightShapes or Knapsack blog depending on partner fit. **Repo-verifiable state:** pitch and outline ready; external co-author acceptance pending.
 
 ## Working Title
 
@@ -30,4 +29,3 @@ No launch-praise ask, no endorsement requirement. If the piece makes DSAF sharpe
 - Co-author has final approval over wording, attribution, and publication venue.
 - The piece must not pitch paid CyberSkill services.
 - If the partner works for a vendor or marquee DS team, disclose conflicts plainly.
-

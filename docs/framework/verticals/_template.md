@@ -16,8 +16,8 @@ Describe required semantic or component tokens specific to this domain.
 ## 3. Mandatory Component Patterns
 
 - **[PATTERN NAME]**: [Description of the UX pattern, e.g. "Step-up Authentication"]
-  - **Constraints**: [What must this pattern do?]
-  - **A11y/Privacy**: [Specific accessibility or privacy rules]
+- **Constraints**: [What must this pattern do?]
+- **A11y/Privacy**: [Specific accessibility or privacy rules]
 
 ## 4. Modified DSAF Criteria
 

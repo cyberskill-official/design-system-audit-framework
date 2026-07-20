@@ -30,9 +30,9 @@ For each approved finding:
 
 1. Order: `Rollback safe? = yes` first (low-risk batch), then by criterion impact.
 2. For each fix, declare:
-   - Files touched (exact paths).
-   - Revert command (`git checkout HEAD~1 -- <path>` or equivalent).
-   - Estimated lift on the affected criterion (and on combined %).
+- Files touched (exact paths).
+- Revert command (`git checkout HEAD~1 -- <path>` or equivalent).
+- Estimated lift on the affected criterion (and on combined %).
 3. Run a **dry-run** if the agent supports it: simulate the fix on a temporary branch, compute the affected criterion's neighbours, confirm none drop. Skip this step only if dry-run isn't feasible.
 
 Populate §5 with the plan table.

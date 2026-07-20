@@ -29,4 +29,3 @@
 ## No-Silent-Regression Rule
 
 Any change that weakens a previously accepted token, component, accessibility guarantee, or content rule must be tagged, explained, and approved before release.
-

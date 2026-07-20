@@ -125,14 +125,14 @@ Inline tags drive routing:
 **Procedure**:
 
 1. Web-search for updates to the standards listed in **`docs/00-audit-and-roadmap.md`** §2 References, including:
-   - WCAG 2.x and 3.0 working drafts
-   - DTCG token spec
-   - APCA contrast algorithm
-   - Web Components / Custom Elements
-   - MCP (Model Context Protocol)
-   - Tailwind / OKLCH / CSS spec advances
-   - Major design system releases (Material, Polaris, Carbon, Spectrum, etc.)
-   - Privacy/AI regulation (PDPL, GDPR, EU AI Act, EAA, OFCCP)
+- WCAG 2.x and 3.0 working drafts
+- DTCG token spec
+- APCA contrast algorithm
+- Web Components / Custom Elements
+- MCP (Model Context Protocol)
+- Tailwind / OKLCH / CSS spec advances
+- Major design system releases (Material, Polaris, Carbon, Spectrum, etc.)
+- Privacy/AI regulation (PDPL, GDPR, EU AI Act, EAA, OFCCP)
 2. For each notable update, decide: **adopt** (move into §3 as a finding) / **note** (add to §11 research log) / **defer** (no action this cycle).
 3. Keep a clean log — every entry has: source URL, summary, decision, rationale.
 
@@ -251,9 +251,7 @@ A `BLOCKED` row pauses the cycle and routes to `@Human[decide]`.
 |---|---:|---:|---:|---|---|---|---|---|
 | _none_ |  |  |  |  |  |  |  |  |
 
-Allowed cause values: `rubric-tightened`, `fix-side-effect`, `external-dependency-change`, `deliberate-policy-tradeoff`.
-Allowed tag values: `null`, `D-RT`, `OVRD-FSE`, `OVRD-EDC`, `OVRD-DPT`, `UNRESOLVED`.
-If any row's tag is `UNRESOLVED`, the audit must stay at `RE_AUDIT` and §9 remains empty.
+Allowed cause values: `rubric-tightened`, `fix-side-effect`, `external-dependency-change`, `deliberate-policy-tradeoff`. Allowed tag values: `null`, `D-RT`, `OVRD-FSE`, `OVRD-EDC`, `OVRD-DPT`, `UNRESOLVED`. If any row's tag is `UNRESOLVED`, the audit must stay at `RE_AUDIT` and §9 remains empty.
 
 ---
 

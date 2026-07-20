@@ -26,6 +26,4 @@ Open [http://localhost:5173](http://localhost:5173) to view the site.
 
 ## Deployment Contract
 
-The canonical deployment URL is `https://audit.cyberskill.world`.
-No paid-service CTA, pricing, or sales form lives here.
-No redirect rules ship from here.
+The canonical deployment URL is `https://audit.cyberskill.world`. No paid-service CTA, pricing, or sales form lives here. No redirect rules ship from here.

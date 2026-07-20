@@ -1,8 +1,6 @@
 # DSAF translation good-first issues
 
-**Status:** ready for community issues.
-**task:** TASK-I18N-001.
-**Guidelines:** [`translation-guidelines.md`](./translation-guidelines.md).
+**Status:** ready for community issues. **task:** TASK-I18N-001. **Guidelines:** [`translation-guidelines.md`](./translation-guidelines.md).
 
 ## Scope
 
@@ -97,7 +95,6 @@ Use these labels for all three issues:
 
 ## Blocked Until
 
-The task cannot be marked fully complete until all three language PRs have native-speaker review and merge.
-This file provides the issue payloads and workflow; it does not pretend translations are already reviewed.
+The task cannot be marked fully complete until all three language PRs have native-speaker review and merge. This file provides the issue payloads and workflow; it does not pretend translations are already reviewed.
 
 *End of translation issues.*

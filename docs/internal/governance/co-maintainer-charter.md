@@ -1,12 +1,10 @@
 # DSAF co-maintainer charter
 
-**Status:** normative role charter; active for outreach, pending first written acceptance.
-**task:** TASK-GOV-002.
+**Status:** normative role charter; active for outreach, pending first written acceptance. **task:** TASK-GOV-002.
 
 ## Role overview
 
-The DSAF co-maintainer role is OSS-volunteer-equivalent, not formal employment.
-The relationship is direct to DSAF governance and maintenance, not to CyberSkill employment.
+The DSAF co-maintainer role is OSS-volunteer-equivalent, not formal employment. The relationship is direct to DSAF governance and maintenance, not to CyberSkill employment.
 
 The role does not include salary, equity, a board seat, fiduciary duty, signing authority, employer/employee status, or any authority over CyberSkill commercial work.
 
@@ -28,14 +26,10 @@ The role exists to:
 
 ## Responsibilities
 
-1. Review RFCs within 14 days when assigned.
-   Expected governance load: 1-3h per month on average once TASK-GOV-003 RFC cycles begin.
-2. Review external-contributor PRs in area of expertise.
-   Expected review load: 1-2h per month on average when external PR volume exists.
-3. Share selected weekly deep-dive authorship when expertise matches.
-   Expected editorial load: 1.5-2h every-other-week only when both maintainers agree the topic fits the co-maintainer's expertise.
-4. Represent DSAF publicly when mutually agreed.
-   Conference, podcast, and panel participation is discretionary; no appearance is required by default.
+1. Review RFCs within 14 days when assigned. Expected governance load: 1-3h per month on average once TASK-GOV-003 RFC cycles begin.
+2. Review external-contributor PRs in area of expertise. Expected review load: 1-2h per month on average when external PR volume exists.
+3. Share selected weekly deep-dive authorship when expertise matches. Expected editorial load: 1.5-2h every-other-week only when both maintainers agree the topic fits the co-maintainer's expertise.
+4. Represent DSAF publicly when mutually agreed. Conference, podcast, and panel participation is discretionary; no appearance is required by default.
 5. Honor DSAF handle taxonomy, self-audit cap, and decoupling policy.
 6. Disclose availability constraints and conflicts.
 
@@ -43,8 +37,7 @@ Total normal load is expected to be 1-3h per month before RFC volume exists, and
 
 ## Commitment and exit
 
-The expected minimum commitment is 12 months from written acceptance.
-Either side may exit with 30 calendar days' written notice.
+The expected minimum commitment is 12 months from written acceptance. Either side may exit with 30 calendar days' written notice.
 
 An exit notice must include one transition path:
 
@@ -61,8 +54,7 @@ An exit notice must include one transition path:
 
 ## Decision-making
 
-Candidates are not publicly attributed before written acceptance.
-Announcement happens only after the candidate accepts in writing and co-signs the announcement post.
+Candidates are not publicly attributed before written acceptance. Announcement happens only after the candidate accepts in writing and co-signs the announcement post.
 
 The activation order is mandatory:
 
@@ -73,8 +65,7 @@ The activation order is mandatory:
 5. README and CONTRIBUTING maintainer lists are updated.
 6. The announcement post is published.
 
-Until a second maintainer is active, founder approval plus the public discussion window is the fallback for changes that ask for multiple maintainers.
-After a co-maintainer is active, substantive changes require both current maintainers or the explicit RFC rule in force at that time.
+Until a second maintainer is active, founder approval plus the public discussion window is the fallback for changes that ask for multiple maintainers. After a co-maintainer is active, substantive changes require both current maintainers or the explicit RFC rule in force at that time.
 
 ## Amendment
 

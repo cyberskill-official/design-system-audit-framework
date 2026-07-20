@@ -1,8 +1,6 @@
 # Co-maintainer outreach script
 
-**Use for:** EXECUTION_PLAN.md task O8.
-**Timing:** P2 phase or later (Months 3–6 from launch). **Sequential** — contact one candidate at a time, wait for a decision before moving to the next.
-**Shortlist (from `internal/governance/co-maintainer-shortlist.md`):** Nathan Curtis (rank 1) → Sil Bormüller (rank 2) → Sarah Federman (rank 3).
+**Use for:** EXECUTION_PLAN.md task O8. **Timing:** P2 phase or later (Months 3–6 from launch). **Sequential** — contact one candidate at a time, wait for a decision before moving to the next. **Shortlist (from `internal/governance/co-maintainer-shortlist.md`):** Nathan Curtis (rank 1) → Sil Bormüller (rank 2) → Sarah Federman (rank 3).
 
 The co-maintainer role is OSS-volunteer-equivalent per `internal/governance/co-maintainer-charter.md`. **Do not** promise salary, equity, board seat, fiduciary status, or any employment relationship. The role is governance + maintenance + co-authored content.
 

@@ -1,7 +1,6 @@
 # Reviewer consent log
 
-**Status:** empty until written consent arrives.
-**tasks:** TASK-GOV-001, TASK-DOCS-002.
+**Status:** empty until written consent arrives. **tasks:** TASK-GOV-001, TASK-DOCS-002.
 
 | Reviewer | Affiliation | Quote | Approved surfaces | Approved at | Status |
 |---|---|---|---|---|---|
